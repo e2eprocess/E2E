@@ -1,0 +1,21 @@
+table {
+  font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 12px;
+  margin: 0 auto;
+  width: 480px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table caption {
+  font-size: 20px;
+}
+
+table tr {
+  text-align: center;
+}
+
+table tr th {
+  background-color: #336BFF;
+  color: #fff;
+}

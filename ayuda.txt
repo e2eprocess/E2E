@@ -1,0 +1,7 @@
+-- Cargar datos mySql --
+LOAD DATA
+LOCAL INFILE 'C:\\location.csv'
+INTO TABLE location
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
