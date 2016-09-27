@@ -39,7 +39,7 @@
 		</header>
 
 		<section id="contenedor">
-			<header>APX </header>
+			<header>APX</header>
 
 			<fieldset>
 				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
