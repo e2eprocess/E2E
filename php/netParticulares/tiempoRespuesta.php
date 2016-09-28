@@ -21,8 +21,6 @@ $series3 = array();
 $series4 = array();
 $series5 = array();
 $series6 = array();
-$series7 = array();
-$series8 = array();
 
 
 $hoy = date("Y-m-d H", strtotime('-1 hour'));
@@ -31,12 +29,10 @@ $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
 $particularesHoy = busqueda('%particulares%',$hoy);
 $globalHoy = busqueda('%global%',$hoy);
 $KQOFHoy = busqueda('%KQOF%',$hoy);
-$pasaporteHoy = busqueda('%pasaporte%',$hoy);
 
 $particularesPasada = busqueda('%Particulares%',$semana_pasada);
 $globalPasada = busqueda('%global%',$semana_pasada);
 $KQOFPasada = busqueda('%KQOF%',$semana_pasada);
-$pasaportePasada = busqueda('%pasaporte%',$semana_pasada);
 
 $category['name'] = 'fecha';
 
@@ -49,22 +45,16 @@ while($r2 = mysql_fetch_array($globalPasada)) {
 while($r3 = mysql_fetch_array($KQOFPasada)) {
       $series3['data'][] = $r3['Tiempo_respuesta'];
     }
-while($r4 = mysql_fetch_array($pasaportePasada)) {
+
+while($r4 = mysql_fetch_array($particularesHoy)) {
+      $category['data'][] = $r4['fecha'];
       $series4['data'][] = $r4['Tiempo_respuesta'];
     }
-
-while($r5 = mysql_fetch_array($particularesHoy)) {
-      $category['data'][] = $r5['fecha'];
+while($r5 = mysql_fetch_array($globalHoy)) {
       $series5['data'][] = $r5['Tiempo_respuesta'];
     }
-while($r6 = mysql_fetch_array($globalHoy)) {
+while($r6 = mysql_fetch_array($KQOFHoy)) {
       $series6['data'][] = $r6['Tiempo_respuesta'];
-    }
-while($r7 = mysql_fetch_array($KQOFHoy)) {
-      $series7['data'][] = $r7['Tiempo_respuesta'];
-    }
-while($r8 = mysql_fetch_array($pasaporteHoy)) {
-      $series8['data'][] = $r8['Tiempo_respuesta'];
     }
 
 $datos = array();
@@ -75,8 +65,6 @@ array_push($datos,$series3);
 array_push($datos,$series4);
 array_push($datos,$series5);
 array_push($datos,$series6);
-array_push($datos,$series7);
-array_push($datos,$series8);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 

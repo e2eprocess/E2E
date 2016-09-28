@@ -93,13 +93,6 @@ $(document).ready(function() {
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'Pasaporte last',
-            color: 'rgba(223,99,248,1.0)',
-            type: 'spline',
-            dashStyle: 'shortdot',
-            yAxis: 1,
-            data:[]
-          },{
             name: 'Particulares now',
             color: 'rgba(82,190,128,1.0)',
             type: 'line',
@@ -114,12 +107,6 @@ $(document).ready(function() {
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
-          },{
-            name: 'Pasaporte now',
-            color: 'rgba(223,99,248,1.0)',
-            type: 'line',
-            yAxis: 1,
-            data:[]
           }]
       }
 
@@ -131,8 +118,6 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
-        options.series[6].data = json[7]['data'];
-        options.series[7].data = json[8]['data'];
 
         chart = new Highcharts.Chart(options);
       });
