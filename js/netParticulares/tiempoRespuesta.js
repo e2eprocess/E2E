@@ -29,14 +29,6 @@ $(document).ready(function() {
             title: {
               text: 'Tiempo de respuesta'
             }
-          },{ //tiempo de respuesta
-            labels: {
-              format: '{value} (ms.)'
-            },
-            title: {
-              text: 'Pasaporte tiempo respuesta (ms.)'
-            },
-            opposite: true
           }],
           tooltip: {
               shared: true
