@@ -20,8 +20,14 @@ $series2 = array();
 $series3 = array();
 $series4 = array();
 
-$hoy = date("Y-m-d H", strtotime('-1 hour'));
-$semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
+$minuto = 22;
+if(date("i")<$minuto){
+  $hoy = date("Y-m-d H", strtotime('-2 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-170 hour'));
+}else{
+  $hoy = date("Y-m-d H", strtotime('-1 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
+}
 
 $ncocHoy = busqueda('ncoc',$hoy);
 $eeccHoy = busqueda('eecc',$hoy);

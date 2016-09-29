@@ -25,8 +25,14 @@ $series6 = array();
 $series7 = array();
 $series8 = array();
 
-$hoy = date("Y-m-d H", strtotime('-1 hour'));
-$semana_pasada = date($hoy, strtotime('-7 day'));
+$minuto = 22;
+if(date("i")<$minuto){
+  $hoy = date("Y-m-d H", strtotime('-2 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-170 hour'));
+}else{
+  $hoy = date("Y-m-d H", strtotime('-1 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
+}
 
 $apbad002CpuHoy = busqueda('apbad002',$hoy);
 $apbad003CpuHoy = busqueda('apbad003',$hoy);

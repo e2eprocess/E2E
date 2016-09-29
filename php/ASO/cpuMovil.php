@@ -31,8 +31,14 @@ $series12 = array();
 $series13 = array();
 $series14 = array();
 
-$hoy = date("Y-m-d H", strtotime('-1 hour'));
-$semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
+$minuto = 22;
+if(date("i")<$minuto){
+  $hoy = date("Y-m-d H", strtotime('-2 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-170 hour'));
+}else{
+  $hoy = date("Y-m-d H", strtotime('-1 hour'));
+  $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
+}
 
 $lpsrm302CpuHoy = busqueda('lpsrm302',$hoy);
 $lpsrv310CpuHoy = busqueda('lpsrv310',$hoy);
