@@ -13,7 +13,7 @@ body{
   background: linear-gradient(#336BFF,#3396FF);
   text-align: center;
   height: 67px;
-  background-image: url(/E2E/reporting/img/fondo_cabecera.png);
+  background-image: url(/E2E/img/fondo_cabecera.png);
 }
 
 #logo {
