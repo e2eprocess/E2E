@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Últimas 24 horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -67,35 +67,35 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Particulares last',
+            name: 'Particulares (F)',
             color: 'rgba(82,190,128,1)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'PosicionGlobal last',
+            name: 'PosicionGlobal (F)',
             color: 'rgba(245,176,65,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'KQOF last',
+            name: 'KQOF (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'Particulares now',
+            name: 'Particulares (T)',
             color: 'rgba(82,190,128,1.0)',
             type: 'line',
             data:[]
           },{
-            name: 'PosicionGlobal now',
+            name: 'PosicionGlobal (T)',
             color: 'rgba(245,176,65,1.0)',
             type: 'line',
             data:[]
           },{
-            name: 'KQOF now',
+            name: 'KQOF (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
@@ -110,6 +110,7 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
+        options.subtitle.text = json[7]['text'];
 
         chart = new Highcharts.Chart(options);
       });

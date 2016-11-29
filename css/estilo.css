@@ -13,7 +13,7 @@ body{
   background: linear-gradient(#336BFF,#3396FF);
   text-align: center;
   height: 67px;
-  background-image: url(/E2E/img/fondo_cabecera.png);
+  background-image: url(../img/fondo_cabecera.png);
 }
 
 #logo {
@@ -35,9 +35,20 @@ body{
 
 #contenedor header {
   padding-top: 137px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   text-align: center;
   font-size: 30px;
   font-family: fantasy;
   color: #336BFF;
+}
+
+#comparador{
+  padding-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+#comparador input {
+  text-align: center;
+  font-size: 12px;
 }

@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Ultimas 24 horas; --Ultimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -57,79 +57,79 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'lpsrm302 last',
+            name: 'lpsrm302 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv310 last',
+            name: 'lpsrv310 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv311 last',
+            name: 'lpsrv311 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv314 last',
+            name: 'lpsrv314 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrm301 last',
+            name: 'lpsrm301 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv315 last',
+            name: 'lpsrv315 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv316 last',
+            name: 'lpsrv316 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrm302 now',
+            name: 'lpsrm302 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv310 now',
+            name: 'lpsrv310 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv311 now',
+            name: 'lpsrv311 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv314 now',
+            name: 'lpsrv314 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrm301 now',
+            name: 'lpsrm301 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv315 now',
+            name: 'lpsrv315 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv316 now',
+            name: 'lpsrv316 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("php/ASO/cpuMovil.php", function(json) {
+      $.getJSON("../php/ASO/movil/cpuMovil.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
@@ -145,6 +145,7 @@ $(document).ready(function() {
         options.series[11].data = json[12]['data'];
         options.series[12].data = json[13]['data'];
         options.series[13].data = json[14]['data'];
+        options.subtitle.text = json[15]['text'];
 
         chart = new Highcharts.Chart(options);
       });

@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Ultimas 24 horas; --Ultimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -57,39 +57,39 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'lpsrv306 last',
+            name: 'lpsrv306 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv325 last',
+            name: 'lpsrv325 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv305 last',
+            name: 'lpsrv305 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv306 now',
+            name: 'lpsrv306 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv325 now',
+            name: 'lpsrv325 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv305 now',
+            name: 'lpsrv305 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("php/ASO/cpuCash.php", function(json) {
+      $.getJSON("../php/ASO/cash/cpuCash.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
@@ -97,6 +97,7 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
+        options.subtitle.text = json[7]['text'];
 
         chart = new Highcharts.Chart(options);
       });

@@ -55,22 +55,22 @@
 
 
   .menu ul {
-    left: 0;
-    margin: 0;
-    opacity: 0;
-    position: absolute;
-    top: 45px;
-    background: #336BFF;
-    background: -moz-linear-gradient(#336BFF,#3396FF);
-    background: -webkit-linear-gradient(#336BFF,#3396FF);
-    background: -o-linear-gradient(#336BFF,#3396FF);
-    background: -ms-linear-gradient(#336BFF,#3396FF);
-    background: linear-gradient(#336BFF,#3396FF);
-    -moz-transition: opacity .25s ease .1s;
-    -webkit-transition: opacity .25s ease .1s;
-    -o-transition: opacity .25s ease .1s;
-    -ms-transition: opacity .25s ease .1s;
-    transition: opacity .25s ease .1s;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        position: absolute;
+        top: 45px;
+        background: #336BFF;
+        background: -moz-linear-gradient(#336BFF,#3396FF);
+        background: -webkit-linear-gradient(#336BFF,#3396FF);
+        background: -o-linear-gradient(#336BFF,#3396FF);
+        background: -ms-linear-gradient(#336BFF,#3396FF);
+        background: linear-gradient(#336BFF,#3396FF);
+        -moz-transition: opacity .25s ease .1s;
+        -webkit-transition: opacity .25s ease .1s;
+        -o-transition: opacity .25s ease .1s;
+        -ms-transition: opacity .25s ease .1s;
+        transition: opacity .25s ease .1s;
   }
 
     .menu ul li{
@@ -94,7 +94,6 @@
         border: none;
         border-bottom: 1px solid #fff;
         margin: 0;
-        padding: 5px 10px;
         width: 200px;
         text-align: left;
       }

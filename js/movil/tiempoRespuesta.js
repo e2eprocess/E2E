@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '-Últimas 24horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -68,13 +68,13 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'ENPP last',
+            name: 'ENPP (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'ENPP now',
+            name: 'ENPP (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
@@ -85,6 +85,7 @@ $(document).ready(function() {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
+        options.subtitle.text = json[3]['text'];
 
         chart = new Highcharts.Chart(options);
       });

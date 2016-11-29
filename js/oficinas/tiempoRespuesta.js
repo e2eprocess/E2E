@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Últimas 24 horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -67,24 +67,24 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Objeto Cliente last',
+            name: 'Objeto Cliente (F)',
             color: 'rgba(82,190,128,1)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'EECC last',
+            name: 'EECC (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'Objeto Cliente now',
+            name: 'Objeto Cliente (T)',
             color: 'rgba(82,190,128,1.0)',
             type: 'line',
             data:[]
           },{
-            name: 'EECC now',
+            name: 'EECC (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
@@ -97,6 +97,7 @@ $(document).ready(function() {
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
+        options.subtitle.text = json[5]['text'];
 
         chart = new Highcharts.Chart(options);
       });

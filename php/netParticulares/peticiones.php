@@ -1,83 +1,96 @@
 <?php
-include("../conexion_e2e_process.php");
+  include("../conexion_e2e_process.php");
 
-function busqueda($CANAL,$FECHA_QUERY){
+  /*Query fecha menos 24 horas
+  function busqueda($CANAL,$FECHA_QUERY){
+    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
+                                      peticiones,
+                                      max_peticiones
+                              FROM    seguimiento_cx_canal
+                              WHERE   canal like '".$CANAL."'
+                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
+                              AND     fecha <= '".$FECHA_QUERY."'");
+    return $resultado;
+  }*/
 
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    peticiones,
-                                    max_peticiones
-                            FROM    seguimiento_cx_canal
-                            WHERE   canal like '".$CANAL."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                            AND     fecha <= '".$FECHA_QUERY."'");
+  /*query*/
+  function busqueda($CANAL,$FECHA_QUERY){
+    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
+                                      peticiones,
+                                      max_peticiones
+                              FROM    seguimiento_cx_canal
+                              WHERE   canal like '".$CANAL."'
+                              AND     fecha like '".$FECHA_QUERY."%'");
+    return $resultado;
+  }
 
-  return $resultado;
+  /*Declaracion de arrays json*/
+  $category = array();
+  $titulo = array();
+  $series1 = array();
+  $series2 = array();
+  $series3 = array();
+  $series4 = array();
+  $series5 = array();
+  $series6 = array();
+  $series7 = array();
 
-}
+  /*Recuperar variables de sesión que contienen las fechas a comparar*/
+  session_start();
+  $from = $_SESSION["fechaFromNet"];
+  $newFrom = date("Y-m-d", strtotime($from));
+  $to=$_SESSION["fechaToNet"];
+  $newTo = date("Y-m-d", strtotime($to));
 
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-$series5 = array();
-$series6 = array();
-$series7 = array();
+  /*Declaración variables*/
+  $particularesHoy = busqueda('%particulares%',$newTo);
+  $globalHoy = busqueda('%global%',$newTo);
+  $KQOFHoy = busqueda('%KQOF%',$newTo);
 
-$minuto = 22;
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-  $semana_pasada = date("Y-m-d H", strtotime('-170 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-  $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
-}
+  $particularesPasada = busqueda('%Particulares%',$newFrom);
+  $globalPasada = busqueda('%global%',$newFrom);
+  $KQOFPasada = busqueda('%KQOF%',$newFrom);
 
-$particularesHoy = busqueda('%particulares%',$hoy);
-$globalHoy = busqueda('%global%',$hoy);
-$KQOFHoy = busqueda('%KQOF%',$hoy);
+  /*Recuperación datos*/
+  $category['name'] = 'fecha';
+  $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-$particularesPasada = busqueda('%Particulares%',$semana_pasada);
-$globalPasada = busqueda('%global%',$semana_pasada);
-$KQOFPasada = busqueda('%KQOF%',$semana_pasada);
+  while($r1 = mysql_fetch_array($particularesPasada)) {
+        $category['data'][] = $r1['fecha'];
+        $series1['data'][] = $r1['peticiones'];
+      }
+  while($r2 = mysql_fetch_array($globalPasada)) {
+        $series2['data'][] = $r2['peticiones'];
+      }
+  while($r3 = mysql_fetch_array($KQOFPasada)) {
+        $series3['data'][] = $r3['peticiones'];
+        $series7['data'][] = $r3['max_peticiones'];
+      }
 
-$category['name'] = 'fecha';
+  while($r4 = mysql_fetch_array($particularesHoy)) {
+        $series4['data'][] = $r4['peticiones'];
+      }
+  while($r5 = mysql_fetch_array($globalHoy)) {
+        $series5['data'][] = $r5['peticiones'];
+      }
+  while($r6 = mysql_fetch_array($KQOFHoy)) {
+        $series6['data'][] = $r6['peticiones'];
+      }
 
-while($r1 = mysql_fetch_array($particularesPasada)) {
-      $series1['data'][] = $r1['peticiones'];
-    }
-while($r2 = mysql_fetch_array($globalPasada)) {
-      $series2['data'][] = $r2['peticiones'];
-    }
-while($r3 = mysql_fetch_array($KQOFPasada)) {
-      $series3['data'][] = $r3['peticiones'];
-    }
+  /*Carga del array del Json*/
+  $datos = array();
+  array_push($datos,$category);
+  array_push($datos,$series1);
+  array_push($datos,$series2);
+  array_push($datos,$series3);
+  array_push($datos,$series4);
+  array_push($datos,$series5);
+  array_push($datos,$series6);
+  array_push($datos,$series7);
+  array_push($datos,$titulo);
 
-while($r4 = mysql_fetch_array($particularesHoy)) {
-      $category['data'][] = $r4['fecha'];
-      $series4['data'][] = $r4['peticiones'];
-    }
-while($r5 = mysql_fetch_array($globalHoy)) {
-      $series5['data'][] = $r5['peticiones'];
-    }
-while($r6 = mysql_fetch_array($KQOFHoy)) {
-      $series6['data'][] = $r6['peticiones'];
-      $series7['data'][] = $r6['max_peticiones'];
-    }
+  print json_encode($datos, JSON_NUMERIC_CHECK);
 
-
-$datos = array();
-array_push($datos,$category);
-array_push($datos,$series1);
-array_push($datos,$series2);
-array_push($datos,$series3);
-array_push($datos,$series4);
-array_push($datos,$series5);
-array_push($datos,$series6);
-array_push($datos,$series7);
-
-print json_encode($datos, JSON_NUMERIC_CHECK);
-
-mysql_close($conexion);
+  mysql_close($conexion);
 
 ?>

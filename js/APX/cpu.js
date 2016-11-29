@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Ultimas 24 horas; --Ultimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -55,97 +55,99 @@ $(document).ready(function() {
                 }
               }
           },
+
           /*series: []*/
           series: [{
-            name: 'lppxo301 last',
+            name: 'lppxo301 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo302 last',
+            name: 'lppxo302 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo303 last',
+            name: 'lppxo303 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo304 last',
+            name: 'lppxo304 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo305 last',
+            name: 'lppxo305 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo309 last',
+            name: 'lppxo309 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo310 last',
+            name: 'lppxo310 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lppxo301 now',
+            name: 'lppxo301 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo302 now',
+            name: 'lppxo302 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo303 now',
+            name: 'lppxo303 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo304 now',
+            name: 'lppxo304 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo305 now',
+            name: 'lppxo305 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo309',
+            name: 'lppxo309 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lppxo310',
+            name: 'lppxo310 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           }]
-      }
+          }
 
-      $.getJSON("php/APX/cpu.php", function(json) {
-        options.xAxis.categories = json[0]['data'];
-        options.series[0].data = json[1]['data'];
-        options.series[1].data = json[2]['data'];
-        options.series[2].data = json[3]['data'];
-        options.series[3].data = json[4]['data'];
-        options.series[4].data = json[5]['data'];
-        options.series[5].data = json[6]['data'];
-        options.series[6].data = json[7]['data'];
-        options.series[7].data = json[8]['data'];
-        options.series[8].data = json[9]['data'];
-        options.series[9].data = json[10]['data'];
-        options.series[10].data = json[11]['data'];
-        options.series[11].data = json[12]['data'];
-        options.series[12].data = json[13]['data'];
-        options.series[13].data = json[14]['data'];
+          $.getJSON("php/APX/cpu.php", function(json) {
+          options.xAxis.categories = json[0]['data'];
+          options.series[0].data = json[1]['data'];
+          options.series[1].data = json[2]['data'];
+          options.series[2].data = json[3]['data'];
+          options.series[3].data = json[4]['data'];
+          options.series[4].data = json[5]['data'];
+          options.series[5].data = json[6]['data'];
+          options.series[6].data = json[7]['data'];
+          options.series[7].data = json[8]['data'];
+          options.series[8].data = json[9]['data'];
+          options.series[9].data = json[10]['data'];
+          options.series[10].data = json[11]['data'];
+          options.series[11].data = json[12]['data'];
+          options.series[12].data = json[13]['data'];
+          options.series[13].data = json[14]['data'];
+          options.subtitle.text = json[15]['text'];
 
-        chart = new Highcharts.Chart(options);
-      });
+          chart = new Highcharts.Chart(options);
+          });
   });

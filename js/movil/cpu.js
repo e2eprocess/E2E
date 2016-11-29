@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Últimas 24 horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -57,42 +57,42 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'apbad002 last',
+            name: 'apbad002 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003 last',
+            name: 'apbad003 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004 last',
+            name: 'apbad004 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006 last',
+            name: 'apbad006 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002 now',
+            name: 'apbad002 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003 now',
+            name: 'apbad003 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004 now',
+            name: 'apbad004 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006 now',
+            name: 'apbad006 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
@@ -109,6 +109,7 @@ $(document).ready(function() {
         options.series[5].data = json[6]['data'];
         options.series[6].data = json[7]['data'];
         options.series[7].data = json[8]['data'];
+        options.subtitle.text = json[9]['text'];
 
         chart = new Highcharts.Chart(options);
       });

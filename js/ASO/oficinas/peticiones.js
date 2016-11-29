@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '-Últimas 24 horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -67,36 +67,37 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Granting last',
+            name: 'Granting (F)',
             color: 'rgba(82,190,128,1)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'Servicio last',
+            name: 'Servicio (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'Granting now',
+            name: 'Granting (T)',
             color: 'rgba(82,190,128,1)',
             type: 'line',
             data:[]
           },{
-            name: 'Servicio now',
+            name: 'Servicio (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("php/ASO/peticionesOficinas.php", function(json) {
+      $.getJSON("../php/ASO/oficinas/peticionesOficinas.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
+        options.subtitle.text = json[5]['text'];
 
 
         chart = new Highcharts.Chart(options);

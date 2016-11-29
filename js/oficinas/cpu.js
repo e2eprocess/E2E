@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: '- Últimas 24 horas; --Últimas 24 horas semana pasada',
+            text: [],
             x: -20
           },
           credits: {
@@ -57,72 +57,72 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'spnac005 last',
+            name: 'spnac005 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac006 last',
+            name: 'spnac006 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac007 last',
+            name: 'spnac007 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac008 last',
+            name: 'spnac008 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac009 last',
+            name: 'spnac009 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac010 last',
+            name: 'spnac010 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac012 last',
+            name: 'spnac012 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'spnac005 now',
+            name: 'spnac005 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac006 now',
+            name: 'spnac006 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac007 now',
+            name: 'spnac007 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac008 now',
+            name: 'spnac008 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac009 now',
+            name: 'spnac009 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac010 now',
+            name: 'spnac010 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac012 now',
+            name: 'spnac012 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
@@ -145,6 +145,7 @@ $(document).ready(function() {
         options.series[11].data = json[12]['data'];
         options.series[12].data = json[13]['data'];
         options.series[13].data = json[14]['data'];
+        options.subtitle.text = json[15]['text'];
 
 
         chart = new Highcharts.Chart(options);

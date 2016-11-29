@@ -1,20 +1,30 @@
 <?php
 include("../conexion_e2e_process.php");
 
+/* Query fecha menos 24 horas
 function busqueda($MAQUINA,$FECHA_QUERY){
-
   $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
                                     cpu
                             FROM    seguimiento_cx_maquina
                             WHERE   maquina = '".$MAQUINA."'
-                            AND     canal = 'apx'
+                            AND     canal = 'net'
                             AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
                             AND     fecha <= '".$FECHA_QUERY."'");
-
   return $resultado;
+}*/
 
+/*query*/
+function busqueda($MAQUINA,$FECHA_QUERY){
+  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
+                                    cpu
+                            FROM    seguimiento_cx_maquina
+                            WHERE   maquina = '".$MAQUINA."'
+                            AND     canal = 'apx'
+                            AND     fecha like '".$FECHA_QUERY."%'");
+  return $resultado;
 }
 
+/*Declaracion de arrays json*/
 $category = array();
 $series1 = array();
 $series2 = array();
@@ -31,34 +41,36 @@ $series12 = array();
 $series13 = array();
 $series14 = array();
 
-$minuto = 22;
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-  $semana_pasada = date("Y-m-d H", strtotime('-170 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-  $semana_pasada = date("Y-m-d H", strtotime('-169 hour'));
-}
+/*Recuperar variables de sesión que contienen las fechas a comparar*/
+session_start();
+$from = $_SESSION["fechaFromNet"];
+$newFrom = date("Y-m-d", strtotime($from));
+$to=$_SESSION["fechaToNet"];
+$newTo = date("Y-m-d", strtotime($to));
 
-$lppxo301CpuHoy = busqueda('lppxo301',$hoy);
-$lppxo302CpuHoy = busqueda('lppxo302',$hoy);
-$lppxo303CpuHoy = busqueda('lppxo303',$hoy);
-$lppxo304CpuHoy = busqueda('lppxo304',$hoy);
-$lppxo305CpuHoy = busqueda('lppxo305',$hoy);
-$lppxo309CpuHoy = busqueda('lppxo309',$hoy);
-$lppxo310CpuHoy = busqueda('lppxo310',$hoy);
+/*Declaración variables*/
+$lppxo301CpuHoy = busqueda('lppxo301',$newTo);
+$lppxo302CpuHoy = busqueda('lppxo302',$newTo);
+$lppxo303CpuHoy = busqueda('lppxo303',$newTo);
+$lppxo304CpuHoy = busqueda('lppxo304',$newTo);
+$lppxo305CpuHoy = busqueda('lppxo305',$newTo);
+$lppxo309CpuHoy = busqueda('lppxo309',$newTo);
+$lppxo310CpuHoy = busqueda('lppxo310',$newTo);
 
-$lppxo301CpuPasada = busqueda('lppxo301',$semana_pasada);
-$lppxo302CpuPasada = busqueda('lppxo302',$semana_pasada);
-$lppxo303CpuPasada = busqueda('lppxo303',$semana_pasada);
-$lppxo304CpuPasada = busqueda('lppxo304',$semana_pasada);
-$lppxo305CpuPasada = busqueda('lppxo305',$semana_pasada);
-$lppxo309CpuPasada = busqueda('lppxo309',$semana_pasada);
-$lppxo310CpuPasada = busqueda('lppxo310',$semana_pasada);
+$lppxo301CpuPasada = busqueda('lppxo301',$newFrom);
+$lppxo302CpuPasada = busqueda('lppxo302',$newFrom);
+$lppxo303CpuPasada = busqueda('lppxo303',$newFrom);
+$lppxo304CpuPasada = busqueda('lppxo304',$newFrom);
+$lppxo305CpuPasada = busqueda('lppxo305',$newFrom);
+$lppxo309CpuPasada = busqueda('lppxo309',$newFrom);
+$lppxo310CpuPasada = busqueda('lppxo310',$newFrom);
 
+/*Recuperación datos*/
 $category['name'] = 'fecha';
+$titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
 while($r1 = mysql_fetch_array($lppxo301CpuPasada)) {
+      $category['data'][] = $r1['fecha'];
       $series1['data'][] = $r1['cpu'];
     }
 while($r2 = mysql_fetch_array($lppxo302CpuPasada)) {
@@ -81,7 +93,6 @@ while($r7 = mysql_fetch_array($lppxo310CpuPasada)) {
     }
 
 while($r8 = mysql_fetch_array($lppxo301CpuHoy)) {
-      $category['data'][] = $r8['fecha'];
       $series8['data'][] = $r8['cpu'];
     }
 while($r9 = mysql_fetch_array($lppxo302CpuHoy)) {
@@ -103,6 +114,7 @@ while($r14 = mysql_fetch_array($lppxo310CpuHoy)) {
       $series14['data'][] = $r14['cpu'];
     }
 
+/*Carga del array del Json*/
 $datos = array();
 array_push($datos,$category);
 array_push($datos,$series1);
@@ -119,6 +131,7 @@ array_push($datos,$series11);
 array_push($datos,$series12);
 array_push($datos,$series13);
 array_push($datos,$series14);
+array_push($datos,$titulo);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
