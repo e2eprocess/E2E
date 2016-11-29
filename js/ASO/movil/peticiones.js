@@ -88,6 +88,11 @@ $(document).ready(function() {
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
+          },{
+            name: 'Max. Peticiones (19/10)',
+            color: 'rgba(255,0,0,1.0)',
+            type: 'line',
+            data:[]
           }]
       }
 
@@ -98,7 +103,7 @@ $(document).ready(function() {
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
         options.subtitle.text = json[5]['text'];
-
+        options.series[4].data = json[6]['data'];
 
         chart = new Highcharts.Chart(options);
       });

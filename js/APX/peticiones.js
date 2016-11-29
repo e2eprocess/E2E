@@ -77,6 +77,11 @@ $(document).ready(function() {
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
+          },{
+            name: 'Max. Peticiones (28/11)',
+            color: 'rgba(255,0,0,1.0)',
+            type: 'line',
+            data:[]
           }]
       }
 
@@ -85,6 +90,7 @@ $(document).ready(function() {
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.subtitle.text = json[4]['text'];
+        options.series[2].data = json[5]['data'];
 
         chart = new Highcharts.Chart(options);
       });

@@ -19,7 +19,6 @@
     return $resultado;
   }
 
-
   /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
