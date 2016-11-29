@@ -1,18 +1,6 @@
 <?php
   include("../conexion_e2e_process.php");
 
-  /*Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
   /*query*/
   function busqueda($CANAL,$FECHA_QUERY){
     $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
@@ -24,6 +12,14 @@
     return $resultado;
   }
 
+  function max_peti($CANAL){
+    $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
+                              FROM    seguimiento_cx_canal
+                              WHERE   canal like '".$CANAL."'");
+    return $resultado;
+  }
+
+
   /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
@@ -34,6 +30,7 @@
   $series5 = array();
   $series6 = array();
   $series7 = array();
+  $series8 = array();
 
   /*Recuperar variables de sesión que contienen las fechas a comparar*/
   session_start();
@@ -51,9 +48,15 @@
   $globalPasada = busqueda('%global%',$newFrom);
   $KQOFPasada = busqueda('%KQOF%',$newFrom);
 
+  $maxPeticiones = max_peti('%KQOF%');
+
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
+
+
+    $r8 = mysql_fetch_array($maxPeticiones);
+    $max_peti['value'] = $r8['max_peticiones'];
 
   while($r1 = mysql_fetch_array($particularesPasada)) {
         $category['data'][] = $r1['fecha'];
@@ -64,7 +67,7 @@
       }
   while($r3 = mysql_fetch_array($KQOFPasada)) {
         $series3['data'][] = $r3['peticiones'];
-        $series7['data'][] = $r3['max_peticiones'];
+        $series7['data'][] = $max_peti['value'];
       }
 
   while($r4 = mysql_fetch_array($particularesHoy)) {
@@ -76,6 +79,8 @@
   while($r6 = mysql_fetch_array($KQOFHoy)) {
         $series6['data'][] = $r6['peticiones'];
       }
+
+
 
   /*Carga del array del Json*/
   $datos = array();

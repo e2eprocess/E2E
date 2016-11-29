@@ -24,6 +24,13 @@
     return $resultado;
   }
 
+  function max_peti($CANAL){
+    $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
+                              FROM    seguimiento_cx_canal
+                              WHERE   canal like '".$CANAL."'");
+    return $resultado;
+  }
+
   /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
@@ -41,15 +48,18 @@
   /*Declaración variables*/
   $peticionesHoy = busqueda('cash',$newTo);
   $peticionesPasada = busqueda('cash', $newFrom);
+  $maxPeticiones = max_peti('%cash%');
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
+  $r8 = mysql_fetch_array($maxPeticiones);
+  $max_peti['value'] = $r8['max_peticiones'];
 
   while($r1  = mysql_fetch_array($peticionesPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
-        $series3['data'][] = $r1['max_peticiones'];
+        $series3['data'][] = $max_peti['value'];
       }
 
   while($r2 = mysql_fetch_array($peticionesHoy)) {
