@@ -40,7 +40,12 @@
 					</li>
 					<li><a href="../movil.php">Móvil</a>
 					</li>
-					<li><a href="../oficinas.php">Oficinas</a></li>
+					<li><a>Oficinas</a>
+						<ul>
+							<li><a href="../oficinas/EECC.php">Escenario comerciales</a></li>
+							<li><a href="../oficinas/NCOC.php">Objeto cliente</a></li>
+						</ul>
+					</li>
 					<li><a>ASO</a>
 						<ul>
 							<li><a href="particulares.php">Net Particulares</a></li>
