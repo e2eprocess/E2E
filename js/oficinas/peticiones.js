@@ -108,6 +108,7 @@ $(document).ready(function() {
             name: 'Max. Peticiones (7/11)',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
+			yAxis: 1,
             data:[]
           }]
       }

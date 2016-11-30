@@ -49,7 +49,7 @@ $newTo = date("Y-m-d", strtotime($to));
 $peticionesHoy = busqueda('apx',$newTo);
 $peticionesPasada = busqueda('apx', $newFrom);
 
-$maxPeticiones = max_peti('%ASOMovil%');
+$maxPeticiones = max_peti('%apx%');
 
 $category['name'] = 'fecha';
 $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";

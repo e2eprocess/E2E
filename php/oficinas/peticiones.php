@@ -53,7 +53,7 @@
   $ncocPasada = busqueda('ncoc',$newFrom);
   $eeccPasada = busqueda('eecc',$newFrom);
 
-  $maxPeticiones = max_peti('%movil%');
+  $maxPeticiones = max_peti('%eecc%');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
