@@ -59,6 +59,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> Seguimiento | Informe </div>
 			<header>Móvil</header>
 
 			<!-- Formulario gestión fechas -->

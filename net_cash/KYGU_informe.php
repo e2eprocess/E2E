@@ -4,8 +4,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/netCash/VS_MQ/recurso_semanal.js"></script>
-		<script type="text/javascript" src="../js/netCash/VS_MQ/recurso_mensual.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYGU/aplicacion_mensual.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYGU/aplicacion_semanal.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYGU/recurso_mensual.js"></script>
+    <script type="text/javascript" src="../js/netCash/KYGU/recurso_semanal.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<link rel="Stylesheet" type="text/css" href="../css/estilo.css">
@@ -27,18 +29,13 @@
 							<li><a href="KYOP.php">KYOP-Portal</a></li>
 							<li><a href="KYGU.php">KYGU-Perfilado de usuarios</a></li>
 							<li><a href="KYOS.php">KYOS-Gestión de saldos</a></li>
-							<li><a href="KYFB.php">KYFB-Módulo de firmas</a></li>
+							<li><a href="KYFB_informe.php">KYFB-Módulo de firmas</a></li>
 							<li><a href="vision_maquina.php">Visión máquina</a></li>
 						</ul>
 					</li>
 					<li><a href="../movil.php">Móvil</a>
 					</li>
-					<li><a>Oficinas</a>
-						<ul>
-							<li><a href="../oficinas/EECC.php">Escenario comerciales</a></li>
-							<li><a href="../oficinas/NCOC.php">Objeto cliente</a></li>
-						</ul>
-					</li>
+					<li><a href="../oficinas.php">Oficinas</a></li>
 					<li><a>ASO</a>
 						<ul>
 							<li><a href="../ASO/particulares.php">Net Particulares</a></li>
@@ -53,14 +50,18 @@
 		</header>
 
 		<section id="contenedor">
-			<div id="submenu"> Seguimiento | Informe </div>
-			<header>KYOS - Gestión de saldos</header>
+			<div id="submenu"><a href="KYGU.php">Seguimiento</a> | <span class="activo">Informe</span></div>
+			<header>KYGU - Perfilado de usuarios</header>
 
 			<fieldset>
-				<div id="recurso_semanal" style="width: 100%; height: 350px; margin:1 auto;"></div>
+				<div id="aplicacion_semanal" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="aplicacion_mensual" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-        <div id="recurso_mensual" style="width: 100%; height: 350px; margin:1 auto;"></div>
+        <div id="recurso_semanal" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
+        <div id="recurso_mensual" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
 			</fieldset>
+			<div style="width: 50%; float:left"><?php include('../php/netCash/KYGU/tabla_semanal.php');?></div>
+			<div style="width: 50%; float:left"><?php include('../php/netCash/KYGU/tabla_mensual.php');?></div>
 
 		</section>
 	</body>

@@ -58,6 +58,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> Seguimiento | Informe </div>
 			<header>ASO - Móvil</header>
 
 			<!-- Formulario gestión fechas -->

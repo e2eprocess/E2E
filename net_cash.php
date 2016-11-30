@@ -58,6 +58,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> Seguimiento | Informe </div>
 			<header>NetCash</header>
 
 			<!-- Formulario gestión fechas -->

@@ -28,12 +28,7 @@ $(document).ready(function() {
             },
             title: {
               text: 'Peticiones'
-            }/*,
-            plotLines: [{
-               color: 'rgba(255,0,0,1.0)',
-               width: 2,
-               value: 500000
-           }]*/
+            }
           }],
           tooltip: {
               shared: true
@@ -130,7 +125,6 @@ $(document).ready(function() {
         options.series[5].data = json[6]['data'];
         options.series[6].data = json[7]['data'];
         options.subtitle.text = json[8]['text'];
-        //options.yAxis[0].plotLines[0].value = json[9]['value']-1000000;
 
         chart = new Highcharts.Chart(options);
       });

@@ -61,6 +61,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> Seguimiento | Informe </div>
 			<header>ASO - particulares</header>
 
 			<!-- Formulario gestión fechas -->

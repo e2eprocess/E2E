@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticiones',
+            renderTo: 'tiempoRespuesta',
             marginRight: 130,
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones',
+            text: 'Tiempo de respuesta (ms.)',
             x: -20 //center
           },
           subtitle: {
@@ -24,19 +24,11 @@ $(document).ready(function() {
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
-              format: '{value}'
+              format: '{value} ms'
             },
             title: {
-              text: 'Peticiones NCOC'
+              text: 'Tiempo de respuesta (ms)'
             }
-          },{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
-            },
-            title: {
-              text: 'Peticiones EECC'
-            },
-            opposite: true
           }],
           tooltip: {
               shared: true
@@ -72,55 +64,41 @@ $(document).ready(function() {
                   }
                 }
               }
+
           },
           /*series: []*/
           series: [{
-            name: 'Objeto Cliente (F)',
-            color: 'rgba(82,190,128,1.0)',
+            name: 'mult_web_frontusuario_02 (F)',
+            color: 'rgba(82,190,128,1)',
             type: 'spline',
-            marker:{
-              enabled: false
-            },
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'EECC (F)',
+            name: 'mult_web_serviciosusuario_01 (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
-            marker:{
-              enabled: false
-            },
             dashStyle: 'shortdot',
-            yAxis: 1,
             data:[]
           },{
-            name: 'Objeto Cliente (T)',
-            color: 'rgba(82,190,128,1.0)',
+            name: 'mult_web_frontusuario_02 (T)',
+            color: 'rgba(82,190,128,1)',
             type: 'line',
             data:[]
           },{
-            name: 'EECC (T)',
+            name: 'mult_web_serviciosusuario_01 (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
-            yAxis: 1,
-            data:[]
-          },{
-            name: 'Max. Peticiones (7/11-EECC)',
-            color: 'rgba(255,0,0,1.0)',
-            type: 'line',
-            yAxis: 1,
             data:[]
           }]
       }
 
-      $.getJSON("php/oficinas/peticiones.php", function(json) {
+      $.getJSON("../php/netCash/KYGU/tiempoRespuesta.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
         options.subtitle.text = json[5]['text'];
-        options.series[4].data = json[6]['data'];
 
         chart = new Highcharts.Chart(options);
       });

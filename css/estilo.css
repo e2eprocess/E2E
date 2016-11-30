@@ -33,8 +33,24 @@ body{
   z-index:1;
 }
 
+#submenu {
+  padding-top: 115px;
+  padding-right: 25px;
+  float: rigth;
+  text-align: right;
+  font-size: 12px;
+}
+
+#submenu .activo{
+  font-weight: bold;
+}
+
+#submenu a{
+  text-decoration: none;
+}
+
 #contenedor header {
-  padding-top: 137px;
+
   padding-bottom: 30px;
   text-align: center;
   font-size: 30px;

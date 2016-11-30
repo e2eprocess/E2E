@@ -27,16 +27,8 @@ $(document).ready(function() {
               format: '{value}'
             },
             title: {
-              text: 'Peticiones NCOC'
+              text: 'Peticiones'
             }
-          },{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
-            },
-            title: {
-              text: 'Peticiones EECC'
-            },
-            opposite: true
           }],
           tooltip: {
               shared: true
@@ -75,52 +67,30 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Objeto Cliente (F)',
-            color: 'rgba(82,190,128,1.0)',
+            name: 'mult_web_kuoppresentation (F)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'spline',
-            marker:{
-              enabled: false
-            },
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'EECC (F)',
-            color: 'rgba(65,105,225,1.0)',
-            type: 'spline',
-            marker:{
-              enabled: false
-            },
-            dashStyle: 'shortdot',
-            yAxis: 1,
-            data:[]
-          },{
-            name: 'Objeto Cliente (T)',
-            color: 'rgba(82,190,128,1.0)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'EECC (T)',
+            name: 'mult_web_kuoppresentation (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
-            yAxis: 1,
             data:[]
           },{
-            name: 'Max. Peticiones (7/11-EECC)',
+            name: 'Max. Peticiones',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
-            yAxis: 1,
             data:[]
           }]
       }
 
-      $.getJSON("php/oficinas/peticiones.php", function(json) {
+      $.getJSON("../php/netCash/KYOP/peticiones.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
-        options.series[3].data = json[4]['data'];
-        options.subtitle.text = json[5]['text'];
-        options.series[4].data = json[6]['data'];
+        options.subtitle.text = json[4]['text'];
 
         chart = new Highcharts.Chart(options);
       });
