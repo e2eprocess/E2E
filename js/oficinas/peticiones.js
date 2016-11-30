@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Peticiones NCOC'
-            }
+            },
+            max: 500000
           },{ //tiempo de respuesta
             labels: {
               format: '{value}'
@@ -105,9 +106,10 @@ $(document).ready(function() {
             yAxis: 1,
             data:[]
           },{
-            name: 'Max. Peticiones (7/11)',
+            name: 'Max. Peticiones (7/11-EECC)',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
+            yAxis: 1,
             data:[]
           }]
       }
