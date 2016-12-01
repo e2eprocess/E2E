@@ -24,6 +24,16 @@
     return $resultado;
   }
 
+  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
+  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
+                                    peticiones,
+                                    max_peticiones
+                            FROM    seguimiento_cx_canal
+                            WHERE   canal like '".$CANAL."'
+                            AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
+  return $resultado;
+  }
+
   function max_peti($CANAL){
     $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
                               FROM    seguimiento_cx_canal
@@ -48,12 +58,26 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $ncocHoy = busqueda('ncoc',$newTo);
-  $eeccHoy = busqueda('eecc',$newTo);
-
+  /*gestion fechas*/
+  if(date("Y-m-d")==$newTo){
+    $min = 11;
+    if(date("i")<$min){
+      $newTo = date("Y-m-d H", strtotime('-2 hour'));
+      $newToF = date("Y-m-d 00");
+    }else {
+      $newTo = date("Y-m-d H", strtotime('-1 hour'));
+      $newToF = date("Y-m-d 00");
+    }
+    $peticionesHoy = busquedaHoy('apx',$newToF,$newTo);
+    $ncocHoy = busquedaHoy('ncoc',$newToF,$newTo);
+    $eeccHoy = busquedaHoy('eecc',$newToF,$newTo);
+  }
+  else {
+    $ncocHoy = busqueda('ncoc',$newTo);
+    $eeccHoy = busqueda('eecc',$newTo);
+  }
   $ncocPasada = busqueda('ncoc',$newFrom);
   $eeccPasada = busqueda('eecc',$newFrom);
-
   $maxPeticiones = max_peti('%movil%');
 
   /*Recuperación datos*/

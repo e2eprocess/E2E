@@ -24,6 +24,17 @@
     return $resultado;
   }
 
+
+  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
+  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
+                                    peticiones,
+                                    max_peticiones
+                            FROM    seguimiento_cx_canal
+                            WHERE   canal like '".$CANAL."'
+                            AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
+  return $resultado;
+  }
+
   function max_peti($CANAL){
   $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
                             FROM    seguimiento_cx_canal
@@ -48,10 +59,25 @@
   $to=$_SESSION["fechaToNet"];
   $newTo = date("Y-m-d", strtotime($to));
 
-  /*Declaración variables*/
-  $gtHoy = busqueda('%gtCash%',$newTo);
-  $servicioHoy = busqueda('%ASOCash%',$newTo);
+  /*gestion fechas*/
+  if(date("Y-m-d")==$newTo){
+    $min = 11;
+    if(date("i")<$min){
+      $newTo = date("Y-m-d H", strtotime('-2 hour'));
+      $newToF = date("Y-m-d 00");
+    }else {
+      $newTo = date("Y-m-d H", strtotime('-1 hour'));
+      $newToF = date("Y-m-d 00");
+    }
+    $gtHoy = busquedaHoy('%gtCash%',$newToF,$newTo);
+    $servicioHoy = busquedaHoy('%ASOCash%',$newToF,$newTo);
+  }
+  else {
+    $gtHoy = busqueda('%gtCash%',$newTo);
+    $servicioHoy = busqueda('%ASOCash%',$newTo);
+  }
 
+  /*Declaración variables*/
   $gtPasada = busqueda('%gtCash%', $newFrom);
   $servicioPasada = busqueda('%ASOCash%', $newFrom);
 
