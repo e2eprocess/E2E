@@ -15,7 +15,8 @@
   function max_peti($CANAL){
     $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
                               FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'");
+                              WHERE   canal like '".$CANAL."'
+                              and fecha < curdate()");
     return $resultado;
   }
 
