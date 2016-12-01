@@ -41,22 +41,22 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $serviciosHoy = busqueda('kyos_mult_web_frontusuario_02',$newTo);
-  $posicioncuentasHoy = busqueda('kyos_mult_web_serviciosusuario_01',$newTo);
+  $serviciosHoy = busqueda('%kyos_mult_web_servicios_02%',$newTo);
+  $posicioncuentasHoy = busqueda('%kyos_mult_web_posicioncuentas_01%',$newTo);
 
-  $frontusuarioPasada = busqueda('kyos_mult_web_frontusuario_02', $newFrom);
-  $serviciousuarioPasada = busqueda('kyos_mult_web_serviciosusuario_01', $newFrom);
+  $serviciosPasada = busqueda('kyos_mult_web_servicios_02', $newFrom);
+  $posicioncuentasPasada = busqueda('kyos_mult_web_posicioncuentas_01', $newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($frontusuarioPasada)) {
+  while($r1 = mysql_fetch_array($serviciosPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
         $series5['data'][] = $r1['max_peticiones'];
       }
-  while($r2 = mysql_fetch_array($serviciousuarioPasada)) {
+  while($r2 = mysql_fetch_array($posicioncuentasPasada)) {
         $series2['data'][] = $r2['peticiones'];
       }
 

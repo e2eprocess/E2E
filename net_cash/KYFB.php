@@ -55,8 +55,9 @@
 		</header>
 
 		<section id="contenedor">
-			<header>KYFB - Módulo de firmas</header>
+			<div id="submenu"> <span class="activo">Seguimiento </span> | <a href="KYFB_informe.php">Informe</a> </div>
 
+			<header>KYFB - Módulo de firmas</header>
 			<fieldset>
 				<div id="aplicacion_semanal" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
 				<div id="aplicacion_mensual" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
@@ -64,9 +65,6 @@
         <div id="recurso_semanal" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
         <div id="recurso_mensual" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
 			</fieldset>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYFB/tabla_semanal.php');?></div>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYFB/tabla_mensual.php');?></div>
-
 		</section>
 	</body>
 </html>

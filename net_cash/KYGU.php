@@ -85,8 +85,6 @@
 				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
 				<div id="memoria" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
 			</fieldset>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYGU/tabla_semanal.php');?></div>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYGU/tabla_mensual.php');?></div>
 
 		</section>
 	</body>

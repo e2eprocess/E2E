@@ -45,6 +45,11 @@ body{
   font-weight: bold;
 }
 
+#submenu .desactivo{
+  color: #d9d8d8 ;
+}
+
+
 #submenu a{
   text-decoration: none;
 }
