@@ -53,6 +53,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> Seguimiento | Informe </div>
 			<header>Oficinas</header>
 
 			<!-- Formulario gestión fechas -->

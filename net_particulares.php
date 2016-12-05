@@ -58,6 +58,8 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu">
+				<span class="activo"> Seguimiento</span> | <span class="desactivo">Informe</span> </div>
 			<header>Net Particulares</header>
 
 			<!-- Formulario gestión fechas -->

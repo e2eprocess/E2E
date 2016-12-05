@@ -74,7 +74,7 @@ $(document).ready(function() {
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'KYOP (T))',
+            name: 'KYOP (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]

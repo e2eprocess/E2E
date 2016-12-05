@@ -53,6 +53,7 @@
 		</header>
 
 		<section id="contenedor">
+			<div id="submenu"> <span class="desactivo">Seguimiento</span> | <span class="activo">Informe</span> </div>
 			<header>KYOS - Gestión de saldos</header>
 
 			<fieldset>

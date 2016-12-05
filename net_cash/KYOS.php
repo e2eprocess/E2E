@@ -4,22 +4,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOS/aplicacion_mensual.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOS/aplicacion_semanal.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOS/recurso_mensual.js"></script>
-    <script type="text/javascript" src="../js/netCash/KYOS/recurso_semanal.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<link rel="Stylesheet" type="text/css" href="../css/estilo.css">
 		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
+		<link href="../css/jquery-ui.css" rel="stylesheet">
+		<script type="text/javascript" src="../js/netCash/KYOS/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYOS/peticiones.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYOS/cpu.js"></script>
+		<script type="text/javascript" src="../js/netCash/KYOS/memoria.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 	</head>
 	<body>
 		<header id="menu-header">
 			<div id="cabecera">
 					<div id="logo"><h>E2E -	Performance management</h></br>
-						Informe aplicaciones / recursos
+						Informe seguimiento
 			</div>
+
+			<!-- MENÚ -->
 			<nav>
 				<ul class="menu">
 					<li><a href="../net_particulares.php">Net Particulares</a>
@@ -54,19 +57,34 @@
 			</nav>
 		</header>
 
+		<!-- Cuerpo informe -->
 		<section id="contenedor">
+			<div id="submenu"> <span class="activo">Seguimiento</span> | <a href="KYOS_informe.php">Informe</a> </div>
+
 			<header>KYOS - Gestión de saldos</header>
 
-			<fieldset>
-				<div id="aplicacion_semanal" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div id="aplicacion_mensual" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-        <div id="recurso_semanal" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
-        <div id="recurso_mensual" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
-			</fieldset>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYOS/tabla_semanal.php');?></div>
-			<div style="width: 50%; float:left"><?php include('../php/netCash/KYOS/tabla_mensual.php');?></div>
+			<!-- Formulario gestión fechas -->
+			<?php include("../php/fechaToFrom.php"); ?>
+			<form id="comparador" action='' method='post'>
+				<label>Comparar el día </label>
+				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $from ?>"/>
+				<label>(F) con </label>
+				<input type="text" name="to" id="to" readonly="readonly" size="12" value="<?= $to ?>"/>
+				<label>(T)</label>
+				<input type="submit" value="Comparar" name="consulta"/>
+			</form>
+			<script src="../external/jquery/jquery.js"></script>
+			<script src="../js/fecha/jquery-ui.js"></script>
+			<script src="../js/fecha/calendario.js"></script>
 
+			<!-- Dashboard métricas -->
+			<fieldset>
+				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
+				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="memoria" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+			</fieldset>
 		</section>
 	</body>
 </html>

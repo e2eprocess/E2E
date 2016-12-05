@@ -28,8 +28,7 @@ $(document).ready(function() {
             },
             title: {
               text: 'Peticiones NCOC'
-            },
-            max: 500000
+            }
           },{ //tiempo de respuesta
             labels: {
               format: '{value}'

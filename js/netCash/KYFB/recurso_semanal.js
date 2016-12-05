@@ -71,7 +71,7 @@ $(document).ready(function() {
             name: 'CPU-apbad022_kyfb_s01_10',
             color: '#00BFFF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -79,14 +79,14 @@ $(document).ready(function() {
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad022_kyfb_s01_11',
             color: '#0080FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -94,14 +94,29 @@ $(document).ready(function() {
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
+            index: 13,
+            legendIndex: 8,
+            data:[]
+          },{
+            name: 'CPU-apbad022_kyfb_s01_12',
+            color: '#0087FF',
+            type: 'column',
             index: 0,
+            legendIndex: 0,
+            data:[]
+          },{
+            name: 'Memoria-apbad022_kyfb_s01_12',
+            color: '#04F1F1',
+            type: 'line',
+            yAxis: 1,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad023_kyfb_s01_20',
             color: '#0040FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -109,14 +124,14 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad023_kyfb_s01_21',
             color: '#0000FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -124,14 +139,29 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
+            index: 13,
+            legendIndex: 8,
+            data:[]
+          },{
+            name: 'CPU-apbad022_kyfb_s01_22',
+            color: '#0087FF',
+            type: 'column',
             index: 0,
+            legendIndex: 0,
+            data:[]
+          },{
+            name: 'Memoria-apbad022_kyfb_s01_22',
+            color: '#04F1F1',
+            type: 'line',
+            yAxis: 1,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad024_kyfb_s01_30',
             color: '#00BFFF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -139,14 +169,14 @@ $(document).ready(function() {
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad024_kyfb_s01_31',
             color: '#0080FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -154,14 +184,29 @@ $(document).ready(function() {
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
+            index: 13,
+            legendIndex: 8,
+            data:[]
+          },{
+            name: 'CPU-apbad022_kyfb_s01_32',
+            color: '#0087FF',
+            type: 'column',
             index: 0,
+            legendIndex: 0,
+            data:[]
+          },{
+            name: 'Memoria-apbad022_kyfb_s01_32',
+            color: '#04F1F1',
+            type: 'line',
+            yAxis: 1,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad026_kyfb_s01_40',
             color: '#0040FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -169,14 +214,14 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 13,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad026_kyfb_s01_41',
             color: '#0000FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -184,7 +229,22 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
+            index: 13,
+            legendIndex: 8,
+            data:[]
+          },{
+            name: 'CPU-apbad022_kyfb_s01_42',
+            color: '#0087FF',
+            type: 'column',
             index: 0,
+            legendIndex: 0,
+            data:[]
+          },{
+            name: 'Memoria-apbad022_kyfb_s01_42',
+            color: '#04F1F1',
+            type: 'line',
+            yAxis: 1,
+            index: 13,
             legendIndex: 8,
             data:[]
           }]
@@ -208,7 +268,14 @@ $(document).ready(function() {
         options.series[13].data = json[14]['data'];
         options.series[14].data = json[15]['data'];
         options.series[15].data = json[16]['data'];
-
+        options.series[16].data = json[17]['data'];
+        options.series[17].data = json[18]['data'];
+        options.series[18].data = json[19]['data'];
+        options.series[19].data = json[20]['data'];
+        options.series[20].data = json[21]['data'];
+        options.series[21].data = json[22]['data'];
+        options.series[22].data = json[23]['data'];
+        options.series[23].data = json[24]['data'];
 
         chart = new Highcharts.Chart(options);
       });
