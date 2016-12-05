@@ -24,6 +24,26 @@
     return $resultado;
   }
 
+
+    function busquedaHoy($CANAL,$FECHAF,$FECHAT){
+    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
+                                      peticiones,
+                                      max_peticiones
+                              FROM    seguimiento_cx_canal
+                              WHERE   canal like '".$CANAL."'
+                              AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
+    return $resultado;
+    }
+
+    function max_peti($CANAL){
+      $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
+                                FROM    seguimiento_cx_canal
+                                WHERE   canal like '".$CANAL."'
+                                and fecha < curdate()");
+      return $resultado;
+    }
+
+
   /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
@@ -41,11 +61,26 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $frontusuarioHoy = busqueda('kyfb_mult_web_firmas_04',$newTo);
-  $serviciousuarioHoy = busqueda('kyfb_mult_web_kyfbws_03',$newTo);
+  /*gestion fechas*/
+  if(date("Y-m-d")==$newTo){
+    $min = 11;
+    if(date("i")<$min){
+      $newTo = date("Y-m-d H", strtotime('-2 hour'));
+      $newToF = date("Y-m-d 00");
+    }else {
+      $newTo = date("Y-m-d H", strtotime('-1 hour'));
+      $newToF = date("Y-m-d 00");
+    }
+    $frontusuarioHoy = busquedaHoy('kyfb_mult_web_firmas_04',$newToF,$newTo);
+    $serviciousuarioHoy = busquedaHoy('kyfb_mult_web_kyfbws_03',$newToF,$newTo);
 
-  $frontusuarioPasada = busqueda('kyfb_mult_web_firmas_04', $newFrom);
-  $serviciousuarioPasada = busqueda('kyfb_mult_web_kyfbws_03', $newFrom);
+  }
+  else {
+    $frontusuarioHoy = busqueda('kyfb_mult_web_firmas_04',$newTo);
+    $serviciousuarioHoy = busqueda('kyfb_mult_web_kyfbws_03',$newTo);
+  }
+  $frontusuarioPasada = busqueda('kyfb_mult_web_firmas_04',$newFrom);
+  $serviciousuarioPasada = busqueda('kyfb_mult_web_kyfbws_03',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
