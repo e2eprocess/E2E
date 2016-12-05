@@ -55,7 +55,7 @@
 		</header>
 
 		<section id="contenedor">
-			<div id="submenu"> Seguimiento | Informe </div>
+			<div id="submenu"><a href="KYFB.php">Seguimiento</a> | <span class="activo">Informe</span></div>
 			<header>KYFB - Módulo de firmas</header>
 
 			<fieldset>

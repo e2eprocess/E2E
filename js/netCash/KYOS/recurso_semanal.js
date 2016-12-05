@@ -71,7 +71,7 @@ $(document).ready(function() {
             name: 'CPU-apbad022_kyos_s01_10',
             color: '#00BFFF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -79,14 +79,14 @@ $(document).ready(function() {
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad022_kyos_s01_11',
             color: '#0080FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -94,14 +94,14 @@ $(document).ready(function() {
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad023_kyos_s01_20',
             color: '#0040FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -109,14 +109,14 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad023_kyos_s01_21',
             color: '#0000FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -124,14 +124,14 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad024_kyos_s01_30',
             color: '#00BFFF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -139,14 +139,14 @@ $(document).ready(function() {
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad024_kyos_s01_31',
             color: '#0080FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -154,14 +154,14 @@ $(document).ready(function() {
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad026_kyos_s01_40',
             color: '#0040FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -169,14 +169,14 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           },{
             name: 'CPU-apbad026_kyos_s01_41',
             color: '#0000FF',
             type: 'column',
-            index: 8,
+            index: 0,
             legendIndex: 0,
             data:[]
           },{
@@ -184,7 +184,7 @@ $(document).ready(function() {
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
-            index: 0,
+            index: 8,
             legendIndex: 8,
             data:[]
           }]
