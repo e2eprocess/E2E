@@ -8,10 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/netParticulares/ENPS/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/netParticulares/ENPS/peticiones.js"></script>
-		<script type="text/javascript" src="../js/netParticulares/ENPS/cpu.js"></script>
-    <script type="text/javascript" src="../js/netParticulares/ENPS/memoria.js"></script>
+		<script type="text/javascript" src="../js/movil/ENPP/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="../js/movil/ENPP/peticiones.js"></script>
+		<script type="text/javascript" src="../js/movil/ENPP/cpu.js"></script>
+    <script type="text/javascript" src="../js/movil/ENPP/memoria.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 	</head>
@@ -27,10 +27,10 @@
 				<ul class="menu">
 					<li><a href="../net_particulares.php">Net Particulares</a>
 						<ul>
-							<li><a href="KQOF.php">KQOF-Frontal</a></li>
-							<li><a href="ENPS.php">ENPS-Servicios multicanal</a></li>
-							<li><a href="ESMB.php">ESMB-Servicios básicos </a></li>
-							<li><a href="vision_maquina.php">Visión Máquina</a></li>
+							<li><a href="../particulares/KQOF.php">KQOF-Frontal</a></li>
+							<li><a href="../particulares/ENPS.php">ENPS-Servicios multicanal</a></li>
+							<li><a href="../particulares/ESMB.php">ESMB-Servicios básicos </a></li>
+							<li><a href="../particulares/vision_maquina.php">Visión Máquina</a></li>
 						</ul>
 					</li>
 					<li><a href="../net_cash.php">NetCash</a>
@@ -43,6 +43,12 @@
 						</ul>
 					</li>
 					<li><a href="../movil.php">Móvil</a>
+						<ul>
+							<li><a href="ENPP.php">ENPP-Frontal</a></li>
+							<li><a href="ENPS.php">ENPS-Servicios multicanal</a></li>
+							<li><a href="ESMB.php">ESMB-Servicios básicos </a></li>
+							<li><a href="vision_maquina.php">Visión Máquina</a></li>
+						</ul>
 					</li>
 					<li><a>Oficinas</a>
 						<ul>
@@ -65,9 +71,9 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Seguimiento </span> | <a href="ENPS_informe.php">Informe</a> </div>
+			<div id="submenu"> <span class="activo">Seguimiento </span> | <a href="ENPP_informe.php">Informe</a> </div>
 
-			<header>ENPS - Servicios Multicanal</header>
+			<header>ENPP - Frontal/header>
 			<!-- Formulario gestión fechas -->
 			<?php include("../php/fechaToFrom.php"); ?>
 			<form id="comparador" action='' method='post'>

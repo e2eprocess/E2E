@@ -35,11 +35,11 @@
 					</li>
 					<li><a href="../net_cash.php">NetCash</a>
 						<ul>
-							<li><a href="KYOP.php">KYOP-Portal</a></li>
-							<li><a href="KYGU.php">KYGU-Perfilado de usuarios</a></li>
-							<li><a href="KYOS.php">KYOS-Gestión de saldos</a></li>
-							<li><a href="KYFB.php">KYFB-Módulo de firmas</a></li>
-							<li><a href="vision_maquina.php">Visión máquina</a></li>
+							<li><a href="../net_cash/KYOP.php">KYOP-Portal</a></li>
+							<li><a href="../net_cash/KYGU.php">KYGU-Perfilado de usuarios</a></li>
+							<li><a href="../net_cash/KYOS.php">KYOS-Gestión de saldos</a></li>
+							<li><a href="../net_cash/KYFB_informe.php">KYFB-Módulo de firmas</a></li>
+							<li><a href="../net_cash/vision_maquina.php">Visión máquina</a></li>
 						</ul>
 					</li>
 					<li><a href="../movil.php">Móvil</a>
