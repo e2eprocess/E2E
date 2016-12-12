@@ -27,7 +27,7 @@ $(document).ready(function() {
               format: '{value} %'
             },
             title: {
-              text: 'CPU %'
+              text: 'Memoria %'
             }
           }],
           tooltip: {
@@ -57,122 +57,122 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'CPU-apbad022_kyfb_s01_10 (F)',
+            name: 'memoria-apbad022_kyfb_s01_10 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad022_kyfb_s01_11 (F)',
+            name: 'memoria-apbad022_kyfb_s01_11 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad022_kyfb_s01_12 (F)',
+            name: 'memoria-apbad022_kyfb_s01_12 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_20 (F)',
+            name: 'memoria-apbad023_kyfb_s01_20 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_21 (F)',
+            name: 'memoria-apbad023_kyfb_s01_21 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_22 (F)',
+            name: 'memoria-apbad023_kyfb_s01_22 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_30 (F)',
+            name: 'memoria-apbad024_kyfb_s01_30 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_31 (F)',
+            name: 'memoria-apbad024_kyfb_s01_31 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_32 (F)',
+            name: 'memoria-apbad024_kyfb_s01_32 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_40 (F)',
+            name: 'memoria-apbad026_kyfb_s01_40 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_41 (F)',
+            name: 'memoria-apbad026_kyfb_s01_41 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_42 (F)',
+            name: 'memoria-apbad026_kyfb_s01_42 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad022_kyfb_s01_10 (T)',
+            name: 'memoria-apbad022_kyfb_s01_10 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad022_kyfb_s01_11 (T)',
+            name: 'memoria-apbad022_kyfb_s01_11 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad022_kyfb_s01_12 (T)',
+            name: 'memoria-apbad022_kyfb_s01_12 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_20 (T)',
+            name: 'memoria-apbad023_kyfb_s01_20 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_21 (T)',
+            name: 'memoria-apbad023_kyfb_s01_21 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad023_kyfb_s01_22 (T)',
+            name: 'memoria-apbad023_kyfb_s01_22 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_30 (T)',
+            name: 'memoria-apbad024_kyfb_s01_30 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_31 (T)',
+            name: 'memoria-apbad024_kyfb_s01_31 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad024_kyfb_s01_32 (T)',
+            name: 'memoria-apbad024_kyfb_s01_32 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_40 (T)',
+            name: 'memoria-apbad026_kyfb_s01_40 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_41 (T)',
+            name: 'memoria-apbad026_kyfb_s01_41 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad026_kyfb_s01_42 (T)',
+            name: 'memoria-apbad026_kyfb_s01_42 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
