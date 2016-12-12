@@ -79,7 +79,7 @@
 
   $gtPasada = busqueda('%GToficinas%', $newFrom);
   $servicioPasada = busqueda('%ASOoficinas%', $newFrom);
-  $maxPeticiones = max_peti('%ASOMoficnas%');
+  $maxPeticiones = max_peti('%ASOoficinas%');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
