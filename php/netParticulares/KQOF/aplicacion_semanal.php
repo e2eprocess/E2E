@@ -29,11 +29,11 @@ if(date("i")<$minuto){
   $hoy = date("Y-m-d H", strtotime('-1 hour'));
 }
 
-$servicing = busqueda('enps%servicing%',$hoy);
+$BBVANet = busqueda('kqof%BBVANet%',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($servicing)) {
+while($r1  = mysql_fetch_array($BBVANet)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
       $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['fecha'];

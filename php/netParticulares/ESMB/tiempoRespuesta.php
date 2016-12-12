@@ -36,9 +36,9 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $servicingHoy = busqueda('enps_mult_web_servicing_01',$newTo);
+  $servicingHoy = busqueda('esmb_mult_web_servicing_01',$newTo);
 
-  $servicingPasada = busqueda('enps_mult_web_servicing_01', $newFrom);
+  $servicingPasada = busqueda('esmb_mult_web_servicing_01', $newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';

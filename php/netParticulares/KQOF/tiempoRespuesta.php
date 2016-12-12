@@ -36,20 +36,20 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $servicingHoy = busqueda('enps_mult_web_servicing_01',$newTo);
+  $BBVANetHoy = busqueda('esmb_mult_web_BBVANet_01',$newTo);
 
-  $servicingPasada = busqueda('enps_mult_web_servicing_01', $newFrom);
+  $BBVANetPasada = busqueda('esmb_mult_web_BBVANet_01', $newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($servicingPasada)) {
+  while($r1 = mysql_fetch_array($BBVANetPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['Tiempo_respuesta'];
       }
 
-  while($r2 = mysql_fetch_array($servicingHoy)) {
+  while($r2 = mysql_fetch_array($BBVANetHoy)) {
         $series2['data'][] = $r2['Tiempo_respuesta'];
       }
 

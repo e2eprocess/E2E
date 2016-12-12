@@ -3,14 +3,14 @@
     <?php
         include("../php/conexion_e2e_process.php");
 
-        function mediaAplicacionesMes($FECHA_QUERY,$UUAA){
+        function mediaAplicaciones($FECHA_QUERY,$UUAA){
 
           $resultado = mysql_query("SELECT  canal,
                                             FORMAT(AVG(Tiempo_respuesta),2,'de_DE') as Tiempo_respuesta,
-                                            FORMAT((SUM(Peticiones)/40),2,'de_DE') as Peticiones
+                                            FORMAT((SUM(Peticiones)/10),2,'de_DE') as Peticiones
                                     FROM    seguimiento_cx_canal
                                     WHERE   canal like '".$UUAA."_%'
-                                    AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
+                                    AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
                                     AND     fecha <= '".$FECHA_QUERY."'
                                     GROUP BY canal");
 
@@ -18,14 +18,14 @@
 
         }
 
-        function mediaInstanciasMes($FECHA_QUERY,$UUAA){
+        function mediaInstancias($FECHA_QUERY,$UUAA){
 
           $resultado = mysql_query("SELECT  maquina, instancias,
                                             FORMAT(AVG(Cpu),2,'de_DE') as Cpu,
                                             FORMAT(AVG(Memoria),2,'de_DE') as Memoria
                                     FROM    informe_instancias
                                     WHERE   instancias like '".$UUAA."_%'
-                                    AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
+                                    AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
                                     AND     fecha <= '".$FECHA_QUERY."'
                                     GROUP BY maquina, instancias");
 
@@ -33,7 +33,7 @@
 
         }
 
-        $minuto = 10;
+        $minuto = 11;
 
         if(date("i")<$minuto){
           $hoy = date("Y-m-d H", strtotime('-2 hour'));
@@ -43,8 +43,8 @@
 
         echo "<table border=1 cellpading=4 cellspacing=0>";
 
-        $aplicaciones = mediaAplicacionesMes($hoy,'enps');
-        echo "<caption>Últimos 40 días</caption>
+        $aplicaciones = mediaAplicaciones($hoy,'esmb');
+        echo "<caption>Últimos 10 días</caption>
               <tr>
                 <th colspan = 3> Rendimiento por aplicación</th>
               </tr>
@@ -62,7 +62,7 @@
           echo "</tr>";
         }
 
-        $recursos = mediaInstanciasMes($hoy,'enps');
+        $recursos = mediaInstancias($hoy,'esmb');
         echo "<tr>
                 <th colspan=3> Consumo medio de recursos </th>
               </tr>

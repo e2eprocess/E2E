@@ -71,8 +71,8 @@
         <div id="recurso_semanal" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
         <div id="recurso_mensual" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
 			</fieldset>
-			<div style="width: 50%; float:left"><?php include('../php/particulares/ENPS/tabla_semanal.php');?></div>
-			<div style="width: 50%; float:left"><?php include('../php/particulares/ENPS/tabla_mensual.php');?></div>
+			<div style="width: 50%; float:left"><?php include('../php/netParticulares/ENPS/tabla_semanal.php');?></div>
+			<div style="width: 50%; float:left"><?php include('../php/netParticulares/ENPS/tabla_mensual.php');?></div>
 
 		</section>
 	</body>

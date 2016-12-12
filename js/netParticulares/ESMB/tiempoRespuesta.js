@@ -85,7 +85,7 @@ $(document).ready(function() {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
-        options.subtitle.text = json[5]['text'];
+        options.subtitle.text = json[3]['text'];
 
         chart = new Highcharts.Chart(options);
       });

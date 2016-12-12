@@ -29,7 +29,7 @@ if(date("i")<$minuto){
   $hoy = date("Y-m-d H", strtotime('-1 hour'));
 }
 
-$servicing = busqueda('enps%servicing%',$hoy);
+$servicing = busqueda('esmb%servicing%',$hoy);
 
 $category['name'] = 'fecha';
 

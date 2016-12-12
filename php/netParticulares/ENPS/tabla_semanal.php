@@ -33,7 +33,7 @@
 
         }
 
-        $minuto = 10;
+        $minuto = 11;
 
         if(date("i")<$minuto){
           $hoy = date("Y-m-d H", strtotime('-2 hour'));
@@ -43,7 +43,7 @@
 
         echo "<table border=1 cellpading=4 cellspacing=0>";
 
-        $aplicaciones = mediaAplicaciones($hoy,'kyfb');
+        $aplicaciones = mediaAplicaciones($hoy,'enps');
         echo "<caption>Últimos 10 días</caption>
               <tr>
                 <th colspan = 3> Rendimiento por aplicación</th>
@@ -62,7 +62,7 @@
           echo "</tr>";
         }
 
-        $recursos = mediaInstancias($hoy,'KYFB');
+        $recursos = mediaInstancias($hoy,'enps');
         echo "<tr>
                 <th colspan=3> Consumo medio de recursos </th>
               </tr>

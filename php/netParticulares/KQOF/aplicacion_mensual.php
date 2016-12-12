@@ -3,13 +3,15 @@ include("../../conexion_e2e_process.php");
 
 function busqueda($CANAL,$FECHA_QUERY){
 
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    tiempo_respuesta,
-                                    peticiones
+  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
+                                    avg(tiempo_respuesta) as tiempo_respuesta,
+                                    sum(peticiones) as peticiones
                             FROM    seguimiento_cx_canal
                             WHERE   canal like '".$CANAL."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'");
+                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
+                            AND     fecha <= '".$FECHA_QUERY."'
+                            GROUP BY  dia
+                            ORDER BY  fecha");
 
   return $resultado;
 
@@ -29,14 +31,14 @@ if(date("i")<$minuto){
   $hoy = date("Y-m-d H", strtotime('-1 hour'));
 }
 
-$servicing = busqueda('enps%servicing%',$hoy);
+$BBVANet = busqueda('kqof%BBVANet%',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($servicing)) {
+while($r1  = mysql_fetch_array($BBVANet)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
       $series2['data'][] = $r1['peticiones'];
-      $category['data'][] = $r1['fecha'];
+      $category['data'][] = $r1['dia'];
     }
 
 $datos = array();

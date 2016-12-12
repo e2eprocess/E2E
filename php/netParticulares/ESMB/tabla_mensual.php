@@ -43,7 +43,7 @@
 
         echo "<table border=1 cellpading=4 cellspacing=0>";
 
-        $aplicaciones = mediaAplicacionesMes($hoy,'enps');
+        $aplicaciones = mediaAplicacionesMes($hoy,'esmb');
         echo "<caption>Últimos 40 días</caption>
               <tr>
                 <th colspan = 3> Rendimiento por aplicación</th>
@@ -62,7 +62,7 @@
           echo "</tr>";
         }
 
-        $recursos = mediaInstanciasMes($hoy,'enps');
+        $recursos = mediaInstanciasMes($hoy,'esmb');
         echo "<tr>
                 <th colspan=3> Consumo medio de recursos </th>
               </tr>

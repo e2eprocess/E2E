@@ -50,67 +50,67 @@ if(date("i")<$minuto){
   $hoy = date("Y-m-d H", strtotime('-1 hour'));
 }
 
-$KYFB_S01_10 = busqueda('apbad022','KYFB_S01_10',$hoy);
-$KYFB_S01_11 = busqueda('apbad022','KYFB_S01_11',$hoy);
-$KYFB_S01_12 = busqueda('apbad022','KYFB_S01_12',$hoy);
-$KYFB_S01_20 = busqueda('apbad023','KYFB_S01_20',$hoy);
-$KYFB_S01_21 = busqueda('apbad023','KYFB_S01_21',$hoy);
-$KYFB_S01_22 = busqueda('apbad023','KYFB_S01_22',$hoy);
-$KYFB_S01_30 = busqueda('apbad024','KYFB_S01_30',$hoy);
-$KYFB_S01_31 = busqueda('apbad024','KYFB_S01_31',$hoy);
-$KYFB_S01_32 = busqueda('apbad024','KYFB_S01_32',$hoy);
-$KYFB_S01_40 = busqueda('apbad026','KYFB_S01_40',$hoy);
-$KYFB_S01_41 = busqueda('apbad026','KYFB_S01_41',$hoy);
-$KYFB_S01_42 = busqueda('apbad026','KYFB_S01_42',$hoy);
+$ENPS_701_20 = busqueda('apbad002','ENPS_701_20',$hoy);
+$ENPS_701_21 = busqueda('apbad002','ENPS_701_21',$hoy);
+$ENPS_701_22 = busqueda('apbad002','ENPS_701_22',$hoy);
+$ENPS_701_30 = busqueda('apbad003','ENPS_701_30',$hoy);
+$ENPS_701_31 = busqueda('apbad003','ENPS_701_31',$hoy);
+$ENPS_701_32 = busqueda('apbad003','ENPS_701_32',$hoy);
+$ENPS_701_40 = busqueda('apbad004','ENPS_701_40',$hoy);
+$ENPS_701_41 = busqueda('apbad004','ENPS_701_41',$hoy);
+$ENPS_701_42 = busqueda('apbad004','ENPS_701_42',$hoy);
+$ENPS_701_60 = busqueda('apbad006','ENPS_701_60',$hoy);
+$ENPS_701_61 = busqueda('apbad006','ENPS_701_61',$hoy);
+$ENPS_701_62 = busqueda('apbad006','ENPS_701_62',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($KYFB_S01_10)) {
+while($r1  = mysql_fetch_array($ENPS_701_20)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
       $category['data'][] = $r1['fecha'];
     }
-while($r2  = mysql_fetch_array($KYFB_S01_11)) {
+while($r2  = mysql_fetch_array($ENPS_701_21)) {
       $series3['data'][] = $r2['cpu'];
       $series4['data'][] = $r2['memoria'];
     }
-while($r3  = mysql_fetch_array($KYFB_S01_12)) {
+while($r3  = mysql_fetch_array($ENPS_701_22)) {
       $series5['data'][] = $r3['cpu'];
       $series6['data'][] = $r3['memoria'];
     }
-while($r4  = mysql_fetch_array($KYFB_S01_20)) {
+while($r4  = mysql_fetch_array($ENPS_701_30)) {
       $series7['data'][] = $r4['cpu'];
       $series8['data'][] = $r4['memoria'];
     }
-while($r5  = mysql_fetch_array($KYFB_S01_21)) {
+while($r5  = mysql_fetch_array($ENPS_701_31)) {
       $series9['data'][] = $r5['cpu'];
       $series10['data'][] = $r5['memoria'];
     }
-while($r6  = mysql_fetch_array($KYFB_S01_21)) {
+while($r6  = mysql_fetch_array($ENPS_701_31)) {
       $series11['data'][] = $r6['cpu'];
       $series12['data'][] = $r6['memoria'];
     }
-while($r7  = mysql_fetch_array($KYFB_S01_30)) {
+while($r7  = mysql_fetch_array($ENPS_701_40)) {
       $series13['data'][] = $r7['cpu'];
       $series14['data'][] = $r7['memoria'];
     }
-while($r8  = mysql_fetch_array($KYFB_S01_31)) {
+while($r8  = mysql_fetch_array($ENPS_701_41)) {
       $series15['data'][] = $r8['cpu'];
       $series16['data'][] = $r8['memoria'];
     }
-while($r9  = mysql_fetch_array($KYFB_S01_31)) {
+while($r9  = mysql_fetch_array($ENPS_701_41)) {
       $series17['data'][] = $r9['cpu'];
       $series18['data'][] = $r9['memoria'];
     }
-while($r10  = mysql_fetch_array($KYFB_S01_40)) {
+while($r10  = mysql_fetch_array($ENPS_701_60)) {
       $series19['data'][] = $r10['cpu'];
       $series20['data'][] = $r10['memoria'];
     }
-while($r11  = mysql_fetch_array($KYFB_S01_41)) {
+while($r11  = mysql_fetch_array($ENPS_701_61)) {
       $series21['data'][] = $r11['cpu'];
       $series22['data'][] = $r11['memoria'];
     }
-while($r12  = mysql_fetch_array($KYFB_S01_41)) {
+while($r12  = mysql_fetch_array($ENPS_701_61)) {
       $series23['data'][] = $r12['cpu'];
       $series24['data'][] = $r12['memoria'];
     }
