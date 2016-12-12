@@ -8,10 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/particulares/ESMB/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/particulares/ESMB/peticiones.js"></script>
-		<script type="text/javascript" src="../js/particulares/ESMB/cpu.js"></script>
-    <script type="text/javascript" src="../js/particulares/ESMB/memoria.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ESMB/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ESMB/peticiones.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ESMB/cpu.js"></script>
+    <script type="text/javascript" src="../js/netParticulares/ESMB/memoria.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 	</head>

@@ -4,8 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/particulares/VS_MQ/recurso_semanal.js"></script>
-		<script type="text/javascript" src="../js/particulares/VS_MQ/recurso_mensual.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/VS_MQ/recurso_semanal.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/VS_MQ/recurso_mensual.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<link rel="Stylesheet" type="text/css" href="../css/estilo.css">
@@ -60,7 +60,7 @@
 
 		<section id="contenedor">
 			<div id="submenu"> <span class="desactivo">Seguimiento</span> | <span class="activo">Informe</span> </div>
-			<header>Visión Maquinas</header>
+			<header>Visión Máquina</header>
 
 			<fieldset>
 				<div id="recurso_semanal" style="width: 100%; height: 350px; margin:1 auto;"></div>

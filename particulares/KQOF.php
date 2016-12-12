@@ -8,10 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/particulares/KQOF/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/particulares/KQOF/peticiones.js"></script>
-		<script type="text/javascript" src="../js/particulares/KQOF/cpu.js"></script>
-    <script type="text/javascript" src="../js/particulares/KQOF/memoria.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/KQOF/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/KQOF/peticiones.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/KQOF/cpu.js"></script>
+    <script type="text/javascript" src="../js/netParticulares/KQOF/memoria.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 	</head>

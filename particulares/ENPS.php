@@ -8,10 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/particulares/ENPS/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/particulares/ENPS/peticiones.js"></script>
-		<script type="text/javascript" src="../js/particulares/ENPS/cpu.js"></script>
-    <script type="text/javascript" src="../js/particulares/ENPS/memoria.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ENPS/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ENPS/peticiones.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/ENPS/cpu.js"></script>
+    <script type="text/javascript" src="../js/netParticulares/ENPS/memoria.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 	</head>

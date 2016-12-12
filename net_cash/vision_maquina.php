@@ -54,7 +54,7 @@
 
 		<section id="contenedor">
 			<div id="submenu"> <span class="desactivo">Seguimiento</span> | <span class="activo">Informe</span> </div>
-			<header>Visión máquina</header>
+			<header>Visión Máquina</header>
 
 			<fieldset>
 				<div id="recurso_semanal" style="width: 100%; height: 350px; margin:1 auto;"></div>
