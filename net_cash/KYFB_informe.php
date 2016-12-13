@@ -16,10 +16,10 @@
 	</head>
 	<body>
 		<header id="menu-header">
-			<!--<div id="cabecera">
+			<div id="cabecera">
 					<div id="logo"><h>E2E -	Performance management</h></br>
 						Informe aplicaciones / recursos
-			</div>-->
+			</div>
 			<nav>
 				<ul class="menu">
 					<li><a href="../net_particulares.php">Net Particulares</a>
