@@ -16,10 +16,10 @@
 	</head>
 	<body>
 		<header id="menu-header">
-			<div id="cabecera">
+		<!--	<div id="cabecera">
 					<div id="logo"><h>E2E -	Performance management</h></br>
 						Informe seguimiento
-			</div>
+			</div> -->
 
 			<!-- MENÚ -->
 			<nav>
@@ -66,9 +66,9 @@
 			<?php include("php/fechaToFrom.php"); ?>
 			<form id="comparador" action='' method='post'>
 				<label>Comparar el día </label>
-				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $from ?>"/>
+				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $_SESSION["fechaFromNet"] ?>"/>
 				<label>(F) con </label>
-				<input type="text" name="to" id="to" readonly="readonly" size="12" value="<?= $to ?>"/>
+				<input type="text" name="to" id="to" readonly="readonly" size="12" value="<?= $_SESSION["fechaToNet"] ?>"/>
 				<label>(T)</label>
 				<input type="submit" value="Comparar" name="consulta"/>
 			</form>
