@@ -58,129 +58,89 @@ $(document).ready(function() {
 
           /*series: []*/
           series: [{
-            name: 'apbad002_enps_701_20 (F)',
+            name: 'apbad002_esmb_s02_25 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (F)',
+            name: 'apbad002_esmb_s02_26 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad003_enps_701_30 (F)',
+            name: 'apbad003_esmb_s02_35 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_31 (F)',
+            name: 'apbad003_esmb_s02_36 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_32 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_40 (F)',
+            name: 'apbad004_esmb_s02_45 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004_enps_701_41 (F)',
+            name: 'apbad004_esmb_s02_46 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004_enps_701_42 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_60 (F)',
+            name: 'apbad006_esmb_s02_65 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006_enps_701_61 (F)',
+            name: 'apbad006_esmb_s02_66 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006_enps_701_62 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad002_enps_701_20 (T)',
+            name: 'apbad002_esmb_s02_25 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (T)',
+            name: 'apbad002_esmb_s02_26 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (T)',
-            color: 'rgba(49,4,247,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad003_enps_701_30 (T)',
+            name: 'apbad003_esmb_s02_35 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_31 (T)',
+            name: 'apbad003_esmb_s02_36 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_32 (T)',
-            color: 'rgba(49,4,247,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_40 (T)',
+            name: 'apbad004_esmb_s02_45 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004_enps_701_41 (T)',
+            name: 'apbad004_esmb_s02_46 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004_enps_701_42 (T)',
-            color: 'rgba(49,4,247,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_60 (T)',
+            name: 'apbad006_esmb_s02_65 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006_enps_701_61 (T)',
+            name: 'apbad006_esmb_s02_66 (T)',
             color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_62 (T)',
-            color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("../php/netParticulares/ENPS/cpu.php", function(json) {
+      $.getJSON("../php/movil/ESMB/cpu.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
@@ -198,15 +158,7 @@ $(document).ready(function() {
         options.series[13].data = json[14]['data'];
         options.series[14].data = json[15]['data'];
         options.series[15].data = json[16]['data'];
-        options.series[16].data = json[17]['data'];
-        options.series[17].data = json[18]['data'];
-        options.series[18].data = json[19]['data'];
-        options.series[19].data = json[20]['data'];
-        options.series[20].data = json[21]['data'];
-        options.series[21].data = json[22]['data'];
-        options.series[22].data = json[23]['data'];
-        options.series[23].data = json[24]['data'];
-        options.subtitle.text = json[25]['text'];
+        options.subtitle.text = json[17]['text'];
 
         chart = new Highcharts.Chart(options);
       });

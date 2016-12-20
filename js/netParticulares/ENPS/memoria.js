@@ -57,122 +57,122 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'CPU-apbad002_enps_701_20 (F)',
+            name: 'apbad002_enps_701_20 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_21 (F)',
+            name: 'apbad002_enps_701_21 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_22 (F)',
+            name: 'apbad002_enps_701_22 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_30 (F)',
+            name: 'apbad003_enps_701_30 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_31 (F)',
+            name: 'apbad003_enps_701_31 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_32 (F)',
+            name: 'apbad003_enps_701_32 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_40 (F)',
+            name: 'apbad004_enps_701_40 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_41 (F)',
+            name: 'apbad004_enps_701_41 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_42 (F)',
+            name: 'apbad004_enps_701_42 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_60 (F)',
+            name: 'apbad006_enps_701_60 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_61 (F)',
+            name: 'apbad006_enps_701_61 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_62 (F)',
+            name: 'apbad006_enps_701_62 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_20 (T)',
+            name: 'apbad002_enps_701_20 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_21 (T)',
+            name: 'apbad002_enps_701_21 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_22 (T)',
+            name: 'apbad002_enps_701_22 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_30 (T)',
+            name: 'apbad003_enps_701_30 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_31 (T)',
+            name: 'apbad003_enps_701_31 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_32 (T)',
+            name: 'apbad003_enps_701_32 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_40 (T)',
+            name: 'apbad004_enps_701_40 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_41 (T)',
+            name: 'apbad004_enps_701_41 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_42 (T)',
+            name: 'apbad004_enps_701_42 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_60 (T)',
+            name: 'apbad006_enps_701_60 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_61 (T)',
+            name: 'apbad006_enps_701_61 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_62 (T)',
+            name: 'apbad006_enps_701_62 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
@@ -201,7 +201,11 @@ $(document).ready(function() {
         options.series[18].data = json[18]['data'];
         options.series[19].data = json[19]['data'];
         options.series[20].data = json[20]['data'];
-        options.subtitle.text = json[21]['text'];
+        options.series[20].data = json[21]['data'];
+        options.series[21].data = json[22]['data'];
+        options.series[22].data = json[23]['data'];
+        options.series[23].data = json[24]['data'];
+        options.subtitle.text = json[25]['text'];
         chart = new Highcharts.Chart(options);
       });
   });

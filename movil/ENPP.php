@@ -73,7 +73,7 @@
 		<section id="contenedor">
 			<div id="submenu"> <span class="activo">Seguimiento </span> | <a href="ENPP_informe.php">Informe</a> </div>
 
-			<header>ENPP - Frontal/header>
+			<header>ENPP - Frontal</header>
 			<!-- Formulario gestión fechas -->
 			<?php include("../php/fechaToFrom.php"); ?>
 			<form id="comparador" action='' method='post'>

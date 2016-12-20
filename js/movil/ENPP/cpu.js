@@ -58,122 +58,122 @@ $(document).ready(function() {
 
           /*series: []*/
           series: [{
-            name: 'apbad002_enps_701_20 (F)',
+            name: 'apbad002_enpp_501_20 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (F)',
+            name: 'apbad002_enpp_501_21 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (F)',
+            name: 'apbad002_enpp_501_22 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_30 (F)',
+            name: 'apbad003_enpp_501_30 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_31 (F)',
+            name: 'apbad003_enpp_501_31 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_32 (F)',
+            name: 'apbad003_enpp_501_32 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004_enps_701_40 (F)',
+            name: 'apbad004_enpp_501_40 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004_enps_701_41 (F)',
+            name: 'apbad004_enpp_501_41 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004_enps_701_42 (F)',
+            name: 'apbad004_enpp_501_42 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006_enps_701_60 (F)',
+            name: 'apbad006_enpp_501_60 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006_enps_701_61 (F)',
+            name: 'apbad006_enpp_501_61 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006_enps_701_62 (F)',
+            name: 'apbad006_enpp_501_62 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_20 (T)',
+            name: 'apbad002_enpp_501_20 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (T)',
+            name: 'apbad002_enpp_501_21 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (T)',
+            name: 'apbad002_enpp_501_22 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_30 (T)',
+            name: 'apbad003_enpp_501_30 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_31 (T)',
+            name: 'apbad003_enpp_501_31 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_32 (T)',
+            name: 'apbad003_enpp_501_32 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004_enps_701_40 (T)',
+            name: 'apbad004_enpp_501_40 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004_enps_701_41 (T)',
+            name: 'apbad004_enpp_501_41 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004_enps_701_42 (T)',
+            name: 'apbad004_enpp_501_42 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006_enps_701_60 (T)',
+            name: 'apbad006_enpp_501_60 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006_enps_701_61 (T)',
+            name: 'apbad006_enpp_501_61 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006_enps_701_62 (T)',
+            name: 'apbad006_enpp_501_62 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
