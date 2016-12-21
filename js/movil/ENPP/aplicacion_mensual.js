@@ -6,7 +6,7 @@ $(document).ready(function() {
             zoomType: 'xy'
           },
           title: {
-            text: 'ENPS - APLICACIÓN',
+            text: 'ENPP - APLICACIÓN',
             x: -20 //center
           },
           subtitle: {
@@ -92,7 +92,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/movil/ENPS/aplicacion_mensual.php", function(json) {
+      $.getJSON("../php/movil/ENPP/aplicacion_mensual.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

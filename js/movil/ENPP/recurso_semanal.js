@@ -6,7 +6,7 @@ $(document).ready(function() {
             zoomType: 'xy'
           },
           title: {
-            text: 'ENPS - RECURSOS (max.)',
+            text: 'ENPP - RECURSOS (max.)',
             x: -20 //center
           },
           subtitle: {
@@ -68,14 +68,14 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'CPU-apbad002_enps_701_20',
+            name: 'CPU-apbad002_enpp_501_20',
             color: '#00BFFF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad002_enps_701_20',
+            name: 'Memoria-apbad002_enpp_501_20',
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
@@ -83,14 +83,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_21',
+            name: 'CPU-apbad002_enpp_501_21',
             color: '#0080FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad002_enps_701_21',
+            name: 'Memoria-apbad002_enpp_501_21',
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
@@ -98,14 +98,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad002_enps_701_22',
+            name: 'CPU-apbad002_enpp_501_22',
             color: '#0087FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad002_enps_701_22',
+            name: 'Memoria-apbad002_enpp_501_22',
             color: '#04F1F1',
             type: 'line',
             yAxis: 1,
@@ -113,14 +113,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_30',
+            name: 'CPU-apbad003_enpp_501_30',
             color: '#0040FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad003_enps_701_30',
+            name: 'Memoria-apbad003_enpp_501_30',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -128,14 +128,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_31',
+            name: 'CPU-apbad003_enpp_501_31',
             color: '#0000FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad003_enps_701_31',
+            name: 'Memoria-apbad003_enpp_501_31',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -143,14 +143,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad003_enps_701_32',
+            name: 'CPU-apbad003_enpp_501_32',
             color: '#0087FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad003_enps_701_32',
+            name: 'Memoria-apbad003_enpp_501_32',
             color: '#04F1F1',
             type: 'line',
             yAxis: 1,
@@ -158,14 +158,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_40',
+            name: 'CPU-apbad004_enpp_501_40',
             color: '#00BFFF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad004_enps_701_40',
+            name: 'Memoria-apbad004_enpp_501_40',
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
@@ -173,14 +173,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_41',
+            name: 'CPU-apbad004_enpp_501_41',
             color: '#0080FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad004_enps_701_41',
+            name: 'Memoria-apbad004_enpp_501_41',
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
@@ -188,14 +188,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad004_enps_701_42',
+            name: 'CPU-apbad004_enpp_501_42',
             color: '#0087FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad004_enps_701_42',
+            name: 'Memoria-apbad004_enpp_501_42',
             color: '#04F1F1',
             type: 'line',
             yAxis: 1,
@@ -203,14 +203,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_60',
+            name: 'CPU-apbad006_enpp_501_60',
             color: '#0040FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad006_enps_701_60',
+            name: 'Memoria-apbad006_enpp_501_60',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -218,14 +218,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_61',
+            name: 'CPU-apbad006_enpp_501_61',
             color: '#0000FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad006_enps_701_61',
+            name: 'Memoria-apbad006_enpp_501_61',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -233,14 +233,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad006_enps_701_62',
+            name: 'CPU-apbad006_enpp_501_62',
             color: '#0087FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad006_enps_701_62',
+            name: 'Memoria-apbad006_enpp_501_62',
             color: '#04F1F1',
             type: 'line',
             yAxis: 1,
@@ -250,7 +250,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/netParticulares/ENPS/recurso_mensual.php", function(json) {
+      $.getJSON("../php/movil/ENPP/recurso_mensual.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

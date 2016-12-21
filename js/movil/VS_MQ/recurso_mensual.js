@@ -84,7 +84,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/netParticulares/VS_MQ/recurso_mensual.php", function(json) {
+      $.getJSON("../php/movil/VS_MQ/recurso_mensual.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[5]['data'];
         options.series[1].data = json[6]['data'];

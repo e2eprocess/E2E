@@ -80,7 +80,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/movil/ENPS/peticiones.php", function(json) {
+      $.getJSON("../php/movil/ENPP/peticiones.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

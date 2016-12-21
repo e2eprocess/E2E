@@ -68,14 +68,14 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'CPU-apbad002_esmb_701_20',
+            name: 'CPU-apbad002_esmb_s02_25',
             color: '#00BFFF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad002_esmb_701_20',
+            name: 'Memoria-apbad002_esmb_s02_25',
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
@@ -83,14 +83,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad002_esmb_701_21',
+            name: 'CPU-apbad002_esmb_s02_26',
             color: '#0080FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad002_esmb_701_21',
+            name: 'Memoria-apbad002_esmb_s02_26',
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
@@ -98,29 +98,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad002_esmb_701_22',
-            color: '#0087FF',
-            type: 'column',
-            index: 0,
-            legendIndex: 0,
-            data:[]
-          },{
-            name: 'Memoria-apbad002_esmb_701_22',
-            color: '#04F1F1',
-            type: 'line',
-            yAxis: 1,
-            index: 13,
-            legendIndex: 8,
-            data:[]
-          },{
-            name: 'CPU-apbad003_esmb_701_30',
+            name: 'CPU-apbad003_esmb_s02_35',
             color: '#0040FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad003_esmb_701_30',
+            name: 'Memoria-apbad003_esmb_s02_35',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -128,14 +113,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad003_esmb_701_31',
+            name: 'CPU-apbad003_esmb_s02_36',
             color: '#0000FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad003_esmb_701_31',
+            name: 'Memoria-apbad003_esmb_s02_36',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -143,29 +128,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad003_esmb_701_32',
-            color: '#0087FF',
-            type: 'column',
-            index: 0,
-            legendIndex: 0,
-            data:[]
-          },{
-            name: 'Memoria-apbad003_esmb_701_32',
-            color: '#04F1F1',
-            type: 'line',
-            yAxis: 1,
-            index: 13,
-            legendIndex: 8,
-            data:[]
-          },{
-            name: 'CPU-apbad004_esmb_701_40',
+            name: 'CPU-apbad004_esmb_s02_45',
             color: '#00BFFF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad004_esmb_701_40',
+            name: 'Memoria-apbad004_esmb_s02_45',
             color: '#2EFEF7',
             type: 'line',
             yAxis: 1,
@@ -173,14 +143,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad004_esmb_701_41',
+            name: 'CPU-apbad004_esmb_s02_46',
             color: '#0080FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad004_esmb_701_41',
+            name: 'Memoria-apbad004_esmb_s02_46',
             color: '#00FFFF',
             type: 'line',
             yAxis: 1,
@@ -188,29 +158,14 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad004_esmb_701_42',
-            color: '#0087FF',
-            type: 'column',
-            index: 0,
-            legendIndex: 0,
-            data:[]
-          },{
-            name: 'Memoria-apbad004_esmb_701_42',
-            color: '#04F1F1',
-            type: 'line',
-            yAxis: 1,
-            index: 13,
-            legendIndex: 8,
-            data:[]
-          },{
-            name: 'CPU-apbad006_esmb_701_60',
+            name: 'CPU-apbad006_esmb_s02_65',
             color: '#0040FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad006_esmb_701_60',
+            name: 'Memoria-apbad006_esmb_s02_65',
             color: '#01DFD7',
             type: 'line',
             yAxis: 1,
@@ -218,30 +173,15 @@ $(document).ready(function() {
             legendIndex: 8,
             data:[]
           },{
-            name: 'CPU-apbad006_esmb_701_61',
+            name: 'CPU-apbad006_esmb_s02_66',
             color: '#0000FF',
             type: 'column',
             index: 0,
             legendIndex: 0,
             data:[]
           },{
-            name: 'Memoria-apbad006_esmb_701_61',
+            name: 'Memoria-apbad006_esmb_s02_66',
             color: '#01DFD7',
-            type: 'line',
-            yAxis: 1,
-            index: 13,
-            legendIndex: 8,
-            data:[]
-          },{
-            name: 'CPU-apbad006_esmb_701_62',
-            color: '#0087FF',
-            type: 'column',
-            index: 0,
-            legendIndex: 0,
-            data:[]
-          },{
-            name: 'Memoria-apbad006_esmb_701_62',
-            color: '#04F1F1',
             type: 'line',
             yAxis: 1,
             index: 13,
@@ -268,15 +208,6 @@ $(document).ready(function() {
         options.series[13].data = json[14]['data'];
         options.series[14].data = json[15]['data'];
         options.series[15].data = json[16]['data'];
-        options.series[16].data = json[17]['data'];
-        options.series[17].data = json[18]['data'];
-        options.series[18].data = json[19]['data'];
-        options.series[19].data = json[20]['data'];
-        options.series[20].data = json[21]['data'];
-        options.series[21].data = json[22]['data'];
-        options.series[22].data = json[23]['data'];
-        options.series[23].data = json[24]['data'];
-
         chart = new Highcharts.Chart(options);
       });
   });

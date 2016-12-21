@@ -156,7 +156,7 @@ $(document).ready(function() {
         options.series[12].data = json[13]['data'];
         options.series[13].data = json[14]['data'];
         options.series[14].data = json[15]['data'];
-        options.series[16].data = json[16]['data'];
+        options.series[15].data = json[16]['data'];
         options.subtitle.text = json[17]['text'];
         chart = new Highcharts.Chart(options);
       });

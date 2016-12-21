@@ -3,16 +3,14 @@ include("../../conexion_e2e_process.php");
 
 function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
 
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(cpu) as cpu,
-                                    avg(memoria) as memoria
+  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
+                                    cpu,
+                                    memoria
                             FROM    informe_instancias
                             WHERE   maquina = '".$MAQUINA."'
                             AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY dia
-                            ORDER BY fecha");
+                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
+                            AND     fecha <= '".$FECHA_QUERY."'");
 
   return $resultado;
 
@@ -67,54 +65,49 @@ $ESMB_701_62 = busqueda('apbad006','ESMB_701_62',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($ESMB_701_20)) {
+$ESMB_S01_25 = busqueda('apbad002','ESMB_S01_25',$hoy);
+$ESMB_S01_26 = busqueda('apbad002','ESMB_S01_26',$hoy);
+$ESMB_S01_35 = busqueda('apbad003','ESMB_S01_35',$hoy);
+$ESMB_S01_36 = busqueda('apbad003','ESMB_S01_36',$hoy);
+$ESMB_S01_45 = busqueda('apbad004','ESMB_S01_45',$hoy);
+$ESMB_S01_46 = busqueda('apbad004','ESMB_S01_46',$hoy);
+$ESMB_S01_65 = busqueda('apbad006','ESMB_S01_65',$hoy);
+$ESMB_S01_66 = busqueda('apbad006','ESMB_S01_66',$hoy);
+
+$category['name'] = 'fecha';
+
+while($r1  = mysql_fetch_array($ESMB_S01_25)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
       $category['data'][] = $r1['dia'];
     }
-while($r2  = mysql_fetch_array($ESMB_701_21)) {
+while($r2  = mysql_fetch_array($ESMB_S01_26)) {
       $series3['data'][] = $r2['cpu'];
       $series4['data'][] = $r2['memoria'];
     }
-while($r3  = mysql_fetch_array($ESMB_701_22)) {
-      $series5['data'][] = $r3['cpu'];
-      $series6['data'][] = $r3['memoria'];
+while($r4  = mysql_fetch_array($ESMB_S01_35)) {
+      $series5['data'][] = $r4['cpu'];
+      $series6['data'][] = $r4['memoria'];
     }
-while($r4  = mysql_fetch_array($ESMB_701_30)) {
-      $series7['data'][] = $r4['cpu'];
-      $series8['data'][] = $r4['memoria'];
+while($r5  = mysql_fetch_array($ESMB_S01_36)) {
+      $series7['data'][] = $r5['cpu'];
+      $series8['data'][] = $r5['memoria'];
     }
-while($r5  = mysql_fetch_array($ESMB_701_31)) {
-      $series9['data'][] = $r5['cpu'];
-      $series10['data'][] = $r5['memoria'];
+while($r7  = mysql_fetch_array($ESMB_S01_45)) {
+      $series9['data'][] = $r7['cpu'];
+      $series10['data'][] = $r7['memoria'];
     }
-while($r6  = mysql_fetch_array($ESMB_701_32)) {
-      $series11['data'][] = $r6['cpu'];
-      $series12['data'][] = $r6['memoria'];
+while($r8  = mysql_fetch_array($ESMB_S01_46)) {
+      $series11['data'][] = $r8['cpu'];
+      $series12['data'][] = $r8['memoria'];
     }
-while($r7  = mysql_fetch_array($ESMB_701_40)) {
-      $series13['data'][] = $r7['cpu'];
-      $series14['data'][] = $r7['memoria'];
+while($r10  = mysql_fetch_array($ESMB_S01_65)) {
+      $series13['data'][] = $r10['cpu'];
+      $series14['data'][] = $r10['memoria'];
     }
-while($r8  = mysql_fetch_array($ESMB_701_41)) {
-      $series15['data'][] = $r8['cpu'];
-      $series16['data'][] = $r8['memoria'];
-    }
-while($r9  = mysql_fetch_array($ESMB_701_42)) {
-      $series17['data'][] = $r9['cpu'];
-      $series18['data'][] = $r9['memoria'];
-    }
-while($r10  = mysql_fetch_array($ESMB_701_60)) {
-      $series19['data'][] = $r10['cpu'];
-      $series20['data'][] = $r10['memoria'];
-    }
-while($r11  = mysql_fetch_array($ESMB_701_61)) {
-      $series21['data'][] = $r11['cpu'];
-      $series22['data'][] = $r11['memoria'];
-    }
-while($r12  = mysql_fetch_array($ESMB_701_62)) {
-      $series23['data'][] = $r12['cpu'];
-      $series24['data'][] = $r12['memoria'];
+while($r11  = mysql_fetch_array($ESMB_S01_66)) {
+      $series15['data'][] = $r11['cpu'];
+      $series16['data'][] = $r11['memoria'];
     }
 
 $datos = array();
@@ -135,14 +128,6 @@ array_push($datos,$series13);
 array_push($datos,$series14);
 array_push($datos,$series15);
 array_push($datos,$series16);
-array_push($datos,$series17);
-array_push($datos,$series18);
-array_push($datos,$series19);
-array_push($datos,$series20);
-array_push($datos,$series21);
-array_push($datos,$series22);
-array_push($datos,$series23);
-array_push($datos,$series24);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
