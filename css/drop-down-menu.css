@@ -1,71 +1,86 @@
 /* CSS Document */
-#menu, #menu ul {
+#menuPlantilla, #menuPlantilla ul {
 	list-style:none;
 	padding:0;
 	margin:0;
+	text-align: center;
+	height: 45px;
 }
-#menu li {
+#menuPlantilla li {
 	float:left;
 	position:relative;
 	line-height:4.5em;
 	width:10em;
 }
-#menu li ul {
+
+#menuPlantilla li ul {
 	position:absolute;
 	margin-top:-1em;
 	margin-left:.5em; /* for IE */
 	display:none;
 }
-#menu ul li ul {
+
+#menuPlantilla li ul li{
+	width: 18em;
+}
+
+#menuPlantilla li ul li ul li{
+	width: 10em;
+}
+
+
+#menuPlantilla ul li ul {
 	margin-top:-3em;
-	margin-left:7em;
+	margin-left:12em;
 }
 /* ******************************************************************* */
-/* SHOW SUBMENU  1 */
-#menu li:hover ul, #menu li.over ul {
+/* SHOW SUBmenuPlantilla  1 */
+#menuPlantilla li:hover ul, #menuPlantilla li.over ul {
 	display:block;
 }
-#menu li:hover ul ul, #menu li.over ul ul {
+#menuPlantilla li:hover ul ul, #menuPlantilla li.over ul ul {
 	display:none;
 }
-/* SHOW SUBMENU  2 */
-#menu ul li:hover ul, #menu ul li.over ul {
+/* SHOW SUBmenuPlantilla  2 */
+#menuPlantilla ul li:hover ul, #menuPlantilla ul li.over ul {
 	display:block;
 }
 /* ******************************************************************* */
 /* STYLING UP THE LINKS */
-#menu a {
+#menuPlantilla a {
 	display:block;
 	border-right:1px solid #fff;
-	background:#E0F574;
-	color:#3B3B3B;
+	background:#3396FF;
+	color:#fff;
 	text-decoration:none;
 	padding:0 10px;
 }
-#menu a:hover {
+#menuPlantilla a:hover {
 	background-color:#5798B4;
 	color:#fff;
 }
-#menu ul {
+#menuPlantilla ul {
 	border-top:1px solid #fff;
 }
-#menu ul a {
+#menuPlantilla ul a {
 	border-right:none;
 	border-right:1px solid #fff;
 	border-bottom:1px solid #fff;
 	border-left:1px solid #fff;
-	background:#AEC245;
+	background:#3396FF;
 }
 
 /* ******************************************************************* */
 
-#menu {
+#menuPlantilla {
 	z-index:1;
+	width: 100%;
+	background: #3396FF;
 }
-#menu ul {
+#menuPlantilla ul {
 	z-index:2;
 }
-#menu ul ul {
+#menuPlantilla ul ul {
 	z-index:3;
 }
 
