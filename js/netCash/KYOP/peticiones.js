@@ -67,13 +67,13 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'mult_web_kuoppresentation (F)',
+            name: 'mult_web_kyoppresentation (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'mult_web_kuoppresentation (T)',
+            name: 'mult_web_kyoppresentation (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
