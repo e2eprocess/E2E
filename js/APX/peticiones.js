@@ -78,7 +78,7 @@ $(document).ready(function() {
             type: 'line',
             data:[]
           },{
-            name: 'Max. Peticiones (05/12)',
+            name: 'Max. Peticiones (13/12)',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
             data:[]
