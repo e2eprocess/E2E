@@ -1,44 +1,48 @@
 <?php
-  include("../conexion_e2e_process.php");
+  require_once("../conexion_e2e_process.php");
 
-    /*Query fecha menos 24 horas
-    function busqueda($CANAL,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                        peticiones,
-                                        max_peticiones
-                                FROM    seguimiento_cx_canal
-                                WHERE   canal like '".$CANAL."'
-                                AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                                AND     fecha <= '".$FECHA_QUERY."'");
-      return $resultado;
-    }*/
-
-    /*query*/
-    function busqueda($CANAL,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                        peticiones,
-                                        max_peticiones
-                                FROM    seguimiento_cx_canal
-                                WHERE   canal like '".$CANAL."'
-                                AND     fecha like '".$FECHA_QUERY."%'");
-      return $resultado;
-    }
-
-    function busquedaHoy($CANAL,$FECHAF,$FECHAT){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
+  /*querys*/
+  function busqueda($CANAL,$FECHA){
+    global $db_con;
+    $query="SELECT B.name,
+              to_char(A.timedata,'HH24:mi') as fecha,
+              A.datavalue as peticiones
+            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
+            WHERE B.name = '".$CANAL."'
+              AND A.timedata::TEXT LIKE '".$FECHA."%'
+              AND C.name = 'Throughput'
+              AND C.idkpi = A.idkpi
+              AND B.idmonitor = A.idmonitor
+            ORDER BY 2 asc";
+    $resultado = pg_query($db_con, $query);
     return $resultado;
-    }
+  }
 
-    function max_peti($CANAL){
-    $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              and fecha < curdate()");
+  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
+    global $db_con;
+    $query="SELECT B.name,
+              to_char(A.timedata,'HH24:mi') as fecha,
+              A.datavalue as peticiones
+            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
+            WHERE B.name = '".$CANAL."'
+              AND A.timedata between '".$FECHAF."' AND '".$FECHAT."'
+              AND C.name = 'Throughput'
+              AND C.idkpi = A.idkpi
+              AND B.idmonitor = A.idmonitor
+            ORDER BY 2 asc";
+    $resultado = pg_query($db_con, $query);
+    return $resultado;
+  }
+
+  function max_peti($CANAL){
+    global $db_con;
+    $query="SELECT name,
+            MAX(valuemark) as max_peticiones,
+            datemark
+            FROM \"E2E\".watermark
+            WHERE name='".$CANAL."'
+            GROUP BY 1,3";
+    $resultado = pg_query($db_con, $query);
     return $resultado;
   }
 
@@ -61,11 +65,11 @@
   if(date("Y-m-d")==$newTo){
     $min = 11;
     if(date("i")<$min){
-      $newTo = date("Y-m-d H", strtotime('-2 hour'));
-      $newToF = date("Y-m-d 00");
+      $newTo = date("Y-m-d H:i", strtotime('-2 hour'));
+      $newToF = date("Y-m-d 00:00");
     }else {
-      $newTo = date("Y-m-d H", strtotime('-1 hour'));
-      $newToF = date("Y-m-d 00");
+      $newTo = date("Y-m-d H:i", strtotime('-1 hour'));
+      $newToF = date("Y-m-d 00:00");
     }
     $peticionesHoy = busquedaHoy('movil',$newToF,$newTo);
   }
@@ -78,17 +82,17 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  $r8 = mysql_fetch_array($maxPeticiones);
+  $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
 
-  while($r1  = mysql_fetch_array($peticionesPasada)) {
+  while($r1  = pg_fetch_assoc($peticionesPasada)) {
         $series1['data'][] = $r1['peticiones'];
         $category['data'][] = $r1['fecha'];
         $series3['data'][] = $max_peti['value'];
 
       }
 
-  while($r2 = mysql_fetch_array($peticionesHoy)) {
+  while($r2 = pg_fetch_assoc($peticionesHoy)) {
         $series2['data'][] = $r2['peticiones'];
       }
 
