@@ -4,8 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/netCash/VS_MQ/recurso_semanal.js"></script>
-		<script type="text/javascript" src="../js/netCash/VS_MQ/recurso_mensual.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/VS_MQ/recurso_semanal.js"></script>
+		<script type="text/javascript" src="../js/netParticulares/VS_MQ/recurso_mensual.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<link rel="Stylesheet" type="text/css" href="../css/estilo.css">
@@ -21,6 +21,12 @@
 			<nav>
 				<ul class="menu">
 					<li><a href="../net_particulares.php">Net Particulares</a>
+						<ul>
+							<li><a href="KQOF.php">KQOF-Frontal</a></li>
+							<li><a href="ENPS.php">ENPS-Servicios multicanal</a></li>
+							<li><a href="ESMB.php">ESMB-Servicios básicos </a></li>
+							<li><a href="vision_maquina.php">Visión Máquina</a></li>
+						</ul>
 					</li>
 					<li><a href="../net_cash.php">NetCash</a>
 						<ul>
