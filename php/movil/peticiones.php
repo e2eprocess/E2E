@@ -71,13 +71,13 @@
       $newTo = date("Y-m-d H:i", strtotime('-1 hour'));
       $newToF = date("Y-m-d 00:00");
     }
-    $peticionesHoy = busquedaHoy('movil',$newToF,$newTo);
+    $peticionesHoy = busquedaHoy('enpp_mult_web',$newToF,$newTo);
   }
   else {
-    $peticionesHoy = busqueda('movil',$newTo);
+    $peticionesHoy = busqueda('enpp_mult_web',$newTo);
   }
-  $peticionesPasada = busqueda('movil', $newFrom);
-  $maxPeticiones = max_peti('%movil%');
+  $peticionesPasada = busqueda('enpp_mult_web', $newFrom);
+  $maxPeticiones = max_peti('Throughput enpp');
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
