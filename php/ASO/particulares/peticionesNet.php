@@ -1,50 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /*querys*/
-  function busqueda($CANAL,$FECHA){
-    global $db_con;
-    $query="SELECT B.name,
-              to_char(A.timedata,'HH24:mi') as fecha,
-              A.datavalue as peticiones
-            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
-            WHERE B.name = '".$CANAL."'
-              AND A.timedata::TEXT LIKE '".$FECHA."%'
-              AND C.name = 'Throughput'
-              AND C.idkpi = A.idkpi
-              AND B.idmonitor = A.idmonitor
-            ORDER BY 2 asc";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
-
-  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
-    global $db_con;
-    $query="SELECT B.name,
-              to_char(A.timedata,'HH24:mi') as fecha,
-              A.datavalue as peticiones
-            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
-            WHERE B.name = '".$CANAL."'
-              AND A.timedata between '".$FECHAF."' AND '".$FECHAT."'
-              AND C.name = 'Throughput'
-              AND C.idkpi = A.idkpi
-              AND B.idmonitor = A.idmonitor
-            ORDER BY 2 asc";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
-
-  function max_peti($CANAL){
-    global $db_con;
-    $query="SELECT name,
-            MAX(valuemark) as max_peticiones,
-            datemark
-            FROM \"E2E\".watermark
-            WHERE name='".$CANAL."'
-            GROUP BY 1,3";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
+  require_once("../../queryPeticiones.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -65,24 +21,18 @@
   /*Declaración variables*/
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
-    $min = 11;
-    if(date("i")<$min){
-      $newTo = date("Y-m-d H:i", strtotime('-2 hour'));
-      $newToF = date("Y-m-d 00:00");
-    }else {
-      $newTo = date("Y-m-d H:i", strtotime('-1 hour'));
-      $newToF = date("Y-m-d 00:00");
-    }
-    $gtHoy = busquedaHoy('GTnet',$newToF,$newTo);
-    $servicioHoy = busquedaHoy('ASOnet',$newToF,$newTo);
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
+    $gtHoy = busquedaHoy('GTnet',$newToF,$newTo, 'Throughput');
+    $servicioHoy = busquedaHoy('ASOnet',$newToF,$newTo, 'Throughput');
   }
   else {
-    $gtHoy = busqueda('GTnet',$newTo);
-    $servicioHoy = busqueda('ASOnet',$newTo);
+    $gtHoy = busqueda('GTnet',$newTo, 'Throughput');
+    $servicioHoy = busqueda('ASOnet',$newTo, 'Throughput');
   }
 
-  $gtPasada = busqueda('GTnet', $newFrom);
-  $servicioPasada = busqueda('ASOnet', $newFrom);
+  $gtPasada = busqueda('GTnet', $newFrom, 'Throughput');
+  $servicioPasada = busqueda('ASOnet', $newFrom, 'Throughput');
   $maxPeticiones = max_peti('Throughput ASOnet');
 
   /*Recuperación datos*/

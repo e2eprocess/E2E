@@ -1,6 +1,6 @@
 <?php
   require_once("../conexion_e2e_process.php");
-  require_once("../query.php");
+  require_once("../queryPeticiones.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -23,18 +23,11 @@
 
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
-    $min = 11;
-    if(date("i")<$min){
-      $newTo = date("Y-m-d H:i", strtotime('-2 hour'));
-      $newToF = date("Y-m-d 00:00");
-    }else {
-      $newTo = date("Y-m-d H:i", strtotime('-1 hour'));
-      $newToF = date("Y-m-d 00:00");
-    }
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
     $particularesHoy = busquedaHoy('kqof_particulares',$newToF,$newTo,'Throughput');
     $globalHoy = busquedaHoy('kqof_posicionGlobal',$newToF,$newTo,'Throughput');
     $KQOFHoy = busquedaHoy('kqof_es_web',$newToF,$newTo,'Throughput');
-
   }
   else {
     $particularesHoy = busqueda('kqof_particulares',$newTo,'Throughput');
