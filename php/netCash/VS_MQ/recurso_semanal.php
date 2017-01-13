@@ -1,5 +1,5 @@
 <?php
-include("../../conexion_e2e_process.php");
+require_once("../../conexion_e2e_process.php");
 
 function busqueda($CANAL,$MAQUINA,$FECHA_QUERY){
 
@@ -42,20 +42,20 @@ $apbad026 = busqueda('cash','apbad026',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($apbad022)) {
+while($r1  = pg_fetch_assoc($apbad022)) {
       /*$series1['data'][] = $r1['cpu_avg'];*/
       $series5['data'][] = $r1['cpu'];
       $category['data'][] = $r1['fecha'];
     }
-while($r2  = mysql_fetch_array($apbad023)) {
+while($r2  = pg_fetch_assoc($apbad023)) {
       /*$series2['data'][] = $r2['cpu_avg'];*/
       $series6['data'][] = $r2['cpu'];
     }
-while($r3  = mysql_fetch_array($apbad024)) {
+while($r3  = pg_fetch_assoc($apbad024)) {
       /*$series3['data'][] = $r3['cpu_avg'];*/
       $series7['data'][] = $r3['cpu'];
     }
-while($r4  = mysql_fetch_array($apbad026)) {
+while($r4  = pg_fetch_assoc($apbad026)) {
       /*$series4['data'][] = $r4['cpu_avg'];*/
       $series8['data'][] = $r4['cpu'];
     }

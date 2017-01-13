@@ -1,5 +1,5 @@
 <?php
-include("../../conexion_e2e_process.php");
+require_once("../../conexion_e2e_process.php");
 
 function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
 
@@ -76,36 +76,36 @@ $ESMB_S01_66 = busqueda('apbad006','ESMB_S01_66',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($ESMB_S01_25)) {
+while($r1  = pg_fetch_assoc($ESMB_S01_25)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
       $category['data'][] = $r1['dia'];
     }
-while($r2  = mysql_fetch_array($ESMB_S01_26)) {
+while($r2  = pg_fetch_assoc($ESMB_S01_26)) {
       $series3['data'][] = $r2['cpu'];
       $series4['data'][] = $r2['memoria'];
     }
-while($r4  = mysql_fetch_array($ESMB_S01_35)) {
+while($r4  = pg_fetch_assoc($ESMB_S01_35)) {
       $series5['data'][] = $r4['cpu'];
       $series6['data'][] = $r4['memoria'];
     }
-while($r5  = mysql_fetch_array($ESMB_S01_36)) {
+while($r5  = pg_fetch_assoc($ESMB_S01_36)) {
       $series7['data'][] = $r5['cpu'];
       $series8['data'][] = $r5['memoria'];
     }
-while($r7  = mysql_fetch_array($ESMB_S01_45)) {
+while($r7  = pg_fetch_assoc($ESMB_S01_45)) {
       $series9['data'][] = $r7['cpu'];
       $series10['data'][] = $r7['memoria'];
     }
-while($r8  = mysql_fetch_array($ESMB_S01_46)) {
+while($r8  = pg_fetch_assoc($ESMB_S01_46)) {
       $series11['data'][] = $r8['cpu'];
       $series12['data'][] = $r8['memoria'];
     }
-while($r10  = mysql_fetch_array($ESMB_S01_65)) {
+while($r10  = pg_fetch_assoc($ESMB_S01_65)) {
       $series13['data'][] = $r10['cpu'];
       $series14['data'][] = $r10['memoria'];
     }
-while($r11  = mysql_fetch_array($ESMB_S01_66)) {
+while($r11  = pg_fetch_assoc($ESMB_S01_66)) {
       $series15['data'][] = $r11['cpu'];
       $series16['data'][] = $r11['memoria'];
     }

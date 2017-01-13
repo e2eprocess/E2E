@@ -1,5 +1,5 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
 
   /* Query fecha menos 24 horas
   function busqueda($MAQUINA,$FECHA_QUERY){
@@ -91,78 +91,78 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($KYFB_S01_10_From)) {
+  while($r1 = pg_fetch_assoc($KYFB_S01_10_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['memoria'];
       }
-  while($r2 = mysql_fetch_array($KYFB_S01_11_From)) {
+  while($r2 = pg_fetch_assoc($KYFB_S01_11_From)) {
         $series2['data'][] = $r2['memoria'];
       }
-  while($r3 = mysql_fetch_array($KYFB_S01_12_From)) {
+  while($r3 = pg_fetch_assoc($KYFB_S01_12_From)) {
         $series3['data'][] = $r3['memoria'];
       }
-  while($r4 = mysql_fetch_array($KYFB_S01_20_From)) {
+  while($r4 = pg_fetch_assoc($KYFB_S01_20_From)) {
         $series4['data'][] = $r4['memoria'];
       }
-  while($r5 = mysql_fetch_array($KYFB_S01_21_From)) {
+  while($r5 = pg_fetch_assoc($KYFB_S01_21_From)) {
         $series5['data'][] = $r5['memoria'];
       }
-  while($r6 = mysql_fetch_array($KYFB_S01_22_From)) {
+  while($r6 = pg_fetch_assoc($KYFB_S01_22_From)) {
         $series6['data'][] = $r6['memoria'];
       }
-  while($r7 = mysql_fetch_array($KYFB_S01_30_From)) {
+  while($r7 = pg_fetch_assoc($KYFB_S01_30_From)) {
         $series7['data'][] = $r7['memoria'];
       }
-  while($r8 = mysql_fetch_array($KYFB_S01_31_From)) {
+  while($r8 = pg_fetch_assoc($KYFB_S01_31_From)) {
         $series8['data'][] = $r8['memoria'];
       }
-  while($r9 = mysql_fetch_array($KYFB_S01_32_From)) {
+  while($r9 = pg_fetch_assoc($KYFB_S01_32_From)) {
         $series9['data'][] = $r9['memoria'];
       }
-  while($r10 = mysql_fetch_array($KYFB_S01_40_From)) {
+  while($r10 = pg_fetch_assoc($KYFB_S01_40_From)) {
         $series10['data'][] = $r10['memoria'];
       }
-  while($r11 = mysql_fetch_array($KYFB_S01_41_From)) {
+  while($r11 = pg_fetch_assoc($KYFB_S01_41_From)) {
         $series11['data'][] = $r11['memoria'];
       }
-  while($r12 = mysql_fetch_array($KYFB_S01_42_From)) {
+  while($r12 = pg_fetch_assoc($KYFB_S01_42_From)) {
         $series12['data'][] = $r12['memoria'];
       }
 
-  while($r13 = mysql_fetch_array($KYFB_S01_10_To)) {
+  while($r13 = pg_fetch_assoc($KYFB_S01_10_To)) {
         $series13['data'][] = $r13['memoria'];
       }
-  while($r14 = mysql_fetch_array($KYFB_S01_11_To)) {
+  while($r14 = pg_fetch_assoc($KYFB_S01_11_To)) {
         $series14['data'][] = $r14['memoria'];
       }
-  while($r15 = mysql_fetch_array($KYFB_S01_12_To)) {
+  while($r15 = pg_fetch_assoc($KYFB_S01_12_To)) {
         $series15['data'][] = $r15['memoria'];
       }
-  while($r16 = mysql_fetch_array($KYFB_S01_20_To)) {
+  while($r16 = pg_fetch_assoc($KYFB_S01_20_To)) {
         $series16['data'][] = $r16['memoria'];
       }
-  while($r17 = mysql_fetch_array($KYFB_S01_21_To)) {
+  while($r17 = pg_fetch_assoc($KYFB_S01_21_To)) {
         $series17['data'][] = $r17['memoria'];
       }
-  while($r18 = mysql_fetch_array($KYFB_S01_22_To)) {
+  while($r18 = pg_fetch_assoc($KYFB_S01_22_To)) {
         $series18['data'][] = $r18['memoria'];
       }
-  while($r19 = mysql_fetch_array($KYFB_S01_30_To)) {
+  while($r19 = pg_fetch_assoc($KYFB_S01_30_To)) {
         $series19['data'][] = $r19['memoria'];
       }
-  while($r20 = mysql_fetch_array($KYFB_S01_31_To)) {
+  while($r20 = pg_fetch_assoc($KYFB_S01_31_To)) {
         $series20['data'][] = $r20['memoria'];
       }
-  while($r21 = mysql_fetch_array($KYFB_S01_32_To)) {
+  while($r21 = pg_fetch_assoc($KYFB_S01_32_To)) {
         $series21['data'][] = $r21['memoria'];
       }
-  while($r22 = mysql_fetch_array($KYFB_S01_40_To)) {
+  while($r22 = pg_fetch_assoc($KYFB_S01_40_To)) {
         $series22['data'][] = $r22['memoria'];
       }
-  while($r23 = mysql_fetch_array($KYFB_S01_41_To)) {
+  while($r23 = pg_fetch_assoc($KYFB_S01_41_To)) {
         $series23['data'][] = $r23['memoria'];
       }
-  while($r24 = mysql_fetch_array($KYFB_S01_42_To)) {
+  while($r24 = pg_fetch_assoc($KYFB_S01_42_To)) {
         $series24['data'][] = $r24['memoria'];
       }
 

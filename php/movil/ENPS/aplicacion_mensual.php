@@ -1,5 +1,5 @@
 <?php
-include("../../conexion_e2e_process.php");
+require_once("../../conexion_e2e_process.php");
 
 function busqueda($CANAL,$FECHA_QUERY){
 
@@ -35,7 +35,7 @@ $servicing = busqueda('enps%servicing%',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($servicing)) {
+while($r1  = pg_fetch_assoc($servicing)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
       $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['dia'];

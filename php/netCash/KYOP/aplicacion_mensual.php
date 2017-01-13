@@ -1,5 +1,5 @@
 <?php
-include("../../conexion_e2e_process.php");
+require_once("../../conexion_e2e_process.php");
 
 function busqueda($CANAL,$FECHA_QUERY){
 
@@ -33,7 +33,7 @@ $kyop_mult_web_kyoppresentation = busqueda('cash',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($kyop_mult_web_kyoppresentation)) {
+while($r1  = pg_fetch_assoc($kyop_mult_web_kyoppresentation)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
       $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['dia'];

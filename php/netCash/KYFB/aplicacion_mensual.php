@@ -1,5 +1,5 @@
 <?php
-include("../../conexion_e2e_process.php");
+require_once("../../conexion_e2e_process.php");
 
 function busqueda($CANAL,$FECHA_QUERY){
 
@@ -36,12 +36,12 @@ $kyfbws = busqueda('kyfb%kyfbws%',$hoy);
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($firmas)) {
+while($r1  = pg_fetch_assoc($firmas)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
       $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['dia'];
     }
-while($r2  = mysql_fetch_array($kyfbws)) {
+while($r2  = pg_fetch_assoc($kyfbws)) {
       $series3['data'][] = $r2['tiempo_respuesta'];
       $series4['data'][] = $r2['peticiones'];
     }

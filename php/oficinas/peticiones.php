@@ -1,5 +1,5 @@
 <?php
-  include("../conexion_e2e_process.php");
+  require_once("../conexion_e2e_process.php");
 
   /*Query fecha menos 24 horas
   function busqueda($CANAL,$FECHA_QUERY){
@@ -84,22 +84,22 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  $r8 = mysql_fetch_array($maxPeticiones);
+  $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
 
-  while($r1 = mysql_fetch_array($ncocPasada)) {
+  while($r1 = pg_fetch_assoc($ncocPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
         $series5['data'][] = $max_peti['value'];
       }
-  while($r2 = mysql_fetch_array($eeccPasada)) {
+  while($r2 = pg_fetch_assoc($eeccPasada)) {
         $series2['data'][] = $r2['peticiones'];
       }
 
-  while($r3 = mysql_fetch_array($ncocHoy)) {
+  while($r3 = pg_fetch_assoc($ncocHoy)) {
         $series3['data'][] = $r3['peticiones'];
       }
-  while($r4 = mysql_fetch_array($eeccHoy)) {
+  while($r4 = pg_fetch_assoc($eeccHoy)) {
         $series4['data'][] = $r4['peticiones'];
       }
 

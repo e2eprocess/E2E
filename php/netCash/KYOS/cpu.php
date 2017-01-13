@@ -1,5 +1,5 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
 
   /* Query fecha menos 24 horas
   function busqueda($MAQUINA,$FECHA_QUERY){
@@ -75,54 +75,54 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($KYGU_S01_10_From)) {
+  while($r1 = pg_fetch_assoc($KYGU_S01_10_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['cpu'];
       }
-  while($r2 = mysql_fetch_array($KYGU_S01_11_From)) {
+  while($r2 = pg_fetch_assoc($KYGU_S01_11_From)) {
         $series2['data'][] = $r2['cpu'];
       }
-  while($r3 = mysql_fetch_array($KYGU_S01_20_From)) {
+  while($r3 = pg_fetch_assoc($KYGU_S01_20_From)) {
         $series3['data'][] = $r3['cpu'];
       }
-  while($r4 = mysql_fetch_array($KYGU_S01_21_From)) {
+  while($r4 = pg_fetch_assoc($KYGU_S01_21_From)) {
         $series4['data'][] = $r4['cpu'];
       }
-  while($r5 = mysql_fetch_array($KYGU_S01_30_From)) {
+  while($r5 = pg_fetch_assoc($KYGU_S01_30_From)) {
         $series5['data'][] = $r5['cpu'];
       }
-  while($r6 = mysql_fetch_array($KYGU_S01_31_From)) {
+  while($r6 = pg_fetch_assoc($KYGU_S01_31_From)) {
         $series6['data'][] = $r6['cpu'];
       }
-  while($r7 = mysql_fetch_array($KYGU_S01_40_From)) {
+  while($r7 = pg_fetch_assoc($KYGU_S01_40_From)) {
         $series7['data'][] = $r7['cpu'];
       }
-  while($r8 = mysql_fetch_array($KYGU_S01_41_From)) {
+  while($r8 = pg_fetch_assoc($KYGU_S01_41_From)) {
         $series8['data'][] = $r8['cpu'];
       }
 
-  while($r9 = mysql_fetch_array($KYGU_S01_10_To)) {
+  while($r9 = pg_fetch_assoc($KYGU_S01_10_To)) {
         $series9['data'][] = $r9['cpu'];
       }
-  while($r10 = mysql_fetch_array($KYGU_S01_11_To)) {
+  while($r10 = pg_fetch_assoc($KYGU_S01_11_To)) {
         $series10['data'][] = $r10['cpu'];
       }
-  while($r11 = mysql_fetch_array($KYGU_S01_20_To)) {
+  while($r11 = pg_fetch_assoc($KYGU_S01_20_To)) {
         $series11['data'][] = $r11['cpu'];
       }
-  while($r12 = mysql_fetch_array($KYGU_S01_21_To)) {
+  while($r12 = pg_fetch_assoc($KYGU_S01_21_To)) {
         $series12['data'][] = $r12['cpu'];
       }
-  while($r13 = mysql_fetch_array($KYGU_S01_30_To)) {
+  while($r13 = pg_fetch_assoc($KYGU_S01_30_To)) {
         $series13['data'][] = $r13['cpu'];
       }
-  while($r14 = mysql_fetch_array($KYGU_S01_31_To)) {
+  while($r14 = pg_fetch_assoc($KYGU_S01_31_To)) {
         $series14['data'][] = $r14['cpu'];
       }
-  while($r15 = mysql_fetch_array($KYGU_S01_40_To)) {
+  while($r15 = pg_fetch_assoc($KYGU_S01_40_To)) {
         $series15['data'][] = $r15['cpu'];
       }
-  while($r16 = mysql_fetch_array($KYGU_S01_41_To)) {
+  while($r16 = pg_fetch_assoc($KYGU_S01_41_To)) {
         $series16['data'][] = $r16['cpu'];
       }
 

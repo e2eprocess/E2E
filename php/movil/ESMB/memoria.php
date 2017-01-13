@@ -1,5 +1,5 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
 
   /* Query fecha menos 24 horas
   function busqueda($MAQUINA,$FECHA_QUERY){
@@ -85,54 +85,54 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($ESMB_S02_25_From)) {
+  while($r1 = pg_fetch_assoc($ESMB_S02_25_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['memoria'];
       }
-  while($r2 = mysql_fetch_array($ESMB_S02_26_From)) {
+  while($r2 = pg_fetch_assoc($ESMB_S02_26_From)) {
         $series2['data'][] = $r2['memoria'];
       }
-  while($r4 = mysql_fetch_array($ESMB_S02_35_From)) {
+  while($r4 = pg_fetch_assoc($ESMB_S02_35_From)) {
         $series3['data'][] = $r4['memoria'];
       }
-  while($r5 = mysql_fetch_array($ESMB_S02_36_From)) {
+  while($r5 = pg_fetch_assoc($ESMB_S02_36_From)) {
         $series4['data'][] = $r5['memoria'];
       }
-  while($r7 = mysql_fetch_array($ESMB_S02_45_From)) {
+  while($r7 = pg_fetch_assoc($ESMB_S02_45_From)) {
         $series5['data'][] = $r7['memoria'];
       }
-  while($r8 = mysql_fetch_array($ESMB_S02_46_From)) {
+  while($r8 = pg_fetch_assoc($ESMB_S02_46_From)) {
         $series6['data'][] = $r8['memoria'];
       }
-  while($r10 = mysql_fetch_array($ESMB_S02_65_From)) {
+  while($r10 = pg_fetch_assoc($ESMB_S02_65_From)) {
         $series7['data'][] = $r10['memoria'];
       }
-  while($r11 = mysql_fetch_array($ESMB_S02_66_From)) {
+  while($r11 = pg_fetch_assoc($ESMB_S02_66_From)) {
         $series8['data'][] = $r11['memoria'];
       }
 
-  while($r13 = mysql_fetch_array($ESMB_S02_25_To)) {
+  while($r13 = pg_fetch_assoc($ESMB_S02_25_To)) {
         $series9['data'][] = $r13['memoria'];
       }
-  while($r14 = mysql_fetch_array($ESMB_S02_26_To)) {
+  while($r14 = pg_fetch_assoc($ESMB_S02_26_To)) {
         $series10['data'][] = $r14['memoria'];
       }
-  while($r16 = mysql_fetch_array($ESMB_S02_35_To)) {
+  while($r16 = pg_fetch_assoc($ESMB_S02_35_To)) {
         $series11['data'][] = $r16['memoria'];
       }
-  while($r17 = mysql_fetch_array($ESMB_S02_36_To)) {
+  while($r17 = pg_fetch_assoc($ESMB_S02_36_To)) {
         $series12['data'][] = $r17['memoria'];
       }
-  while($r19 = mysql_fetch_array($ESMB_S02_45_To)) {
+  while($r19 = pg_fetch_assoc($ESMB_S02_45_To)) {
         $series13['data'][] = $r19['memoria'];
       }
-  while($r20 = mysql_fetch_array($ESMB_S02_46_To)) {
+  while($r20 = pg_fetch_assoc($ESMB_S02_46_To)) {
         $series14['data'][] = $r20['memoria'];
       }
-  while($r22 = mysql_fetch_array($ESMB_S02_65_To)) {
+  while($r22 = pg_fetch_assoc($ESMB_S02_65_To)) {
         $series15['data'][] = $r22['memoria'];
       }
-  while($r23 = mysql_fetch_array($ESMB_S02_66_To)) {
+  while($r23 = pg_fetch_assoc($ESMB_S02_66_To)) {
         $series16['data'][] = $r23['memoria'];
       }
 

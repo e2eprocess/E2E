@@ -55,7 +55,7 @@
                 <th>Promedio peticiones/día</th>
               </tr>";
 
-        while($row = mysql_fetch_array($aplicaciones)){
+        while($row = pg_fetch_assoc($aplicaciones)){
           echo "<tr>";
             echo "<td>kyop_mult_web_kyoppresentation</td>";
             echo "<td>".$row['Tiempo_respuesta']." ms</td>";
@@ -73,7 +73,7 @@
                 <th>Memoria (max.)</th>
               </tr>";
 
-        while($row = mysql_fetch_array($recursos)){
+        while($row = pg_fetch_assoc($recursos)){
           echo "<tr>";
             echo "<td>".$row['maquina']."-".$row['instancias']."</td>";
             echo "<td>".$row['Cpu']." %</td>";

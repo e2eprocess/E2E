@@ -1,5 +1,5 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
 
   /* Query fecha menos 24 horas
   function busqueda($CANAL,$FECHA_QUERY){
@@ -44,12 +44,12 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($BBVANetPasada)) {
+  while($r1 = pg_fetch_assoc($BBVANetPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['Tiempo_respuesta'];
       }
 
-  while($r2 = mysql_fetch_array($BBVANetHoy)) {
+  while($r2 = pg_fetch_assoc($BBVANetHoy)) {
         $series2['data'][] = $r2['Tiempo_respuesta'];
       }
 

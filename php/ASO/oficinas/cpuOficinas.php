@@ -1,5 +1,5 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
 
   /* Query fecha menos 24 horas
   function busqueda($MAQUINA,$FECHA_QUERY){
@@ -62,36 +62,36 @@
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($lpsro302CpuPasada)) {
+  while($r1 = pg_fetch_assoc($lpsro302CpuPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['cpu'];
       }
-  while($r2 = mysql_fetch_array($lpsrv309CpuPasada)) {
+  while($r2 = pg_fetch_assoc($lpsrv309CpuPasada)) {
         $series2['data'][] = $r2['cpu'];
       }
-  while($r3 = mysql_fetch_array($lpsro301CpuPasada)) {
+  while($r3 = pg_fetch_assoc($lpsro301CpuPasada)) {
         $series3['data'][] = $r3['cpu'];
       }
-  while($r4 = mysql_fetch_array($lpsrv328CpuPasada)) {
+  while($r4 = pg_fetch_assoc($lpsrv328CpuPasada)) {
         $series4['data'][] = $r4['cpu'];
       }
-  while($r5 = mysql_fetch_array($lpsrv329CpuPasada)) {
+  while($r5 = pg_fetch_assoc($lpsrv329CpuPasada)) {
         $series5['data'][] = $r1['cpu'];
       }
 
-  while($r6 = mysql_fetch_array($lpsro302CpuHoy)) {
+  while($r6 = pg_fetch_assoc($lpsro302CpuHoy)) {
         $series6['data'][] = $r6['cpu'];
       }
-  while($r7 = mysql_fetch_array($lpsrv309CpuHoy)) {
+  while($r7 = pg_fetch_assoc($lpsrv309CpuHoy)) {
         $series7['data'][] = $r7['cpu'];
       }
-  while($r8 = mysql_fetch_array($lpsro301CpuHoy)) {
+  while($r8 = pg_fetch_assoc($lpsro301CpuHoy)) {
         $series8['data'][] = $r8['cpu'];
       }
-  while($r9 = mysql_fetch_array($lpsrv328CpuHoy)) {
+  while($r9 = pg_fetch_assoc($lpsrv328CpuHoy)) {
         $series9['data'][] = $r9['cpu'];
       }
-  while($r10 = mysql_fetch_array($lpsrv329CpuHoy)) {
+  while($r10 = pg_fetch_assoc($lpsrv329CpuHoy)) {
         $series10['data'][] = $r10['cpu'];
       }
 
