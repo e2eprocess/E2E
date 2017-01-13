@@ -1,24 +1,20 @@
 <?php
-  include("../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
+  require_once("../conexion_e2e_process.php");
 
   /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
+  function busqueda($CANAL,$FECHA){
+    global $db_con;
+    $query="SELECT B.name,
+              to_char(A.timedata,'HH24:mi') as fecha,
+              A.datavalue as tiempo_respuesta
+            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
+            WHERE B.name = '".$CANAL."'
+              AND A.timedata::TEXT LIKE '".$FECHA."%'
+              AND C.name = 'Time'
+              AND C.idkpi = A.idkpi
+              AND B.idmonitor = A.idmonitor
+            ORDER BY 2 asc";
+    $resultado = pg_query($db_con, $query);
     return $resultado;
   }
 
@@ -40,37 +36,37 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $particularesHoy = busqueda('%particulares%',$newTo);
-  $globalHoy = busqueda('%global%',$newTo);
-  $KQOFHoy = busqueda('%KQOF%',$newTo);
+  $particularesHoy = busqueda('kqof_particulares',$newTo);
+  $globalHoy = busqueda('kqof_posicionGlobal',$newTo);
+  $KQOFHoy = busqueda('kqof_es_web',$newTo);
 
-  $particularesPasada = busqueda('%Particulares%',$newFrom);
-  $globalPasada = busqueda('%global%',$newFrom);
-  $KQOFPasada = busqueda('%KQOF%',$newFrom);
+  $particularesPasada = busqueda('kqof_particulares',$newFrom);
+  $globalPasada = busqueda('kqof_posicionGlobal',$newFrom);
+  $KQOFPasada = busqueda('kqof_es_web',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($particularesPasada)) {
+  while($r1 = pg_fetch_assoc($particularesPasada)) {
         $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
       }
-  while($r2 = mysql_fetch_array($globalPasada)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+  while($r2 = pg_fetch_assoc($globalPasada)) {
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
-  while($r3 = mysql_fetch_array($KQOFPasada)) {
-        $series3['data'][] = $r3['Tiempo_respuesta'];
+  while($r3 = pg_fetch_assoc($KQOFPasada)) {
+        $series3['data'][] = $r3['tiempo_respuesta'];
       }
 
-  while($r4 = mysql_fetch_array($particularesHoy)) {
-        $series4['data'][] = $r4['Tiempo_respuesta'];
+  while($r4 = pg_fetch_assoc($particularesHoy)) {
+        $series4['data'][] = $r4['tiempo_respuesta'];
       }
-  while($r5 = mysql_fetch_array($globalHoy)) {
-        $series5['data'][] = $r5['Tiempo_respuesta'];
+  while($r5 = pg_fetch_assoc($globalHoy)) {
+        $series5['data'][] = $r5['tiempo_respuesta'];
       }
-  while($r6 = mysql_fetch_array($KQOFHoy)) {
-        $series6['data'][] = $r6['Tiempo_respuesta'];
+  while($r6 = pg_fetch_assoc($KQOFHoy)) {
+        $series6['data'][] = $r6['tiempo_respuesta'];
       }
 
   /*Carga del array del Json*/

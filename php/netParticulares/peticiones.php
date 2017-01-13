@@ -1,50 +1,6 @@
 <?php
   require_once("../conexion_e2e_process.php");
-
-  /*querys*/
-  function busqueda($CANAL,$FECHA){
-    global $db_con;
-    $query="SELECT B.name,
-              to_char(A.timedata,'HH24:mi') as fecha,
-              A.datavalue as peticiones
-            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
-            WHERE B.name = '".$CANAL."'
-              AND A.timedata::TEXT LIKE '".$FECHA."%'
-              AND C.name = 'Throughput'
-              AND C.idkpi = A.idkpi
-              AND B.idmonitor = A.idmonitor
-            ORDER BY 2 asc";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
-
-  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
-    global $db_con;
-    $query="SELECT B.name,
-              to_char(A.timedata,'HH24:mi') as fecha,
-              A.datavalue as peticiones
-            FROM \"E2E\".monitordata A, \"E2E\".monitor B, \"E2E\".kpi C
-            WHERE B.name = '".$CANAL."'
-              AND A.timedata between '".$FECHAF."' AND '".$FECHAT."'
-              AND C.name = 'Throughput'
-              AND C.idkpi = A.idkpi
-              AND B.idmonitor = A.idmonitor
-            ORDER BY 2 asc";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
-
-  function max_peti($CANAL){
-    global $db_con;
-    $query="SELECT name,
-            MAX(valuemark) as max_peticiones,
-            datemark
-            FROM \"E2E\".watermark
-            WHERE name='".$CANAL."'
-            GROUP BY 1,3";
-    $resultado = pg_query($db_con, $query);
-    return $resultado;
-  }
+  require_once("../query.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -75,19 +31,19 @@
       $newTo = date("Y-m-d H:i", strtotime('-1 hour'));
       $newToF = date("Y-m-d 00:00");
     }
-    $particularesHoy = busquedaHoy('kqof_particulares',$newToF,$newTo);
-    $globalHoy = busquedaHoy('kqof_posicionGlobal',$newToF,$newTo);
-    $KQOFHoy = busquedaHoy('kqof_es_web',$newToF,$newTo);
+    $particularesHoy = busquedaHoy('kqof_particulares',$newToF,$newTo,'Throughput');
+    $globalHoy = busquedaHoy('kqof_posicionGlobal',$newToF,$newTo,'Throughput');
+    $KQOFHoy = busquedaHoy('kqof_es_web',$newToF,$newTo,'Throughput');
 
   }
   else {
-    $particularesHoy = busqueda('kqof_particulares',$newTo);
-    $globalHoy = busqueda('kqof_posicionGlobal',$newTo);
-    $KQOFHoy = busqueda('kqof_es_web',$newTo);
+    $particularesHoy = busqueda('kqof_particulares',$newTo,'Throughput');
+    $globalHoy = busqueda('kqof_posicionGlobal',$newTo,'Throughput');
+    $KQOFHoy = busqueda('kqof_es_web',$newTo,'Throughput');
   }
-  $particularesPasada = busqueda('kqof_particulares',$newFrom);
-  $globalPasada = busqueda('kqof_posicionGlobal',$newFrom);
-  $KQOFPasada = busqueda('kqof_es_web',$newFrom);
+  $particularesPasada = busqueda('kqof_particulares',$newFrom,'Throughput');
+  $globalPasada = busqueda('kqof_posicionGlobal',$newFrom,'Throughput');
+  $KQOFPasada = busqueda('kqof_es_web',$newFrom,'Throughput');
 
   $maxPeticiones = max_peti('Throughput kqof');
 
