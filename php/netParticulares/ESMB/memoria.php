@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      memoria
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      memoria
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryMemoria.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -62,107 +40,123 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $ESMB_701_20_To = busqueda('apbad002','ESMB_701_20',$newTo);
-  $ESMB_701_21_To = busqueda('apbad002','ESMB_701_21',$newTo);
-  $ESMB_701_22_To = busqueda('apbad002','ESMB_701_22',$newTo);
-  $ESMB_701_30_To = busqueda('apbad003','ESMB_701_30',$newTo);
-  $ESMB_701_31_To = busqueda('apbad003','ESMB_701_31',$newTo);
-  $ESMB_701_32_To = busqueda('apbad003','ESMB_701_32',$newTo);
-  $ESMB_701_40_To = busqueda('apbad004','ESMB_701_40',$newTo);
-  $ESMB_701_41_To = busqueda('apbad004','ESMB_701_41',$newTo);
-  $ESMB_701_42_To = busqueda('apbad004','ESMB_701_42',$newTo);
-  $ESMB_701_60_To = busqueda('apbad006','ESMB_701_60',$newTo);
-  $ESMB_701_61_To = busqueda('apbad006','ESMB_701_61',$newTo);
-  $ESMB_701_62_To = busqueda('apbad006','ESMB_701_62',$newTo);
-
-  $ESMB_701_20_From = busqueda('apbad002','ESMB_701_20',$newFrom);
-  $ESMB_701_21_From = busqueda('apbad002','ESMB_701_21',$newFrom);
-  $ESMB_701_22_From = busqueda('apbad002','ESMB_701_22',$newFrom);
-  $ESMB_701_30_From = busqueda('apbad003','ESMB_701_30',$newFrom);
-  $ESMB_701_31_From = busqueda('apbad003','ESMB_701_31',$newFrom);
-  $ESMB_701_32_From = busqueda('apbad003','ESMB_701_32',$newFrom);
-  $ESMB_701_40_From = busqueda('apbad004','ESMB_701_40',$newFrom);
-  $ESMB_701_41_From = busqueda('apbad004','ESMB_701_41',$newFrom);
-  $ESMB_701_42_From = busqueda('apbad004','ESMB_701_42',$newFrom);
-  $ESMB_701_60_From = busqueda('apbad006','ESMB_701_60',$newFrom);
-  $ESMB_701_61_From = busqueda('apbad006','ESMB_701_61',$newFrom);
-  $ESMB_701_62_From = busqueda('apbad006','ESMB_701_62',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $ESMB_S01_20_To = busquedaClonHoy('ESMB_S01_20',$newToF,$newTo);
+    $ESMB_S01_21_To = busquedaClonHoy('ESMB_S01_21',$newToF,$newTo);
+    $ESMB_S01_22_To = busquedaClonHoy('ESMB_S01_22',$newToF,$newTo);
+    $ESMB_S01_30_To = busquedaClonHoy('ESMB_S01_30',$newToF,$newTo);
+    $ESMB_S01_31_To = busquedaClonHoy('ESMB_S01_31',$newToF,$newTo);
+    $ESMB_S01_32_To = busquedaClonHoy('ESMB_S01_32',$newToF,$newTo);
+    $ESMB_S01_40_To = busquedaClonHoy('ESMB_S01_40',$newToF,$newTo);
+    $ESMB_S01_41_To = busquedaClonHoy('ESMB_S01_41',$newToF,$newTo);
+    $ESMB_S01_42_To = busquedaClonHoy('ESMB_S01_42',$newToF,$newTo);
+    $ESMB_S01_60_To = busquedaClonHoy('ESMB_S01_60',$newToF,$newTo);
+    $ESMB_S01_61_To = busquedaClonHoy('ESMB_S01_61',$newToF,$newTo);
+    $ESMB_S01_62_To = busquedaClonHoy('ESMB_S01_62',$newToF,$newTo);
+  }else{
+    $ESMB_S01_20_To = busquedaClon('ESMB_S01_20',$newTo);
+    $ESMB_S01_21_To = busquedaClon('ESMB_S01_21',$newTo);
+    $ESMB_S01_22_To = busquedaClon('ESMB_S01_22',$newTo);
+    $ESMB_S01_30_To = busquedaClon('ESMB_S01_30',$newTo);
+    $ESMB_S01_31_To = busquedaClon('ESMB_S01_31',$newTo);
+    $ESMB_S01_32_To = busquedaClon('ESMB_S01_32',$newTo);
+    $ESMB_S01_40_To = busquedaClon('ESMB_S01_40',$newTo);
+    $ESMB_S01_41_To = busquedaClon('ESMB_S01_41',$newTo);
+    $ESMB_S01_42_To = busquedaClon('ESMB_S01_42',$newTo);
+    $ESMB_S01_60_To = busquedaClon('ESMB_S01_60',$newTo);
+    $ESMB_S01_61_To = busquedaClon('ESMB_S01_61',$newTo);
+    $ESMB_S01_62_To = busquedaClon('ESMB_S01_62',$newTo);
+  }
+  $ESMB_S01_20_From = busquedaClon('ESMB_S01_20',$newFrom);
+  $ESMB_S01_21_From = busquedaClon('ESMB_S01_21',$newFrom);
+  $ESMB_S01_22_From = busquedaClon('ESMB_S01_22',$newFrom);
+  $ESMB_S01_30_From = busquedaClon('ESMB_S01_30',$newFrom);
+  $ESMB_S01_31_From = busquedaClon('ESMB_S01_31',$newFrom);
+  $ESMB_S01_32_From = busquedaClon('ESMB_S01_32',$newFrom);
+  $ESMB_S01_40_From = busquedaClon('ESMB_S01_40',$newFrom);
+  $ESMB_S01_41_From = busquedaClon('ESMB_S01_41',$newFrom);
+  $ESMB_S01_42_From = busquedaClon('ESMB_S01_42',$newFrom);
+  $ESMB_S01_60_From = busquedaClon('ESMB_S01_60',$newFrom);
+  $ESMB_S01_61_From = busquedaClon('ESMB_S01_61',$newFrom);
+  $ESMB_S01_62_From = busquedaClon('ESMB_S01_62',$newFrom);
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = pg_fetch_assoc($ESMB_701_20_From)) {
+  while($r1 = pg_fetch_assoc($ESMB_S01_20_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['memoria'];
       }
-  while($r2 = pg_fetch_assoc($ESMB_701_21_From)) {
+  while($r2 = pg_fetch_assoc($ESMB_S01_21_From)) {
         $series2['data'][] = $r2['memoria'];
       }
-  while($r3 = pg_fetch_assoc($ESMB_701_22_From)) {
+  while($r3 = pg_fetch_assoc($ESMB_S01_22_From)) {
         $series3['data'][] = $r3['memoria'];
       }
-  while($r4 = pg_fetch_assoc($ESMB_701_30_From)) {
+  while($r4 = pg_fetch_assoc($ESMB_S01_30_From)) {
         $series4['data'][] = $r4['memoria'];
       }
-  while($r5 = pg_fetch_assoc($ESMB_701_31_From)) {
+  while($r5 = pg_fetch_assoc($ESMB_S01_31_From)) {
         $series5['data'][] = $r5['memoria'];
       }
-  while($r6 = pg_fetch_assoc($ESMB_701_32_From)) {
+  while($r6 = pg_fetch_assoc($ESMB_S01_32_From)) {
         $series6['data'][] = $r6['memoria'];
       }
-  while($r7 = pg_fetch_assoc($ESMB_701_40_From)) {
+  while($r7 = pg_fetch_assoc($ESMB_S01_40_From)) {
         $series7['data'][] = $r7['memoria'];
       }
-  while($r8 = pg_fetch_assoc($ESMB_701_41_From)) {
+  while($r8 = pg_fetch_assoc($ESMB_S01_41_From)) {
         $series8['data'][] = $r8['memoria'];
       }
-  while($r9 = pg_fetch_assoc($ESMB_701_42_From)) {
+  while($r9 = pg_fetch_assoc($ESMB_S01_42_From)) {
         $series9['data'][] = $r9['memoria'];
       }
-  while($r10 = pg_fetch_assoc($ESMB_701_60_From)) {
+  while($r10 = pg_fetch_assoc($ESMB_S01_60_From)) {
         $series10['data'][] = $r10['memoria'];
       }
-  while($r11 = pg_fetch_assoc($ESMB_701_61_From)) {
+  while($r11 = pg_fetch_assoc($ESMB_S01_61_From)) {
         $series11['data'][] = $r11['memoria'];
       }
-  while($r12 = pg_fetch_assoc($ESMB_701_62_From)) {
+  while($r12 = pg_fetch_assoc($ESMB_S01_62_From)) {
         $series12['data'][] = $r12['memoria'];
       }
 
-  while($r13 = pg_fetch_assoc($ESMB_701_20_To)) {
+  while($r13 = pg_fetch_assoc($ESMB_S01_20_To)) {
         $series13['data'][] = $r13['memoria'];
       }
-  while($r14 = pg_fetch_assoc($ESMB_701_21_To)) {
+  while($r14 = pg_fetch_assoc($ESMB_S01_21_To)) {
         $series14['data'][] = $r14['memoria'];
       }
-  while($r15 = pg_fetch_assoc($ESMB_701_22_To)) {
+  while($r15 = pg_fetch_assoc($ESMB_S01_22_To)) {
         $series15['data'][] = $r15['memoria'];
       }
-  while($r16 = pg_fetch_assoc($ESMB_701_30_To)) {
+  while($r16 = pg_fetch_assoc($ESMB_S01_30_To)) {
         $series16['data'][] = $r16['memoria'];
       }
-  while($r17 = pg_fetch_assoc($ESMB_701_31_To)) {
+  while($r17 = pg_fetch_assoc($ESMB_S01_31_To)) {
         $series17['data'][] = $r17['memoria'];
       }
-  while($r18 = pg_fetch_assoc($ESMB_701_32_To)) {
+  while($r18 = pg_fetch_assoc($ESMB_S01_32_To)) {
         $series18['data'][] = $r18['memoria'];
       }
-  while($r19 = pg_fetch_assoc($ESMB_701_40_To)) {
+  while($r19 = pg_fetch_assoc($ESMB_S01_40_To)) {
         $series19['data'][] = $r19['memoria'];
       }
-  while($r20 = pg_fetch_assoc($ESMB_701_41_To)) {
+  while($r20 = pg_fetch_assoc($ESMB_S01_41_To)) {
         $series20['data'][] = $r20['memoria'];
       }
-  while($r21 = pg_fetch_assoc($ESMB_701_42_To)) {
+  while($r21 = pg_fetch_assoc($ESMB_S01_42_To)) {
         $series21['data'][] = $r21['memoria'];
       }
-  while($r22 = pg_fetch_assoc($ESMB_701_60_To)) {
+  while($r22 = pg_fetch_assoc($ESMB_S01_60_To)) {
         $series22['data'][] = $r22['memoria'];
       }
-  while($r23 = pg_fetch_assoc($ESMB_701_61_To)) {
+  while($r23 = pg_fetch_assoc($ESMB_S01_61_To)) {
         $series23['data'][] = $r23['memoria'];
       }
-  while($r24 = pg_fetch_assoc($ESMB_701_62_To)) {
+  while($r24 = pg_fetch_assoc($ESMB_S01_62_To)) {
         $series24['data'][] = $r24['memoria'];
       }
 
@@ -196,6 +190,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

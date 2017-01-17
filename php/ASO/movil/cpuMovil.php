@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'movil'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'movil'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryCpu.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -50,21 +28,33 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $lpsrm302CpuHoy = busqueda('lpsrm302',$newTo);
-  $lpsrv310CpuHoy = busqueda('lpsrv310',$newTo);
-  $lpsrv311CpuHoy = busqueda('lpsrv311',$newTo);
-  $lpsrv314CpuHoy = busqueda('lpsrv314',$newTo);
-  $lpsrm301CpuHoy = busqueda('lpsrm301',$newTo);
-  $lpsrv315CpuHoy = busqueda('lpsrv315',$newTo);
-  $lpsrv316CpuHoy = busqueda('lpsrv316',$newTo);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $lpsrm302CpuHoy = busquedaMaquinaHoy('lpsrm302',$newToF,$newTo);
+    $lpsrv310CpuHoy = busquedaMaquinaHoy('lpsrv310',$newToF,$newTo);
+    $lpsrv311CpuHoy = busquedaMaquinaHoy('lpsrv311',$newToF,$newTo);
+    $lpsrv314CpuHoy = busquedaMaquinaHoy('lpsrv314',$newToF,$newTo);
+    $lpsrm301CpuHoy = busquedaMaquinaHoy('lpsrm301',$newToF,$newTo);
+    $lpsrv315CpuHoy = busquedaMaquinaHoy('lpsrv315',$newToF,$newTo);
+    $lpsrv316CpuHoy = busquedaMaquinaHoy('lpsrv316',$newToF,$newTo);
+  }else {
+    $lpsrm302CpuHoy = busquedaMaquina('lpsrm302',$newTo);
+    $lpsrv310CpuHoy = busquedaMaquina('lpsrv310',$newTo);
+    $lpsrv311CpuHoy = busquedaMaquina('lpsrv311',$newTo);
+    $lpsrv314CpuHoy = busquedaMaquina('lpsrv314',$newTo);
+    $lpsrm301CpuHoy = busquedaMaquina('lpsrm301',$newTo);
+    $lpsrv315CpuHoy = busquedaMaquina('lpsrv315',$newTo);
+    $lpsrv316CpuHoy = busquedaMaquina('lpsrv316',$newTo);
 
-  $lpsrm302CpuPasada = busqueda('lpsrm302',$newFrom);
-  $lpsrv310CpuPasada = busqueda('lpsrv310',$newFrom);
-  $lpsrv311CpuPasada = busqueda('lpsrv311',$newFrom);
-  $lpsrv314CpuPasada = busqueda('lpsrv314',$newFrom);
-  $lpsrm301CpuPasada = busqueda('lpsrm301',$newFrom);
-  $lpsrv315CpuPasada = busqueda('lpsrv315',$newFrom);
-  $lpsrv316CpuPasada = busqueda('lpsrv316',$newFrom);
+  }
+  $lpsrm302CpuPasada = busquedaMaquina('lpsrm302',$newFrom);
+  $lpsrv310CpuPasada = busquedaMaquina('lpsrv310',$newFrom);
+  $lpsrv311CpuPasada = busquedaMaquina('lpsrv311',$newFrom);
+  $lpsrv314CpuPasada = busquedaMaquina('lpsrv314',$newFrom);
+  $lpsrm301CpuPasada = busquedaMaquina('lpsrm301',$newFrom);
+  $lpsrv315CpuPasada = busquedaMaquina('lpsrv315',$newFrom);
+  $lpsrv316CpuPasada = busquedaMaquina('lpsrv316',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -135,6 +125,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

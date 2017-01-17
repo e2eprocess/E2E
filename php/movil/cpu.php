@@ -1,28 +1,6 @@
 <?php
   require_once("../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../queryCpu.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -44,15 +22,23 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $apbad002CpuHoy = busqueda('apbad002',$newTo);
-  $apbad003CpuHoy = busqueda('apbad003',$newTo);
-  $apbad004CpuHoy = busqueda('apbad004',$newTo);
-  $apbad006CpuHoy = busqueda('apbad006',$newTo);
-
-  $apbad002CpuPasada = busqueda('apbad002',$newFrom);
-  $apbad003CpuPasada = busqueda('apbad003',$newFrom);
-  $apbad004CpuPasada = busqueda('apbad004',$newFrom);
-  $apbad006CpuPasada = busqueda('apbad006',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $apbad002CpuHoy = busquedaMaquinaHoy('apbad002',$newToF,$newTo);
+    $apbad003CpuHoy = busquedaMaquinaHoy('apbad003',$newToF,$newTo);
+    $apbad004CpuHoy = busquedaMaquinaHoy('apbad004',$newToF,$newTo);
+    $apbad006CpuHoy = busquedaMaquinaHoy('apbad006',$newToF,$newTo);
+  }else{
+    $apbad002CpuHoy = busquedaMaquina('apbad002',$newTo);
+    $apbad003CpuHoy = busquedaMaquina('apbad003',$newTo);
+    $apbad004CpuHoy = busquedaMaquina('apbad004',$newTo);
+    $apbad006CpuHoy = busquedaMaquina('apbad006',$newTo);
+  }
+  $apbad002CpuPasada = busquedaMaquina('apbad002',$newFrom);
+  $apbad003CpuPasada = busquedaMaquina('apbad003',$newFrom);
+  $apbad004CpuPasada = busquedaMaquina('apbad004',$newFrom);
+  $apbad006CpuPasada = busquedaMaquina('apbad006',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -100,6 +86,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

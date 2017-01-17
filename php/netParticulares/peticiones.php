@@ -24,7 +24,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
     $particularesHoy = busquedaHoy('kqof_particulares',$newToF,$newTo,'Throughput');
     $globalHoy = busquedaHoy('kqof_posicionGlobal',$newToF,$newTo,'Throughput');
     $KQOFHoy = busquedaHoy('kqof_es_web',$newToF,$newTo,'Throughput');

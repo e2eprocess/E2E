@@ -1,26 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../querytime.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -36,8 +16,15 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $ncocHoy = busqueda('ncoc',$newTo);
-  $ncocPasada = busqueda('ncoc',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $ncocHoy = busquedaHoy('ncoc_es_web',$newToF,$newTo,'Time');
+  }
+  else {
+    $ncocHoy = busqueda('ncoc_es_web',$newTo,'Time');
+  }
+  $ncocPasada = busqueda('ncoc_es_web',$newFrom,'Time');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -45,11 +32,11 @@
 
   while($r1 = pg_fetch_assoc($ncocPasada)) {
         $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
       }
 
   while($r2 = pg_fetch_assoc($ncocHoy)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
 
   /*Carga del array del Json*/
@@ -61,6 +48,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

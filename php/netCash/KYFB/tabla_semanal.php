@@ -6,7 +6,7 @@
         function mediaAplicaciones($FECHA_QUERY,$UUAA){
 
           $resultado = mysql_query("SELECT  canal,
-                                            FORMAT(AVG(Tiempo_respuesta),2,'de_DE') as Tiempo_respuesta,
+                                            FORMAT(AVG(tiempo_respuesta),2,'de_DE') as tiempo_respuesta,
                                             FORMAT((SUM(Peticiones)/10),2,'de_DE') as Peticiones
                                     FROM    seguimiento_cx_canal
                                     WHERE   canal like '".$UUAA."_%'
@@ -57,7 +57,7 @@
         while($row = pg_fetch_assoc($aplicaciones)){
           echo "<tr>";
             echo "<td>".$row['canal']."</td>";
-            echo "<td>".$row['Tiempo_respuesta']." ms</td>";
+            echo "<td>".$row['tiempo_respuesta']." ms</td>";
             echo "<td>".$row['Peticiones']."</td>";
           echo "</tr>";
         }

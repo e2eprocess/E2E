@@ -22,7 +22,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
     $servicingHoy = busquedaHoy('enps_mult_web_movil',$newToF,$newTo, 'Throughput');
   }
   else {
@@ -50,6 +50,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

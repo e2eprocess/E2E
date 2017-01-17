@@ -55,6 +55,6 @@ array_push($datos,$series4);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>

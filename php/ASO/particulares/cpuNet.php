@@ -1,28 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-/* Query fecha menos 24 horas
-function busqueda($MAQUINA,$FECHA_QUERY){
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    cpu
-                            FROM    seguimiento_cx_maquina
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     canal = 'net'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-  return $resultado;
-}*/
-
-/*query*/
-function busqueda($MAQUINA,$FECHA_QUERY){
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                    cpu
-                            FROM    seguimiento_cx_maquina
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     canal = 'net'
-                            AND     fecha like '".$FECHA_QUERY."%'");
-  return $resultado;
-}
+require_once("../../queryCpu.php");
 
 /*Declaracion de arrays json*/
 $category = array();
@@ -53,25 +31,38 @@ $to=$_SESSION["fechaToNet"];
 $newTo = date("Y-m-d", strtotime($to));
 
 /*Declaración variables*/
-$lpsrn302CpuHoy = busqueda('lpsrn302',$newTo);
-$lpsrv301CpuHoy = busqueda('lpsrv301',$newTo);
-$lpsrv302CpuHoy = busqueda('lpsrv302',$newTo);
-$lpsrv303CpuHoy = busqueda('lpsrv303',$newTo);
-$lpsrn301CpuHoy = busqueda('lpsrn301',$newTo);
-$lpsrv304CpuHoy = busqueda('lpsrv304',$newTo);
-$lpsrv319CpuHoy = busqueda('lpsrv319',$newTo);
-$lpsrv320CpuHoy = busqueda('lpsrv320',$newTo);
-$lpsrv321CpuHoy = busqueda('lpsrv321',$newTo);
-
-$lpsrn302CpuPasada = busqueda('lpsrn302',$newFrom);
-$lpsrv301CpuPasada = busqueda('lpsrv301',$newFrom);
-$lpsrv302CpuPasada = busqueda('lpsrv302',$newFrom);
-$lpsrv303CpuPasada = busqueda('lpsrv303',$newFrom);
-$lpsrn301CpuPasada = busqueda('lpsrn301',$newFrom);
-$lpsrv304CpuPasada = busqueda('lpsrv304',$newFrom);
-$lpsrv319CpuPasada = busqueda('lpsrv319',$newFrom);
-$lpsrv320CpuPasada = busqueda('lpsrv320',$newFrom);
-$lpsrv321CpuPasada = busqueda('lpsrv321',$newFrom);
+if(date("Y-m-d")==$newTo){
+  $newToF = date("Y-m-d 00:00");
+  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $lpsrn302CpuHoy = busquedaMaquinaHoy('lpsrn302',$newToF,$newTo);
+  $lpsrv301CpuHoy = busquedaMaquinaHoy('lpsrv301',$newToF,$newTo);
+  $lpsrv302CpuHoy = busquedaMaquinaHoy('lpsrv302',$newToF,$newTo);
+  $lpsrv303CpuHoy = busquedaMaquinaHoy('lpsrv303',$newToF,$newTo);
+  $lpsrn301CpuHoy = busquedaMaquinaHoy('lpsrn301',$newToF,$newTo);
+  $lpsrv304CpuHoy = busquedaMaquinaHoy('lpsrv304',$newToF,$newTo);
+  $lpsrv319CpuHoy = busquedaMaquinaHoy('lpsrv319',$newToF,$newTo);
+  $lpsrv320CpuHoy = busquedaMaquinaHoy('lpsrv320',$newToF,$newTo);
+  $lpsrv321CpuHoy = busquedaMaquinaHoy('lpsrv321',$newToF,$newTo);
+}else {
+  $lpsrn302CpuHoy = busquedaMaquina('lpsrn302',$newTo);
+  $lpsrv301CpuHoy = busquedaMaquina('lpsrv301',$newTo);
+  $lpsrv302CpuHoy = busquedaMaquina('lpsrv302',$newTo);
+  $lpsrv303CpuHoy = busquedaMaquina('lpsrv303',$newTo);
+  $lpsrn301CpuHoy = busquedaMaquina('lpsrn301',$newTo);
+  $lpsrv304CpuHoy = busquedaMaquina('lpsrv304',$newTo);
+  $lpsrv319CpuHoy = busquedaMaquina('lpsrv319',$newTo);
+  $lpsrv320CpuHoy = busquedaMaquina('lpsrv320',$newTo);
+  $lpsrv321CpuHoy = busquedaMaquina('lpsrv321',$newTo);
+}
+$lpsrn302CpuPasada = busquedaMaquina('lpsrn302',$newFrom);
+$lpsrv301CpuPasada = busquedaMaquina('lpsrv301',$newFrom);
+$lpsrv302CpuPasada = busquedaMaquina('lpsrv302',$newFrom);
+$lpsrv303CpuPasada = busquedaMaquina('lpsrv303',$newFrom);
+$lpsrn301CpuPasada = busquedaMaquina('lpsrn301',$newFrom);
+$lpsrv304CpuPasada = busquedaMaquina('lpsrv304',$newFrom);
+$lpsrv319CpuPasada = busquedaMaquina('lpsrv319',$newFrom);
+$lpsrv320CpuPasada = busquedaMaquina('lpsrv320',$newFrom);
+$lpsrv321CpuPasada = busquedaMaquina('lpsrv321',$newFrom);
 
 /*Recuperación datos*/
 $category['name'] = 'fecha';
@@ -158,6 +149,6 @@ array_push($datos,$titulo);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>

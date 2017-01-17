@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      cpu
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryCpu.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -53,23 +31,35 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $KYOP_S01_10_To = busqueda('apbad022','KYOP_S01_10',$newTo);
-  $KYOP_S01_11_To = busqueda('apbad022','KYOP_S01_11',$newTo);
-  $KYOP_S01_20_To = busqueda('apbad023','KYOP_S01_20',$newTo);
-  $KYOP_S01_21_To = busqueda('apbad023','KYOP_S01_21',$newTo);
-  $KYOP_S01_30_To = busqueda('apbad024','KYOP_S01_30',$newTo);
-  $KYOP_S01_31_To = busqueda('apbad024','KYOP_S01_31',$newTo);
-  $KYOP_S01_40_To = busqueda('apbad026','KYOP_S01_40',$newTo);
-  $KYOP_S01_41_To = busqueda('apbad026','KYOP_S01_41',$newTo);
-
-  $KYOP_S01_10_From = busqueda('apbad022','KYOP_S01_10',$newFrom);
-  $KYOP_S01_11_From = busqueda('apbad022','KYOP_S01_11',$newFrom);
-  $KYOP_S01_20_From = busqueda('apbad023','KYOP_S01_20',$newFrom);
-  $KYOP_S01_21_From = busqueda('apbad023','KYOP_S01_21',$newFrom);
-  $KYOP_S01_30_From = busqueda('apbad024','KYOP_S01_30',$newFrom);
-  $KYOP_S01_31_From = busqueda('apbad024','KYOP_S01_31',$newFrom);
-  $KYOP_S01_40_From = busqueda('apbad026','KYOP_S01_40',$newFrom);
-  $KYOP_S01_41_From = busqueda('apbad026','KYOP_S01_41',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $KYOP_S01_10_To = busquedaClonHoy('KYOP_S01_10',$newToF,$newTo);
+    $KYOP_S01_11_To = busquedaClonHoy('KYOP_S01_11',$newToF,$newTo);
+    $KYOP_S01_20_To = busquedaClonHoy('KYOP_S01_20',$newToF,$newTo);
+    $KYOP_S01_21_To = busquedaClonHoy('KYOP_S01_21',$newToF,$newTo);
+    $KYOP_S01_30_To = busquedaClonHoy('KYOP_S01_30',$newToF,$newTo);
+    $KYOP_S01_31_To = busquedaClonHoy('KYOP_S01_31',$newToF,$newTo);
+    $KYOP_S01_40_To = busquedaClonHoy('KYOP_S01_40',$newToF,$newTo);
+    $KYOP_S01_41_To = busquedaClonHoy('KYOP_S01_41',$newToF,$newTo);
+  }else{
+    $KYOP_S01_10_To = busquedaClon('KYOP_S01_10',$newTo);
+    $KYOP_S01_11_To = busquedaClon('KYOP_S01_11',$newTo);
+    $KYOP_S01_20_To = busquedaClon('KYOP_S01_20',$newTo);
+    $KYOP_S01_21_To = busquedaClon('KYOP_S01_21',$newTo);
+    $KYOP_S01_30_To = busquedaClon('KYOP_S01_30',$newTo);
+    $KYOP_S01_31_To = busquedaClon('KYOP_S01_31',$newTo);
+    $KYOP_S01_40_To = busquedaClon('KYOP_S01_40',$newTo);
+    $KYOP_S01_41_To = busquedaClon('KYOP_S01_41',$newTo);
+  }
+  $KYOP_S01_10_From = busquedaClon('KYOP_S01_10',$newFrom);
+  $KYOP_S01_11_From = busquedaClon('KYOP_S01_11',$newFrom);
+  $KYOP_S01_20_From = busquedaClon('KYOP_S01_20',$newFrom);
+  $KYOP_S01_21_From = busquedaClon('KYOP_S01_21',$newFrom);
+  $KYOP_S01_30_From = busquedaClon('KYOP_S01_30',$newFrom);
+  $KYOP_S01_31_From = busquedaClon('KYOP_S01_31',$newFrom);
+  $KYOP_S01_40_From = busquedaClon('KYOP_S01_40',$newFrom);
+  $KYOP_S01_41_From = busquedaClon('KYOP_S01_41',$newFrom);
 
 
   $category['name'] = 'fecha';
@@ -148,6 +138,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

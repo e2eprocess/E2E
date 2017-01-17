@@ -22,7 +22,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
     $frontusuarioHoy = busquedaHoy('kyfb_mult_web_firmas',$newToF,$newTo,'Throughput');
     $serviciousuarioHoy = busquedaHoy('kyfb_mult_web_kyfbws',$newToF,$newTo,'Throughput');
 
@@ -64,6 +64,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

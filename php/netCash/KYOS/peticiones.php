@@ -22,7 +22,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-15 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
     $serviciosHoy = busquedaHoy('kyos_mult_web_servicios',$newToF,$newTo,'Throughput');
     $posicioncuentasHoy = busquedaHoy('kyos_mult_web_posicioncuentas',$newToF,$newTo,'Throughput');
   }
@@ -63,6 +63,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

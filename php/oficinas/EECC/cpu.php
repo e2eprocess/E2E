@@ -1,30 +1,8 @@
 <?php
   require_once("../../conexion_e2e_process.php");
+  require_once("../../queryCpu.php");
 
-    /* Query fecha menos 24 horas
-    function busqueda($MAQUINA,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                        cpu
-                                FROM    seguimiento_cx_maquina
-                                WHERE   maquina = '".$MAQUINA."'
-                                AND     canal = 'net'
-                                AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                                AND     fecha <= '".$FECHA_QUERY."'");
-      return $resultado;
-    }*/
-
-    /*query*/
-    function busqueda($MAQUINA,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                        cpu
-                                FROM    seguimiento_cx_maquina
-                                WHERE   maquina = '".$MAQUINA."'
-                                AND     canal = 'oficinas'
-                                AND     fecha like '".$FECHA_QUERY."%'");
-      return $resultado;
-    }
-
-    /*Declaracion de arrays json*/
+  /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
   $series1 = array();
@@ -50,21 +28,32 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $spnac005CpuHoy = busqueda('spnac005',$newTo);
-  $spnac006CpuHoy = busqueda('spnac006',$newTo);
-  $spnac007CpuHoy = busqueda('spnac007',$newTo);
-  $spnac008CpuHoy = busqueda('spnac008',$newTo);
-  $spnac009CpuHoy = busqueda('spnac009',$newTo);
-  $spnac010CpuHoy = busqueda('spnac010',$newTo);
-  $spnac012CpuHoy = busqueda('spnac012',$newTo);
-
-  $spnac005CpuPasada = busqueda('spnac005',$newFrom);
-  $spnac006CpuPasada = busqueda('spnac006',$newFrom);
-  $spnac007CpuPasada = busqueda('spnac007',$newFrom);
-  $spnac008CpuPasada = busqueda('spnac008',$newFrom);
-  $spnac009CpuPasada = busqueda('spnac009',$newFrom);
-  $spnac010CpuPasada = busqueda('spnac010',$newFrom);
-  $spnac012CpuPasada = busqueda('spnac012',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $spnac005CpuHoy = busquedaMaquinaHoy('spnac005',$newToF,$newTo);
+    $spnac006CpuHoy = busquedaMaquinaHoy('spnac006',$newToF,$newTo);
+    $spnac007CpuHoy = busquedaMaquinaHoy('spnac007',$newToF,$newTo);
+    $spnac008CpuHoy = busquedaMaquinaHoy('spnac008',$newToF,$newTo);
+    $spnac009CpuHoy = busquedaMaquinaHoy('spnac009',$newToF,$newTo);
+    $spnac010CpuHoy = busquedaMaquinaHoy('spnac010',$newToF,$newTo);
+    $spnac012CpuHoy = busquedaMaquinaHoy('spnac012',$newToF,$newTo);
+  }else {
+    $spnac005CpuHoy = busquedaMaquina('spnac005',$newTo);
+    $spnac006CpuHoy = busquedaMaquina('spnac006',$newTo);
+    $spnac007CpuHoy = busquedaMaquina('spnac007',$newTo);
+    $spnac008CpuHoy = busquedaMaquina('spnac008',$newTo);
+    $spnac009CpuHoy = busquedaMaquina('spnac009',$newTo);
+    $spnac010CpuHoy = busquedaMaquina('spnac010',$newTo);
+    $spnac012CpuHoy = busquedaMaquina('spnac012',$newTo);
+  }
+  $spnac005CpuPasada = busquedaMaquina('spnac005',$newFrom);
+  $spnac006CpuPasada = busquedaMaquina('spnac006',$newFrom);
+  $spnac007CpuPasada = busquedaMaquina('spnac007',$newFrom);
+  $spnac008CpuPasada = busquedaMaquina('spnac008',$newFrom);
+  $spnac009CpuPasada = busquedaMaquina('spnac009',$newFrom);
+  $spnac010CpuPasada = busquedaMaquina('spnac010',$newFrom);
+  $spnac012CpuPasada = busquedaMaquina('spnac012',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -136,6 +125,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

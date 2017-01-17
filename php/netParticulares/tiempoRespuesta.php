@@ -20,13 +20,21 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $particularesHoy = busqueda('kqof_particulares',$newTo);
-  $globalHoy = busqueda('kqof_posicionGlobal',$newTo);
-  $KQOFHoy = busqueda('kqof_es_web',$newTo);
-
-  $particularesPasada = busqueda('kqof_particulares',$newFrom);
-  $globalPasada = busqueda('kqof_posicionGlobal',$newFrom);
-  $KQOFPasada = busqueda('kqof_es_web',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $particularesHoy = busquedaHoy('kqof_particulares',$newToF,$newTo,'Time');
+    $globalHoy = busquedaHoy('kqof_posicionGlobal',$newToF,$newTo,'Time');
+    $KQOFHoy = busquedaHoy('kqof_es_web',$newToF,$newTo,'Time');
+  }
+  else {
+    $particularesHoy = busqueda('kqof_particulares',$newTo,'Time');
+    $globalHoy = busqueda('kqof_posicionGlobal',$newTo,'Time');
+    $KQOFHoy = busqueda('kqof_es_web',$newTo,'Time');
+  }
+  $particularesPasada = busqueda('kqof_particulares',$newFrom,'Time');
+  $globalPasada = busqueda('kqof_posicionGlobal',$newFrom,'Time');
+  $KQOFPasada = busqueda('kqof_es_web',$newFrom,'Time');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -66,6 +74,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

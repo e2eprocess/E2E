@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      cpu
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      cpu
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryCpu.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -61,31 +39,47 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $KYFB_S01_10_To = busqueda('apbad022','KYFB_S01_10',$newTo);
-  $KYFB_S01_11_To = busqueda('apbad022','KYFB_S01_11',$newTo);
-  $KYFB_S01_12_To = busqueda('apbad022','KYFB_S01_12',$newTo);
-  $KYFB_S01_20_To = busqueda('apbad023','KYFB_S01_20',$newTo);
-  $KYFB_S01_21_To = busqueda('apbad023','KYFB_S01_21',$newTo);
-  $KYFB_S01_22_To = busqueda('apbad023','KYFB_S01_22',$newTo);
-  $KYFB_S01_30_To = busqueda('apbad024','KYFB_S01_30',$newTo);
-  $KYFB_S01_31_To = busqueda('apbad024','KYFB_S01_31',$newTo);
-  $KYFB_S01_32_To = busqueda('apbad024','KYFB_S01_32',$newTo);
-  $KYFB_S01_40_To = busqueda('apbad026','KYFB_S01_40',$newTo);
-  $KYFB_S01_41_To = busqueda('apbad026','KYFB_S01_41',$newTo);
-  $KYFB_S01_42_To = busqueda('apbad026','KYFB_S01_42',$newTo);
-
-  $KYFB_S01_10_From = busqueda('apbad022','KYFB_S01_10',$newFrom);
-  $KYFB_S01_11_From = busqueda('apbad022','KYFB_S01_11',$newFrom);
-  $KYFB_S01_12_From = busqueda('apbad022','KYFB_S01_12',$newFrom);
-  $KYFB_S01_20_From = busqueda('apbad023','KYFB_S01_20',$newFrom);
-  $KYFB_S01_21_From = busqueda('apbad023','KYFB_S01_21',$newFrom);
-  $KYFB_S01_22_From = busqueda('apbad023','KYFB_S01_22',$newFrom);
-  $KYFB_S01_30_From = busqueda('apbad024','KYFB_S01_30',$newFrom);
-  $KYFB_S01_31_From = busqueda('apbad024','KYFB_S01_31',$newFrom);
-  $KYFB_S01_32_From = busqueda('apbad024','KYFB_S01_32',$newFrom);
-  $KYFB_S01_40_From = busqueda('apbad026','KYFB_S01_40',$newFrom);
-  $KYFB_S01_41_From = busqueda('apbad026','KYFB_S01_41',$newFrom);
-  $KYFB_S01_42_From = busqueda('apbad026','KYFB_S01_42',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $KYFB_S01_10_To = busquedaClonHoy('KYFB_S01_10',$newToF,$newTo);
+    $KYFB_S01_11_To = busquedaClonHoy('KYFB_S01_11',$newToF,$newTo);
+    $KYFB_S01_12_To = busquedaClonHoy('KYFB_S01_12',$newToF,$newTo);
+    $KYFB_S01_20_To = busquedaClonHoy('KYFB_S01_20',$newToF,$newTo);
+    $KYFB_S01_21_To = busquedaClonHoy('KYFB_S01_21',$newToF,$newTo);
+    $KYFB_S01_22_To = busquedaClonHoy('KYFB_S01_22',$newToF,$newTo);
+    $KYFB_S01_30_To = busquedaClonHoy('KYFB_S01_30',$newToF,$newTo);
+    $KYFB_S01_31_To = busquedaClonHoy('KYFB_S01_31',$newToF,$newTo);
+    $KYFB_S01_32_To = busquedaClonHoy('KYFB_S01_32',$newToF,$newTo);
+    $KYFB_S01_40_To = busquedaClonHoy('KYFB_S01_40',$newToF,$newTo);
+    $KYFB_S01_41_To = busquedaClonHoy('KYFB_S01_41',$newToF,$newTo);
+    $KYFB_S01_42_To = busquedaClonHoy('KYFB_S01_42',$newToF,$newTo);
+  }else{
+    $KYFB_S01_10_To = busquedaClon('KYFB_S01_10',$newTo);
+    $KYFB_S01_11_To = busquedaClon('KYFB_S01_11',$newTo);
+    $KYFB_S01_12_To = busquedaClon('KYFB_S01_12',$newTo);
+    $KYFB_S01_20_To = busquedaClon('KYFB_S01_20',$newTo);
+    $KYFB_S01_21_To = busquedaClon('KYFB_S01_21',$newTo);
+    $KYFB_S01_22_To = busquedaClon('KYFB_S01_22',$newTo);
+    $KYFB_S01_30_To = busquedaClon('KYFB_S01_30',$newTo);
+    $KYFB_S01_31_To = busquedaClon('KYFB_S01_31',$newTo);
+    $KYFB_S01_32_To = busquedaClon('KYFB_S01_32',$newTo);
+    $KYFB_S01_40_To = busquedaClon('KYFB_S01_40',$newTo);
+    $KYFB_S01_41_To = busquedaClon('KYFB_S01_41',$newTo);
+    $KYFB_S01_42_To = busquedaClon('KYFB_S01_42',$newTo);
+  }
+  $KYFB_S01_10_From = busquedaClon('KYFB_S01_10',$newFrom);
+  $KYFB_S01_11_From = busquedaClon('KYFB_S01_11',$newFrom);
+  $KYFB_S01_12_From = busquedaClon('KYFB_S01_12',$newFrom);
+  $KYFB_S01_20_From = busquedaClon('KYFB_S01_20',$newFrom);
+  $KYFB_S01_21_From = busquedaClon('KYFB_S01_21',$newFrom);
+  $KYFB_S01_22_From = busquedaClon('KYFB_S01_22',$newFrom);
+  $KYFB_S01_30_From = busquedaClon('KYFB_S01_30',$newFrom);
+  $KYFB_S01_31_From = busquedaClon('KYFB_S01_31',$newFrom);
+  $KYFB_S01_32_From = busquedaClon('KYFB_S01_32',$newFrom);
+  $KYFB_S01_40_From = busquedaClon('KYFB_S01_40',$newFrom);
+  $KYFB_S01_41_From = busquedaClon('KYFB_S01_41',$newFrom);
+  $KYFB_S01_42_From = busquedaClon('KYFB_S01_42',$newFrom);
 
 
   $category['name'] = 'fecha';
@@ -196,6 +190,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

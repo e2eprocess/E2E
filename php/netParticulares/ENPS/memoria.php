@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      memoria
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      memoria
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryMemoria.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -62,31 +40,47 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $ENPS_701_20_To = busqueda('apbad002','ENPS_701_20',$newTo);
-  $ENPS_701_21_To = busqueda('apbad002','ENPS_701_21',$newTo);
-  $ENPS_701_22_To = busqueda('apbad002','ENPS_701_22',$newTo);
-  $ENPS_701_30_To = busqueda('apbad003','ENPS_701_30',$newTo);
-  $ENPS_701_31_To = busqueda('apbad003','ENPS_701_31',$newTo);
-  $ENPS_701_32_To = busqueda('apbad003','ENPS_701_32',$newTo);
-  $ENPS_701_40_To = busqueda('apbad004','ENPS_701_40',$newTo);
-  $ENPS_701_41_To = busqueda('apbad004','ENPS_701_41',$newTo);
-  $ENPS_701_42_To = busqueda('apbad004','ENPS_701_42',$newTo);
-  $ENPS_701_60_To = busqueda('apbad006','ENPS_701_60',$newTo);
-  $ENPS_701_61_To = busqueda('apbad006','ENPS_701_61',$newTo);
-  $ENPS_701_62_To = busqueda('apbad006','ENPS_701_62',$newTo);
-
-  $ENPS_701_20_From = busqueda('apbad002','ENPS_701_20',$newFrom);
-  $ENPS_701_21_From = busqueda('apbad002','ENPS_701_21',$newFrom);
-  $ENPS_701_22_From = busqueda('apbad002','ENPS_701_22',$newFrom);
-  $ENPS_701_30_From = busqueda('apbad003','ENPS_701_30',$newFrom);
-  $ENPS_701_31_From = busqueda('apbad003','ENPS_701_31',$newFrom);
-  $ENPS_701_32_From = busqueda('apbad003','ENPS_701_32',$newFrom);
-  $ENPS_701_40_From = busqueda('apbad004','ENPS_701_40',$newFrom);
-  $ENPS_701_41_From = busqueda('apbad004','ENPS_701_41',$newFrom);
-  $ENPS_701_42_From = busqueda('apbad004','ENPS_701_42',$newFrom);
-  $ENPS_701_60_From = busqueda('apbad006','ENPS_701_60',$newFrom);
-  $ENPS_701_61_From = busqueda('apbad006','ENPS_701_61',$newFrom);
-  $ENPS_701_62_From = busqueda('apbad006','ENPS_701_62',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $ENPS_701_20_To = busquedaClonHoy('ENPS_701_20',$newToF,$newTo);
+    $ENPS_701_21_To = busquedaClonHoy('ENPS_701_21',$newToF,$newTo);
+    $ENPS_701_22_To = busquedaClonHoy('ENPS_701_22',$newToF,$newTo);
+    $ENPS_701_30_To = busquedaClonHoy('ENPS_701_30',$newToF,$newTo);
+    $ENPS_701_31_To = busquedaClonHoy('ENPS_701_31',$newToF,$newTo);
+    $ENPS_701_32_To = busquedaClonHoy('ENPS_701_32',$newToF,$newTo);
+    $ENPS_701_40_To = busquedaClonHoy('ENPS_701_40',$newToF,$newTo);
+    $ENPS_701_41_To = busquedaClonHoy('ENPS_701_41',$newToF,$newTo);
+    $ENPS_701_42_To = busquedaClonHoy('ENPS_701_42',$newToF,$newTo);
+    $ENPS_701_60_To = busquedaClonHoy('ENPS_701_60',$newToF,$newTo);
+    $ENPS_701_61_To = busquedaClonHoy('ENPS_701_61',$newToF,$newTo);
+    $ENPS_701_62_To = busquedaClonHoy('ENPS_701_62',$newToF,$newTo);
+  }else{
+    $ENPS_701_20_To = busquedaClon('ENPS_701_20',$newTo);
+    $ENPS_701_21_To = busquedaClon('ENPS_701_21',$newTo);
+    $ENPS_701_22_To = busquedaClon('ENPS_701_22',$newTo);
+    $ENPS_701_30_To = busquedaClon('ENPS_701_30',$newTo);
+    $ENPS_701_31_To = busquedaClon('ENPS_701_31',$newTo);
+    $ENPS_701_32_To = busquedaClon('ENPS_701_32',$newTo);
+    $ENPS_701_40_To = busquedaClon('ENPS_701_40',$newTo);
+    $ENPS_701_41_To = busquedaClon('ENPS_701_41',$newTo);
+    $ENPS_701_42_To = busquedaClon('ENPS_701_42',$newTo);
+    $ENPS_701_60_To = busquedaClon('ENPS_701_60',$newTo);
+    $ENPS_701_61_To = busquedaClon('ENPS_701_61',$newTo);
+    $ENPS_701_62_To = busquedaClon('ENPS_701_62',$newTo);
+  }
+  $ENPS_701_20_From = busquedaClon('ENPS_701_20',$newFrom);
+  $ENPS_701_21_From = busquedaClon('ENPS_701_21',$newFrom);
+  $ENPS_701_22_From = busquedaClon('ENPS_701_22',$newFrom);
+  $ENPS_701_30_From = busquedaClon('ENPS_701_30',$newFrom);
+  $ENPS_701_31_From = busquedaClon('ENPS_701_31',$newFrom);
+  $ENPS_701_32_From = busquedaClon('ENPS_701_32',$newFrom);
+  $ENPS_701_40_From = busquedaClon('ENPS_701_40',$newFrom);
+  $ENPS_701_41_From = busquedaClon('ENPS_701_41',$newFrom);
+  $ENPS_701_42_From = busquedaClon('ENPS_701_42',$newFrom);
+  $ENPS_701_60_From = busquedaClon('ENPS_701_60',$newFrom);
+  $ENPS_701_61_From = busquedaClon('ENPS_701_61',$newFrom);
+  $ENPS_701_62_From = busquedaClon('ENPS_701_62',$newFrom);
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
@@ -196,6 +190,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

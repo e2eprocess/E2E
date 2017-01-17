@@ -34,14 +34,16 @@ function busquedaHoy($CANAL,$FECHAF,$FECHAT,$KPI){
 
 function max_peti($CANAL){
   global $db_con;
-  $query="SELECT name,
-          MAX(valuemark) as max_peticiones,
-          datemark
-          FROM \"E2E\".watermark
-          WHERE name='".$CANAL."'
-          GROUP BY 1,3";
+  $query="SELECT A.datemark as fecha,
+          A.valuemark as max_peticiones
+          FROM \"E2E\".watermark A, \"E2E\".monitor B, \"E2E\".kpi C
+          WHERE B.name='".$CANAL."'
+          AND A.idmonitor = B.idmonitor
+          AND C.name = 'Throughput'
+          AND A.idkpi = C.idkpi
+          ORDER BY 2 DESC";
   $resultado = pg_query($db_con, $query);
   return $resultado;
 }
 
- ?>
+?>

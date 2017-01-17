@@ -4,7 +4,7 @@
   /* Query fecha menos 24 horas
   function busqueda($CANAL,$FECHA_QUERY){
     $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
+                                      tiempo_respuesta
                               FROM    seguimiento_cx_canal
                               WHERE   canal like '".$CANAL."'
                               AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
@@ -15,7 +15,7 @@
   /*query*/
   function busqueda($CANAL,$FECHA_QUERY){
     $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
+                                      tiempo_respuesta
                               FROM    seguimiento_cx_canal
                               WHERE   canal like '".$CANAL."'
                               AND     fecha like '".$FECHA_QUERY."%'");
@@ -50,17 +50,17 @@
 
   while($r1 = pg_fetch_assoc($ncocPasada)) {
         $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
       }
   while($r2 = pg_fetch_assoc($eeccPasada)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
 
   while($r3 = pg_fetch_assoc($ncocHoy)) {
-        $series3['data'][] = $r3['Tiempo_respuesta'];
+        $series3['data'][] = $r3['tiempo_respuesta'];
       }
   while($r4 = pg_fetch_assoc($eeccHoy)) {
-        $series4['data'][] = $r4['Tiempo_respuesta'];
+        $series4['data'][] = $r4['tiempo_respuesta'];
       }
 
   /*Carga del array del Json*/
@@ -74,6 +74,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

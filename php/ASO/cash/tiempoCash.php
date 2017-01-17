@@ -1,28 +1,8 @@
 <?php
   require_once("../../conexion_e2e_process.php");
+  require_once("../../querytime.php");
 
-    /* Query fecha menos 24 horas
-    function busqueda($CANAL,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                        Tiempo_respuesta
-                                FROM    seguimiento_cx_canal
-                                WHERE   canal like '".$CANAL."'
-                                AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                                AND     fecha <= '".$FECHA_QUERY."'");
-      return $resultado;
-    }*/
-
-    /*query*/
-    function busqueda($CANAL,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                        Tiempo_respuesta
-                                FROM    seguimiento_cx_canal
-                                WHERE   canal like '".$CANAL."'
-                                AND     fecha like '".$FECHA_QUERY."%'");
-      return $resultado;
-    }
-
-    /*Declaracion de arrays json*/
+  /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
   $series1 = array();
@@ -38,28 +18,37 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $gtHoy = busqueda('%gtCash%',$newTo);
-  $servicioHoy = busqueda('%ASOCash%',$newTo);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $gtHoy = busquedaHoy('gtCash%',$newToF,$newTo, 'Time');
+    $servicioHoy = busquedaHoy('ASOnetcash',$newToF,$newTo, 'Time');
+  }
+  else {
+    $gtHoy = busqueda('GTnetcash',$newTo, 'Time');
+    $servicioHoy = busqueda('ASOnetcash',$newTo, 'Time');
+  }
 
-  $gtPasada = busqueda('%gtCash%', $newFrom);
-  $servicioPasada = busqueda('%ASOCash%', $newFrom);
+  /*Declaración variables*/
+  $gtPasada = busqueda('GTnetcash', $newFrom, 'Time');
+  $servicioPasada = busqueda('ASOnetcash', $newFrom, 'Time');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
   while($r1 = pg_fetch_assoc($gtPasada)) {
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
         $category['data'][] = $r1['fecha'];
       }
   while($r2 = pg_fetch_assoc($servicioPasada)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
   while($r3 = pg_fetch_assoc($gtHoy)) {
-        $series3['data'][] = $r3['Tiempo_respuesta'];
+        $series3['data'][] = $r3['tiempo_respuesta'];
       }
   while($r4 = pg_fetch_assoc($servicioHoy)) {
-        $series4['data'][] = $r4['Tiempo_respuesta'];
+        $series4['data'][] = $r4['tiempo_respuesta'];
       }
 
   /*Carga del array del Json*/
@@ -73,6 +62,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>
