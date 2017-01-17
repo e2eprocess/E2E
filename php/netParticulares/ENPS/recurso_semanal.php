@@ -1,20 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    cpu,
-                                    memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -42,26 +28,20 @@ $series22 = array();
 $series23 = array();
 $series24 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$ENPS_701_20 = busqueda('apbad002','ENPS_701_20',$hoy);
-$ENPS_701_21 = busqueda('apbad002','ENPS_701_21',$hoy);
-$ENPS_701_22 = busqueda('apbad002','ENPS_701_22',$hoy);
-$ENPS_701_30 = busqueda('apbad003','ENPS_701_30',$hoy);
-$ENPS_701_31 = busqueda('apbad003','ENPS_701_31',$hoy);
-$ENPS_701_32 = busqueda('apbad003','ENPS_701_32',$hoy);
-$ENPS_701_40 = busqueda('apbad004','ENPS_701_40',$hoy);
-$ENPS_701_41 = busqueda('apbad004','ENPS_701_41',$hoy);
-$ENPS_701_42 = busqueda('apbad004','ENPS_701_42',$hoy);
-$ENPS_701_60 = busqueda('apbad006','ENPS_701_60',$hoy);
-$ENPS_701_61 = busqueda('apbad006','ENPS_701_61',$hoy);
-$ENPS_701_62 = busqueda('apbad006','ENPS_701_62',$hoy);
+$ENPS_701_20 = recursos('ENPS_701_20',$hoy,'40 days');
+$ENPS_701_21 = recursos('ENPS_701_21',$hoy,'40 days');
+$ENPS_701_22 = recursos('ENPS_701_22',$hoy,'40 days');
+$ENPS_701_30 = recursos('ENPS_701_30',$hoy,'40 days');
+$ENPS_701_31 = recursos('ENPS_701_31',$hoy,'40 days');
+$ENPS_701_32 = recursos('ENPS_701_32',$hoy,'40 days');
+$ENPS_701_40 = recursos('ENPS_701_40',$hoy,'40 days');
+$ENPS_701_41 = recursos('ENPS_701_41',$hoy,'40 days');
+$ENPS_701_42 = recursos('ENPS_701_42',$hoy,'40 days');
+$ENPS_701_60 = recursos('ENPS_701_60',$hoy,'40 days');
+$ENPS_701_61 = recursos('ENPS_701_61',$hoy,'40 days');
+$ENPS_701_62 = recursos('ENPS_701_62',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
