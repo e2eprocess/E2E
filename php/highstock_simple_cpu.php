@@ -3,8 +3,8 @@
 
   function busqueda($CANAL){
     $resultado = mysql_query("SELECT  (UNIX_TIMESTAMP(fecha) * 1000) as fecha,
-                                      tiempo_respuesta
-                              FROM    seguimiento_cx_canal
+                                      cpu
+                              FROM    seguimiento_cx_maquina
                               WHERE   canal = '".$CANAL."'");
     return $resultado;
   }
@@ -15,7 +15,7 @@
   $query = busqueda('apx');
 
   while($r1 = mysql_fetch_array($query)) {
-    $series1[] = [$r1['fecha'], $r1['tiempo_respuesta']];
+    $series1[] = [$r1['fecha'], $r1['cpu']];
     }
 
   array_push($datos,$series1);
