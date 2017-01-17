@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      memoria
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      memoria
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryMemoria.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -62,25 +40,36 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $ENPS_801_23_To = busqueda('apbad002','ENPS_801_23',$newTo);
-  $ENPS_801_24_To = busqueda('apbad002','ENPS_801_24',$newTo);
-  $ENPS_801_33_To = busqueda('apbad003','ENPS_801_33',$newTo);
-  $ENPS_801_34_To = busqueda('apbad003','ENPS_801_34',$newTo);
-  $ENPS_801_43_To = busqueda('apbad004','ENPS_801_43',$newTo);
-  $ENPS_801_44_To = busqueda('apbad004','ENPS_801_44',$newTo);
-  $ENPS_801_63_To = busqueda('apbad006','ENPS_801_63',$newTo);
-  $ENPS_801_64_To = busqueda('apbad006','ENPS_801_64',$newTo);
-
-  $ENPS_801_23_From = busqueda('apbad002','ENPS_801_23',$newFrom);
-  $ENPS_801_24_From = busqueda('apbad002','ENPS_801_24',$newFrom);
-  $ENPS_801_33_From = busqueda('apbad003','ENPS_801_33',$newFrom);
-  $ENPS_801_34_From = busqueda('apbad003','ENPS_801_34',$newFrom);
-  $ENPS_801_43_From = busqueda('apbad004','ENPS_801_43',$newFrom);
-  $ENPS_801_44_From = busqueda('apbad004','ENPS_801_44',$newFrom);
-  $ENPS_801_63_From = busqueda('apbad006','ENPS_801_63',$newFrom);
-  $ENPS_801_64_From = busqueda('apbad006','ENPS_801_64',$newFrom);
-
-
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $ENPS_801_23_To = busquedaClonHoy('ENPS_801_23',$newToF,$newTo);
+    $ENPS_801_24_To = busquedaClonHoy('ENPS_801_24',$newToF,$newTo);
+    $ENPS_801_33_To = busquedaClonHoy('ENPS_801_33',$newToF,$newTo);
+    $ENPS_801_34_To = busquedaClonHoy('ENPS_801_34',$newToF,$newTo);
+    $ENPS_801_43_To = busquedaClonHoy('ENPS_801_43',$newToF,$newTo);
+    $ENPS_801_44_To = busquedaClonHoy('ENPS_801_44',$newToF,$newTo);
+    $ENPS_801_63_To = busquedaClonHoy('ENPS_801_63',$newToF,$newTo);
+    $ENPS_801_64_To = busquedaClonHoy('ENPS_801_64',$newToF,$newTo);
+  }else{
+    $ENPS_801_23_To = busquedaClon('ENPS_801_23',$newTo);
+    $ENPS_801_24_To = busquedaClon('ENPS_801_24',$newTo);
+    $ENPS_801_33_To = busquedaClon('ENPS_801_33',$newTo);
+    $ENPS_801_34_To = busquedaClon('ENPS_801_34',$newTo);
+    $ENPS_801_43_To = busquedaClon('ENPS_801_43',$newTo);
+    $ENPS_801_44_To = busquedaClon('ENPS_801_44',$newTo);
+    $ENPS_801_63_To = busquedaClon('ENPS_801_63',$newTo);
+    $ENPS_801_64_To = busquedaClon('ENPS_801_64',$newTo);
+  }
+  $ENPS_801_23_From = busquedaClon('ENPS_801_23',$newFrom);
+  $ENPS_801_24_From = busquedaClon('ENPS_801_24',$newFrom);
+  $ENPS_801_33_From = busquedaClon('ENPS_801_33',$newFrom);
+  $ENPS_801_34_From = busquedaClon('ENPS_801_34',$newFrom);
+  $ENPS_801_43_From = busquedaClon('ENPS_801_43',$newFrom);
+  $ENPS_801_44_From = busquedaClon('ENPS_801_44',$newFrom);
+  $ENPS_801_63_From = busquedaClon('ENPS_801_63',$newFrom);
+  $ENPS_801_64_From = busquedaClon('ENPS_801_64',$newFrom);
+  
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 

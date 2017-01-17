@@ -1,5 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
+require_once '../../queryCpu.php';
 
 function busqueda($CANAL,$MAQUINA,$FECHA_QUERY){
 
@@ -26,19 +27,12 @@ $series6 = array();
 $series7 = array();
 $series8 = array();
 
-$minuto = 10;
+$hoy = date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$apbad022 = busqueda('cash','apbad022',$hoy);
-$apbad023 = busqueda('cash','apbad023',$hoy);
-$apbad024 = busqueda('cash','apbad024',$hoy);
-$apbad026 = busqueda('cash','apbad026',$hoy);
-
+$apbad022 = visionMaquina('apbad022',$hoy,'40 days');
+$apbad023 = visionMaquina('apbad023',$hoy,'40 days');
+$apbad024 = visionMaquina('apbad024',$hoy,'40 days');
+$apbad026 = visionMaquina('apbad026',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 

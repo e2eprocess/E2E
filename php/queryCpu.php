@@ -60,4 +60,20 @@ function busquedaClonHoy($CLON,$FECHAF,$FECHAT){
   return $resultado;
 }
 
+function visionMaquina($MAQUINA,$FECHA,$INTERVALO){
+  global $db_con;
+  $query="SELECT to_char(B.timedata,'dd/mm/yy HH24') as fecha,
+		            B.datavalue as cpu
+          FROM \"E2E\".host A, \"E2E\".hostdata B, \"E2E\".kpi C
+          WHERE A.name = '".$MAQUINA."'
+            AND B.timedata > (DATE'".$FECHA."' - INTERVAL '".$INTERVALO."')
+            AND B.timedata <= (DATE'".$FECHA."')
+            AND C.name = 'CPU'
+            AND B.idkpi = c.idkpi
+            AND A.idhost = B.idhost
+          ORDER BY b.timedata asc";
+  $resultado = pg_query($db_con, $query);
+  return $resultado;
+}
+
 ?>

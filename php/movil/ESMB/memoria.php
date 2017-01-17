@@ -1,28 +1,6 @@
 <?php
   require_once("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      memoria
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      memoria
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../queryMemoria.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -62,25 +40,35 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  /*Declaración variables*/
-  $ESMB_S02_25_To = busqueda('apbad002','ESMB_S02_25',$newTo);
-  $ESMB_S02_26_To = busqueda('apbad002','ESMB_S02_26',$newTo);
-  $ESMB_S02_35_To = busqueda('apbad003','ESMB_S02_35',$newTo);
-  $ESMB_S02_36_To = busqueda('apbad003','ESMB_S02_36',$newTo);
-  $ESMB_S02_45_To = busqueda('apbad004','ESMB_S02_45',$newTo);
-  $ESMB_S02_46_To = busqueda('apbad004','ESMB_S02_46',$newTo);
-  $ESMB_S02_65_To = busqueda('apbad006','ESMB_S02_65',$newTo);
-  $ESMB_S02_66_To = busqueda('apbad006','ESMB_S02_66',$newTo);
-
-  $ESMB_S02_25_From = busqueda('apbad002','ESMB_S02_25',$newFrom);
-  $ESMB_S02_26_From = busqueda('apbad002','ESMB_S02_26',$newFrom);
-  $ESMB_S02_35_From = busqueda('apbad003','ESMB_S02_35',$newFrom);
-  $ESMB_S02_36_From = busqueda('apbad003','ESMB_S02_36',$newFrom);
-  $ESMB_S02_45_From = busqueda('apbad004','ESMB_S02_45',$newFrom);
-  $ESMB_S02_46_From = busqueda('apbad004','ESMB_S02_46',$newFrom);
-  $ESMB_S02_65_From = busqueda('apbad006','ESMB_S02_65',$newFrom);
-  $ESMB_S02_66_From = busqueda('apbad006','ESMB_S02_66',$newFrom);
-
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $ESMB_S02_25_To = busquedaClonHoy('ESMB_S02_25',$newToF,$newTo);
+    $ESMB_S02_26_To = busquedaClonHoy('ESMB_S02_26',$newToF,$newTo);
+    $ESMB_S02_35_To = busquedaClonHoy('ESMB_S02_35',$newToF,$newTo);
+    $ESMB_S02_36_To = busquedaClonHoy('ESMB_S02_36',$newToF,$newTo);
+    $ESMB_S02_45_To = busquedaClonHoy('ESMB_S02_45',$newToF,$newTo);
+    $ESMB_S02_46_To = busquedaClonHoy('ESMB_S02_46',$newToF,$newTo);
+    $ESMB_S02_65_To = busquedaClonHoy('ESMB_S02_65',$newToF,$newTo);
+    $ESMB_S02_66_To = busquedaClonHoy('ESMB_S02_66',$newToF,$newTo);
+  }else {
+    $ESMB_S02_25_To = busquedaClon('ESMB_S02_25',$newTo);
+    $ESMB_S02_26_To = busquedaClon('ESMB_S02_26',$newTo);
+    $ESMB_S02_35_To = busquedaClon('ESMB_S02_35',$newTo);
+    $ESMB_S02_36_To = busquedaClon('ESMB_S02_36',$newTo);
+    $ESMB_S02_45_To = busquedaClon('ESMB_S02_45',$newTo);
+    $ESMB_S02_46_To = busquedaClon('ESMB_S02_46',$newTo);
+    $ESMB_S02_65_To = busquedaClon('ESMB_S02_65',$newTo);
+    $ESMB_S02_66_To = busquedaClon('ESMB_S02_66',$newTo);
+  }
+  $ESMB_S02_25_From = busquedaClon('ESMB_S02_25',$newFrom);
+  $ESMB_S02_26_From = busquedaClon('ESMB_S02_26',$newFrom);
+  $ESMB_S02_35_From = busquedaClon('ESMB_S02_35',$newFrom);
+  $ESMB_S02_36_From = busquedaClon('ESMB_S02_36',$newFrom);
+  $ESMB_S02_45_From = busquedaClon('ESMB_S02_45',$newFrom);
+  $ESMB_S02_46_From = busquedaClon('ESMB_S02_46',$newFrom);
+  $ESMB_S02_65_From = busquedaClon('ESMB_S02_65',$newFrom);
+  $ESMB_S02_66_From = busquedaClon('ESMB_S02_66',$newFrom);
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";

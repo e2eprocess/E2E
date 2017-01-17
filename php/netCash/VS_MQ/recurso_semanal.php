@@ -1,20 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($CANAL,$MAQUINA,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    cpu
-                                    /*cpu_avg*/
-                            FROM    seguimiento_cx_maquina
-                            WHERE   canal = '".$CANAL."'
-                            AND     maquina = '".$MAQUINA."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-
-  return $resultado;
-
-}
+require_once '../../queryCpu.php';
 
 $category = array();
 $series1 = array();
@@ -26,19 +12,12 @@ $series6 = array();
 $series7 = array();
 $series8 = array();
 
-$minuto = 10;
+$hoy = date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$apbad022 = busqueda('cash','apbad022',$hoy);
-$apbad023 = busqueda('cash','apbad023',$hoy);
-$apbad024 = busqueda('cash','apbad024',$hoy);
-$apbad026 = busqueda('cash','apbad026',$hoy);
-
+$apbad022 = visionMaquina('apbad022',$hoy,'10 days');
+$apbad023 = visionMaquina('apbad023',$hoy,'10 days');
+$apbad024 = visionMaquina('apbad024',$hoy,'10 days');
+$apbad026 = visionMaquina('apbad026',$hoy,'10 days');
 
 $category['name'] = 'fecha';
 
