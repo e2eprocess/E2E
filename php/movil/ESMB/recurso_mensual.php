@@ -1,22 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(cpu) as cpu,
-                                    avg(memoria) as memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY dia
-                            ORDER BY fecha");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -44,55 +28,49 @@ $series22 = array();
 $series23 = array();
 $series24 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$ESMB_S01_25 = busqueda('apbad002','ESMB_S01_25',$hoy);
-$ESMB_S01_26 = busqueda('apbad002','ESMB_S01_26',$hoy);
-$ESMB_S01_35 = busqueda('apbad003','ESMB_S01_35',$hoy);
-$ESMB_S01_36 = busqueda('apbad003','ESMB_S01_36',$hoy);
-$ESMB_S01_45 = busqueda('apbad004','ESMB_S01_45',$hoy);
-$ESMB_S01_46 = busqueda('apbad004','ESMB_S01_46',$hoy);
-$ESMB_S01_65 = busqueda('apbad006','ESMB_S01_65',$hoy);
-$ESMB_S01_66 = busqueda('apbad006','ESMB_S01_66',$hoy);
+$ESMB_S02_25 = recursos('ESMB_S02_25',$hoy,'40 days');
+$ESMB_S02_26 = recursos('ESMB_S02_26',$hoy,'40 days');
+$ESMB_S02_35 = recursos('ESMB_S02_35',$hoy,'40 days');
+$ESMB_S02_36 = recursos('ESMB_S02_36',$hoy,'40 days');
+$ESMB_S02_45 = recursos('ESMB_S02_45',$hoy,'40 days');
+$ESMB_S02_46 = recursos('ESMB_S02_46',$hoy,'40 days');
+$ESMB_S02_65 = recursos('ESMB_S02_65',$hoy,'40 days');
+$ESMB_S02_66 = recursos('ESMB_S02_66',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
-while($r1  = pg_fetch_assoc($ESMB_S01_25)) {
+while($r1  = pg_fetch_assoc($ESMB_S02_25)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
-while($r2  = pg_fetch_assoc($ESMB_S01_26)) {
+while($r2  = pg_fetch_assoc($ESMB_S02_26)) {
       $series3['data'][] = $r2['cpu'];
       $series4['data'][] = $r2['memoria'];
     }
-while($r4  = pg_fetch_assoc($ESMB_S01_35)) {
+while($r4  = pg_fetch_assoc($ESMB_S02_35)) {
       $series5['data'][] = $r4['cpu'];
       $series6['data'][] = $r4['memoria'];
     }
-while($r5  = pg_fetch_assoc($ESMB_S01_36)) {
+while($r5  = pg_fetch_assoc($ESMB_S02_36)) {
       $series7['data'][] = $r5['cpu'];
       $series8['data'][] = $r5['memoria'];
     }
-while($r7  = pg_fetch_assoc($ESMB_S01_45)) {
+while($r7  = pg_fetch_assoc($ESMB_S02_45)) {
       $series9['data'][] = $r7['cpu'];
       $series10['data'][] = $r7['memoria'];
     }
-while($r8  = pg_fetch_assoc($ESMB_S01_46)) {
+while($r8  = pg_fetch_assoc($ESMB_S02_46)) {
       $series11['data'][] = $r8['cpu'];
       $series12['data'][] = $r8['memoria'];
     }
-while($r10  = pg_fetch_assoc($ESMB_S01_65)) {
+while($r10  = pg_fetch_assoc($ESMB_S02_65)) {
       $series13['data'][] = $r10['cpu'];
       $series14['data'][] = $r10['memoria'];
     }
-while($r11  = pg_fetch_assoc($ESMB_S01_66)) {
+while($r11  = pg_fetch_assoc($ESMB_S02_66)) {
       $series15['data'][] = $r11['cpu'];
       $series16['data'][] = $r11['memoria'];
     }

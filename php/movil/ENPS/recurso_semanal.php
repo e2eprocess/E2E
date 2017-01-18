@@ -1,20 +1,7 @@
+
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    cpu,
-                                    memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -42,29 +29,23 @@ $series22 = array();
 $series23 = array();
 $series24 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$ENPS_801_23 = busqueda('apbad002','ENPS_801_23',$hoy);
-$ENPS_801_24 = busqueda('apbad002','ENPS_801_24',$hoy);
-$ENPS_801_33 = busqueda('apbad003','ENPS_801_33',$hoy);
-$ENPS_801_34 = busqueda('apbad003','ENPS_801_34',$hoy);
-$ENPS_801_43 = busqueda('apbad004','ENPS_801_43',$hoy);
-$ENPS_801_44 = busqueda('apbad004','ENPS_801_44',$hoy);
-$ENPS_801_63 = busqueda('apbad006','ENPS_801_63',$hoy);
-$ENPS_801_64 = busqueda('apbad006','ENPS_801_64',$hoy);
+$ENPS_801_23 = recursos('ENPS_801_23',$hoy,'10 days');
+$ENPS_801_24 = recursos('ENPS_801_24',$hoy,'10 days');
+$ENPS_801_33 = recursos('ENPS_801_33',$hoy,'10 days');
+$ENPS_801_34 = recursos('ENPS_801_34',$hoy,'10 days');
+$ENPS_801_43 = recursos('ENPS_801_43',$hoy,'10 days');
+$ENPS_801_44 = recursos('ENPS_801_44',$hoy,'10 days');
+$ENPS_801_63 = recursos('ENPS_801_63',$hoy,'10 days');
+$ENPS_801_64 = recursos('ENPS_801_64',$hoy,'10 days');
 
 $category['name'] = 'fecha';
 
 while($r1  = pg_fetch_assoc($ENPS_801_23)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
 while($r2  = pg_fetch_assoc($ENPS_801_24)) {
       $series3['data'][] = $r2['cpu'];

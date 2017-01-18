@@ -1,22 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(cpu) as cpu,
-                                    avg(memoria) as memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY  dia
-                            ORDER BY  fecha");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -36,22 +20,16 @@ $series14 = array();
 $series15 = array();
 $series16 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$KYOP_S01_10 = busqueda('apbad022','KYOP_S01_10',$hoy);
-$KYOP_S01_11 = busqueda('apbad022','KYOP_S01_11',$hoy);
-$KYOP_S01_20 = busqueda('apbad023','KYOP_S01_20',$hoy);
-$KYOP_S01_21 = busqueda('apbad023','KYOP_S01_21',$hoy);
-$KYOP_S01_30 = busqueda('apbad024','KYOP_S01_30',$hoy);
-$KYOP_S01_31 = busqueda('apbad024','KYOP_S01_31',$hoy);
-$KYOP_S01_40 = busqueda('apbad026','KYOP_S01_40',$hoy);
-$KYOP_S01_41 = busqueda('apbad026','KYOP_S01_41',$hoy);
+$KYOP_S01_10 = recursos('KYOP_S01_10',$hoy,'40 days');
+$KYOP_S01_11 = recursos('KYOP_S01_11',$hoy,'40 days');
+$KYOP_S01_20 = recursos('KYOP_S01_20',$hoy,'40 days');
+$KYOP_S01_21 = recursos('KYOP_S01_21',$hoy,'40 days');
+$KYOP_S01_30 = recursos('KYOP_S01_30',$hoy,'40 days');
+$KYOP_S01_31 = recursos('KYOP_S01_31',$hoy,'40 days');
+$KYOP_S01_40 = recursos('KYOP_S01_40',$hoy,'40 days');
+$KYOP_S01_41 = recursos('KYOP_S01_41',$hoy,'40 days');
 
 
 $category['name'] = 'fecha';
@@ -59,7 +37,7 @@ $category['name'] = 'fecha';
 while($r1  = pg_fetch_assoc($KYOP_S01_10)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
 while($r2  = pg_fetch_assoc($KYOP_S01_11)) {
       $series3['data'][] = $r2['cpu'];

@@ -1,19 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($CANAL,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    tiempo_respuesta,
-                                    peticiones
-                            FROM    seguimiento_cx_canal
-                            WHERE   canal like '".$CANAL."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 10 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -21,15 +8,9 @@ $series2 = array();
 $series3 = array();
 $series4 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$servicing = busqueda('enps%servicing%',$hoy);
+$servicing = aplicacion('enps_mult_web_movil',$hoy,'10 days');
 
 $category['name'] = 'fecha';
 

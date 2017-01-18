@@ -19,12 +19,12 @@
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
     $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-    $servicingHoy = busquedaHoy('enps_mult_web_movil',$newToF,$newTo, 'Time');
+    $servicingHoy = busquedaHoy('enps_mult_web_net',$newToF,$newTo, 'Time');
   }
   else {
-    $servicingHoy = busqueda('enps_mult_web_movil',$newTo, 'Time');
+    $servicingHoy = busqueda('enps_mult_web_net',$newTo, 'Time');
   }
-  $servicingPasada = busqueda('enps_mult_web_movil',$newFrom, 'Time');
+  $servicingPasada = busqueda('enps_mult_web_net',$newFrom, 'Time');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';

@@ -1,22 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(cpu) as cpu,
-                                    avg(memoria) as memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY dia
-                            ORDER BY fecha");
-
-  return $resultado;
-
-}
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -44,33 +28,27 @@ $series22 = array();
 $series23 = array();
 $series24 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$ENPP_501_20 = busqueda('apbad002','ENPP_501_20',$hoy);
-$ENPP_501_21 = busqueda('apbad002','ENPP_501_21',$hoy);
-$ENPP_501_22 = busqueda('apbad002','ENPP_501_22',$hoy);
-$ENPP_501_30 = busqueda('apbad003','ENPP_501_30',$hoy);
-$ENPP_501_31 = busqueda('apbad003','ENPP_501_31',$hoy);
-$ENPP_501_32 = busqueda('apbad003','ENPP_501_32',$hoy);
-$ENPP_501_40 = busqueda('apbad004','ENPP_501_40',$hoy);
-$ENPP_501_41 = busqueda('apbad004','ENPP_501_41',$hoy);
-$ENPP_501_42 = busqueda('apbad004','ENPP_501_42',$hoy);
-$ENPP_501_60 = busqueda('apbad006','ENPP_501_60',$hoy);
-$ENPP_501_61 = busqueda('apbad006','ENPP_501_61',$hoy);
-$ENPP_501_62 = busqueda('apbad006','ENPP_501_62',$hoy);
+$ENPP_501_20 = recursos('ENPP_501_20',$hoy,'40 days');
+$ENPP_501_21 = recursos('ENPP_501_21',$hoy,'40 days');
+$ENPP_501_22 = recursos('ENPP_501_22',$hoy,'40 days');
+$ENPP_501_30 = recursos('ENPP_501_30',$hoy,'40 days');
+$ENPP_501_31 = recursos('ENPP_501_31',$hoy,'40 days');
+$ENPP_501_32 = recursos('ENPP_501_32',$hoy,'40 days');
+$ENPP_501_40 = recursos('ENPP_501_40',$hoy,'40 days');
+$ENPP_501_41 = recursos('ENPP_501_41',$hoy,'40 days');
+$ENPP_501_42 = recursos('ENPP_501_42',$hoy,'40 days');
+$ENPP_501_60 = recursos('ENPP_501_60',$hoy,'40 days');
+$ENPP_501_61 = recursos('ENPP_501_61',$hoy,'40 days');
+$ENPP_501_62 = recursos('ENPP_501_62',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
 while($r1  = pg_fetch_assoc($ENPP_501_20)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
 while($r2  = pg_fetch_assoc($ENPP_501_21)) {
       $series3['data'][] = $r2['cpu'];

@@ -30,18 +30,18 @@ $series24 = array();
 
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-$ENPS_701_20 = recursos('ENPS_701_20',$hoy,'40 days');
-$ENPS_701_21 = recursos('ENPS_701_21',$hoy,'40 days');
-$ENPS_701_22 = recursos('ENPS_701_22',$hoy,'40 days');
-$ENPS_701_30 = recursos('ENPS_701_30',$hoy,'40 days');
-$ENPS_701_31 = recursos('ENPS_701_31',$hoy,'40 days');
-$ENPS_701_32 = recursos('ENPS_701_32',$hoy,'40 days');
-$ENPS_701_40 = recursos('ENPS_701_40',$hoy,'40 days');
-$ENPS_701_41 = recursos('ENPS_701_41',$hoy,'40 days');
-$ENPS_701_42 = recursos('ENPS_701_42',$hoy,'40 days');
-$ENPS_701_60 = recursos('ENPS_701_60',$hoy,'40 days');
-$ENPS_701_61 = recursos('ENPS_701_61',$hoy,'40 days');
-$ENPS_701_62 = recursos('ENPS_701_62',$hoy,'40 days');
+$ENPS_701_20 = recursos('ENPS_701_20',$hoy,'10 days');
+$ENPS_701_21 = recursos('ENPS_701_21',$hoy,'10 days');
+$ENPS_701_22 = recursos('ENPS_701_22',$hoy,'10 days');
+$ENPS_701_30 = recursos('ENPS_701_30',$hoy,'10 days');
+$ENPS_701_31 = recursos('ENPS_701_31',$hoy,'10 days');
+$ENPS_701_32 = recursos('ENPS_701_32',$hoy,'10 days');
+$ENPS_701_40 = recursos('ENPS_701_40',$hoy,'10 days');
+$ENPS_701_41 = recursos('ENPS_701_41',$hoy,'10 days');
+$ENPS_701_42 = recursos('ENPS_701_42',$hoy,'10 days');
+$ENPS_701_60 = recursos('ENPS_701_60',$hoy,'10 days');
+$ENPS_701_61 = recursos('ENPS_701_61',$hoy,'10 days');
+$ENPS_701_62 = recursos('ENPS_701_62',$hoy,'10 days');
 
 $category['name'] = 'fecha';
 
