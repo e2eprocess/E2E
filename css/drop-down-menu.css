@@ -4,18 +4,18 @@
 	padding:0;
 	margin:0;
 	text-align: center;
-	height: 45px;
+	height: 2em;
 }
 #menuPlantilla li {
 	float:left;
 	position:relative;
-	line-height:4.5em;
+	line-height:2em;
 	width:10em;
 }
 
 #menuPlantilla li ul {
 	position:absolute;
-	margin-top:-1em;
+	margin-top:0em;
 	margin-left:.5em; /* for IE */
 	display:none;
 }
@@ -30,8 +30,8 @@
 
 
 #menuPlantilla ul li ul {
-	margin-top:-3em;
-	margin-left:12em;
+	margin-top:-1.5em;
+	margin-left:15.7em;
 }
 /* ******************************************************************* */
 /* SHOW SUBmenuPlantilla  1 */

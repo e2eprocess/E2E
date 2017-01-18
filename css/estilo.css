@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 #cabecera {
@@ -34,7 +34,7 @@ body {
 }
 
 #submenu {
-  padding-top: 115px;
+  padding-top: 2.5em;
   /*padding-top: 65px;*/
   padding-right: 25px;
   float: rigth;
