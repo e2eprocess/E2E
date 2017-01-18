@@ -6,7 +6,7 @@
 		<link rel="Stylesheet" type="text/css" href="css/estilo.css">
 		<link rel="stylesheet" type="text/css" href="css/tablas.css">
 		<link rel="Stylesheet" type="text/css" href="css/menu.css">
-    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.css">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/APX/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="js/APX/peticiones.js"></script>
