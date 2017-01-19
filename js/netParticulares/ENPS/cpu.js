@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
+            },
+            max: 100
           }],
           tooltip: {
               shared: true
@@ -52,129 +53,53 @@ $(document).ready(function() {
                   states : {
                     hover: {enabled: true}
                   }
-                }
+                },
+                stacking: 'normal'
+              },
+              column: {
+                stacking: 'normal'
               }
           },
 
           /*series: []*/
           series: [{
-            name: 'apbad002_enps_701_20 (F)',
+            name: 'apbad002 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (F)',
+            name: 'apbad003 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (F)',
+            name: 'apbad004 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_30 (F)',
+            name: 'apbad006 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003_enps_701_31 (F)',
-            color: 'rgba(80,209,250,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad003_enps_701_32 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_40 (F)',
-            color: 'rgba(4,38,253,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_41 (F)',
-            color: 'rgba(4,129,255,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_42 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_60 (F)',
-            color: 'rgba(95,173,251,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_61 (F)',
-            color: 'rgba(80,209,250,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_62 (F)',
-            color: 'rgba(49,4,247,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'apbad002_enps_701_20 (T)',
+            name: 'apbad002 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_21 (T)',
+            name: 'apbad003 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad002_enps_701_22 (T)',
+            name: 'apbad004 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003_enps_701_30 (T)',
+            name: 'apbad006 (T)',
             color: 'rgba(95,173,251,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad003_enps_701_31 (T)',
-            color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad003_enps_701_32 (T)',
-            color: 'rgba(49,4,247,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_40 (T)',
-            color: 'rgba(4,38,253,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_41 (T)',
-            color: 'rgba(4,129,255,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad004_enps_701_42 (T)',
-            color: 'rgba(49,4,247,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_60 (T)',
-            color: 'rgba(95,173,251,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_61 (T)',
-            color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'apbad006_enps_701_62 (T)',
-            color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           }]
@@ -190,23 +115,7 @@ $(document).ready(function() {
         options.series[5].data = json[6]['data'];
         options.series[6].data = json[7]['data'];
         options.series[7].data = json[8]['data'];
-        options.series[8].data = json[9]['data'];
-        options.series[9].data = json[10]['data'];
-        options.series[10].data = json[11]['data'];
-        options.series[11].data = json[12]['data'];
-        options.series[12].data = json[13]['data'];
-        options.series[13].data = json[14]['data'];
-        options.series[14].data = json[15]['data'];
-        options.series[15].data = json[16]['data'];
-        options.series[16].data = json[17]['data'];
-        options.series[17].data = json[18]['data'];
-        options.series[18].data = json[19]['data'];
-        options.series[19].data = json[20]['data'];
-        options.series[20].data = json[21]['data'];
-        options.series[21].data = json[22]['data'];
-        options.series[22].data = json[23]['data'];
-        options.series[23].data = json[24]['data'];
-        options.subtitle.text = json[25]['text'];
+        options.subtitle.text = json[9]['text'];
 
         chart = new Highcharts.Chart(options);
       });

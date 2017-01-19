@@ -69,13 +69,13 @@ $(document).ready(function() {
           /*series: []*/
           series: [{
             name: 'enps_mult_web_servicing_01 (F)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
             name: 'enps_mult_web_servicing_01 (T)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
           }]

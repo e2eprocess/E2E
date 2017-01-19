@@ -20,25 +20,42 @@ function recursos($CLON,$FECHA,$INTERVALO){
   return $resultado;
 }
 
-function aplicacion($CLON,$FECHA,$INTERVALO){
+function tiempo($MONITOR,$FECHA,$INTERVALO){
   global $db_con;
-  $query="SELECT *
-          FROM \"E2E\".crosstab('SELECT to_char(date_trunc(''hour'', B.timedata),''dd/mm/yy hh24'') as fecha,
-					     c.name as nombre,
-               avg(B.datavalue) as valor
+  $query="SELECT to_char(date_trunc('hour', B.timedata),'dd/mm/yy hh24') as fecha,
+			   c.name as nombre,
+         avg(B.datavalue)::DECIMAL(10,2) as tiempo_respuesta
           FROM \"E2E\".monitor A, \"E2E\".monitordata B, \"E2E\".kpi C
-          WHERE A.name = ''".$CLON."''
-            AND B.timedata > (TIMESTAMP''".$FECHA."'' - INTERVAL ''".$INTERVALO."'')
-            AND B.timedata <= (TIMESTAMP''".$FECHA."'')
-            AND C.name in (''Throughput'', ''Time'')
+          WHERE A.name = '".$MONITOR."'
+            AND B.timedata > (TIMESTAMP'".$FECHA."' - INTERVAL '".$INTERVALO."')
+            AND B.timedata <= (TIMESTAMP'".$FECHA."')
+            AND C.name = 'Time'
             AND B.idkpi = c.idkpi
             AND A.idmonitor = B.idmonitor
             GROUP BY 1,2
-          ORDER BY 1,2 asc')
-	           AS recursos(fecha TEXT, peticiones NUMERIC, tiempo_respuesta NUMERIC)";
+          ORDER BY 1,2 asc";
   $resultado = pg_query($db_con, $query);
   return $resultado;
 }
+
+function peticiones($MONITOR,$FECHA,$INTERVALO){
+  global $db_con;
+  $query="SELECT to_char(date_trunc('hour', B.timedata),'dd/mm/yy hh24') as fecha,
+			   c.name as nombre,
+         sum(B.datavalue)::DECIMAL(10,2) as peticiones
+          FROM \"E2E\".monitor A, \"E2E\".monitordata B, \"E2E\".kpi C
+          WHERE A.name = '".$MONITOR."'
+            AND B.timedata > (TIMESTAMP'".$FECHA."' - INTERVAL '".$INTERVALO."')
+            AND B.timedata <= (TIMESTAMP'".$FECHA."')
+            AND C.name = 'Throughput'
+            AND B.idkpi = c.idkpi
+            AND A.idmonitor = B.idmonitor
+            GROUP BY 1,2
+          ORDER BY 1,2 asc";
+  $resultado = pg_query($db_con, $query);
+  return $resultado;
+}
+
 
 
 

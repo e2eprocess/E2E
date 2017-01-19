@@ -10,19 +10,25 @@ $series4 = array();
 
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-$frontusuario = aplicacion('kygu_mult_web_frontusuario',$hoy,'40 days');
-$serviciosusuario = aplicacion('kygu_mult_web_serviciosusuario',$hoy,'40 days');
+$frontusuarioTime = tiempo('kygu_mult_web_frontusuario',$hoy,'40 days');
+$serviciosusuarioTime = tiempo('kygu_mult_web_serviciosusuario',$hoy,'40 days');
+$frontusuarioPeti = peticiones('kygu_mult_web_frontusuario',$hoy,'40 days');
+$serviciosusuarioPeti = peticiones('kygu_mult_web_serviciosusuario',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
-while($r1  = pg_fetch_assoc($frontusuario)) {
+while($r1  = pg_fetch_assoc($frontusuarioTime)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
-      $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['fecha'];
     }
-while($r2  = pg_fetch_assoc($serviciosusuario)) {
-      $series3['data'][] = $r2['tiempo_respuesta'];
-      $series4['data'][] = $r2['peticiones'];
+    while($r2  = pg_fetch_assoc($frontusuarioPeti)) {
+      $series2['data'][] = $r2['peticiones'];
+    }
+while($r3  = pg_fetch_assoc($serviciosusuarioTime)) {
+      $series3['data'][] = $r3['tiempo_respuesta'];
+    }
+while($r4  = pg_fetch_assoc($serviciosusuarioPeti)) {
+      $series4['data'][] = $r4['peticiones'];
     }
 
 

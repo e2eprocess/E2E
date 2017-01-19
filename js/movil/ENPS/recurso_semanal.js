@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
+            },
+            max: 100
           },{ //Peticiones
             labels: {
               format: '{value} %'
@@ -36,12 +37,14 @@ $(document).ready(function() {
             title: {
               text: 'Memoria'
             },
-            opposite: true
+            opposite: true,
+            max: 100
           }],
           tooltip: {
               shared: true
           },
           legend: {
+              enabled: false,
               layout: 'horizontal',
               align: 'center',
               verticalAlign: 'bottom',
@@ -208,7 +211,7 @@ $(document).ready(function() {
         options.series[13].data = json[14]['data'];
         options.series[14].data = json[15]['data'];
         options.series[15].data = json[16]['data'];
-        
+
         chart = new Highcharts.Chart(options);
       });
   });

@@ -68,13 +68,13 @@ $(document).ready(function() {
           /*series: []*/
           series: [{
             name: 'enpp_mult_web_mobility_02 (F)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
             name: 'enpp_mult_web_mobility_02 (T)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
           }]

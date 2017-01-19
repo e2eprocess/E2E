@@ -42,14 +42,7 @@ $(document).ready(function() {
               shared: true
           },
           legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom',
-              borderWidth: 1,
-              itemStyle:{
-                  fontSize: "10px"
-                }
-
+              enabled : false
           },
           plotOptions: {
               line: {

@@ -3,9 +3,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link rel="Stylesheet" type="text/css" href="../css/estilo.css">
-		<link rel="stylesheet" type="text/css" href="../css/tablas.css">
-		<link rel="Stylesheet" type="text/css" href="../css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/ASO/movil/tiempo.js"></script>
@@ -13,6 +10,12 @@
 		<script type="text/javascript" src="../js/ASO/movil/cpu.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<script type="text/javascript">
+				$(function(){
+						// Indica el nombre del archivo a cargar
+						$("#incluirPagina").load("/E2E/reporting/html/menu.html");
+				});
+		</script>
 	</head>
 	<body>
 		<header id="menu-header">
@@ -20,45 +23,12 @@
 					<div id="logo"><h>E2E -	Performance management</h></br>
 						Informe seguimiento
 			</div>
-
-			<!-- MENÚ -->
-			<nav>
-				<ul class="menu">
-					<li><a href="../net_particulares.php">Net Particulares</a>
-					</li>
-					<li><a href="../net_cash.php">NetCash</a>
-						<ul>
-							<li><a href="../net_cash/KYOP.php">KYOP-Portal</a></li>
-							<li><a href="../net_cash/KYGU.php">KYGU-Perfilado de usuarios</a></li>
-							<li><a href="../net_cash/KYOS.php">KYOS-Gestión de saldos</a></li>
-							<li><a href="../net_cash/KYFB.php">KYFB-Módulo de firmas</a></li>
-							<li><a href="../net_cash/vision_maquina.php">Visión máquina</a></li>
-						</ul>
-					</li>
-					<li><a href="../movil.php">Móvil</a>
-					</li>
-					<li><a>Oficinas</a>
-						<ul>
-							<li><a href="../oficinas/EECC.php">Escenario comerciales</a></li>
-							<li><a href="../oficinas/NCOC.php">Objeto cliente</a></li>
-						</ul>
-					</li>
-					<li><a>ASO</a>
-						<ul>
-							<li><a href="particulares.php">Net Particulares</a></li>
-							<li><a href="cash.php">Net Cash</a></li>
-							<li><a href="movil.php">Móvil</a></li>
-							<li><a href="oficinas.php">Oficinas</a></li>
-						</ul>
-					</li>
-					<li><a href="../APX.php">APX</a></li>
-				</ul>
-			</nav>
+			<div id="incluirPagina"></div>
 		</header>
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Seguimiento </span> | <span class="desactivo">Informe</span> </div>
+			<div id="submenu"> <span class="activo">Comparativa</span></div>
 			<header>ASO - Móvil</header>
 
 			<!-- Formulario gestión fechas -->

@@ -3,12 +3,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/netCash/KYFB/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYFB/peticiones.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYFB/cpu.js"></script>
-    <script type="text/javascript" src="../js/netCash/KYFB/memoria.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/ASO/oficinas/tiempo.js"></script>
+		<script type="text/javascript" src="../js/ASO/oficinas/peticiones.js"></script>
+		<script type="text/javascript" src="../js/ASO/oficinas/cpu.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
@@ -29,9 +28,9 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Comparativa </span> | <a href="KYFB_informe.php">Informe</a> </div>
+			<div id="submenu"> <span class="activo">Comparativa</span></div>
+			<header>ASO - Oficinas</header>
 
-			<header>KYFB - Módulo de firmas</header>
 			<!-- Formulario gestión fechas -->
 			<?php include("../php/fechaToFrom.php"); ?>
 			<form id="comparador" action='' method='post'>
@@ -48,11 +47,11 @@
 
 			<!-- Dashboard métricas -->
 			<fieldset>
-				<div id="tiempoRespuesta" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div id="peticiones" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="tiempo" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
 				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="memoria" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+
 			</fieldset>
 		</section>
 	</body>

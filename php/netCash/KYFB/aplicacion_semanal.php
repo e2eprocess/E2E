@@ -10,19 +10,25 @@ $series4 = array();
 
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-$firmas = aplicacion('kyfb_mult_web_firmas',$hoy,'10 days');
-$kyfbws = aplicacion('kyfb_mult_web_kyfbws',$hoy,'10 days');
+$firmasTime = tiempo('kyfb_mult_web_firmas',$hoy,'10 days');
+$kyfbwsTime = tiempo('kyfb_mult_web_kyfbws',$hoy,'10 days');
+$firmasPeti = peticiones('kyfb_mult_web_firmas',$hoy,'10 days');
+$kyfbwsPeti = peticiones('kyfb_mult_web_kyfbws',$hoy,'10 days');
 
 $category['name'] = 'fecha';
 
-while($r1  = pg_fetch_assoc($firmas)) {
+while($r1  = pg_fetch_assoc($firmasTime)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
-      $series2['data'][] = $r1['peticiones'];
       $category['data'][] = $r1['fecha'];
     }
-while($r2  = pg_fetch_assoc($kyfbws)) {
-      $series3['data'][] = $r2['tiempo_respuesta'];
-      $series4['data'][] = $r2['peticiones'];
+while($r2  = pg_fetch_assoc($firmasPeti)) {
+      $series2['data'][] = $r2['peticiones'];
+    }
+while($r3  = pg_fetch_assoc($kyfbwsTime)) {
+      $series3['data'][] = $r3['tiempo_respuesta'];
+    }
+while($r4  = pg_fetch_assoc($kyfbwsPeti)) {
+      $series4['data'][] = $r4['peticiones'];
     }
 
 

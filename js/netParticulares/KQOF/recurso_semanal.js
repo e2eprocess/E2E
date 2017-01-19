@@ -42,6 +42,7 @@ $(document).ready(function() {
               shared: true
           },
           legend: {
+            enabled: false,
               layout: 'horizontal',
               align: 'center',
               verticalAlign: 'bottom',

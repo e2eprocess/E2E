@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: 'Visión últimos 10 días',
+            text: 'Visión últimos 40 días',
             x: -20
           },
           credits: {
@@ -42,14 +42,7 @@ $(document).ready(function() {
               shared: true
           },
           legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom',
-              borderWidth: 1,
-              itemStyle:{
-                  fontSize: "10px"
-                }
-
+              enabled: false
           },
           plotOptions: {
               line: {
