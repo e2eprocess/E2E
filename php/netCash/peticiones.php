@@ -28,13 +28,15 @@
 
   }
   $peticionesPasada = busqueda('kyop_mult_web_kyoppresentation', $newFrom,'Throughput');
-  $maxPeticiones = max_peti('Throughput kyop_mult_web_kyoppresentation');
+  $maxPeticiones = max_peti('kyop_mult_web_kyoppresentation');
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   while($r1  = pg_fetch_assoc($peticionesPasada)) {
         $category['data'][] = $r1['fecha'];
@@ -52,6 +54,7 @@
   array_push($datos,$series2);
   array_push($datos,$series3);
   array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 

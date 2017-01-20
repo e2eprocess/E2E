@@ -27,7 +27,7 @@
     $ncocHoy = busqueda('ncoc_es_web',$newTo,'Throughput');
   }
   $ncocPasada = busqueda('ncoc_es_web',$newFrom,'Throughput');
-  $maxPeticiones = max_peti('Throughput ncoc');
+  $maxPeticiones = max_peti('ncoc_es_web');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -35,6 +35,8 @@
 
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   while($r1 = pg_fetch_assoc($ncocPasada)) {
         $category['data'][] = $r1['fecha'];
@@ -51,8 +53,9 @@
   array_push($datos,$category);
   array_push($datos,$series1);
   array_push($datos,$series2);
-  array_push($datos,$titulo);
   array_push($datos,$series3);
+  array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 

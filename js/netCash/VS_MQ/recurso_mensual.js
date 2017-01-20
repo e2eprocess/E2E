@@ -29,15 +29,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
-          },{ //Peticiones
-            labels: {
-              format: '{value} %'
             },
-            title: {
-              text: 'Memoria'
-            },
-            opposite: true
+            max:100
           }],
           tooltip: {
               shared: true

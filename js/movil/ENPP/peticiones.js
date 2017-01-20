@@ -6,7 +6,7 @@ $(document).ready(function() {
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones',
+            text: 'Peticiones / 5 min.',
             x: -20 //center
           },
           subtitle: {

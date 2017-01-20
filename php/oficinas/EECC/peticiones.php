@@ -26,7 +26,7 @@
     $eeccHoy = busqueda('eecc',$newTo,'Throughput');
   }
   $eeccPasada = busqueda('eecc',$newFrom,'Throughput');
-  $maxPeticiones = max_peti('Throughput eecc');
+  $maxPeticiones = max_peti('eecc');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -34,6 +34,8 @@
 
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   while($r1 = pg_fetch_assoc($eeccPasada)) {
       $category['data'][] = $r1['fecha'];
@@ -50,8 +52,9 @@
   array_push($datos,$category);
   array_push($datos,$series1);
   array_push($datos,$series2);
-  array_push($datos,$titulo);
   array_push($datos,$series3);
+  array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 

@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Memoria %'
-            }
+            },
+            max:100
           }],
           tooltip: {
               shared: true

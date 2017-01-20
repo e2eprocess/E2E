@@ -42,122 +42,50 @@
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
     $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-    $ENPP_501_20_To = busquedaClonHoy('ENPP_501_20',$newToF,$newTo);
-    $ENPP_501_21_To = busquedaClonHoy('ENPP_501_21',$newToF,$newTo);
-    $ENPP_501_22_To = busquedaClonHoy('ENPP_501_22',$newToF,$newTo);
-    $ENPP_501_30_To = busquedaClonHoy('ENPP_501_30',$newToF,$newTo);
-    $ENPP_501_31_To = busquedaClonHoy('ENPP_501_31',$newToF,$newTo);
-    $ENPP_501_32_To = busquedaClonHoy('ENPP_501_32',$newToF,$newTo);
-    $ENPP_501_40_To = busquedaClonHoy('ENPP_501_40',$newToF,$newTo);
-    $ENPP_501_41_To = busquedaClonHoy('ENPP_501_41',$newToF,$newTo);
-    $ENPP_501_42_To = busquedaClonHoy('ENPP_501_42',$newToF,$newTo);
-    $ENPP_501_60_To = busquedaClonHoy('ENPP_501_60',$newToF,$newTo);
-    $ENPP_501_61_To = busquedaClonHoy('ENPP_501_61',$newToF,$newTo);
-    $ENPP_501_62_To = busquedaClonHoy('ENPP_501_62',$newToF,$newTo);
+    $apbad002_To = seguimientoCPUHoy('apbad002',$newToF,$newTo,'mobile','ENPP%','CPU');
+    $apbad003_To = seguimientoCPUHoy('apbad003',$newToF,$newTo,'mobile','ENPP%','CPU');
+    $apbad004_To = seguimientoCPUHoy('apbad004',$newToF,$newTo,'mobile','ENPP%','CPU');
+    $apbad006_To = seguimientoCPUHoy('apbad006',$newToF,$newTo,'mobile','ENPP%','CPU');
   }else{
-    $ENPP_501_20_To = busquedaClon('ENPP_501_20',$newTo);
-    $ENPP_501_21_To = busquedaClon('ENPP_501_21',$newTo);
-    $ENPP_501_22_To = busquedaClon('ENPP_501_22',$newTo);
-    $ENPP_501_30_To = busquedaClon('ENPP_501_30',$newTo);
-    $ENPP_501_31_To = busquedaClon('ENPP_501_31',$newTo);
-    $ENPP_501_32_To = busquedaClon('ENPP_501_32',$newTo);
-    $ENPP_501_40_To = busquedaClon('ENPP_501_40',$newTo);
-    $ENPP_501_41_To = busquedaClon('ENPP_501_41',$newTo);
-    $ENPP_501_42_To = busquedaClon('ENPP_501_42',$newTo);
-    $ENPP_501_60_To = busquedaClon('ENPP_501_60',$newTo);
-    $ENPP_501_61_To = busquedaClon('ENPP_501_61',$newTo);
-    $ENPP_501_62_To = busquedaClon('ENPP_501_62',$newTo);
+    $apbad002_To = seguimientoCPU('apbad002',$newTo,'mobile','ENPP%','CPU');
+    $apbad003_To = seguimientoCPU('apbad003',$newTo,'mobile','ENPP%','CPU');
+    $apbad004_To = seguimientoCPU('apbad004',$newTo,'mobile','ENPP%','CPU');
+    $apbad006_To = seguimientoCPU('apbad006',$newTo,'mobile','ENPP%','CPU');
   }
-  $ENPP_501_20_From = busquedaClon('ENPP_501_20',$newFrom);
-  $ENPP_501_21_From = busquedaClon('ENPP_501_21',$newFrom);
-  $ENPP_501_22_From = busquedaClon('ENPP_501_22',$newFrom);
-  $ENPP_501_30_From = busquedaClon('ENPP_501_30',$newFrom);
-  $ENPP_501_31_From = busquedaClon('ENPP_501_31',$newFrom);
-  $ENPP_501_32_From = busquedaClon('ENPP_501_32',$newFrom);
-  $ENPP_501_40_From = busquedaClon('ENPP_501_40',$newFrom);
-  $ENPP_501_41_From = busquedaClon('ENPP_501_41',$newFrom);
-  $ENPP_501_42_From = busquedaClon('ENPP_501_42',$newFrom);
-  $ENPP_501_60_From = busquedaClon('ENPP_501_60',$newFrom);
-  $ENPP_501_61_From = busquedaClon('ENPP_501_61',$newFrom);
-  $ENPP_501_62_From = busquedaClon('ENPP_501_62',$newFrom);
+  $apbad002_From = seguimientoCPU('apbad002',$newFrom,'mobile','ENPP%','CPU');
+  $apbad003_From = seguimientoCPU('apbad003',$newFrom,'mobile','ENPP%','CPU');
+  $apbad004_From = seguimientoCPU('apbad004',$newFrom,'mobile','ENPP%','CPU');
+  $apbad006_From = seguimientoCPU('apbad006',$newFrom,'mobile','ENPP%','CPU');
+
 
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = pg_fetch_assoc($ENPP_501_20_From)) {
+  while($r1 = pg_fetch_assoc($apbad002_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['cpu'];
       }
-  while($r2 = pg_fetch_assoc($ENPP_501_21_From)) {
+  while($r2 = pg_fetch_assoc($apbad003_From)) {
         $series2['data'][] = $r2['cpu'];
       }
-  while($r3 = pg_fetch_assoc($ENPP_501_22_From)) {
+  while($r3 = pg_fetch_assoc($apbad004_From)) {
         $series3['data'][] = $r3['cpu'];
       }
-  while($r4 = pg_fetch_assoc($ENPP_501_30_From)) {
+  while($r4 = pg_fetch_assoc($apbad006_From)) {
         $series4['data'][] = $r4['cpu'];
       }
-  while($r5 = pg_fetch_assoc($ENPP_501_31_From)) {
+    while($r5 = pg_fetch_assoc($apbad002_To)) {
         $series5['data'][] = $r5['cpu'];
       }
-  while($r6 = pg_fetch_assoc($ENPP_501_32_From)) {
+  while($r6 = pg_fetch_assoc($apbad003_To)) {
         $series6['data'][] = $r6['cpu'];
       }
-  while($r7 = pg_fetch_assoc($ENPP_501_40_From)) {
+  while($r7 = pg_fetch_assoc($apbad004_To)) {
         $series7['data'][] = $r7['cpu'];
       }
-  while($r8 = pg_fetch_assoc($ENPP_501_41_From)) {
+  while($r8 = pg_fetch_assoc($apbad006_To)) {
         $series8['data'][] = $r8['cpu'];
-      }
-  while($r9 = pg_fetch_assoc($ENPP_501_42_From)) {
-        $series9['data'][] = $r9['cpu'];
-      }
-  while($r10 = pg_fetch_assoc($ENPP_501_60_From)) {
-        $series10['data'][] = $r10['cpu'];
-      }
-  while($r11 = pg_fetch_assoc($ENPP_501_61_From)) {
-        $series11['data'][] = $r11['cpu'];
-      }
-  while($r12 = pg_fetch_assoc($ENPP_501_62_From)) {
-        $series12['data'][] = $r12['cpu'];
-      }
-
-  while($r13 = pg_fetch_assoc($ENPP_501_20_To)) {
-        $series13['data'][] = $r13['cpu'];
-      }
-  while($r14 = pg_fetch_assoc($ENPP_501_21_To)) {
-        $series14['data'][] = $r14['cpu'];
-      }
-  while($r15 = pg_fetch_assoc($ENPP_501_22_To)) {
-        $series15['data'][] = $r15['cpu'];
-      }
-  while($r16 = pg_fetch_assoc($ENPP_501_30_To)) {
-        $series16['data'][] = $r16['cpu'];
-      }
-  while($r17 = pg_fetch_assoc($ENPP_501_31_To)) {
-        $series17['data'][] = $r17['cpu'];
-      }
-  while($r18 = pg_fetch_assoc($ENPP_501_32_To)) {
-        $series18['data'][] = $r18['cpu'];
-      }
-  while($r19 = pg_fetch_assoc($ENPP_501_40_To)) {
-        $series19['data'][] = $r19['cpu'];
-      }
-  while($r20 = pg_fetch_assoc($ENPP_501_41_To)) {
-        $series20['data'][] = $r20['cpu'];
-      }
-  while($r21 = pg_fetch_assoc($ENPP_501_42_To)) {
-        $series21['data'][] = $r21['cpu'];
-      }
-  while($r22 = pg_fetch_assoc($ENPP_501_60_To)) {
-        $series22['data'][] = $r22['cpu'];
-      }
-  while($r23 = pg_fetch_assoc($ENPP_501_61_To)) {
-        $series23['data'][] = $r23['cpu'];
-      }
-  while($r24 = pg_fetch_assoc($ENPP_501_62_To)) {
-        $series24['data'][] = $r24['cpu'];
       }
 
   $datos = array();
@@ -170,22 +98,6 @@
   array_push($datos,$series6);
   array_push($datos,$series7);
   array_push($datos,$series8);
-  array_push($datos,$series9);
-  array_push($datos,$series10);
-  array_push($datos,$series11);
-  array_push($datos,$series12);
-  array_push($datos,$series13);
-  array_push($datos,$series14);
-  array_push($datos,$series15);
-  array_push($datos,$series16);
-  array_push($datos,$series17);
-  array_push($datos,$series18);
-  array_push($datos,$series19);
-  array_push($datos,$series20);
-  array_push($datos,$series21);
-  array_push($datos,$series22);
-  array_push($datos,$series23);
-  array_push($datos,$series24);
   array_push($datos,$titulo);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);

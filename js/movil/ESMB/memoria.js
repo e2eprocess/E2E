@@ -27,8 +27,9 @@ $(document).ready(function() {
               format: '{value} %'
             },
             title: {
-              text: 'CPU %'
-            }
+              text: 'memoria %'
+            },
+            max:100
           }],
           tooltip: {
               shared: true

@@ -27,7 +27,7 @@ $(document).ready(function() {
               format: '{value} %'
             },
             title: {
-              text: 'CPU %'
+              text: 'Memoria %'
             },
             max: 100
           }],

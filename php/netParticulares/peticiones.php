@@ -38,7 +38,7 @@
   $globalPasada = busqueda('kqof_posicionGlobal',$newFrom,'Throughput');
   $KQOFPasada = busqueda('kqof_es_web',$newFrom,'Throughput');
 
-  $maxPeticiones = max_peti('Throughput kqof');
+  $maxPeticiones = max_peti('kqof_es_web');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -46,6 +46,9 @@
 
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
+
 
   while($r1 = pg_fetch_assoc($particularesPasada)) {
         $category['data'][] = $r1['fecha'];
@@ -79,6 +82,7 @@
   array_push($datos,$series6);
   array_push($datos,$series7);
   array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 

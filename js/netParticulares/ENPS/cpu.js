@@ -63,42 +63,42 @@ $(document).ready(function() {
 
           /*series: []*/
           series: [{
-            name: 'apbad002 (F)',
+            name: 'apbad002_ENPS (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad003 (F)',
+            name: 'apbad003_ENPS (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad004 (F)',
+            name: 'apbad004_ENPS (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad006 (F)',
+            name: 'apbad006_ENPS (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'apbad002 (T)',
+            name: 'apbad002_ENPS (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad003 (T)',
+            name: 'apbad003_ENPS (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad004 (T)',
+            name: 'apbad004_ENPS (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'apbad006 (T)',
+            name: 'apbad006_ENPS (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]

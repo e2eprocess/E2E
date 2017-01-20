@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
+            },
+            max: 100
           },{ //Peticiones
             labels: {
               format: '{value} %'
@@ -36,7 +37,8 @@ $(document).ready(function() {
             title: {
               text: 'Memoria'
             },
-            opposite: true
+            opposite: true,
+            max: 100
           }],
           tooltip: {
               shared: true
