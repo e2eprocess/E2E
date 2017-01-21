@@ -56,7 +56,6 @@
   array_push($datos,$titulo);
   array_push($datos,$TituloPeticiones);
 
-
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
   pg_close($db_con);

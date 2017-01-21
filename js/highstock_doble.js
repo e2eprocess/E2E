@@ -37,7 +37,7 @@ $(function () {
             },
 
             title: {
-                text: 'AAPL Historical'
+                text: 'Net Particulares'
             },
 
             yAxis: [{
