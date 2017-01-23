@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
-						$("#incluirPagina").load("/E2E/reporting/html/menu.html");
+						$("#incluirPagina").load("/E2E/html/menu.html");
 				});
 		</script>
 		</head>
