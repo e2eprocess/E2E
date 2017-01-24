@@ -103,7 +103,7 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.subtitle.text = json[5]['text'];
         options.series[4].data = json[6]['data'];
-        options.series[4].name = json[7;]
+        options.series[4].name = json[7];
 
         chart = new Highcharts.Chart(options);
       });
