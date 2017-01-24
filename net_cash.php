@@ -3,13 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link href="css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/netCash/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="js/netCash/peticiones.js"></script>
-		<script type="text/javascript" src="js/netCash/cpu.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<link href="/E2E/css/jquery-ui.css" rel="stylesheet">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/peticiones.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/cpu.js"></script>
+	  <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
