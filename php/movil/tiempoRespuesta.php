@@ -1,28 +1,8 @@
 <?php
-include("../conexion_e2e_process.php");
+require_once("../conexion_e2e_process.php");
+require_once("../queryTime.php");
 
-  /* Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
-
-  /*Declaracion de arrays json*/
+/*Declaracion de arrays json*/
 $category = array();
 $titulo = array();
 $series1 = array();
@@ -36,19 +16,26 @@ $to=$_SESSION["fechaToNet"];
 $newTo = date("Y-m-d", strtotime($to));
 
 /*Declaración variables*/
-$tiempoHoy = busqueda('movil',$newTo);
-$tiempoPasada = busqueda('movil', $newFrom);
+if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $tiempoHoy = busquedaHoy('enpp_mult_web',$newToF,$newTo, 'Time');
+}
+else {
+    $tiempoHoy = busqueda('enpp_mult_web',$newTo, 'Time');
+}
+$tiempoPasada = busqueda('enpp_mult_web', $newFrom, 'Time');
 
 $category['name'] = 'fecha';
 $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-while($r1 = mysql_fetch_array($tiempoPasada)) {
-      $series1['data'][] = $r1['Tiempo_respuesta'];
+while($r1 = pg_fetch_assoc($tiempoPasada)) {
+      $series1['data'][] = $r1['tiempo_respuesta'];
       $category['data'][] = $r1['fecha'];
     }
 
-while($r2 = mysql_fetch_array($tiempoHoy)) {
-      $series2['data'][] = $r2['Tiempo_respuesta'];
+while($r2 = pg_fetch_assoc($tiempoHoy)) {
+      $series2['data'][] = $r2['tiempo_respuesta'];
     }
 
 $datos = array();
@@ -59,6 +46,6 @@ array_push($datos,$titulo);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>

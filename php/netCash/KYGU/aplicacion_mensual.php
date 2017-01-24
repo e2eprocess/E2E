@@ -1,21 +1,6 @@
 <?php
-include("../../conexion_e2e_process.php");
-
-function busqueda($CANAL,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(tiempo_respuesta) as tiempo_respuesta,
-                                    sum(peticiones) as peticiones
-                            FROM    seguimiento_cx_canal
-                            WHERE   canal like '".$CANAL."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY dia
-                            ORDER BY fecha");
-
-  return $resultado;
-
-}
+require_once("../../conexion_e2e_process.php");
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -23,27 +8,27 @@ $series2 = array();
 $series3 = array();
 $series4 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$frontusuario = busqueda('kygu%front%',$hoy);
-$serviciosusuario = busqueda('kygu%servicio%',$hoy);
+$frontusuarioTime = tiempo('kygu_mult_web_frontusuario',$hoy,'40 days');
+$serviciosusuarioTime = tiempo('kygu_mult_web_serviciosusuario',$hoy,'40 days');
+$frontusuarioPeti = peticiones('kygu_mult_web_frontusuario',$hoy,'40 days');
+$serviciosusuarioPeti = peticiones('kygu_mult_web_serviciosusuario',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($frontusuario)) {
+while($r1  = pg_fetch_assoc($frontusuarioTime)) {
       $series1['data'][] = $r1['tiempo_respuesta'];
-      $series2['data'][] = $r1['peticiones'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
-while($r2  = mysql_fetch_array($serviciosusuario)) {
-      $series3['data'][] = $r2['tiempo_respuesta'];
-      $series4['data'][] = $r2['peticiones'];
+    while($r2  = pg_fetch_assoc($frontusuarioPeti)) {
+      $series2['data'][] = $r2['peticiones'];
+    }
+while($r3  = pg_fetch_assoc($serviciosusuarioTime)) {
+      $series3['data'][] = $r3['tiempo_respuesta'];
+    }
+while($r4  = pg_fetch_assoc($serviciosusuarioPeti)) {
+      $series4['data'][] = $r4['peticiones'];
     }
 
 
@@ -57,6 +42,6 @@ array_push($datos,$series4);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>

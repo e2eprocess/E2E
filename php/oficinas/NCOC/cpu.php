@@ -1,30 +1,8 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../queryCpu.php");
 
-    /* Query fecha menos 24 horas
-    function busqueda($MAQUINA,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                        cpu
-                                FROM    seguimiento_cx_maquina
-                                WHERE   maquina = '".$MAQUINA."'
-                                AND     canal = 'net'
-                                AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                                AND     fecha <= '".$FECHA_QUERY."'");
-      return $resultado;
-    }*/
-
-    /*query*/
-    function busqueda($MAQUINA,$FECHA_QUERY){
-      $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                        cpu
-                                FROM    seguimiento_cx_maquina
-                                WHERE   maquina = '".$MAQUINA."'
-                                AND     canal = 'oficinas'
-                                AND     fecha like '".$FECHA_QUERY."%'");
-      return $resultado;
-    }
-
-    /*Declaracion de arrays json*/
+  /*Declaracion de arrays json*/
   $category = array();
   $titulo = array();
   $series1 = array();
@@ -50,68 +28,79 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $spnac005CpuHoy = busqueda('spnac005',$newTo);
-  $spnac006CpuHoy = busqueda('spnac006',$newTo);
-  $spnac007CpuHoy = busqueda('spnac007',$newTo);
-  $spnac008CpuHoy = busqueda('spnac008',$newTo);
-  $spnac009CpuHoy = busqueda('spnac009',$newTo);
-  $spnac010CpuHoy = busqueda('spnac010',$newTo);
-  $spnac012CpuHoy = busqueda('spnac012',$newTo);
-
-  $spnac005CpuPasada = busqueda('spnac005',$newFrom);
-  $spnac006CpuPasada = busqueda('spnac006',$newFrom);
-  $spnac007CpuPasada = busqueda('spnac007',$newFrom);
-  $spnac008CpuPasada = busqueda('spnac008',$newFrom);
-  $spnac009CpuPasada = busqueda('spnac009',$newFrom);
-  $spnac010CpuPasada = busqueda('spnac010',$newFrom);
-  $spnac012CpuPasada = busqueda('spnac012',$newFrom);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $spnac005CpuHoy = busquedaMaquinaHoy('spnac005',$newToF,$newTo);
+    $spnac006CpuHoy = busquedaMaquinaHoy('spnac006',$newToF,$newTo);
+    $spnac007CpuHoy = busquedaMaquinaHoy('spnac007',$newToF,$newTo);
+    $spnac008CpuHoy = busquedaMaquinaHoy('spnac008',$newToF,$newTo);
+    $spnac009CpuHoy = busquedaMaquinaHoy('spnac009',$newToF,$newTo);
+    $spnac010CpuHoy = busquedaMaquinaHoy('spnac010',$newToF,$newTo);
+    $spnac012CpuHoy = busquedaMaquinaHoy('spnac012',$newToF,$newTo);
+  }else {
+    $spnac005CpuHoy = busquedaMaquina('spnac005',$newTo);
+    $spnac006CpuHoy = busquedaMaquina('spnac006',$newTo);
+    $spnac007CpuHoy = busquedaMaquina('spnac007',$newTo);
+    $spnac008CpuHoy = busquedaMaquina('spnac008',$newTo);
+    $spnac009CpuHoy = busquedaMaquina('spnac009',$newTo);
+    $spnac010CpuHoy = busquedaMaquina('spnac010',$newTo);
+    $spnac012CpuHoy = busquedaMaquina('spnac012',$newTo);
+  }
+    $spnac005CpuPasada = busquedaMaquina('spnac005',$newFrom);
+    $spnac006CpuPasada = busquedaMaquina('spnac006',$newFrom);
+    $spnac007CpuPasada = busquedaMaquina('spnac007',$newFrom);
+    $spnac008CpuPasada = busquedaMaquina('spnac008',$newFrom);
+    $spnac009CpuPasada = busquedaMaquina('spnac009',$newFrom);
+    $spnac010CpuPasada = busquedaMaquina('spnac010',$newFrom);
+    $spnac012CpuPasada = busquedaMaquina('spnac012',$newFrom);
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($spnac005CpuPasada)) {
+  while($r1 = pg_fetch_assoc($spnac005CpuPasada)) {
         $series1['data'][] = $r1['cpu'];
         $category['data'][] = $r1['fecha'];
       }
-  while($r2 = mysql_fetch_array($spnac006CpuPasada)) {
+  while($r2 = pg_fetch_assoc($spnac006CpuPasada)) {
         $series2['data'][] = $r2['cpu'];
       }
-  while($r3 = mysql_fetch_array($spnac007CpuPasada)) {
+  while($r3 = pg_fetch_assoc($spnac007CpuPasada)) {
         $series3['data'][] = $r3['cpu'];
       }
-  while($r4 = mysql_fetch_array($spnac008CpuPasada)) {
+  while($r4 = pg_fetch_assoc($spnac008CpuPasada)) {
         $series4['data'][] = $r4['cpu'];
       }
-  while($r5 = mysql_fetch_array($spnac009CpuPasada)) {
+  while($r5 = pg_fetch_assoc($spnac009CpuPasada)) {
         $series5['data'][] = $r5['cpu'];
       }
-  while($r6 = mysql_fetch_array($spnac010CpuPasada)) {
+  while($r6 = pg_fetch_assoc($spnac010CpuPasada)) {
         $series6['data'][] = $r6['cpu'];
       }
-  while($r7 = mysql_fetch_array($spnac012CpuPasada)) {
+  while($r7 = pg_fetch_assoc($spnac012CpuPasada)) {
         $series7['data'][] = $r7['cpu'];
       }
 
-  while($r8 = mysql_fetch_array($spnac005CpuHoy)) {
+  while($r8 = pg_fetch_assoc($spnac005CpuHoy)) {
         $series8['data'][] = $r8['cpu'];
       }
-  while($r9 = mysql_fetch_array($spnac006CpuHoy)) {
+  while($r9 = pg_fetch_assoc($spnac006CpuHoy)) {
         $series9['data'][] = $r9['cpu'];
       }
-  while($r10 = mysql_fetch_array($spnac007CpuHoy)) {
+  while($r10 = pg_fetch_assoc($spnac007CpuHoy)) {
         $series10['data'][] = $r10['cpu'];
       }
-  while($r11 = mysql_fetch_array($spnac008CpuHoy)) {
+  while($r11 = pg_fetch_assoc($spnac008CpuHoy)) {
         $series11['data'][] = $r11['cpu'];
       }
-  while($r12 = mysql_fetch_array($spnac009CpuHoy)) {
+  while($r12 = pg_fetch_assoc($spnac009CpuHoy)) {
         $series12['data'][] = $r12['cpu'];
       }
-  while($r13 = mysql_fetch_array($spnac010CpuHoy)) {
+  while($r13 = pg_fetch_assoc($spnac010CpuHoy)) {
         $series13['data'][] = $r13['cpu'];
       }
-  while($r14 = mysql_fetch_array($spnac012CpuHoy)) {
+  while($r14 = pg_fetch_assoc($spnac012CpuHoy)) {
         $series14['data'][] = $r14['cpu'];
       }
 
@@ -136,6 +125,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

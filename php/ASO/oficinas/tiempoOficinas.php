@@ -1,26 +1,6 @@
 <?php
-  include("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../querytime.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -38,28 +18,35 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $gtHoy = busqueda('%GToficinas%',$newTo);
-  $servicioHoy = busqueda('%ASOoficinas%',$newTo);
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $gtHoy = busquedaHoy('GToffice',$newToF,$newTo, 'Time');
+    $servicioHoy = busquedaHoy('ASOoffice',$newToF,$newTo, 'Time');
+  }
+  else {
+    $gtHoy = busqueda('GToffice',$newTo, 'Time');
+    $servicioHoy = busqueda('ASOoffice',$newTo, 'Time');
+  }
 
-  $gtPasada = busqueda('%GToficinas%', $newFrom);
-  $servicioPasada = busqueda('%ASOoficinas%', $newFrom);
-
+  $gtPasada = busqueda('GToffice', $newFrom, 'Time');
+  $servicioPasada = busqueda('ASOoffice', $newFrom, 'Time');
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($gtPasada)) {
+  while($r1 = pg_fetch_assoc($gtPasada)) {
         $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
       }
-  while($r2 = mysql_fetch_array($servicioPasada)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+  while($r2 = pg_fetch_assoc($servicioPasada)) {
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
-  while($r3 = mysql_fetch_array($gtHoy)) {
-        $series3['data'][] = $r3['Tiempo_respuesta'];
+  while($r3 = pg_fetch_assoc($gtHoy)) {
+        $series3['data'][] = $r3['tiempo_respuesta'];
       }
-  while($r4 = mysql_fetch_array($servicioHoy)) {
-        $series4['data'][] = $r4['Tiempo_respuesta'];
+  while($r4 = pg_fetch_assoc($servicioHoy)) {
+        $series4['data'][] = $r4['tiempo_respuesta'];
       }
 
 
@@ -73,6 +60,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

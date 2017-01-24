@@ -1,48 +1,8 @@
 <?php
-  include("../../conexion_e2e_process.php");
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../queryPeticiones.php");
 
-  /*Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
-
-  function busquedaHoy($CANAL,$FECHAF,$FECHAT){
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                    peticiones,
-                                    max_peticiones
-                            FROM    seguimiento_cx_canal
-                            WHERE   canal like '".$CANAL."'
-                            AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
-  return $resultado;
-  }
-
-  function max_peti($CANAL){
-    $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              and fecha < curdate()");
-    return $resultado;
-  }
-
-  /*Declaracion de arrays json*/$category = array();
+    /*Declaracion de arrays json*/$category = array();
   $titulo = array();
   $series1 = array();
   $series2 = array();
@@ -58,36 +18,32 @@
   /*Declaración variables*/
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
-    $min = 11;
-    if(date("i")<$min){
-      $newTo = date("Y-m-d H", strtotime('-2 hour'));
-      $newToF = date("Y-m-d 00");
-    }else {
-      $newTo = date("Y-m-d H", strtotime('-1 hour'));
-      $newToF = date("Y-m-d 00");
-    }
-    $eeccHoy = busquedaHoy('eecc',$newToF,$newTo);
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $eeccHoy = busquedaHoy('eecc',$newToF,$newTo,'Throughput');
   }
   else {
-    $eeccHoy = busqueda('eecc',$newTo);
+    $eeccHoy = busqueda('eecc',$newTo,'Throughput');
   }
-  $eeccPasada = busqueda('eecc',$newFrom);
-  $maxPeticiones = max_peti('%eecc%');
+  $eeccPasada = busqueda('eecc',$newFrom,'Throughput');
+  $maxPeticiones = max_peti('eecc');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  $r8 = mysql_fetch_array($maxPeticiones);
+  $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
-  while($r1 = mysql_fetch_array($eeccPasada)) {
+  while($r1 = pg_fetch_assoc($eeccPasada)) {
       $category['data'][] = $r1['fecha'];
       $series1['data'][] = $r1['peticiones'];
       $series3['data'][] = $max_peti['value'];
       }
 
-  while($r2 = mysql_fetch_array($eeccHoy)) {
+  while($r2 = pg_fetch_assoc($eeccHoy)) {
         $series2['data'][] = $r2['peticiones'];
       }
 
@@ -96,11 +52,12 @@
   array_push($datos,$category);
   array_push($datos,$series1);
   array_push($datos,$series2);
-  array_push($datos,$titulo);
   array_push($datos,$series3);
+  array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

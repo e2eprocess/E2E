@@ -1,48 +1,6 @@
 <?php
-  include("../../conexion_e2e_process.php");
-
-  /*Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
-
-
-    function busquedaHoy($CANAL,$FECHAF,$FECHAT){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      peticiones,
-                                      max_peticiones
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha between  '".$FECHAF."' and '".$FECHAT."'");
-    return $resultado;
-    }
-
-    function max_peti($CANAL){
-      $resultado = mysql_query("SELECT  max(peticiones) as max_peticiones
-                                FROM    seguimiento_cx_canal
-                                WHERE   canal like '".$CANAL."'
-                                and fecha < curdate()");
-      return $resultado;
-    }
-
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../queryPeticiones.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -63,42 +21,35 @@
   /*Declaración variables*/
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
-    $min = 11;
-    if(date("i")<$min){
-      $newTo = date("Y-m-d H", strtotime('-2 hour'));
-      $newToF = date("Y-m-d 00");
-    }else {
-      $newTo = date("Y-m-d H", strtotime('-1 hour'));
-      $newToF = date("Y-m-d 00");
-    }
-    $frontusuarioHoy = busquedaHoy('kyfb_mult_web_firmas_04',$newToF,$newTo);
-    $serviciousuarioHoy = busquedaHoy('kyfb_mult_web_kyfbws_03',$newToF,$newTo);
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $frontusuarioHoy = busquedaHoy('kyfb_mult_web_firmas',$newToF,$newTo,'Throughput');
+    $serviciousuarioHoy = busquedaHoy('kyfb_mult_web_kyfbws',$newToF,$newTo,'Throughput');
 
   }
   else {
-    $frontusuarioHoy = busqueda('kyfb_mult_web_firmas_04',$newTo);
-    $serviciousuarioHoy = busqueda('kyfb_mult_web_kyfbws_03',$newTo);
+    $frontusuarioHoy = busqueda('kyfb_mult_web_firmas',$newTo,'Throughput');
+    $serviciousuarioHoy = busqueda('kyfb_mult_web_kyfbws',$newTo,'Throughput');
   }
-  $frontusuarioPasada = busqueda('kyfb_mult_web_firmas_04',$newFrom);
-  $serviciousuarioPasada = busqueda('kyfb_mult_web_kyfbws_03',$newFrom);
+  $frontusuarioPasada = busqueda('kyfb_mult_web_firmas',$newFrom,'Throughput');
+  $serviciousuarioPasada = busqueda('kyfb_mult_web_kyfbws',$newFrom,'Throughput');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($frontusuarioPasada)) {
+  while($r1 = pg_fetch_assoc($frontusuarioPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
-        $series5['data'][] = $r1['max_peticiones'];
       }
-  while($r2 = mysql_fetch_array($serviciousuarioPasada)) {
+  while($r2 = pg_fetch_assoc($serviciousuarioPasada)) {
         $series2['data'][] = $r2['peticiones'];
       }
 
-  while($r3 = mysql_fetch_array($frontusuarioHoy)) {
+  while($r3 = pg_fetch_assoc($frontusuarioHoy)) {
         $series3['data'][] = $r3['peticiones'];
       }
-  while($r4 = mysql_fetch_array($serviciousuarioHoy)) {
+  while($r4 = pg_fetch_assoc($serviciousuarioHoy)) {
         $series4['data'][] = $r4['peticiones'];
       }
 
@@ -113,6 +64,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

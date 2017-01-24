@@ -1,26 +1,6 @@
 <?php
-  include("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal like '".$CANAL."'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($CANAL,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      Tiempo_respuesta
-                              FROM    seguimiento_cx_canal
-                              WHERE   canal = '".$CANAL."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../queryTime.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -38,29 +18,35 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $serviciosHoy = busqueda('kyos_mult_web_servicios_02',$newTo);
-  $posicioncuentasHoy = busqueda('kyos_mult_web_posicioncuentas_01',$newTo);
-
-  $serviciosPasada = busqueda('kyos_mult_web_servicios_02', $newFrom);
-  $posicioncuentasPasada = busqueda('kyos_mult_web_posicioncuentas_01', $newFrom);
-
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $serviciosHoy = busquedaHoy('kyos_mult_web_servicios',$newToF,$newTo,'Time');
+    $posicioncuentasHoy = busquedaHoy('kyos_mult_web_posicioncuentas',$newToF,$newTo,'Time');
+  }
+  else {
+    $serviciosHoy = busqueda('kyos_mult_web_servicios',$newTo,'Time');
+    $posicioncuentasHoy = busqueda('kyos_mult_web_posicioncuentas',$newTo,'Time');
+  }
+  $serviciosPasada = busqueda('kyos_mult_web_servicios', $newFrom,'Time');
+  $posicioncuentasPasada = busqueda('kyos_mult_web_posicioncuentas', $newFrom,'Time');
   /*Recuperación datos*/
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($serviciosPasada)) {
+  while($r1 = pg_fetch_assoc($serviciosPasada)) {
         $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['Tiempo_respuesta'];
+        $series1['data'][] = $r1['tiempo_respuesta'];
       }
-  while($r2 = mysql_fetch_array($posicioncuentasPasada)) {
-        $series2['data'][] = $r2['Tiempo_respuesta'];
+  while($r2 = pg_fetch_assoc($posicioncuentasPasada)) {
+        $series2['data'][] = $r2['tiempo_respuesta'];
       }
 
-  while($r3 = mysql_fetch_array($serviciosHoy)) {
-        $series3['data'][] = $r3['Tiempo_respuesta'];
+  while($r3 = pg_fetch_assoc($serviciosHoy)) {
+        $series3['data'][] = $r3['tiempo_respuesta'];
       }
-  while($r4 = mysql_fetch_array($posicioncuentasHoy)) {
-        $series4['data'][] = $r4['Tiempo_respuesta'];
+  while($r4 = pg_fetch_assoc($posicioncuentasHoy)) {
+        $series4['data'][] = $r4['tiempo_respuesta'];
       }
 
 
@@ -75,6 +61,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

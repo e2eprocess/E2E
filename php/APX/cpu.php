@@ -1,28 +1,6 @@
 <?php
-include("../conexion_e2e_process.php");
-
-/* Query fecha menos 24 horas
-function busqueda($MAQUINA,$FECHA_QUERY){
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                    cpu
-                            FROM    seguimiento_cx_maquina
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     canal = 'net'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                            AND     fecha <= '".$FECHA_QUERY."'");
-  return $resultado;
-}*/
-
-/*query*/
-function busqueda($MAQUINA,$FECHA_QUERY){
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                    cpu
-                            FROM    seguimiento_cx_maquina
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     canal = 'apx'
-                            AND     fecha like '".$FECHA_QUERY."%'");
-  return $resultado;
-}
+require_once("../conexion_e2e_process.php");
+require_once("../queryCpu.php");
 
 /*Declaracion de arrays json*/
 $category = array();
@@ -49,68 +27,79 @@ $to=$_SESSION["fechaToNet"];
 $newTo = date("Y-m-d", strtotime($to));
 
 /*Declaración variables*/
-$lppxo301CpuHoy = busqueda('lppxo301',$newTo);
-$lppxo302CpuHoy = busqueda('lppxo302',$newTo);
-$lppxo303CpuHoy = busqueda('lppxo303',$newTo);
-$lppxo304CpuHoy = busqueda('lppxo304',$newTo);
-$lppxo305CpuHoy = busqueda('lppxo305',$newTo);
-$lppxo309CpuHoy = busqueda('lppxo309',$newTo);
-$lppxo310CpuHoy = busqueda('lppxo310',$newTo);
-
-$lppxo301CpuPasada = busqueda('lppxo301',$newFrom);
-$lppxo302CpuPasada = busqueda('lppxo302',$newFrom);
-$lppxo303CpuPasada = busqueda('lppxo303',$newFrom);
-$lppxo304CpuPasada = busqueda('lppxo304',$newFrom);
-$lppxo305CpuPasada = busqueda('lppxo305',$newFrom);
-$lppxo309CpuPasada = busqueda('lppxo309',$newFrom);
-$lppxo310CpuPasada = busqueda('lppxo310',$newFrom);
+if(date("Y-m-d")==$newTo){
+  $newToF = date("Y-m-d 00:00");
+  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $lppxo301CpuHoy = busquedaMaquinaHoy('lppxo301',$newToF,$newTo);
+  $lppxo302CpuHoy = busquedaMaquinaHoy('lppxo302',$newToF,$newTo);
+  $lppxo303CpuHoy = busquedaMaquinaHoy('lppxo303',$newToF,$newTo);
+  $lppxo304CpuHoy = busquedaMaquinaHoy('lppxo304',$newToF,$newTo);
+  $lppxo305CpuHoy = busquedaMaquinaHoy('lppxo305',$newToF,$newTo);
+  $lppxo309CpuHoy = busquedaMaquinaHoy('lppxo309',$newToF,$newTo);
+  $lppxo310CpuHoy = busquedaMaquinaHoy('lppxo310',$newToF,$newTo);
+}else{
+  $lppxo301CpuHoy = busquedaMaquina('lppxo301',$newTo);
+  $lppxo302CpuHoy = busquedaMaquina('lppxo302',$newTo);
+  $lppxo303CpuHoy = busquedaMaquina('lppxo303',$newTo);
+  $lppxo304CpuHoy = busquedaMaquina('lppxo304',$newTo);
+  $lppxo305CpuHoy = busquedaMaquina('lppxo305',$newTo);
+  $lppxo309CpuHoy = busquedaMaquina('lppxo309',$newTo);
+  $lppxo310CpuHoy = busquedaMaquina('lppxo310',$newTo);
+}
+$lppxo301CpuPasada = busquedaMaquina('lppxo301',$newFrom);
+$lppxo302CpuPasada = busquedaMaquina('lppxo302',$newFrom);
+$lppxo303CpuPasada = busquedaMaquina('lppxo303',$newFrom);
+$lppxo304CpuPasada = busquedaMaquina('lppxo304',$newFrom);
+$lppxo305CpuPasada = busquedaMaquina('lppxo305',$newFrom);
+$lppxo309CpuPasada = busquedaMaquina('lppxo309',$newFrom);
+$lppxo310CpuPasada = busquedaMaquina('lppxo310',$newFrom);
 
 /*Recuperación datos*/
 $category['name'] = 'fecha';
 $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-while($r1 = mysql_fetch_array($lppxo301CpuPasada)) {
+while($r1 = pg_fetch_assoc($lppxo301CpuPasada)) {
       $category['data'][] = $r1['fecha'];
       $series1['data'][] = $r1['cpu'];
     }
-while($r2 = mysql_fetch_array($lppxo302CpuPasada)) {
+while($r2 = pg_fetch_assoc($lppxo302CpuPasada)) {
       $series2['data'][] = $r2['cpu'];
     }
-while($r3 = mysql_fetch_array($lppxo303CpuPasada)) {
+while($r3 = pg_fetch_assoc($lppxo303CpuPasada)) {
       $series3['data'][] = $r3['cpu'];
     }
-while($r4 = mysql_fetch_array($lppxo304CpuPasada)) {
+while($r4 = pg_fetch_assoc($lppxo304CpuPasada)) {
       $series4['data'][] = $r4['cpu'];
     }
-while($r5 = mysql_fetch_array($lppxo305CpuPasada)) {
+while($r5 = pg_fetch_assoc($lppxo305CpuPasada)) {
       $series5['data'][] = $r5['cpu'];
     }
-while($r6 = mysql_fetch_array($lppxo309CpuPasada)) {
+while($r6 = pg_fetch_assoc($lppxo309CpuPasada)) {
       $series6['data'][] = $r6['cpu'];
     }
-while($r7 = mysql_fetch_array($lppxo310CpuPasada)) {
+while($r7 = pg_fetch_assoc($lppxo310CpuPasada)) {
       $series7['data'][] = $r7['cpu'];
     }
 
-while($r8 = mysql_fetch_array($lppxo301CpuHoy)) {
+while($r8 = pg_fetch_assoc($lppxo301CpuHoy)) {
       $series8['data'][] = $r8['cpu'];
     }
-while($r9 = mysql_fetch_array($lppxo302CpuHoy)) {
+while($r9 = pg_fetch_assoc($lppxo302CpuHoy)) {
       $series9['data'][] = $r9['cpu'];
     }
-while($r10 = mysql_fetch_array($lppxo303CpuHoy)) {
+while($r10 = pg_fetch_assoc($lppxo303CpuHoy)) {
       $series10['data'][] = $r10['cpu'];
     }
-while($r11 = mysql_fetch_array($lppxo304CpuHoy)) {
+while($r11 = pg_fetch_assoc($lppxo304CpuHoy)) {
       $series11['data'][] = $r11['cpu'];
     }
-while($r12 = mysql_fetch_array($lppxo305CpuHoy)) {
+while($r12 = pg_fetch_assoc($lppxo305CpuHoy)) {
       $series12['data'][] = $r12['cpu'];
     }
-while($r13 = mysql_fetch_array($lppxo309CpuHoy)) {
+while($r13 = pg_fetch_assoc($lppxo309CpuHoy)) {
       $series13['data'][] = $r13['cpu'];
     }
-while($r14 = mysql_fetch_array($lppxo310CpuHoy)) {
+while($r14 = pg_fetch_assoc($lppxo310CpuHoy)) {
       $series14['data'][] = $r14['cpu'];
     }
 
@@ -135,6 +124,6 @@ array_push($datos,$titulo);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>
