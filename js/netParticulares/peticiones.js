@@ -6,7 +6,7 @@ $(document).ready(function() {
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones',
+            text: 'Peticiones / 5 min.',
             x: -20 //center
           },
           subtitle: {
@@ -108,7 +108,6 @@ $(document).ready(function() {
             type: 'line',
             data:[]
           },{
-            name: 'Max. Peticiones (4/11)',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
             data:[]
@@ -125,6 +124,7 @@ $(document).ready(function() {
         options.series[5].data = json[6]['data'];
         options.series[6].data = json[7]['data'];
         options.subtitle.text = json[8]['text'];
+        options.series[6].name = json[9];
 
         chart = new Highcharts.Chart(options);
       });

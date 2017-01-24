@@ -1,28 +1,6 @@
 <?php
-  include("../../conexion_e2e_process.php");
-
-  /* Query fecha menos 24 horas
-  function busqueda($MAQUINA,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y-%k')as fecha,
-                                      memoria
-                              FROM    seguimiento_cx_maquina
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     canal = 'net'
-                              AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 24 HOUR)
-                              AND     fecha <= '".$FECHA_QUERY."'");
-    return $resultado;
-  }*/
-
-  /*query*/
-  function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-    $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%k:%i')as fecha,
-                                      memoria
-                              FROM    informe_instancias
-                              WHERE   maquina = '".$MAQUINA."'
-                              AND     instancias = '".$INSTANCIAS."'
-                              AND     fecha like '".$FECHA_QUERY."%'");
-    return $resultado;
-  }
+  require_once("../../conexion_e2e_process.php");
+  require_once("../../queryMemoria.php");
 
   /*Declaracion de arrays json*/
   $category = array();
@@ -53,76 +31,87 @@
   $newTo = date("Y-m-d", strtotime($to));
 
   /*Declaración variables*/
-  $KYGU_S01_10_To = busqueda('apbad022','KYGU_S01_10',$newTo);
-  $KYGU_S01_11_To = busqueda('apbad022','KYGU_S01_11',$newTo);
-  $KYGU_S01_20_To = busqueda('apbad023','KYGU_S01_20',$newTo);
-  $KYGU_S01_21_To = busqueda('apbad023','KYGU_S01_21',$newTo);
-  $KYGU_S01_30_To = busqueda('apbad024','KYGU_S01_30',$newTo);
-  $KYGU_S01_31_To = busqueda('apbad024','KYGU_S01_31',$newTo);
-  $KYGU_S01_40_To = busqueda('apbad026','KYGU_S01_40',$newTo);
-  $KYGU_S01_41_To = busqueda('apbad026','KYGU_S01_41',$newTo);
-
-  $KYGU_S01_10_From = busqueda('apbad022','KYGU_S01_10',$newFrom);
-  $KYGU_S01_11_From = busqueda('apbad022','KYGU_S01_11',$newFrom);
-  $KYGU_S01_20_From = busqueda('apbad023','KYGU_S01_20',$newFrom);
-  $KYGU_S01_21_From = busqueda('apbad023','KYGU_S01_21',$newFrom);
-  $KYGU_S01_30_From = busqueda('apbad024','KYGU_S01_30',$newFrom);
-  $KYGU_S01_31_From = busqueda('apbad024','KYGU_S01_31',$newFrom);
-  $KYGU_S01_40_From = busqueda('apbad026','KYGU_S01_40',$newFrom);
-  $KYGU_S01_41_From = busqueda('apbad026','KYGU_S01_41',$newFrom);
-
+  if(date("Y-m-d")==$newTo){
+    $newToF = date("Y-m-d 00:00");
+    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $KYGU_S01_10_To = busquedaClonHoy('KYGU_S01_10',$newToF,$newTo);
+    $KYGU_S01_11_To = busquedaClonHoy('KYGU_S01_11',$newToF,$newTo);
+    $KYGU_S01_20_To = busquedaClonHoy('KYGU_S01_20',$newToF,$newTo);
+    $KYGU_S01_21_To = busquedaClonHoy('KYGU_S01_21',$newToF,$newTo);
+    $KYGU_S01_30_To = busquedaClonHoy('KYGU_S01_30',$newToF,$newTo);
+    $KYGU_S01_31_To = busquedaClonHoy('KYGU_S01_31',$newToF,$newTo);
+    $KYGU_S01_40_To = busquedaClonHoy('KYGU_S01_40',$newToF,$newTo);
+    $KYGU_S01_41_To = busquedaClonHoy('KYGU_S01_41',$newToF,$newTo);
+  }else{
+    $KYGU_S01_10_To = busquedaClon('KYGU_S01_10',$newTo);
+    $KYGU_S01_11_To = busquedaClon('KYGU_S01_11',$newTo);
+    $KYGU_S01_20_To = busquedaClon('KYGU_S01_20',$newTo);
+    $KYGU_S01_21_To = busquedaClon('KYGU_S01_21',$newTo);
+    $KYGU_S01_30_To = busquedaClon('KYGU_S01_30',$newTo);
+    $KYGU_S01_31_To = busquedaClon('KYGU_S01_31',$newTo);
+    $KYGU_S01_40_To = busquedaClon('KYGU_S01_40',$newTo);
+    $KYGU_S01_41_To = busquedaClon('KYGU_S01_41',$newTo);
+  }
+  $KYGU_S01_10_From = busquedaClon('KYGU_S01_10',$newFrom);
+  $KYGU_S01_11_From = busquedaClon('KYGU_S01_11',$newFrom);
+  $KYGU_S01_20_From = busquedaClon('KYGU_S01_20',$newFrom);
+  $KYGU_S01_21_From = busquedaClon('KYGU_S01_21',$newFrom);
+  $KYGU_S01_30_From = busquedaClon('KYGU_S01_30',$newFrom);
+  $KYGU_S01_31_From = busquedaClon('KYGU_S01_31',$newFrom);
+  $KYGU_S01_40_From = busquedaClon('KYGU_S01_40',$newFrom);
+  $KYGU_S01_41_From = busquedaClon('KYGU_S01_41',$newFrom);
 
   $category['name'] = 'fecha';
   $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
-  while($r1 = mysql_fetch_array($KYGU_S01_10_From)) {
+  while($r1 = pg_fetch_assoc($KYGU_S01_10_From)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['memoria'];
       }
-  while($r2 = mysql_fetch_array($KYGU_S01_11_From)) {
+  while($r2 = pg_fetch_assoc($KYGU_S01_11_From)) {
         $series2['data'][] = $r2['memoria'];
       }
-  while($r3 = mysql_fetch_array($KYGU_S01_20_From)) {
+  while($r3 = pg_fetch_assoc($KYGU_S01_20_From)) {
         $series3['data'][] = $r3['memoria'];
       }
-  while($r4 = mysql_fetch_array($KYGU_S01_21_From)) {
+  while($r4 = pg_fetch_assoc($KYGU_S01_21_From)) {
         $series4['data'][] = $r4['memoria'];
       }
-  while($r5 = mysql_fetch_array($KYGU_S01_30_From)) {
+  while($r5 = pg_fetch_assoc($KYGU_S01_30_From)) {
         $series5['data'][] = $r5['memoria'];
       }
-  while($r6 = mysql_fetch_array($KYGU_S01_31_From)) {
+  while($r6 = pg_fetch_assoc($KYGU_S01_31_From)) {
         $series6['data'][] = $r6['memoria'];
       }
-  while($r7 = mysql_fetch_array($KYGU_S01_40_From)) {
+  while($r7 = pg_fetch_assoc($KYGU_S01_40_From)) {
         $series7['data'][] = $r7['memoria'];
       }
-  while($r8 = mysql_fetch_array($KYGU_S01_41_From)) {
+  while($r8 = pg_fetch_assoc($KYGU_S01_41_From)) {
         $series8['data'][] = $r8['memoria'];
       }
 
-  while($r9 = mysql_fetch_array($KYGU_S01_10_To)) {
+  while($r9 = pg_fetch_assoc($KYGU_S01_10_To)) {
         $series9['data'][] = $r9['memoria'];
       }
-  while($r10 = mysql_fetch_array($KYGU_S01_11_To)) {
+  while($r10 = pg_fetch_assoc($KYGU_S01_11_To)) {
         $series10['data'][] = $r10['memoria'];
       }
-  while($r11 = mysql_fetch_array($KYGU_S01_20_To)) {
+  while($r11 = pg_fetch_assoc($KYGU_S01_20_To)) {
         $series11['data'][] = $r11['memoria'];
       }
-  while($r12 = mysql_fetch_array($KYGU_S01_21_To)) {
+  while($r12 = pg_fetch_assoc($KYGU_S01_21_To)) {
         $series12['data'][] = $r12['memoria'];
       }
-  while($r13 = mysql_fetch_array($KYGU_S01_30_To)) {
+  while($r13 = pg_fetch_assoc($KYGU_S01_30_To)) {
         $series13['data'][] = $r13['memoria'];
       }
-  while($r14 = mysql_fetch_array($KYGU_S01_31_To)) {
+  while($r14 = pg_fetch_assoc($KYGU_S01_31_To)) {
         $series14['data'][] = $r14['memoria'];
       }
-  while($r15 = mysql_fetch_array($KYGU_S01_40_To)) {
+  while($r15 = pg_fetch_assoc($KYGU_S01_40_To)) {
         $series15['data'][] = $r15['memoria'];
       }
-  while($r16 = mysql_fetch_array($KYGU_S01_41_To)) {
+  while($r16 = pg_fetch_assoc($KYGU_S01_41_To)) {
         $series16['data'][] = $r16['memoria'];
       }
 
@@ -148,6 +137,6 @@
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
-  mysql_close($conexion);
+  pg_close($db_con);
 
 ?>

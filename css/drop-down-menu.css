@@ -1,0 +1,93 @@
+/* CSS Document */
+#menuPlantilla, #menuPlantilla ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	text-align: center;
+	height: 2em;
+	border-top:1px solid #fff;
+}
+#menuPlantilla li {
+	float:left;
+	position:relative;
+	line-height:2em;
+	width:10em;
+}
+
+#menuPlantilla li ul {
+	position:absolute;
+	margin-top:0em;
+	margin-left:.5em; /* for IE */
+	display:none;
+}
+
+#menuPlantilla li ul li{
+	width: 18em;
+}
+
+#menuPlantilla li ul li ul li{
+	width: 10em;
+}
+
+
+#menuPlantilla ul li ul {
+	margin-top:-1.5em;
+	margin-left:15.7em;
+}
+/* ******************************************************************* */
+/* SHOW SUBmenuPlantilla  1 */
+#menuPlantilla li:hover ul, #menuPlantilla li.over ul {
+	display:block;
+}
+#menuPlantilla li:hover ul ul, #menuPlantilla li.over ul ul {
+	display:none;
+}
+/* SHOW SUBmenuPlantilla  2 */
+#menuPlantilla ul li:hover ul, #menuPlantilla ul li.over ul {
+	display:block;
+}
+/* ******************************************************************* */
+/* STYLING UP THE LINKS */
+#menuPlantilla a {
+	display:block;
+	border-right:1px solid #fff;
+	background:#3396FF;
+	color:#fff;
+	text-decoration:none;
+	padding:0 10px;
+}
+#menuPlantilla a:hover {
+	background-color:#5798B4;
+	color:#fff;
+}
+#menuPlantilla ul {
+	border-top:1px solid #fff;
+}
+#menuPlantilla ul a {
+	border-right:none;
+	border-right:1px solid #fff;
+	border-bottom:1px solid #fff;
+	border-left:1px solid #fff;
+	background:#3396FF;
+}
+
+/* ******************************************************************* */
+
+#menuPlantilla {
+	z-index:1;
+	width: 100%;
+	background: #3396FF;
+}
+#menuPlantilla ul {
+	z-index:2;
+}
+#menuPlantilla ul ul {
+	z-index:3;
+}
+
+/* ******************************************************************* */
+
+/* Fix IE. Hide from IE Mac \*/
+* html ul li { float: left; height: 1%; }
+* html ul li a { height: 1%; }
+/* End */

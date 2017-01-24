@@ -1,22 +1,6 @@
 <?php
-include("../../conexion_e2e_process.php");
-
-function busqueda($MAQUINA,$INSTANCIAS,$FECHA_QUERY){
-
-  $resultado = mysql_query("SELECT  DATE_FORMAT(fecha, '%d/%m/%y')as dia,
-                                    avg(cpu) as cpu,
-                                    avg(memoria) as memoria
-                            FROM    informe_instancias
-                            WHERE   maquina = '".$MAQUINA."'
-                            AND     instancias = '".$INSTANCIAS."'
-                            AND     fecha > DATE_SUB('".$FECHA_QUERY."', INTERVAL 40 DAY)
-                            AND     fecha <= '".$FECHA_QUERY."'
-                            GROUP BY  dia
-                            ORDER BY  fecha");
-
-  return $resultado;
-
-}
+require_once("../../conexion_e2e_process.php");
+require_once("../../queryinforme.php");
 
 $category = array();
 $series1 = array();
@@ -36,56 +20,50 @@ $series14 = array();
 $series15 = array();
 $series16 = array();
 
-$minuto = 10;
+$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
-if(date("i")<$minuto){
-  $hoy = date("Y-m-d H", strtotime('-2 hour'));
-}else{
-  $hoy = date("Y-m-d H", strtotime('-1 hour'));
-}
-
-$KYOS_S01_10 = busqueda('apbad022','KYOS_S01_10',$hoy);
-$KYOS_S01_11 = busqueda('apbad022','KYOS_S01_11',$hoy);
-$KYOS_S01_20 = busqueda('apbad023','KYOS_S01_20',$hoy);
-$KYOS_S01_21 = busqueda('apbad023','KYOS_S01_21',$hoy);
-$KYOS_S01_30 = busqueda('apbad024','KYOS_S01_30',$hoy);
-$KYOS_S01_31 = busqueda('apbad024','KYOS_S01_31',$hoy);
-$KYOS_S01_40 = busqueda('apbad026','KYOS_S01_40',$hoy);
-$KYOS_S01_41 = busqueda('apbad026','KYOS_S01_41',$hoy);
+$KYOS_S01_10 = recursos('KYOS_S01_10',$hoy,'40 days');
+$KYOS_S01_11 = recursos('KYOS_S01_11',$hoy,'40 days');
+$KYOS_S01_20 = recursos('KYOS_S01_20',$hoy,'40 days');
+$KYOS_S01_21 = recursos('KYOS_S01_21',$hoy,'40 days');
+$KYOS_S01_30 = recursos('KYOS_S01_30',$hoy,'40 days');
+$KYOS_S01_31 = recursos('KYOS_S01_31',$hoy,'40 days');
+$KYOS_S01_40 = recursos('KYOS_S01_40',$hoy,'40 days');
+$KYOS_S01_41 = recursos('KYOS_S01_41',$hoy,'40 days');
 
 
 $category['name'] = 'fecha';
 
-while($r1  = mysql_fetch_array($KYOS_S01_10)) {
+while($r1  = pg_fetch_assoc($KYOS_S01_10)) {
       $series1['data'][] = $r1['cpu'];
       $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['dia'];
+      $category['data'][] = $r1['fecha'];
     }
-while($r2  = mysql_fetch_array($KYOS_S01_11)) {
+while($r2  = pg_fetch_assoc($KYOS_S01_11)) {
       $series3['data'][] = $r2['cpu'];
       $series4['data'][] = $r2['memoria'];
     }
-while($r3  = mysql_fetch_array($KYOS_S01_20)) {
+while($r3  = pg_fetch_assoc($KYOS_S01_20)) {
       $series5['data'][] = $r3['cpu'];
       $series6['data'][] = $r3['memoria'];
     }
-while($r4  = mysql_fetch_array($KYOS_S01_21)) {
+while($r4  = pg_fetch_assoc($KYOS_S01_21)) {
       $series7['data'][] = $r4['cpu'];
       $series8['data'][] = $r4['memoria'];
     }
-while($r5  = mysql_fetch_array($KYOS_S01_30)) {
+while($r5  = pg_fetch_assoc($KYOS_S01_30)) {
       $series9['data'][] = $r5['cpu'];
       $series10['data'][] = $r5['memoria'];
     }
-while($r6  = mysql_fetch_array($KYOS_S01_31)) {
+while($r6  = pg_fetch_assoc($KYOS_S01_31)) {
       $series11['data'][] = $r6['cpu'];
       $series12['data'][] = $r6['memoria'];
     }
-while($r7  = mysql_fetch_array($KYOS_S01_40)) {
+while($r7  = pg_fetch_assoc($KYOS_S01_40)) {
       $series13['data'][] = $r7['cpu'];
       $series14['data'][] = $r7['memoria'];
     }
-while($r8  = mysql_fetch_array($KYOS_S01_41)) {
+while($r8  = pg_fetch_assoc($KYOS_S01_41)) {
       $series15['data'][] = $r8['cpu'];
       $series16['data'][] = $r8['memoria'];
     }
@@ -114,6 +92,6 @@ array_push($datos,$series16);
 
 print json_encode($datos, JSON_NUMERIC_CHECK);
 
-mysql_close($conexion);
+pg_close($db_con);
 
 ?>
