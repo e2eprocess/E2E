@@ -3,10 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
+		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+    <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
+    <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYGU/aplicacion_mensual.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYGU/aplicacion_semanal.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYGU/recurso_mensual.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYGU/aplicacion_mensual.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYGU/aplicacion_semanal.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYGU/recurso_mensual.js"></script>
     <script type="text/javascript" src="../js/netCash/KYGU/recurso_semanal.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>

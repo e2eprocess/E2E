@@ -3,10 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
+		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
+		<link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOP/aplicacion_mensual.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOP/aplicacion_semanal.js"></script>
-		<script type="text/javascript" src="../js/netCash/KYOP/recurso_mensual.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/aplicacion_mensual.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/aplicacion_semanal.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/recurso_mensual.js"></script>
     <script type="text/javascript" src="../js/netCash/KYOP/recurso_semanal.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -36,7 +39,7 @@
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
         <div id="recurso_semanal" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
         <div id="recurso_mensual" style="width: 50%; height: 500px; margin:1 auto;float:left"></div>
-			</fieldset>	
+			</fieldset>
 		</section>
 	</body>
 </html>

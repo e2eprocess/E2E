@@ -3,12 +3,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
+		<link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
 		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/netParticulares/KQOF/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="../js/netParticulares/KQOF/peticiones.js"></script>
-		<script type="text/javascript" src="../js/netParticulares/KQOF/cpu.js"></script>
-    <script type="text/javascript" src="../js/netParticulares/KQOF/memoria.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticiones.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpu.js"></script>
+    <script type="text/javascript" src="/E2E/js/netParticulares/KQOF/memoria.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
