@@ -22,7 +22,7 @@
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
     $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-    $gtHoy = busquedaHoy('gtCash%',$newToF,$newTo, 'Throughput');
+    $gtHoy = busquedaHoy('GTnetcash',$newToF,$newTo, 'Throughput');
     $servicioHoy = busquedaHoy('ASOnetcash',$newToF,$newTo, 'Throughput');
   }
   else {
