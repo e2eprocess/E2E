@@ -8,9 +8,9 @@
     <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
 		<link href="/E2E/css/jquery-ui.css" rel="stylesheet">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/tiempoRespuesta.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/peticiones.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/cpu.js"></script>
 	  <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
