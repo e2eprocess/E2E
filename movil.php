@@ -8,12 +8,13 @@
     <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
     <link href="/E2E/css/jquery-ui.css" rel="stylesheet">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>-->
 		<script type="text/javascript" src="/E2E/js/movil/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/cpu.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar

@@ -29,6 +29,12 @@
     $mobilityHoy = busqueda('enpp_mult_web',$newTo,'Throughput');
   }
   $mobilityPasada = busqueda('enpp_mult_web',$newFrom,'Throughput');
+  $maxPeticiones = max_peti('enpp_mult_web');
+
+  $r8 = pg_fetch_assoc($maxPeticiones);
+  $max_peti = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -37,6 +43,7 @@
   while($r1 = pg_fetch_assoc($mobilityPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
+        $series3['data'][] = $max_peti;
       }
   while($r3 = pg_fetch_assoc($mobilityHoy)) {
         $series2['data'][] = $r3['peticiones'];
@@ -47,6 +54,7 @@
   array_push($datos,$series2);
   array_push($datos,$series3);
   array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 

@@ -68,13 +68,17 @@ $(document).ready(function() {
           /*series: []*/
           series: [{
             name: 'esmb_mult_web_servicing_01 (F)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
             name: 'esmb_mult_web_servicing_01 (T)',
-            color: 'rgba(82,190,128,1)',
+            color: 'rgba(65,105,225,1.0)',
+            type: 'line',
+            data:[]
+          },{
+            color: 'rgba(255,0,0,1.0)',
             type: 'line',
             data:[]
           }]
@@ -84,7 +88,9 @@ $(document).ready(function() {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
+        options.series[2].data = json[3]['data'];
         options.subtitle.text = json[3]['text'];
+        options.series[2].name = json[5];
 
         chart = new Highcharts.Chart(options);
       });

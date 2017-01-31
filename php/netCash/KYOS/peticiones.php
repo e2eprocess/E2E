@@ -32,6 +32,12 @@
   }
   $serviciosPasada = busqueda('kyos_mult_web_servicios', $newFrom,'Throughput');
   $posicioncuentasPasada = busqueda('kyos_mult_web_posicioncuentas', $newFrom,'Throughput');
+  $maxPeticiones = max_peti('kyos_mult_web_posicioncuentas');
+
+  $r8 = pg_fetch_assoc($maxPeticiones);
+  $max_peti = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -40,6 +46,7 @@
   while($r1 = pg_fetch_assoc($serviciosPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
+        $series5['data'][] = $max_peti;
       }
   while($r2 = pg_fetch_assoc($posicioncuentasPasada)) {
         $series2['data'][] = $r2['peticiones'];
@@ -60,6 +67,7 @@
   array_push($datos,$series4);
   array_push($datos,$series5);
   array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
