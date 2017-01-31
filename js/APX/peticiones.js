@@ -78,7 +78,6 @@ $(document).ready(function() {
             type: 'line',
             data:[]
           },{
-            name: 'Max. Peticiones (13/12)',
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
             data:[]
@@ -91,6 +90,7 @@ $(document).ready(function() {
         options.series[1].data = json[2]['data'];
         options.subtitle.text = json[4]['text'];
         options.series[2].data = json[5]['data'];
+        options.series[2].name = json[6];
 
         chart = new Highcharts.Chart(options);
       });
