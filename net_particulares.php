@@ -8,7 +8,7 @@
     <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
 		<link href="/E2E/css/jquery-ui.css" rel="stylesheet">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/highstock_doble.js"></script>
+		<script type="text/javascript" src="/E2E/js/highstock_doble.js"></script>
 		<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
@@ -17,8 +17,8 @@
 		</script>
 	</head>
 	<body>
-		<script src="http://code.highcharts.com/stock/highstock.js"></script>
-		<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<header id="menu-header">
 			<div id="cabecera">
 					<div id="logo"><h>E2E -	Performance management</h></br>

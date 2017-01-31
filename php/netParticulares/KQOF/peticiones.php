@@ -29,6 +29,12 @@
     $BBVANetHoy = busqueda('kqof_es_web',$newTo,'Throughput');
   }
   $BBVANetPasada = busqueda('kqof_es_web',$newFrom,'Throughput');
+  $maxPeticiones = max_peti('kqof_es_web');
+
+  $r8 = pg_fetch_assoc($maxPeticiones);
+  $max_peti = $r8['max_peticiones'];
+  $Fecha_peti = $r8['fecha'];
+  $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';
@@ -37,16 +43,18 @@
   while($r1 = pg_fetch_assoc($BBVANetPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
+        $series3['data'][] = $max_peti;
       }
   while($r3 = pg_fetch_assoc($BBVANetHoy)) {
         $series2['data'][] = $r3['peticiones'];
-      }
+        }
   $datos = array();
   array_push($datos,$category);
   array_push($datos,$series1);
   array_push($datos,$series2);
   array_push($datos,$series3);
   array_push($datos,$titulo);
+  array_push($datos,$TituloPeticiones);
 
   print json_encode($datos, JSON_NUMERIC_CHECK);
 
