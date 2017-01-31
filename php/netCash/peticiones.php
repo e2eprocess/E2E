@@ -31,7 +31,7 @@
   $maxPeticiones = max_peti('kyop_mult_web_kyoppresentation');
 
   $category['name'] = 'fecha';
-  $titulo['text'] = "09/01/17 comparado con <b>$to</b>";
+  $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti['value'] = $r8['max_peticiones'];
@@ -41,7 +41,7 @@
   while($r1  = pg_fetch_assoc($peticionesPasada)) {
         $category['data'][] = $r1['fecha'];
         $series1['data'][] = $r1['peticiones'];
-        $series3['data'][] = "40976";
+        $series3['data'][] = $max_peti['value'];
       }
 
   while($r2 = pg_fetch_assoc($peticionesHoy)) {
