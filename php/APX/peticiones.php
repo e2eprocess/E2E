@@ -35,12 +35,12 @@ $Fecha_peti = $r8['fecha'];
 $TituloPeticiones = "Max. peticiones $Fecha_peti";
 
 $category['name'] = 'fecha';
-$titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
+$titulo['text'] = "09/01/2017 comparado con <b>$to</b>";
 
 while($r1  = pg_fetch_assoc($peticionesPasada)) {
       $category['data'][] = $r1['fecha'];
       $series1['data'][] = $r1['peticiones'];
-      $series4['data'][] = $max_peti;
+      $series4['data'][] = '62686';
     }
 
 while($r2 = pg_fetch_assoc($peticionesHoy)) {
