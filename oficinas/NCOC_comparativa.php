@@ -32,7 +32,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Seguimiento </span> | <span class="desactivo">Informe</span> </div>
+			<div id="submenu"> <span class="activo">Comparativa </span></div>
 			<header>Oficinas - Objeto Cliente</header>
 
 			<!-- Formulario gestión fechas -->
