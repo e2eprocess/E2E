@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'recurso_semanal',
             marginRight: 130,
             zoomType: 'xy'
           },
@@ -10,17 +9,14 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: 'Visión últimos 10 días',
+            text: 'Visión últimos 40 días',
             x: -20
           },
           credits: {
             enabled: false
           },
           xAxis: {
-            //type: 'datetime',
-            tickPixelInterval: 150,
-            crosshair: true,
-            categories: []
+            type: 'datetime',
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
@@ -41,10 +37,11 @@ $(document).ready(function() {
             max:100
           }],
           tooltip: {
-              shared: true
+              shared: true,
+              crosshair: true
           },
           legend: {
-              enabled: false,
+              //enabled:false,
               layout: 'horizontal',
               align: 'center',
               verticalAlign: 'bottom',
@@ -67,11 +64,25 @@ $(document).ready(function() {
               },
               column:{
                 stacking: 'normal'
+              },
+              series: {
+                marker: {
+                  enabled: false,
+                  symbol: 'circle',
+                  radius: 2
+                },
+                fillOpacity: 0.5
+              },
+              flags: {
+                tooltip: {
+                  xDateFormat: '%B %e, %Y'
+                }
               }
           },
           /*series: []*/
           series: [{
             name: 'CPU-apbad022_kyop_s01_10',
+            id: 'CPU-apbad022_kyop_s01_10',
             color: '#00BFFF',
             type: 'column',
             index: 0,
@@ -194,25 +205,23 @@ $(document).ready(function() {
       }
 
       $.getJSON("../php/netCash/KYOP/recurso_semanal.php", function(json) {
-        options.xAxis.categories = json[0]['data'];
-        options.series[0].data = json[1]['data'];
-        options.series[1].data = json[2]['data'];
-        options.series[2].data = json[3]['data'];
-        options.series[3].data = json[4]['data'];
-        options.series[4].data = json[5]['data'];
-        options.series[5].data = json[6]['data'];
-        options.series[6].data = json[7]['data'];
-        options.series[7].data = json[8]['data'];
-        options.series[8].data = json[9]['data'];
-        options.series[9].data = json[10]['data'];
-        options.series[10].data = json[11]['data'];
-        options.series[11].data = json[12]['data'];
-        options.series[12].data = json[13]['data'];
-        options.series[13].data = json[14]['data'];
-        options.series[14].data = json[15]['data'];
-        options.series[15].data = json[16]['data'];
+        options.series[0].data = json[0];
+        options.series[1].data = json[1];
+        options.series[2].data = json[2];
+        options.series[3].data = json[3];
+        options.series[4].data = json[4];
+        options.series[5].data = json[5];
+        options.series[6].data = json[6];
+        options.series[7].data = json[7];
+        options.series[8].data = json[8];
+        options.series[9].data = json[9];
+        options.series[10].data = json[10];
+        options.series[11].data = json[11];
+        options.series[12].data = json[12];
+        options.series[13].data = json[13];
+        options.series[14].data = json[14];
+        options.series[15].data = json[15];
 
-
-        chart = new Highcharts.Chart(options);
+        $('#recurso_semanal').highcharts(options);
       });
   });

@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticiones',
+            renderTo: 'cpuPar',
             marginRight: 130,
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones / 5 min.',
+            text: 'Consumo CPU % <br/><font style="font-size:10px;">(máquinas pares)</font>',
             x: -20 //center
           },
           subtitle: {
@@ -24,19 +24,12 @@ $(document).ready(function() {
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
-              format: '{value}'
+              format: '{value} %'
             },
             title: {
-              text: 'Peticiones NCOC'
-            }
-          },{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
+              text: 'CPU %'
             },
-            title: {
-              text: 'Peticiones EECC'
-            },
-            opposite: true
+            max: 100
           }],
           tooltip: {
               shared: true
@@ -61,66 +54,63 @@ $(document).ready(function() {
                     hover: {enabled: true}
                   }
                 }
-              },
-              spline: {
-                marker: {
-                  enabled: false,
-                  symbol: 'circle',
-                  radius: 1,
-                  states : {
-                    hover: {enabled: true}
-                  }
-                }
               }
           },
           /*series: []*/
           series: [{
-            name: 'Objeto Cliente (F)',
-            color: 'rgba(82,190,128,1.0)',
-            type: 'spline',
-            marker:{
-              enabled: false
-            },
-            dashStyle: 'shortdot',
+            name: 'spnac006 (F)',
+            color: 'rgba(4,129,255,0.5)',
+            type: 'column',
             data:[]
           },{
-            name: 'EECC (F)',
-            color: 'rgba(65,105,225,1.0)',
-            type: 'spline',
-            marker:{
-              enabled: false
-            },
-            dashStyle: 'shortdot',
-            yAxis: 1,
+            name: 'spnac008 (F)',
+            color: 'rgba(4,38,253,0.5)',
+            type: 'column',
             data:[]
           },{
-            name: 'Objeto Cliente (T)',
-            color: 'rgba(82,190,128,1.0)',
+            name: 'spnac010 (F)',
+            color: 'rgba(4,129,255,0.5)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'spnac012 (F)',
+            color: 'rgba(19,227,244,0.5)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'spnac006 (T)',
+            color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'EECC (T)',
-            color: 'rgba(65,105,225,1.0)',
+            name: 'spnac008 (T)',
+            color: 'rgba(4,38,253,1)',
             type: 'line',
-            yAxis: 1,
             data:[]
           },{
-            name: 'Max. Peticiones (7/11-EECC)',
-            color: 'rgba(255,0,0,1.0)',
+            name: 'spnac010 (T)',
+            color: 'rgba((4,129,255,1)',
             type: 'line',
-            yAxis: 1,
+            data:[]
+          },{
+            name: 'spnac012 (T)',
+            color: 'rgba(14,64,219,1)',
+            type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("php/oficinas/peticiones.php", function(json) {
+      $.getJSON("../php/oficinas/cpuPar.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
-        options.subtitle.text = json[5]['text'];
-        options.series[4].data = json[6]['data'];
+        options.series[4].data = json[5]['data'];
+        options.series[5].data = json[6]['data'];
+        options.series[6].data = json[7]['data'];
+        options.series[7].data = json[8]['data'];
+        options.subtitle.text = json[9]['text'];
 
         chart = new Highcharts.Chart(options);
       });

@@ -1,6 +1,6 @@
 <?php
   require_once("../conexion_e2e_process.php");
-  require_once("../queryCpu.php");
+  require_once("../querycpu.php");
 
   /*Declaracion de arrays json*/
   $category = array();

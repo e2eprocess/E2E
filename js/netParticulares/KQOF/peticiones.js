@@ -77,6 +77,10 @@ $(document).ready(function() {
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
+          },{
+            color: 'rgba(255,0,0,1.0)',
+            type: 'line',
+            data:[]
           }]
       }
 
@@ -84,7 +88,9 @@ $(document).ready(function() {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
-        options.subtitle.text = json[3]['text'];
+        options.subtitle.text = json[4]['text'];
+        options.series[2].data = json[3]['data'];;
+        options.series[2].name = json[5];
 
         chart = new Highcharts.Chart(options);
       });

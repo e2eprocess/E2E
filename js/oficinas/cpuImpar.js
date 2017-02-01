@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cpu',
+            renderTo: 'cpuImpar',
             marginRight: 130,
             zoomType: 'xy'
           },
           title: {
-            text: 'Consumo CPU %',
+            text: 'Consumo CPU % <br/><font style="font-size:10px;">(máquinas impares)</font>',
             x: -20 //center
           },
           subtitle: {
@@ -59,37 +59,17 @@ $(document).ready(function() {
           /*series: []*/
           series: [{
             name: 'spnac005 (F)',
-            color: 'rgba(4,38,253,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'spnac006 (F)',
-            color: 'rgba(4,129,255,1)',
+            color: 'rgba(4,38,253,0.5)',
             type: 'column',
             data:[]
           },{
             name: 'spnac007 (F)',
-            color: 'rgba(95,173,251,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'spnac008 (F)',
-            color: 'rgba(80,209,250,1)',
+            color: 'rgba(4,129,255,0.5)',
             type: 'column',
             data:[]
           },{
             name: 'spnac009 (F)',
-            color: 'rgba(4,38,253,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'spnac010 (F)',
-            color: 'rgba(4,129,255,1)',
-            type: 'column',
-            data:[]
-          },{
-            name: 'spnac012 (F)',
-            color: 'rgba(95,173,251,1)',
+            color: 'rgba(14,203,219,0.5)',
             type: 'column',
             data:[]
           },{
@@ -98,39 +78,19 @@ $(document).ready(function() {
             type: 'line',
             data:[]
           },{
-            name: 'spnac006 (T)',
+            name: 'spnac007 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'spnac007 (T)',
-            color: 'rgba(95,173,251,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'spnac008 (T)',
-            color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
             name: 'spnac009 (T)',
-            color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'spnac010 (T)',
-            color: 'rgba(80,209,250,1)',
-            type: 'line',
-            data:[]
-          },{
-            name: 'spnac012 (T)',
-            color: 'rgba(80,209,250,1)',
+            color: 'rgba(14,64,219,1)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("php/oficinas/cpu.php", function(json) {
+      $.getJSON("../php/oficinas/cpuImpar.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
@@ -138,16 +98,7 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
-        options.series[6].data = json[7]['data'];
-        options.series[7].data = json[8]['data'];
-        options.series[8].data = json[9]['data'];
-        options.series[9].data = json[10]['data'];
-        options.series[10].data = json[11]['data'];
-        options.series[11].data = json[12]['data'];
-        options.series[12].data = json[13]['data'];
-        options.series[13].data = json[14]['data'];
-        options.subtitle.text = json[15]['text'];
-
+        options.subtitle.text = json[7]['text'];
 
         chart = new Highcharts.Chart(options);
       });

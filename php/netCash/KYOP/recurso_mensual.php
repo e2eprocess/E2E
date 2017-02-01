@@ -1,24 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-require_once("../../queryinforme.php");
-
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-$series5 = array();
-$series6 = array();
-$series7 = array();
-$series8 = array();
-$series9 = array();
-$series10 = array();
-$series11 = array();
-$series12 = array();
-$series13 = array();
-$series14 = array();
-$series15 = array();
-$series16 = array();
+require_once("../../queryinformeTags.php");
 
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
@@ -31,47 +13,40 @@ $KYOP_S01_31 = recursos('KYOP_S01_31',$hoy,'40 days');
 $KYOP_S01_40 = recursos('KYOP_S01_40',$hoy,'40 days');
 $KYOP_S01_41 = recursos('KYOP_S01_41',$hoy,'40 days');
 
-
-$category['name'] = 'fecha';
-
 while($r1  = pg_fetch_assoc($KYOP_S01_10)) {
-      $series1['data'][] = $r1['cpu'];
-      $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['fecha'];
+    $series1[] = [$r1['fecha'],$r1['cpu']];
+    $series2[] = [$r1['fecha'],$r1['memoria']];
     }
 while($r2  = pg_fetch_assoc($KYOP_S01_11)) {
-      $series3['data'][] = $r2['cpu'];
-      $series4['data'][] = $r2['memoria'];
+    $series3[] = [$r2['fecha'],$r2['cpu']];
+    $series4[] = [$r2['fecha'],$r2['memoria']];
     }
 while($r3  = pg_fetch_assoc($KYOP_S01_20)) {
-      $series5['data'][] = $r3['cpu'];
-      $series6['data'][] = $r3['memoria'];
+    $series5[] = [$r3['fecha'],$r3['cpu']];
+    $series6[] = [$r3['fecha'],$r3['memoria']];
     }
 while($r4  = pg_fetch_assoc($KYOP_S01_21)) {
-      $series7['data'][] = $r4['cpu'];
-      $series8['data'][] = $r4['memoria'];
+    $series7[] = [$r4['fecha'],$r4['cpu']];
+    $series8[] = [$r4['fecha'],$r4['memoria']];
     }
 while($r5  = pg_fetch_assoc($KYOP_S01_30)) {
-      $series9['data'][] = $r5['cpu'];
-      $series10['data'][] = $r5['memoria'];
+    $series9[] = [$r5['fecha'],$r5['cpu']];
+    $series10[] = [$r5['fecha'],$r5['memoria']];
     }
 while($r6  = pg_fetch_assoc($KYOP_S01_31)) {
-      $series11['data'][] = $r6['cpu'];
-      $series12['data'][] = $r6['memoria'];
+    $series11[] = [$r6['fecha'],$r6['cpu']];
+    $series12[] = [$r6['fecha'],$r6['memoria']];
     }
 while($r7  = pg_fetch_assoc($KYOP_S01_40)) {
-      $series13['data'][] = $r7['cpu'];
-      $series14['data'][] = $r7['memoria'];
+    $series13[] = [$r7['fecha'],$r7['cpu']];
+    $series14[] = [$r7['fecha'],$r7['memoria']];
     }
 while($r8  = pg_fetch_assoc($KYOP_S01_41)) {
-      $series15['data'][] = $r8['cpu'];
-      $series16['data'][] = $r8['memoria'];
+    $series15[] = [$r8['fecha'],$r8['cpu']];
+    $series16[] = [$r8['fecha'],$r8['memoria']];
     }
 
-
-
 $datos = array();
-array_push($datos,$category);
 array_push($datos,$series1);
 array_push($datos,$series2);
 array_push($datos,$series3);

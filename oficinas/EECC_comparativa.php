@@ -10,7 +10,8 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/oficinas/EECC/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/oficinas/EECC/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/EECC/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuImpar.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuPar.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
@@ -53,8 +54,8 @@
 				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-
+				<div id="cpuPar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="cpuImpar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 			</fieldset>
 		</section>
 	</body>

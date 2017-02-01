@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'aplicacion_mensual',
             marginRight: 130,
             zoomType: 'xy'
           },
@@ -17,10 +16,7 @@ $(document).ready(function() {
             enabled: false
           },
           xAxis: {
-            //type: 'datetime',
-            tickPixelInterval: 150,
-            crosshair: true,
-            categories: []
+            type: 'datetime'
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
@@ -28,7 +24,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Tiempo de respuesta (ms)'
-            }
+            },
+            min: 0
           },{ //Peticiones
             labels: {
               format: '{value}'
@@ -39,7 +36,8 @@ $(document).ready(function() {
             opposite: true
           }],
           tooltip: {
-              shared: true
+              shared: true,
+              crosshair: true
           },
           legend: {
               layout: 'horizontal',
@@ -71,16 +69,34 @@ $(document).ready(function() {
                     hover: {enabled: true}
                   }
                 }
+              },
+              series: {
+                marker: {
+                  enabled: false,
+                  symbol: 'circle',
+                  radius: 2
+                },
+                fillOpacity: 0.5
+              },
+              flags: {
+                tooltip: {
+                  xDateFormat: '%B %e, %Y'
+                }
               }
           },
           /*series: []*/
           series: [{
             name: 'Tiempo Respuesta kyop_mult_web_kyoppresentation',
+            id: 'Tiempo',
             color: 'rgba(248,0,0,1.0)',
             type: 'line',
             index: 1,
             legendIndex: 0,
-            data:[]
+            data:[],
+            tooltip: {
+                     xDateFormat: '%e %B %Y %H:%MM'
+            },
+            turboThreshold: 0
           },{
             name: 'Peticiones kyop_mult_web_kyoppresentation',
             color: 'rgba(65,105,225,1.0)',
@@ -88,15 +104,31 @@ $(document).ready(function() {
             yAxis: 1,
             index: 0,
             legendIndex: 1,
-            data:[]
+            data:[],
+            tooltip: {
+                     xDateFormat: '%e %B %Y %H:%MM'
+            },
+            turboThreshold: 0
           }]
       }
 
-      $.getJSON("../php/netCash/KYOP/aplicacion_mensual.php", function(json) {
-        options.xAxis.categories = json[0]['data'];
-        options.series[0].data = json[1]['data'];
-        options.series[1].data = json[2]['data'];
+      if (Highcharts.seriesTypes.flags) {
+          options.series.push({
+              type: 'flags',
+              //name: 'Events',
+              color: '#333333',
+              fillColor: 'rgba(255,255,255,0.8)',
+              data: [
+                  { x: 1484537100000, text: 'Prueba de etiquetado en las gráficas highcharts', title: 'Prueba Etiquetas' },
+                ],
+              onSeries: 'Tiempo',
+              showInLegend: false
+          });
+      }
 
-        chart = new Highcharts.Chart(options);
+      $.getJSON("../php/netCash/KYOP/aplicacion_mensual.php", function(json) {
+                  options.series[0].data = json[0];
+                  options.series[1].data = json[1];
+              $('#aplicacion_mensual').highcharts(options);
       });
   });

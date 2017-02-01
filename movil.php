@@ -6,14 +6,9 @@
 		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
     <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
     <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
-    <link href="/E2E/css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/cpu.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<link href="/E2E/css/jquery-ui.css" rel="stylesheet">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/movil/highstock.js"></script>
 		<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
@@ -22,6 +17,8 @@
 		</script>
 	</head>
 	<body>
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<header id="menu-header">
 			<div id="cabecera">
 					<div id="logo"><h>E2E -	Performance management</h></br>
@@ -29,33 +26,14 @@
 			</div>
 			<div id="incluirPagina"></div>
 		</header>
-
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Seguimiento </span></div>
+			<div id="submenu">
+				<span class="activo">Seguimiento</span>
+			</div>
 			<header>Móvil</header>
-
-			<!-- Formulario gestión fechas -->
-			<?php include("php/fechaToFrom.php"); ?>
-			<form id="comparador" action='' method='post'>
-				<label>Comparar el día </label>
-				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $from ?>"/>
-				<label>(F) con </label>
-				<input type="text" name="to" id="to" readonly="readonly" size="12" value="<?= $to ?>"/>
-				<label>(T)</label>
-				<input type="submit" value="Comparar" name="consulta"/>
-			</form>
-			<script src="external/jquery/jquery.js"></script>
-			<script src="js/fecha/jquery-ui.js"></script>
-			<script src="js/fecha/calendario.js"></script>
-
-			<!-- Dashboard métricas -->
 			<fieldset>
-				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-
+				<div id="container" style="height: 700px; min-width: 500px"></div>
 			</fieldset>
 		</section>
 	</body>

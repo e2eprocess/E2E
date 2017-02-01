@@ -10,7 +10,8 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/oficinas/NCOC/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/oficinas/NCOC/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/NCOC/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuPar.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuImpar.js"></script>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 		<script type="text/javascript">
@@ -31,7 +32,7 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor">
-			<div id="submenu"> <span class="activo">Seguimiento </span> | <span class="desactivo">Informe</span> </div>
+			<div id="submenu"> <span class="activo">Comparativa </span></div>
 			<header>Oficinas - Objeto Cliente</header>
 
 			<!-- Formulario gestión fechas -->
@@ -53,8 +54,8 @@
 				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-
+				<div id="cpuPar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="cpuImpar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 			</fieldset>
 		</section>
 	</body>
