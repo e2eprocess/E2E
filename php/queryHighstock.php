@@ -1,6 +1,6 @@
 <?php
 
-function busqueda($FECHA){
+function busqueda($CANAL,$FECHA){
   global $db_con;
   $query="SELECT *
           FROM \"E2E\".crosstab(
@@ -18,16 +18,16 @@ function busqueda($FECHA){
 							        c.name as atributo,
 							        a.datavalue as valor
 						     FROM \"E2E\".monitordata a, \"E2E\".monitor b, \"E2E\".kpi c
-						     WHERE b.name = ''kqof_es_web''
+						     WHERE b.name = ''".$CANAL."''
 						     AND	a.idmonitor = b.idmonitor
 						     AND	a.idkpi = c.idkpi
                  AND timedata < ''".$FECHA."''
 						    ORDER BY fecha, atributo')
         AS recursos (fecha NUMERIC,
-				      APBAD002 NUMERIC,
-		          APBAD003 NUMERIC,
-		          APBAD004 NUMERIC,
-				      APBAD006 NUMERIC,
+				      cpu1 NUMERIC,
+		          cpu2 NUMERIC,
+		          cpu3 NUMERIC,
+				      cpu4 NUMERIC,
 				      peticiones NUMERIC,
 				      TIEMPO NUMERIC);";
   $resultado = pg_query($db_con, $query);

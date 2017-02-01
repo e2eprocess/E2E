@@ -1,13 +1,13 @@
 $(function () {
-    $.getJSON('php/highstock_doble_postgresql.php', function (data) {
+    $.getJSON('/E2E/php/netCash/highstock.php', function (data) {
 
         // split the data set into ohlc and volume
         var tiempo_respuesta = [],
             peticiones = [],
-            apbad002 = [],
-            apbad003 = [],
-            apbad004 = [],
-            apbad006 = [],
+            apbad022 = [],
+            apbad023 = [],
+            apbad024 = [],
+            apbad026 = [],
             dataLength = data.length,
 
             i = 0;
@@ -21,21 +21,21 @@ $(function () {
                 data[i][0], // the date
                 data[i][2] // peticiones
             ]);
-            apbad002.push([
+            apbad022.push([
                 data[i][0], // the date
-                data[i][3] // apbad002
+                data[i][3] // apbad022
             ]);
-            apbad003.push([
+            apbad023.push([
                 data[i][0], // the date
-                data[i][4] // apbad003
+                data[i][4] // apbad023
             ]);
-            apbad004.push([
+            apbad024.push([
                 data[i][0], // the date
-                data[i][5] // apbad004
+                data[i][5] // apbad024
             ]);
-            apbad006.push([
+            apbad026.push([
                 data[i][0], // the date
-                data[i][6] // apbad006
+                data[i][6] // apbad026
             ]);
 
         }
@@ -76,7 +76,7 @@ $(function () {
                     x: 3
                 },
                 title: {
-                    text: 'Tiempo respuesta',
+                    text: 'Tiempo respuesta (ms.)',
                 },
                 height: '25%',
                 opposite: false
@@ -113,7 +113,8 @@ $(function () {
             }],
 
             tooltip: {
-                split: true
+                split: true,
+                valueDecimals: 2
             },
 
             series: [{
@@ -128,29 +129,29 @@ $(function () {
             },{
                 type: 'area',
                 color: 'rgba(4,38,253,1)',
-                name: 'apbad002',
-                data: apbad002,
+                name: 'apbad022',
+                data: apbad022,
                 stacking: 'normal',
                 yAxis: 2
             },{
                 type: 'area',
                 color: 'rgba(4,129,255,1)',
-                name: 'apbad003',
-                data: apbad003,
+                name: 'apbad023',
+                data: apbad023,
                 stacking: 'normal',
                 yAxis: 2
             },{
                 type: 'area',
                 color: 'rgba(95,173,251,1)',
-                name: 'apbad004',
-                data: apbad004,
+                name: 'apbad024',
+                data: apbad024,
                 stacking: 'normal',
                 yAxis: 2
             },{
                 type: 'area',
                 color: 'rgba(80,209,250,1)',
-                name: 'apbad006',
-                data: apbad006,
+                name: 'apbad026',
+                data: apbad026,
                 stacking: 'normal',
                 yAxis: 2
             }]
