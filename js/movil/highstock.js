@@ -125,7 +125,10 @@ $(function () {
                 type: 'column',
                 name: 'Peticiones',
                 data: peticiones,
-                yAxis: 1
+                yAxis: 1,
+                tooltip: {
+                  valueDecimals: 0
+                }
             },{
                 type: 'area',
                 color: 'rgba(4,38,253,1)',
