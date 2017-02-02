@@ -101,6 +101,7 @@ $(document).ready(function() {
             name: 'Peticiones kyop_mult_web_kyoppresentation',
             color: 'rgba(65,105,225,1.0)',
             type: 'column',
+            id: 'Peticiones',
             yAxis: 1,
             index: 0,
             legendIndex: 1,
@@ -119,9 +120,12 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                //  { x: 1484537100000, text: 'Prueba de etiquetado en las gráficas highcharts', title: 'Prueba Etiquetas' },
+                  { x: 1486026000000, text: '<b>Pico historico</b> <br/>Se ha alcanzado el máximo de peticiones (561.829 por hora)', title: 'Pico Histórico' },
                 ],
-              onSeries: 'Tiempo',
+              onSeries: 'Peticiones',
+              tooltip: {
+                       xDateFormat: '%e %B %Y %H:%MM'
+              },
               showInLegend: false
           });
       }
