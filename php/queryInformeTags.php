@@ -22,7 +22,7 @@ function recursos($CLON,$FECHA,$INTERVALO){
 
 function tiempo($MONITOR,$FECHA,$INTERVALO){
   global $db_con;
-  $query="SELECT ((extract(epoch from b.timedata))::NUMERIC)*1000 as x,
+  $query="SELECT (extract(epoch from date_trunc('hour', B.timedata))::NUMERIC) * 1000 as x,
          avg(B.datavalue)::DECIMAL(10,2) as y
           FROM \"E2E\".monitor A, \"E2E\".monitordata B, \"E2E\".kpi C
           WHERE A.name = '".$MONITOR."'
@@ -39,7 +39,7 @@ function tiempo($MONITOR,$FECHA,$INTERVALO){
 
 function peticiones($MONITOR,$FECHA,$INTERVALO){
   global $db_con;
-  $query="SELECT ((extract(epoch from b.timedata))::NUMERIC)*1000 as x,
+  $query="SELECT (extract(epoch from date_trunc('hour', B.timedata))::NUMERIC) * 1000 as x,
          sum(B.datavalue)::DECIMAL(10,2) as y
           FROM \"E2E\".monitor A, \"E2E\".monitordata B, \"E2E\".kpi C
           WHERE A.name = '".$MONITOR."'

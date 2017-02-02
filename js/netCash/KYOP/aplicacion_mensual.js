@@ -119,7 +119,7 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1484537100000, text: 'Prueba de etiquetado en las gráficas highcharts', title: 'Prueba Etiquetas' },
+                //  { x: 1484537100000, text: 'Prueba de etiquetado en las gráficas highcharts', title: 'Prueba Etiquetas' },
                 ],
               onSeries: 'Tiempo',
               showInLegend: false
