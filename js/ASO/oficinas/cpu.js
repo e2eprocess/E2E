@@ -58,56 +58,66 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'lpsrn302 (F)',
+            name: 'lpsro301 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv301 (F)',
+            name: 'lpsro302 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv302 (F)',
+            name: 'lpsrv309 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
-          },{
-            name: 'lpsrv303 (F)',
+          },/*{
+            name: 'lpsrv327 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrn301 (F)',
+            name: 'lpsrv328 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrn302 (T)',
+            name: 'lpsrv329 (F)',
+            color: 'rgba(4,38,253,1)',
+            type: 'column',
+            data:[]
+          },*/{
+            name: 'lpsr0301 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv301 (T)',
+            name: 'lpsro302 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv302 (T)',
+            name: 'lpsrv309 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
-          },{
-            name: 'lpsrv303 (T)',
+          }/*,{
+            name: 'lpsrv327 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrn301 (T)',
+            name: 'lpsrv328 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
-          }]
+          },{
+            name: 'lpsrv329 (T)',
+            color: 'rgba(4,38,253,1)',
+            type: 'line',
+            data:[]
+          }*/]
       }
 
       $.getJSON("../php/ASO/oficinas/cpuOficinas.php", function(json) {
@@ -118,11 +128,11 @@ $(document).ready(function() {
         options.series[3].data = json[4]['data'];
         options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
-        options.series[6].data = json[7]['data'];
+        /*options.series[6].data = json[7]['data'];
         options.series[7].data = json[8]['data'];
         options.series[8].data = json[9]['data'];
-        options.series[9].data = json[10]['data'];
-        options.subtitle.text = json[11]['text'];
+        options.series[9].data = json[10]['data'];*/
+        options.subtitle.text = json[7]['text'];
 
         chart = new Highcharts.Chart(options);
       });

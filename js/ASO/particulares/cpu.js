@@ -59,27 +59,27 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'lpsrn302 (F)',
+            name: 'lpsrn301 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv301 (F)',
+            name: 'lpsrn302 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv302 (F)',
+            name: 'lpsrv301 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv303 (F)',
+            name: 'lpsrv302 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrn301 (F)',
+            name: 'lpsrv303 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
@@ -104,27 +104,27 @@ $(document).ready(function() {
             type: 'column',
             data:[]
           },{
-            name: 'lpsrn302 (T)',
+            name: 'lpsrn301 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv301 (T)',
+            name: 'lpsrn302 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv302 (T)',
+            name: 'lpsrv301 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv303 (T)',
+            name: 'lpsrv302 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrn301 (T)',
+            name: 'lpsrv303 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]

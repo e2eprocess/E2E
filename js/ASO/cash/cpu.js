@@ -58,36 +58,66 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'lpsrv306 (F)',
+            name: 'lpsrv305 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
+            name: 'lpsrv306 (F)',
+            color: 'rgba(4,129,255,1)',
+            type: 'column',
+            data:[]
+          }/*,{
             name: 'lpsrv325 (F)',
+            color: 'rgba(95,173,251,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lpsrv326 (F)',
+            color: 'rgba(4,38,253,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lpsrv333 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'lpsrv305 (F)',
+            name: 'lpsrv334 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
+            data:[]
+          }*/,{
+            name: 'lpsrv305 (T)',
+            color: 'rgba(4,38,253,1)',
+            type: 'line',
             data:[]
           },{
             name: 'lpsrv306 (T)',
+            color: 'rgba(4,129,255,1)',
+            type: 'line',
+            data:[]
+          }/*,{
+            name: 'lpsrv325 (T)',
+            color: 'rgba(95,173,251,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'lpsrv326 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv325 (T)',
+            name: 'lpsrv333 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'lpsrv305 (T)',
+            name: 'lpsrv334 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
-          }]
+          }*/]
       }
 
       $.getJSON("../php/ASO/cash/cpuCash.php", function(json) {
@@ -96,9 +126,15 @@ $(document).ready(function() {
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.series[3].data = json[4]['data'];
-        options.series[4].data = json[5]['data'];
+        /*options.series[4].data = json[5]['data'];
         options.series[5].data = json[6]['data'];
-        options.subtitle.text = json[7]['text'];
+        options.series[6].data = json[7]['data'];
+        options.series[7].data = json[8]['data'];
+        options.series[8].data = json[9]['data'];
+        options.series[9].data = json[10]['data'];
+        options.series[10].data = json[11]['data'];
+        options.series[11].data = json[12]['data'];*/
+        options.subtitle.text = json[5]['text'];
 
         chart = new Highcharts.Chart(options);
       });
