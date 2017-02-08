@@ -31,7 +31,7 @@ $(document).ready(function() {
               format: '{value}'
             },
             title: {
-              text: 'Peticiones por minuto'
+              text: 'Peticiones por hora'
             },
             opposite: true
           }],
@@ -124,7 +124,7 @@ $(document).ready(function() {
                 ],
               onSeries: 'Peticiones',
               tooltip: {
-                       xDateFormat: '%e %B %Y %H:%MM'
+                       xDateFormat: '%e %B %Y %H:%M'
               },
               showInLegend: false
           });

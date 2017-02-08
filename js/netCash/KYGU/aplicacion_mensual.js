@@ -34,7 +34,7 @@ $(document).ready(function() {
               format: '{value}'
             },
             title: {
-              text: 'Peticiones por minuto'
+              text: 'Peticiones por hora'
             },
             opposite: true
           }],
