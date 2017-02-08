@@ -22,10 +22,6 @@
 	</head>
 	<body>
 		<header id="menu-header">
-			<div id="cabecera">
-					<div id="logo"><h>E2E -	Performance management</h></br>
-						Informe seguimiento
-			</div>
 			<div id="incluirPagina"></div>
 		</header>
 
