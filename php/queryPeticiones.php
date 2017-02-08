@@ -34,7 +34,7 @@ function busquedaHoy($CANAL,$FECHAF,$FECHAT,$KPI){
 
 function max_peti($CANAL){
   global $db_con;
-  $query="SELECT to_char(a.datemark, 'dd/mm/yy-HH:mi') as fecha,
+  $query="SELECT to_char(a.datemark, 'dd/mm/yy-HH:mi PM') as fecha,
           a.valuemark as max_peticiones
           FROM \"E2E\".watermark a, \"E2E\".monitor b
           WHERE a.idmonitor = b.idmonitor
