@@ -56,7 +56,7 @@ function peticiones($MONITOR,$FECHA,$INTERVALO){
 
 function tags($MONITOR,$FECHA,$INTERVALO){
   global $db_con;
-  $query="select (extract(epoch from timedata)::NUMERIC) * 1000 as x,
+  $query="SELECT (extract(epoch from timedata)::NUMERIC) * 1000 as x,
 	        description as text,
 	        tipo as title
           FROM comment
