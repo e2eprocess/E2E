@@ -20,10 +20,6 @@
 		<script src="https://code.highcharts.com/stock/highstock.js"></script>
 		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<header id="menu-header">
-			<div id="cabecera">
-					<div id="logo"><h>E2E -	Performance management</h></br>
-						Informe seguimiento
-			</div>
 			<div id="incluirPagina"></div>
 		</header>
 		<!-- Cuerpo informe -->
