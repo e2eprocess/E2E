@@ -49,6 +49,7 @@ $category['name'] = 'fecha';
 $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
 
 while($r1 = pg_fetch_assoc($lpsrn301CpuPasada)) {
+      $category['data'][] = $r1['fecha'];
       $series1['data'][] = $r1['cpu'];
     }
 while($r2 = pg_fetch_assoc($lpsrn302CpuPasada)) {
@@ -77,7 +78,6 @@ while($r9 = pg_fetch_assoc($lpsrv321CpuPasada)) {
     }
 
 while($r10 = pg_fetch_assoc($lpsrn301CpuHoy)) {
-      $category['data'][] = $r10['fecha'];
       $series10['data'][] = $r10['cpu'];
     }
 while($r11 = pg_fetch_assoc($lpsrn302CpuHoy)) {

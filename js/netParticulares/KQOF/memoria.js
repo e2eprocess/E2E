@@ -57,122 +57,122 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'CPU-apbad002_kqof_S01_20 (F)',
+            name: 'apbad002_kqof_S01_20 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_kqof_S01_21 (F)',
+            name: 'apbad002_kqof_S01_21 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_kqof_S01_22 (F)',
+            name: 'apbad002_kqof_S01_22 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_30 (F)',
+            name: 'apbad003_kqof_S01_30 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_31 (F)',
+            name: 'apbad003_kqof_S01_31 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_32 (F)',
+            name: 'apbad003_kqof_S01_32 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_40 (F)',
+            name: 'apbad004_kqof_S01_40 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_41 (F)',
+            name: 'apbad004_kqof_S01_41 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_42 (F)',
+            name: 'apbad004_kqof_S01_42 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_60 (F)',
+            name: 'apbad006_kqof_S01_60 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_61 (F)',
+            name: 'apbad006_kqof_S01_61 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_62 (F)',
+            name: 'apbad006_kqof_S01_62 (F)',
             color: 'rgba(49,4,247,1)',
             type: 'column',
             data:[]
           },{
-            name: 'CPU-apbad002_kqof_S01_20 (T)',
+            name: 'apbad002_kqof_S01_20 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad002_kqof_S01_21 (T)',
+            name: 'apbad002_kqof_S01_21 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad002_kqof_S01_22 (T)',
+            name: 'apbad002_kqof_S01_22 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_30 (T)',
+            name: 'apbad003_kqof_S01_30 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_31 (T)',
+            name: 'apbad003_kqof_S01_31 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad003_kqof_S01_32 (T)',
+            name: 'apbad003_kqof_S01_32 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_40 (T)',
+            name: 'apbad004_kqof_S01_40 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_41 (T)',
+            name: 'apbad004_kqof_S01_41 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad004_kqof_S01_42 (T)',
+            name: 'apbad004_kqof_S01_42 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_60 (T)',
+            name: 'apbad006_kqof_S01_60 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_61 (T)',
+            name: 'apbad006_kqof_S01_61 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'CPU-apbad006_kqof_S01_62 (T)',
+            name: 'apbad006_kqof_S01_62 (T)',
             color: 'rgba(49,4,247,1)',
             type: 'line',
             data:[]

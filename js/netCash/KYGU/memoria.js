@@ -58,82 +58,82 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'memoria-apbad022_kygu_s01_10 (F)',
+            name: 'apbad022_kygu_s01_10 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad022_kygu_s01_11 (F)',
+            name: 'apbad022_kygu_s01_11 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad023_kygu_s01_20 (F)',
+            name: 'apbad023_kygu_s01_20 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad023_kygu_s01_21 (F)',
+            name: 'apbad023_kygu_s01_21 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad024_kygu_s01_30 (F)',
+            name: 'apbad024_kygu_s01_30 (F)',
             color: 'rgba(4,38,253,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad024_kygu_s01_31 (F)',
+            name: 'apbad024_kygu_s01_31 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad026_kygu_s01_40 (F)',
+            name: 'apbad026_kygu_s01_40 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad026_kygu_s01_41 (F)',
+            name: 'apbad026_kygu_s01_41 (F)',
             color: 'rgba(80,209,250,1)',
             type: 'column',
             data:[]
           },{
-            name: 'memoria-apbad022_kygu_s01_10 (T)',
+            name: 'apbad022_kygu_s01_10 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad022_kygu_s01_11 (T)',
+            name: 'apbad022_kygu_s01_11 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad023_kygu_s01_20 (T)',
+            name: 'apbad023_kygu_s01_20 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad023_kygu_s01_21 (T)',
+            name: 'apbad023_kygu_s01_21 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad024_kygu_s01_30 (T)',
+            name: 'apbad024_kygu_s01_30 (T)',
             color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad024_kygu_s01_31 (T)',
+            name: 'apbad024_kygu_s01_31 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad026_kygu_s01_40 (T)',
+            name: 'apbad026_kygu_s01_40 (T)',
             color: 'rgba(95,173,251,1)',
             type: 'line',
             data:[]
           },{
-            name: 'memoria-apbad026_kygu_s01_41 (T)',
+            name: 'apbad026_kygu_s01_41 (T)',
             color: 'rgba(80,209,250,1)',
             type: 'line',
             data:[]
