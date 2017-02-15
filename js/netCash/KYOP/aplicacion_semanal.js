@@ -120,7 +120,7 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1486026000000, text: '<b>Pico historico</b> <br/>Se ha alcanzado el máximo de peticiones (561.829 por hora)', title: 'Pico Histórico' },
+                  //{ x: 1486026000000, text: '<b>Pico historico</b> <br/>Se ha alcanzado el máximo de peticiones (561.829 por hora)', title: 'Pico Histórico' },
                 ],
               onSeries: 'Peticiones',
               tooltip: {

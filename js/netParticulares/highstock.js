@@ -110,8 +110,14 @@ $(function () {
                 top: '65%',
                 opposite: false,
                 offset: 0,
-                max:100
+                max: 100
             }],
+
+            plotOptions: {
+                series: {
+                    showInNavigator: true
+                }
+            },
 
             tooltip: {
                 split: true,
@@ -138,7 +144,7 @@ $(function () {
                 yAxis: 2
             },{
                 type: 'area',
-                color: 'rgba(4,129,255,1)',
+                color: 'rgba(4,129,255,0.5)',
                 name: 'apbad003',
                 data: apbad003,
                 yAxis: 2
@@ -150,7 +156,7 @@ $(function () {
                 yAxis: 2
             },{
                 type: 'area',
-                color: 'rgba(80,209,250,0.5)',
+                color: 'rgba(80,209,250,0.25)',
                 name: 'apbad006',
                 data: apbad006,
                 yAxis: 2
