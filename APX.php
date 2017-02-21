@@ -51,7 +51,7 @@
 			<fieldset id="recuadro">
 				<div id="peticionesAPX"></div>
 			</fieldset>
-			<fieldset id="recuadroMaquina">
+			<fieldset id="recuadroMemoria">
 				<div id="cpuAPX"></div>
 			</fieldset>
 		</section>

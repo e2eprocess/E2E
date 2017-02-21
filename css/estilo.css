@@ -82,9 +82,18 @@ body {
   float:left;
 }
 
-#recuadroMaquina {
+#recuadroMemoria {
   width: 48%;
   height: 400px;
+  margin: 1;
+  float:left;
+  width:97.9%;
+  margin-top:0.5em;
+}
+
+#recuadroCpu {
+  width: 48%;
+  height: 250px;
   margin: 1;
   float:left;
   width:97.9%;

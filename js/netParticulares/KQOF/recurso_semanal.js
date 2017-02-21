@@ -2,8 +2,9 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'recurso_semanal',
-            marginRight: 20,
-            zoomType: 'xy'
+            marginRight: 100,
+            zoomType: 'xy',
+            height: 275
           },
           title: {
             text: 'KQOF - RECURSOS (max.)',
@@ -29,7 +30,7 @@ $(document).ready(function() {
             title: {
               text: 'CPU %'
             },
-            max: 100
+            max: '100'
           },{ //Peticiones
             labels: {
               format: '{value} %'
@@ -38,10 +39,14 @@ $(document).ready(function() {
               text: 'Memoria'
             },
             opposite: true,
-            max:100
+            max: '100'
           }],
           tooltip: {
-              shared: true
+              shared: true,
+              style: {
+                fontSize: '8px'
+              },
+              valueDecimals: 2
           },
           legend: {
             enabled: false,

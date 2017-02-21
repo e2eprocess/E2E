@@ -53,10 +53,10 @@
 			<fieldset id="recuadro">
 				<div id="peticionesCash"></div>
 			</fieldset>
-			<fieldset id="recuadroMaquina">
+			<fieldset id="recuadroMemoria">
 				<div id="cpuCash"></div>
 			</fieldset>
-			<fieldset id="recuadroMaquina">
+			<fieldset id="recuadroMemoria">
 				<div id="memoriaCash"></div>
 			</fieldset>
 		</section>
