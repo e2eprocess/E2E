@@ -45,12 +45,14 @@
 			<script src="/E2E/js/fecha/calendario.js"></script>
 
 			<!-- Dashboard métricas -->
-			<fieldset>
-				<div id="tiempoASOCash" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticionesASOCash" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpuASOCash" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-
+			<fieldset id="recuadro">
+				<div id="tiempoASOCash"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="peticionesASOCash"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuASOCash"></div>
 			</fieldset>
 		</section>
 	</body>

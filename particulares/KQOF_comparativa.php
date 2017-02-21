@@ -52,10 +52,10 @@
 			<fieldset id="recuadro">
 				<div id="peticionesKQOF"></div>
 			</fieldset>
-			<fieldset id="recuadro" style="width:97.9%; margin-top:0.5em;">
+			<fieldset id="recuadroMaquina">
 				<div id="cpuKQOF"></div>
 			</fieldset>
-			<fieldset id="recuadro" style="width:97.9%; margin-top:0.5em;">
+			<fieldset id="recuadroMaquina">
 				<div id="memoriaKQOF"></div>
 			</fieldset>
 		</fieldset>

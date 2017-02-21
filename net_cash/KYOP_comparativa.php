@@ -47,12 +47,17 @@
 			<script src="../js/fecha/calendario.js"></script>
 
 			<!-- Dashboard métricas -->
-			<fieldset>
-				<div id="tiempoRespuestaCash" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticionesCash" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpuCash" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="memoriaCash" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+			<fieldset id="recuadro">
+				<div id="tiempoRespuestaCash"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="peticionesCash"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuCash"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="memoriaCash"></div>
 			</fieldset>
 		</section>
 	</body>

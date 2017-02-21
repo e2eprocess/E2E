@@ -46,12 +46,17 @@
 			<script src="../js/fecha/calendario.js"></script>
 
 			<!-- Dashboard métricas -->
-			<fieldset>
-				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpuPar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="cpuImpar" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+			<fieldset id="recuadro">
+				<div id="tiempoRespuesta"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="peticiones"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuPar"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuImpar"></div>
 			</fieldset>
 		</section>
 	</body>

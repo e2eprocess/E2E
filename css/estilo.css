@@ -79,7 +79,16 @@ body {
   width: 48%;
   height: 400px;
   margin: 1;
-  float:left
+  float:left;
+}
+
+#recuadroMaquina {
+  width: 48%;
+  height: 400px;
+  margin: 1;
+  float:left;
+  width:97.9%;
+  margin-top:0.5em;
 }
 
 #recuadroTitular {

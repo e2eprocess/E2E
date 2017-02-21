@@ -46,12 +46,17 @@
 			<script src="../js/fecha/calendario.js"></script>
 
 			<!-- Dashboard métricas -->
-			<fieldset>
-				<div id="tiempoRespuestaOfi" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticionesOfi" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpuParOfi" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="cpuImparOfi" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+			<fieldset id="recuadro">
+				<div id="tiempoRespuestaOfi"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="peticionesOfi"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuParOfi"></div>
+			</fieldset>
+			<fieldset id="recuadroMaquina">
+				<div id="cpuImparOfi"></div>
 			</fieldset>
 		</section>
 	</body>
