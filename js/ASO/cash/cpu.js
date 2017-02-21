@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cpu',
-            marginRight: 130,
+            renderTo: 'cpuASOCash',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -29,7 +29,8 @@ $(document).ready(function() {
             title: {
               text: 'CPU %'
             },
-            max: 100
+            max: 100,
+            lineWidth: 1
           }],
           tooltip: {
               shared: true
@@ -120,7 +121,7 @@ $(document).ready(function() {
           }*/]
       }
 
-      $.getJSON("../php/ASO/cash/cpuCash.php", function(json) {
+      $.getJSON("/E2E/php/ASO/cash/cpuCash.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

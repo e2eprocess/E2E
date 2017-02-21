@@ -5,8 +5,9 @@
   $series1 = array();
 
   $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $idHost = '5,6,7,8';
 
-  $query = busqueda('kyop_mult_web_kyoppresentation',$newTo);
+  $query = busqueda('kyop_mult_web_kyoppresentation',$newTo,$idHost);
 
   while($r1 = pg_fetch_assoc($query)) {
     $fecha = $r1['fecha']*1000;

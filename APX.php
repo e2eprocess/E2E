@@ -3,17 +3,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link rel="stylesheet" href="css/jquery-ui.css">
-		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
     <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-    <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+		<script type="text/javascript" src="/E2E/js/library/highcharts.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/cpu.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
-		<script type="text/javascript">
+	  <script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
 						$("#incluirPagina").load("/E2E/html/menu.html");
@@ -46,10 +46,10 @@
 
 			<!-- Dashboard métricas -->
 			<fieldset>
-				<div id="tiempoRespuesta" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="peticiones" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="tiempoRespuestaAPX" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="peticionesAPX" style="width: 50%; height: 350px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+				<div id="cpuAPX" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
 			</fieldset>
 		</section>
 	</body>

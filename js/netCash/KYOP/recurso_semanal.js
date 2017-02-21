@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            marginRight: 130,
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -204,7 +204,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/netCash/KYOP/recurso_semanal.php", function(json) {
+      $.getJSON("/E2E/php/netCash/KYOP/recurso_semanal.php", function(json) {
         options.series[0].data = json[0];
         options.series[1].data = json[1];
         options.series[2].data = json[2];

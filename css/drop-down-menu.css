@@ -51,7 +51,7 @@
 #menuPlantilla a {
 	display:block;
 	border-right:1px solid #fff;
-	background:#3396FF;
+	background:#0A5597;
 	color:#fff;
 	text-decoration:none;
 	padding:0 10px;
@@ -68,7 +68,7 @@
 	border-right:1px solid #fff;
 	border-bottom:1px solid #fff;
 	border-left:1px solid #fff;
-	background:#3396FF;
+	background:#0A5597;
 }
 
 /* ******************************************************************* */
@@ -76,7 +76,7 @@
 #menuPlantilla {
 	z-index:1;
 	width: 100%;
-	background: #3396FF;
+	background: #0A5597;
 }
 #menuPlantilla ul {
 	z-index:2;

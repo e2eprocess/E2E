@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'cpu',
-            marginRight: 130,
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {

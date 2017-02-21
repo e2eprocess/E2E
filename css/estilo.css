@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 11px;
 }
 
@@ -34,8 +34,8 @@ body {
 }
 
 #submenu {
-  padding-top: 7em;
-  /*padding-top: 65px;*/
+  /*padding-top: 3em;*/
+  padding-top: 80px;
   padding-right: 25px;
   float: rigth;
   text-align: right;
@@ -61,7 +61,7 @@ body {
   text-align: center;
   font-size: 30px;
   font-family: fantasy;
-  color: #336BFF;
+  color: #0A5597;
 }
 
 #comparador{
@@ -73,4 +73,25 @@ body {
 #comparador input {
   text-align: center;
   font-size: 12px;
+}
+
+#recuadro {
+  width: 48%;
+  height: 400px;
+  margin: 1;
+  float:left
+}
+
+#recuadroTitular {
+  width: 48%;
+  height: 12px;
+  margin-top: 3px;
+  float:left;
+  background-color: #0A68F4;
+  color: white;
+  border-bottom: 0px;
+}
+
+#cabeceraGrafico{
+  margin-bottom: -20px;
 }

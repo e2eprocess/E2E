@@ -3,18 +3,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
     <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-    <link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
-		<link href="/E2E/css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+		<script type="text/javascript" src="/E2E/js/library/highcharts.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ESMB/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ESMB/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ESMB/cpu.js"></script>
-    <script type="text/javascript" src="../js/movil/ESMB/memoria.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
-		<script type="text/javascript">
+    <script type="text/javascript" src="/E2E/js/movil/ESMB/memoria.js"></script>
+	  <script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
 						$("#incluirPagina").load("/E2E/html/menu.html");

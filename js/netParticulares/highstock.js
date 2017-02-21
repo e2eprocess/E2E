@@ -43,6 +43,10 @@ $(function () {
 
         // create the chart
         Highcharts.stockChart('container', {
+            chart: {
+                marginRight: 60,
+                marginLeft: 70,
+            },
             legend: {
                 enabled: true
             },
@@ -55,56 +59,49 @@ $(function () {
                     count: 1,
                     text: 'D'
                 },{
+                    type: 'week',
+                    count: 1,
+                    text: 'W'
+                },{
                     type: 'month',
                     count: 1,
                     text: 'M'
-                },{
+                },,{
                     type: 'Ytd',
                     count: 1,
                     text: 'Y'
-                },{
-                    type: 'all',
-                    count: 1,
-                    text: 'All'
                 }],
                 selected: 1,
                 inputEnabled: false
             },
             yAxis: [{
                 labels: {
-                    align: 'left',
-                    x: 3
+                    align: 'right',
                 },
                 title: {
-                    text: 'Tiempo respuesta (ms.)',
+                    text: 'Tiempo respuesta (ms.)'
                 },
                 height: '25%',
-                opposite: false
+                opposite: false,
+                lineWidth: 1
             },{
                 labels: {
-                    align: 'left',
-                    x: 3
+                    align: 'right',
                 },
                 title: {
                     text: 'Peticiones',
                 },
+                lineWidth: 1,
                 top: '30%',
                 height: '25%',
                 offset: 0,
-                opposite: false,
-                plotLines:[{
-                    value: 300,
-                    width: 1,
-                    color: 'red',
-                    dashStyle: 'dash'
-                }]
+                opposite: false
             },{
                 labels: {
-                    align: 'left',
-                    x: -3
+                    align: 'right'
                 },
                 title: {
-                    text: 'CPU %',
+                    text: 'CPU %'
                 },
                 height: '25%',
                 top: '65%',
@@ -141,25 +138,37 @@ $(function () {
                 color: 'rgba(4,38,253,1)',
                 name: 'apbad002',
                 data: apbad002,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping:{
+                  approximation: "high"
+                }
             },{
                 type: 'area',
                 color: 'rgba(4,129,255,0.5)',
                 name: 'apbad003',
                 data: apbad003,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping:{
+                  approximation: "high"
+                }
             },{
                 type: 'area',
                 color: 'rgba(95,173,251,0.5)',
                 name: 'apbad004',
                 data: apbad004,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping:{
+                  approximation: "high"
+                }
             },{
                 type: 'area',
-                color: 'rgba(80,209,250,0.25)',
+                color: 'rgba(80,209,250,0.5)',
                 name: 'apbad006',
                 data: apbad006,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping:{
+                  approximation: "high"
+                }
             }]
         });
     });

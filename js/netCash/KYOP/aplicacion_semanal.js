@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            marginRight: 130,
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -130,7 +130,7 @@ $(document).ready(function() {
           });
       }
 
-      $.getJSON("../php/netCash/KYOP/aplicacion_semanal.php", function(json) {
+      $.getJSON("/E2E/php/netCash/KYOP/aplicacion_semanal.php", function(json) {
                   options.series[0].data = json[0];
                   options.series[1].data = json[1];
               $('#aplicacion_semanal').highcharts(options);

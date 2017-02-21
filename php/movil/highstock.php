@@ -5,8 +5,9 @@
   $series1 = array();
 
   $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $idHost = '1,2,3,4';
 
-  $query = busqueda('enpp_mult_web',$newTo);
+  $query = busqueda('enpp_mult_web',$newTo,$idHost);
 
   while($r1 = pg_fetch_assoc($query)) {
     $fecha = $r1['fecha']*1000;

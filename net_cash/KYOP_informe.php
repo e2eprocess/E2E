@@ -3,12 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
 		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-		<link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
     <script type="text/javascript" src="/E2E/js/netCash/KYOP/aplicacion_mensual.js"></script>
 		<script type="text/javascript" src="/E2E/js/netCash/KYOP/aplicacion_semanal.js"></script>
 		<script type="text/javascript" src="/E2E/js/netCash/KYOP/recurso_mensual.js"></script>

@@ -113,11 +113,11 @@ $(function () {
                 max: 100
             }],
 
-            plotOptions: {
-                series: {
-                    showInNavigator: true
-                }
-            },
+                plotOptions: {
+                    series: {
+                        showInNavigator: true
+                    }
+                },
 
             tooltip: {
                 split: true,
@@ -141,25 +141,37 @@ $(function () {
                 color: 'rgba(4,38,253,1)',
                 name: 'apbad002',
                 data: apbad002,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping: {
+                  approximation: 'high'
+                }
             },{
                 type: 'area',
                 color: 'rgba(4,129,255,1)',
                 name: 'apbad003',
                 data: apbad003,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping: {
+                  approximation: 'high'
+                }
             },{
                 type: 'area',
                 color: 'rgba(95,173,251,0.5)',
                 name: 'apbad004',
                 data: apbad004,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping: {
+                  approximation: 'high'
+                }
             },{
                 type: 'area',
                 color: 'rgba(80,209,250,0.5)',
                 name: 'apbad006',
                 data: apbad006,
-                yAxis: 2
+                yAxis: 2,
+                dataGrouping: {
+                  approximation: 'high'
+                }
             }]
         });
     });

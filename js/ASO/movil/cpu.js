@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cpu',
-            marginRight: 130,
+            renderTo: 'cpuASOMovil',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -29,7 +29,8 @@ $(document).ready(function() {
             title: {
               text: 'CPU %'
             },
-            max: 100
+            max: 100,
+            lineWidth: 1
           }],
           tooltip: {
               shared: true
@@ -150,7 +151,7 @@ $(document).ready(function() {
           }*/]
       }
 
-      $.getJSON("../php/ASO/movil/cpuMovil.php", function(json) {
+      $.getJSON("/E2E/php/ASO/movil/cpuMovil.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
@@ -166,10 +167,10 @@ $(document).ready(function() {
         options.series[11].data = json[12]['data'];
         options.series[12].data = json[13]['data'];
         options.series[13].data = json[14]['data'];
-        options.series[14].data = json[15]['data'];
+        /*options.series[14].data = json[15]['data'];
         options.series[15].data = json[16]['data'];
         options.series[16].data = json[17]['data'];
-        options.series[17].data = json[18]['data'];
+        options.series[17].data = json[18]['data'];*/
         options.subtitle.text = json[15]['text'];
 
         chart = new Highcharts.Chart(options);

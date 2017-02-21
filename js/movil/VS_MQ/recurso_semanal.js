@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'recurso_semanal',
-            marginRight: 130,
+            marginRight: 20,
             zoomType: 'xy',
             type: 'area'
           },
@@ -77,7 +77,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/movil/VS_MQ/recurso_semanal.php", function(json) {
+      $.getJSON("/E2E/php/movil/VS_MQ/recurso_semanal.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[5]['data'];
         options.series[1].data = json[6]['data'];

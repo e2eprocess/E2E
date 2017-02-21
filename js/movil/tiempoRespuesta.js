@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'tiempoRespuesta',
-            marginRight: 130,
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {

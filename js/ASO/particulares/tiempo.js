@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'tiempo',
-            marginRight: 130,
+            renderTo: 'tiempoASONet',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Tiempo de respuesta (ms.)'
-            }
+            },
+            lineWidth: 1
           }],
           tooltip: {
               shared: true
@@ -91,7 +92,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/ASO/particulares/tiempoNet.php", function(json) {
+      $.getJSON("/E2E/php/ASO/particulares/tiempoNet.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

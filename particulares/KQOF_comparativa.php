@@ -3,18 +3,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
 		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-		<link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
-		<link href="../css/jquery-ui.css" rel="stylesheet">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+		<script type="text/javascript" src="/E2E/js/library/highcharts.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpu.js"></script>
     <script type="text/javascript" src="/E2E/js/netParticulares/KQOF/memoria.js"></script>
-	  <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
-		<script type="text/javascript">
+	  <script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
 						$("#incluirPagina").load("/E2E/html/menu.html");
@@ -41,18 +41,23 @@
 				<label>(T)</label>
 				<input type="submit" value="Comparar" name="consulta"/>
 			</form>
-			<script src="../external/jquery/jquery.js"></script>
-			<script src="../js/fecha/jquery-ui.js"></script>
-			<script src="../js/fecha/calendario.js"></script>
+			<script src="/E2E/external/jquery/jquery.js"></script>
+			<script src="/E2E/js/fecha/jquery-ui.js"></script>
+			<script src="/E2E/js/fecha/calendario.js"></script>
 
 			<!-- Dashboard métricas -->
-			<fieldset>
-				<div id="tiempoRespuesta" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div id="peticiones" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-				<div id="cpu" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
-				<div id="memoria" style="width: 100%; height: 350px; margin:1 auto;float:left"></div>
+			<fieldset id="recuadro">
+				<div id="tiempoRespuestaKQOF"></div>
 			</fieldset>
-		</section>
-	</body>
+			<fieldset id="recuadro">
+				<div id="peticionesKQOF"></div>
+			</fieldset>
+			<fieldset id="recuadro" style="width:97.9%; margin-top:0.5em;">
+				<div id="cpuKQOF"></div>
+			</fieldset>
+			<fieldset id="recuadro" style="width:97.9%; margin-top:0.5em;">
+				<div id="memoriaKQOF"></div>
+			</fieldset>
+		</fieldset>
+		</body>
 </html>

@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'memoria',
-            marginRight: 130,
+            renderTo: 'memoriaMovil',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -29,7 +29,8 @@ $(document).ready(function() {
             title: {
               text: 'Memoria %'
             },
-            max:100
+            max:100,
+            lineWidth: 1
           }],
           tooltip: {
               shared: true
@@ -180,7 +181,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("../php/movil/ENPP/memoria.php", function(json) {
+      $.getJSON("/E2E/php/movil/ENPP/memoria.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];

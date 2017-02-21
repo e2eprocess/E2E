@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'tiempoRespuesta',
-            marginRight: 130,
+            renderTo: 'tiempoRespuestaAPX',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Tiempo de respuesta (ms)'
-            }
+            },
+            lineWidth: 1,
           }],
           tooltip: {
               shared: true

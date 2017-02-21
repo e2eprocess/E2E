@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cpu',
-            marginRight: 130,
+            renderTo: 'cpuAPX',
+            marginRight: 20,
             zoomType: 'xy'
           },
           title: {
@@ -29,7 +29,8 @@ $(document).ready(function() {
             title: {
               text: 'CPU %'
             },
-            max: 100
+            max: 100,
+            lineWidth: 1,
           }],
           tooltip: {
               shared: true
