@@ -3,7 +3,8 @@ $(document).ready(function() {
           chart: {
             renderTo: 'cpu',
             marginRight: 20,
-            zoomType: 'xy'
+            zoomType: 'xy',
+            height: 250,
           },
           title: {
             text: 'Consumo CPU %',
@@ -22,15 +23,16 @@ $(document).ready(function() {
             crosshair: true,
             categories: []
           },
-          yAxis: [{ //tiempo de respuesta
+          yAxis: {
             labels: {
               format: '{value} %'
             },
             title: {
               text: 'CPU %'
             },
-            max: 100
-          }],
+            max: 100,
+            lineWidth: 1
+          },
           tooltip: {
               shared: true
           },

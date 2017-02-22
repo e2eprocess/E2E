@@ -2,8 +2,9 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'recurso_mensual',
-            marginRight: 20,
-            zoomType: 'xy'
+            marginRight: 100,
+            zoomType: 'xy',
+            height: 275
           },
           title: {
             text: 'ENPS - RECURSOS (max.)',
@@ -41,7 +42,11 @@ $(document).ready(function() {
             max: 100
           }],
           tooltip: {
-              shared: true
+              shared: true,
+              style: {
+                fontSize: '8px'
+              },
+              valueDecimals: 2
           },
           legend: {
               enabled: false

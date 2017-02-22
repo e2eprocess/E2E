@@ -22,14 +22,15 @@ $(document).ready(function() {
             crosshair: true,
             categories: []
           },
-          yAxis: [{ //tiempo de respuesta
+          yAxis: {
             labels: {
               format: '{value} ms'
             },
             title: {
               text: 'Tiempo de respuesta (ms)'
-            }
-          }],
+            },
+            lineWidth: 1
+          },
           tooltip: {
               shared: true
           },
