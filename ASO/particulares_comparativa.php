@@ -51,7 +51,7 @@
 			<fieldset id="recuadro">
 				<div id="peticionesASONet"></div>
 			</fieldset>
-			<fieldset id="recuadroMemoria">
+			<fieldset id="recuadroMemoria"style="height: 310px;">
 				<div id="cpuASONet"></div>
 			</fieldset>
 		</section>

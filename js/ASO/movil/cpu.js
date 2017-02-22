@@ -3,7 +3,8 @@ $(document).ready(function() {
           chart: {
             renderTo: 'cpuASOMovil',
             marginRight: 20,
-            zoomType: 'xy'
+            zoomType: 'xy',
+            height: 300
           },
           title: {
             text: 'Consumo CPU %',

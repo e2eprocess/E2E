@@ -23,9 +23,6 @@ $(document).ready(function() {
             categories: []
           },
           yAxis: [{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
-            },
             title: {
               text: 'Peticiones'
             },
