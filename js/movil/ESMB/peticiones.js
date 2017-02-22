@@ -22,10 +22,8 @@ $(document).ready(function() {
             crosshair: true,
             categories: []
           },
-          yAxis: [{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
-            },
+          yAxis: [{
+            lineWidth: 1,
             title: {
               text: 'Peticiones'
             }

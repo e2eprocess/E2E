@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
+            },
+            lineWidth: 1
           }],
           tooltip: {
               shared: true

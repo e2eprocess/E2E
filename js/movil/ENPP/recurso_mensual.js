@@ -2,8 +2,9 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'recurso_mensual',
-            marginRight: 20,
-            zoomType: 'xy'
+            marginRight: 100,
+            zoomType: 'xy',
+            height: 250
           },
           title: {
             text: 'ENPP - RECURSOS (max.)',

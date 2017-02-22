@@ -29,7 +29,8 @@ $(document).ready(function() {
             title: {
               text: 'memoria %'
             },
-            max:100
+            max:100,
+            lineWidth: 1
           }],
           tooltip: {
               shared: true

@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'aplicacion_mensual',
-            marginRight: 20,
+            marginRight: 100,
             zoomType: 'xy'
           },
           title: {
@@ -30,9 +30,6 @@ $(document).ready(function() {
               text: 'Tiempo de respuesta (ms)'
             }
           },{ //Peticiones
-            labels: {
-              format: '{value}'
-            },
             title: {
               text: 'Peticiones por minuto'
             },

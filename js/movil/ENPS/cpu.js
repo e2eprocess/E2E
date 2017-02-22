@@ -3,7 +3,8 @@ $(document).ready(function() {
           chart: {
             renderTo: 'cpu',
             marginRight: 20,
-            zoomType: 'xy'
+            zoomType: 'xy',
+            height: 250
           },
           title: {
             text: 'Consumo CPU %',
@@ -28,7 +29,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'CPU %'
-            }
+            },
+            lineWidth: 1
           }],
           tooltip: {
               shared: true

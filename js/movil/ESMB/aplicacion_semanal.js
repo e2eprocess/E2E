@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'aplicacion_semanal',
-            marginRight: 20,
+            marginRight: 100,
             zoomType: 'xy'
           },
           title: {
