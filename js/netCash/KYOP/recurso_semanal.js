@@ -2,7 +2,8 @@ $(document).ready(function() {
   var options = {
           chart: {
             marginRight: 20,
-            zoomType: 'xy'
+            zoomType: 'xy',
+            height: 250
           },
           title: {
             text: 'KYOP - RECURSOS (max.)',
@@ -38,10 +39,13 @@ $(document).ready(function() {
           }],
           tooltip: {
               shared: true,
-              crosshair: true
+              style: {
+                fontSize: '10px'
+              },
+              valueDecimals: 2
           },
           legend: {
-              //enabled:false,
+              enabled:false,
               layout: 'horizontal',
               align: 'center',
               verticalAlign: 'bottom',

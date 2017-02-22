@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            marginRight: 20,
+            marginRight: 100,
             zoomType: 'xy'
           },
           title: {
@@ -27,9 +27,6 @@ $(document).ready(function() {
             },
             min: 0
           },{ //Peticiones
-            labels: {
-              format: '{value}'
-            },
             title: {
               text: 'Peticiones por hora'
             },

@@ -30,9 +30,6 @@ $(document).ready(function() {
               text: 'Tiempo de respuesta (ms)'
             }
           },{ //Peticiones
-            labels: {
-              format: '{value}'
-            },
             title: {
               text: 'Peticiones por minuto'
             },
