@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             title: {
               text: 'Tiempo de respuesta (ms.)'
-            }
+            },
+            lineWidth: 1
           }],
           tooltip: {
               shared: true

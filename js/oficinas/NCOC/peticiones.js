@@ -23,9 +23,7 @@ $(document).ready(function() {
             categories: []
           },
           yAxis: [{ //tiempo de respuesta
-            labels: {
-              format: '{value}'
-            },
+            lineWidth: 1,
             title: {
               text: 'Peticiones NCOC'
             }
