@@ -35,11 +35,12 @@ function busquedaHoy($CANAL,$FECHAF,$FECHAT,$KPI){
 function max_peti($CANAL){
   global $db_con;
   $query="SELECT to_char(a.datemark, 'dd/mm/yy-HH:mi PM') as fecha,
+          to_char(a.datemark, 'yyyy-mm-dd') as fecha_max,
           a.valuemark as max_peticiones
           FROM \"E2E\".watermark a, \"E2E\".monitor b
           WHERE a.idmonitor = b.idmonitor
           AND b.name = '".$CANAL."'
-          ORDER BY 2 DESC
+          ORDER BY 3 DESC
           LIMIT 1";
   $resultado = pg_query($db_con, $query);
   return $resultado;
