@@ -46,6 +46,7 @@ $(function () {
             chart: {
                 marginRight: 60,
                 marginLeft: 70,
+                zoomType: 'xy'
             },
             legend: {
                 enabled: true
