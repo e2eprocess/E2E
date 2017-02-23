@@ -62,7 +62,7 @@ while($r4 = pg_fetch_assoc($lpsrv302CpuPasada)) {
       $series4['data'][] = $r4['cpu'];
     }
 while($r5 = pg_fetch_assoc($lpsrv303CpuPasada)) {
-      $series5['data'][] = $r1['cpu'];
+      $series5['data'][] = $r5['cpu'];
     }
 while($r6 = pg_fetch_assoc($lpsrv304CpuPasada)) {
       $series6['data'][] = $r6['cpu'];
