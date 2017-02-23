@@ -5,18 +5,13 @@ require_once("../querys/informeMensual/informeMensual.php");
 $maxPeticiones = max_peti('apx');
 $r8 = pg_fetch_assoc($maxPeticiones);
 $newFrom = $r8['fecha_max'];
-
 $newToF = date("Y-m-d 00:00");
 $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
 $to = date("Y-m-d");
 
 $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
-$newToF = date("Y-m-d 00:00");
-$newTo = date("Y-m-d H:i", strtotime('-20 minute'));
 $tiempoHoy = busquedaTimeHoy('apx',$newToF,$newTo, 'Time');
-
-/*Declaración variables*/
 $tiempoPasada = busquedaTime('apx', $newFrom, 'Time');
 
 $category['name'] = 'fecha';

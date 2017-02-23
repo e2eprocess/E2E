@@ -16,12 +16,12 @@
 		<script type="text/javascript" src="/E2E/js/APX/tiempoRespuestaInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/peticionesInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/cpuInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/cpu.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/tiempo.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/movil/ENPP/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/movil/ENPP/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/movil/ENPP/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/movil/tiempoInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/movil/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/movil/cpuInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpu.js"></script>
@@ -97,7 +97,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuAPX"></div>
 			</fieldset>
 
@@ -122,7 +122,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuMovil"></div>
 			</fieldset>
 			<!-- ASO-MOVIL -->
@@ -142,7 +142,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuASOMovil"></div>
 			</fieldset>
 

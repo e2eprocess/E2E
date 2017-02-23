@@ -108,5 +108,44 @@
     return $resultado;
   }
 
+  function seguimientoCPU($MAQUINA,$FECHA,$CANAL,$CLON,$KPI){
+    global $db_con;
+    $query="SELECT to_char(A.timedata,'HH24:mi') as fecha,
+  		      sum(a.datavalue) as cpu
+            FROM \"E2E\".clondata a, \"E2E\".clon B, \"E2E\".host c, \"E2E\".channel d, \"E2E\".kpi e
+            WHERE a.idclon = b.idclon
+            AND b.idhost = c.idhost
+            AND b.idchannel = d.idchannel
+            AND a.idkpi = e.idkpi
+            AND c.name = '".$MAQUINA."'
+            AND a.timedata::text like '".$FECHA."%'
+            AND d.name = '".$CANAL."'
+            AND b.name::text like '".$CLON."%'
+            AND e.name = '".$KPI."'
+            GROUP BY 1
+            ORDER BY 1";
+    $resultado = pg_query($db_con, $query);
+    return $resultado;
+  }
+
+  function seguimientoCPUHoy($MAQUINA,$FECHAF,$FECHAT,$CANAL,$CLON,$KPI){
+    global $db_con;
+    $query="SELECT to_char(A.timedata,'HH24:mi') as fecha,
+  		      sum(a.datavalue) as cpu
+            FROM \"E2E\".clondata a, \"E2E\".clon B, \"E2E\".host c, \"E2E\".channel d, \"E2E\".kpi e
+            WHERE a.idclon = b.idclon
+            AND b.idhost = c.idhost
+            AND b.idchannel = d.idchannel
+            AND a.idkpi = e.idkpi
+            AND c.name = '".$MAQUINA."'
+            AND A.timedata between '".$FECHAF."' AND '".$FECHAT."'
+            AND d.name = '".$CANAL."'
+            AND b.name::text like '".$CLON."%'
+            AND e.name = '".$KPI."'
+            GROUP BY 1
+            ORDER BY 1";
+    $resultado = pg_query($db_con, $query);
+    return $resultado;
+  }
 
 ?>
