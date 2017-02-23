@@ -13,9 +13,9 @@
 		<script type="text/javascript" src="/E2E/js/mainframe/online.js"></script>
 		<script type="text/javascript" src="/E2E/js/mainframe/sysplexMaquina.js"></script>
 		<script type="text/javascript" src="/E2E/js/mainframe/produccionVsReferencia.js"></script>
-		<script type="text/javascript" src="/E2E/js/APX/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/APX/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/APX/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/APX/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/APX/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/APX/cpuInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ENPP/tiempoRespuesta.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ENPP/peticiones.js"></script>
 		<script type="text/javascript" src="/E2E/js/movil/ENPP/cpu.js"></script>

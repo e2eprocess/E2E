@@ -1,7 +1,6 @@
 <?php
 require_once("../conexion_e2e_process.php");
-require_once("../queryCpu.php");
-require_once("../queryPeticiones.php");
+require_once("../querys/informeMensual/informeMensual.php");
 
 $maxPeticiones = max_peti('apx');
 $r8 = pg_fetch_assoc($maxPeticiones);

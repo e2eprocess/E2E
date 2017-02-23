@@ -1,7 +1,6 @@
 <?php
 require_once("../conexion_e2e_process.php");
-require_once("../queryTime.php");
-require_once("../queryPeticiones.php");
+require_once("../querys/informeMensual/informeMensual.php");
 
 $maxPeticiones = max_peti('apx');
 $r8 = pg_fetch_assoc($maxPeticiones);
@@ -15,10 +14,10 @@ $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
 $newToF = date("Y-m-d 00:00");
 $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-$tiempoHoy = busquedaHoy('apx',$newToF,$newTo, 'Time');
+$tiempoHoy = busquedaTimeHoy('apx',$newToF,$newTo, 'Time');
 
 /*Declaración variables*/
-$tiempoPasada = busqueda('apx', $newFrom, 'Time');
+$tiempoPasada = busquedaTime('apx', $newFrom, 'Time');
 
 $category['name'] = 'fecha';
 
