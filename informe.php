@@ -22,25 +22,25 @@
 		<script type="text/javascript" src="/E2E/js/ASO/movil/tiempoInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/ASO/movil/peticionesInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/ASO/movil/cpuInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpu.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/particulares/tiempo.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/particulares/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/particulares/cpu.js"></script>
-		<script type="text/javascript" src="/E2E/js/netCash/KYOP/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/netCash/KYOP/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/netCash/KYOP/cpu.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/cash/tiempo.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/cash/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/Cash/cpu.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/EECC/tiempoRespuesta.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/EECC/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/cpuImpar.js"></script>
-		<script type="text/javascript" src="/E2E/js/oficinas/cpuPar.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/oficinas/tiempo.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/oficinas/peticiones.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/oficinas/cpu.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/particulares/tiempoInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/particulares/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/particulares/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/netCash/KYOP/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/cash/tiempoInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/cash/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/Cash/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/EECC/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/EECC/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuImparInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/oficinas/cpuParInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/oficinas/tiempoInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/oficinas/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/oficinas/cpuInforme.js"></script>
   </head>
   <body>
 		<section id="contenedor">
@@ -167,7 +167,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuKQOF"></div>
 			</fieldset>
 			<!-- Net Particulares-ASO -->
@@ -187,7 +187,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuASONet"></div>
 			</fieldset>
 
@@ -212,7 +212,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuCash"></div>
 			</fieldset>
 			<!-- Cash-ASO -->
@@ -232,7 +232,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuASOCash"></div>
 			</fieldset>
 
@@ -283,7 +283,7 @@
 			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
-			<fieldset id="recuadro"style="width: 98%;">
+			<fieldset id="recuadro"style="width:97.9%; height:300px;">
 				<div id="cpuASOOfi"></div>
 			</fieldset>
 
