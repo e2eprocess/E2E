@@ -2,7 +2,7 @@
   require_once("../../conexion_e2e_process.php");
   require_once("../../querys/informeMensual/informeMensual.php");
 
-  $maxPeticiones = max_peti('kqof_es_web');
+  $maxPeticiones = max_peti('eecc');
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti = $r8['max_peticiones'];
   $Fecha_peti = $r8['fecha'];
@@ -15,20 +15,23 @@
 
   $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
-  $BBVANetHoy = busquedaPeticionesHoy('kqof_es_web',$newToF,$newTo,'Throughput');
-  $BBVANetPasada = busquedaPeticiones('kqof_es_web',$newFrom,'Throughput');
+  $eeccHoy = busquedaPeticionesHoy('eecc',$newToF,$newTo,'Throughput');
+  $eeccPasada = busquedaPeticiones('eecc',$newFrom,'Throughput');
 
+  /*Recuperación datos*/
   $category['name'] = 'fecha';
 
-  while($r1 = pg_fetch_assoc($BBVANetPasada)) {
-        $category['data'][] = $r1['fecha'];
-        $series1['data'][] = $r1['peticiones'];
-        $series3['data'][] = $max_peti;
+  while($r1 = pg_fetch_assoc($eeccPasada)) {
+      $category['data'][] = $r1['fecha'];
+      $series1['data'][] = $r1['peticiones'];
+      $series3['data'][] = $max_peti;
       }
-  while($r3 = pg_fetch_assoc($BBVANetHoy)) {
-        $series2['data'][] = $r3['peticiones'];
-        }
-        
+
+  while($r2 = pg_fetch_assoc($eeccHoy)) {
+        $series2['data'][] = $r2['peticiones'];
+      }
+
+  /*Carga del array del Json*/
   $datos = array();
   array_push($datos,$category);
   array_push($datos,$series1);

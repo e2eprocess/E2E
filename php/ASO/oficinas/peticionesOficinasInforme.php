@@ -2,7 +2,7 @@
   require_once("../../conexion_e2e_process.php");
   require_once("../../querys/informeMensual/informeMensual.php");
 
-  $maxPeticiones = max_peti('ASOnet');
+  $maxPeticiones = max_peti('ASOoffice');
   $r8 = pg_fetch_assoc($maxPeticiones);
   $max_peti = $r8['max_peticiones'];
   $Fecha_peti = $r8['fecha'];
@@ -14,11 +14,12 @@
   $to = date("Y-m-d");
 
   $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
-  $gtHoy = busquedaPeticionesHoy('GTnet',$newToF,$newTo, 'Throughput');
-  $servicioHoy = busquedaPeticionesHoy('ASOnet',$newToF,$newTo, 'Throughput');
 
-  $gtPasada = busquedaPeticiones('GTnet', $newFrom, 'Throughput');
-  $servicioPasada = busquedaPeticiones('ASOnet', $newFrom, 'Throughput');
+  $gtHoy = busquedaPeticionesHoy('GToffice',$newToF,$newTo, 'Throughput');
+  $servicioHoy = busquedaPeticionesHoy('ASOoffice',$newToF,$newTo, 'Throughput');
+
+  $gtPasada = busquedaPeticiones('GToffice', $newFrom, 'Throughput');
+  $servicioPasada = busquedaPeticiones('ASOoffice', $newFrom, 'Throughput');
 
   /*Recuperación datos*/
   $category['name'] = 'fecha';

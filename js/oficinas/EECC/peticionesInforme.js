@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticionesKQOF',
+            renderTo: 'peticionesOfi',
             marginRight: 20,
             zoomType: 'xy'
           },
@@ -25,8 +25,8 @@ $(document).ready(function() {
           yAxis: { //tiempo de respuesta
             lineWidth: 1,
             title: {
-              text: 'Peticiones'
-            }
+              text: 'Peticiones EECC'
+            },
           },
           tooltip: {
               shared: true
@@ -65,13 +65,16 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'kqof_es_web_BBVANet_01 (F)',
+            name: 'EECC (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
+            marker:{
+              enabled: false
+            },
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'kqof_es_web_BBVANet_01 (T)',
+            name: 'EECC (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
@@ -82,13 +85,14 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("/E2E/php/netParticulares/KQOF/peticionesInforme.php", function(json) {
+      $.getJSON("/E2E/php/oficinas/EECC/peticionesInforme.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
         options.subtitle.text = json[4]['text'];
         options.series[2].name = json[5];
+
 
         chart = new Highcharts.Chart(options);
       });

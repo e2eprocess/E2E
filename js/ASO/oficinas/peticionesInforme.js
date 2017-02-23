@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticionesKQOF',
+            renderTo: 'peticionesASOOfi',
             marginRight: 20,
             zoomType: 'xy'
           },
@@ -65,13 +65,24 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'kqof_es_web_BBVANet_01 (F)',
+            name: 'Granting (F)',
+            color: 'rgba(82,190,128,1)',
+            type: 'spline',
+            dashStyle: 'shortdot',
+            data:[]
+          },{
+            name: 'Servicio (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'kqof_es_web_BBVANet_01 (T)',
+            name: 'Granting (T)',
+            color: 'rgba(82,190,128,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'Servicio (T)',
             color: 'rgba(65,105,225,1.0)',
             type: 'line',
             data:[]
@@ -82,13 +93,15 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("/E2E/php/netParticulares/KQOF/peticionesInforme.php", function(json) {
+      $.getJSON("/E2E/php/ASO/oficinas/peticionesOficinasInforme.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
-        options.subtitle.text = json[4]['text'];
-        options.series[2].name = json[5];
+        options.series[3].data = json[4]['data'];
+        options.subtitle.text = json[5]['text'];
+        options.series[4].data = json[6]['data'];
+        options.series[4].name = json[7];
 
         chart = new Highcharts.Chart(options);
       });

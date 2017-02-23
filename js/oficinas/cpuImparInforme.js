@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticionesKQOF',
+            renderTo: 'cpuImparOfi',
             marginRight: 20,
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones / 5 min.',
+            text: 'Consumo CPU % <br/><font style="font-size:10px;">(máquinas impares)</font>',
             x: -20 //center
           },
           subtitle: {
@@ -22,12 +22,16 @@ $(document).ready(function() {
             crosshair: true,
             categories: []
           },
-          yAxis: { //tiempo de respuesta
-            lineWidth: 1,
+          yAxis: [{ //tiempo de respuesta
+            labels: {
+              format: '{value} %'
+            },
             title: {
-              text: 'Peticiones'
-            }
-          },
+              text: 'CPU %'
+            },
+            max: 100,
+            lineWidth: 1
+          }],
           tooltip: {
               shared: true
           },
@@ -51,44 +55,51 @@ $(document).ready(function() {
                     hover: {enabled: true}
                   }
                 }
-              },
-              spline: {
-                marker: {
-                  enabled: false,
-                  symbol: 'circle',
-                  radius: 1,
-                  states : {
-                    hover: {enabled: true}
-                  }
-                }
               }
           },
           /*series: []*/
           series: [{
-            name: 'kqof_es_web_BBVANet_01 (F)',
-            color: 'rgba(65,105,225,1.0)',
-            type: 'spline',
-            dashStyle: 'shortdot',
+            name: 'spnac005 (F)',
+            color: 'rgba(4,38,253,0.5)',
+            type: 'column',
             data:[]
           },{
-            name: 'kqof_es_web_BBVANet_01 (T)',
-            color: 'rgba(65,105,225,1.0)',
+            name: 'spnac007 (F)',
+            color: 'rgba(4,129,255,0.5)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'spnac009 (F)',
+            color: 'rgba(14,203,219,0.5)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'spnac005 (T)',
+            color: 'rgba(4,38,253,1)',
             type: 'line',
             data:[]
           },{
-            color: 'rgba(255,0,0,1.0)',
+            name: 'spnac007 (T)',
+            color: 'rgba(4,129,255,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'spnac009 (T)',
+            color: 'rgba(14,64,219,1)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("/E2E/php/netParticulares/KQOF/peticionesInforme.php", function(json) {
+      $.getJSON("/E2E/php/oficinas/cpuImparInforme.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
         options.series[2].data = json[3]['data'];
-        options.subtitle.text = json[4]['text'];
-        options.series[2].name = json[5];
+        options.series[3].data = json[4]['data'];
+        options.series[4].data = json[5]['data'];
+        options.series[5].data = json[6]['data'];
+        options.subtitle.text = json[7]['text'];
 
         chart = new Highcharts.Chart(options);
       });

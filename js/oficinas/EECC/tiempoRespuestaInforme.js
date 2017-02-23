@@ -1,12 +1,12 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'peticionesKQOF',
+            renderTo: 'tiempoRespuestaOfi',
             marginRight: 20,
             zoomType: 'xy'
           },
           title: {
-            text: 'Peticiones / 5 min.',
+            text: 'Tiempo de respuesta (ms.)',
             x: -20 //center
           },
           subtitle: {
@@ -22,12 +22,15 @@ $(document).ready(function() {
             crosshair: true,
             categories: []
           },
-          yAxis: { //tiempo de respuesta
-            lineWidth: 1,
+          yAxis: [{ //tiempo de respuesta
+            labels: {
+              format: '{value} ms.'
+            },
             title: {
-              text: 'Peticiones'
-            }
-          },
+              text: 'Tiempo de respuesta (ms.)'
+            },
+            lineWidth: 1
+          }],
           tooltip: {
               shared: true
           },
@@ -65,30 +68,24 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'kqof_es_web_BBVANet_01 (F)',
+            name: 'EECC (F)',
             color: 'rgba(65,105,225,1.0)',
             type: 'spline',
             dashStyle: 'shortdot',
             data:[]
           },{
-            name: 'kqof_es_web_BBVANet_01 (T)',
+            name: 'EECC (T)',
             color: 'rgba(65,105,225,1.0)',
-            type: 'line',
-            data:[]
-          },{
-            color: 'rgba(255,0,0,1.0)',
             type: 'line',
             data:[]
           }]
       }
 
-      $.getJSON("/E2E/php/netParticulares/KQOF/peticionesInforme.php", function(json) {
+      $.getJSON("/E2E/php/oficinas/EECC/tiempoRespuestaInforme.php", function(json) {
         options.xAxis.categories = json[0]['data'];
         options.series[0].data = json[1]['data'];
         options.series[1].data = json[2]['data'];
-        options.series[2].data = json[3]['data'];
-        options.subtitle.text = json[4]['text'];
-        options.series[2].name = json[5];
+        options.subtitle.text = json[3]['text'];
 
         chart = new Highcharts.Chart(options);
       });
