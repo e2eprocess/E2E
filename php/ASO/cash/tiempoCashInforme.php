@@ -2,7 +2,7 @@
   require_once("../../conexion_e2e_process.php");
   require_once("../../querys/informeMensual/informeMensual.php");
 
-  $maxPeticiones = max_peti('ASOmobile');
+  $maxPeticiones = max_peti('ASOnetcash');
   $r8 = pg_fetch_assoc($maxPeticiones);
   $newFrom = $r8['fecha_max'];
   $newToF = date("Y-m-d 00:00");
@@ -11,12 +11,13 @@
 
   $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
-  $gtHoy = busquedaTimeHoy('GTmobile',$newToF,$newTo, 'Time');
-  $servicioHoy = busquedaTimeHoy('ASOmobile',$newToF,$newTo, 'Time');
+  $gtHoy = busquedaTimeHoy('GTnetcash',$newToF,$newTo, 'Time');
+  $servicioHoy = busquedaTimeHoy('ASOnetcash',$newToF,$newTo, 'Time');
 
-  $gtPasada = busquedaTime('GTmobile', $newFrom, 'Time');
-  $servicioPasada = busquedaTime('ASOmobile', $newFrom, 'Time');
+  $gtPasada = busquedaTime('GTnetcash', $newFrom, 'Time');
+  $servicioPasada = busquedaTime('ASOnetcash', $newFrom, 'Time');
 
+  /*Recuperación datos*/
   $category['name'] = 'fecha';
 
   while($r1 = pg_fetch_assoc($gtPasada)) {
@@ -33,7 +34,7 @@
         $series4['data'][] = $r4['tiempo_respuesta'];
       }
 
-
+  /*Carga del array del Json*/
   $datos = array();
   array_push($datos,$category);
   array_push($datos,$series1);
