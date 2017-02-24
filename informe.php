@@ -44,6 +44,7 @@
   </head>
   <body>
 		<section id="contenedor">
+
 			<header style="font-size: 100px;padding-top:200px;padding-bottom:390px;">
 				COMPORTAMIENTO </br>
 				CANALES</br>
@@ -54,7 +55,6 @@
 			<header style="font-size: 100px;padding-top:350px;padding-bottom:450px;">
 				BACKENDS
 			</header>
-
 			<header id="cabeceraGrafico">MAINFRAME</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 15 minutos</div>
