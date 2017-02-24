@@ -71,5 +71,34 @@ function busquedaOficinas($CANAL,$FECHA,$IDHOST){
   return $resultado;
 }
 
+function busquedaPeticiones($FECHA){
+  global $db_con;
+  $query="SELECT *
+          FROM \"E2E\".crosstab('SELECT (extract(epoch from A.timedata))::NUMERIC as fecha,
+      		   b.name as atributo,
+      		   a.datavalue as valor
+      	   FROM \"E2E\".monitordata a, \"E2E\".monitor b, \"E2E\".kpi c
+      	   WHERE b.name in (''kyop_mult_web_kyoppresentation'', ''kyfb_mult_web_firmas'',
+      	     					''kyfb_mult_web_kyfbws'', ''kygu_mult_web_frontusuario'', ''kygu_mult_web_serviciosusuario'',
+      	     					''kyos_mult_web_servicios'',''kyos_mult_web_posicioncuentas'')
+      	   AND	a.idmonitor = b.idmonitor
+      	   AND	a.idkpi = c.idkpi
+      	   and c.name = ''Throughput''
+        		AND timedata between ''2016-09-26 00:00'' and ''".$FECHA."''
+      	   ORDER BY fecha, atributo') AS recursos (
+      			fecha NUMERIC,
+      			 KYFB_FIRMAS NUMERIC,
+      		    KYFB_KYFBWS NUMERIC,
+      		    KYGU_FRONT NUMERIC,
+      			 KYGU_SERVICIOS NUMERIC,
+      			 KYOP NUMERIC,
+      			 KYOS_POSICION NUMERIC,
+      			 KYOS_SERVICIOS NUMERIC);";
+  $resultado = pg_query($db_con, $query);
+  return $resultado;
+}
+
+
+
 
 ?>
