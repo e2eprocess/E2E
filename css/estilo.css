@@ -100,16 +100,6 @@ body {
   margin-top:0.5em;
 }
 
-#recuadroTitular {
-  width: 48%;
-  height: 12px;
-  margin-top: 3px;
-  float:left;
-  background-color: #0A68F4;
-  color: white;
-  border-bottom: 0px;
-}
-
 #cabeceraGrafico{
   margin-bottom: -20px;
 }

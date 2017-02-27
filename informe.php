@@ -3,9 +3,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet"  href="/E2E/css/estilo.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/informe.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
 		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-		<link rel="Stylesheet" type="text/css" href="/E2E/css/menu.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/informe.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -45,41 +47,39 @@
   <body>
 		<section id="contenedor">
 
-			<header style="font-size: 100px;padding-top:200px;padding-bottom:390px;">
-				COMPORTAMIENTO </br>
-				CANALES</br>
-				<span style="font-size: 40px;"><?php echo date("Y/m/d h:i"); ?></span>
-			</header>
+			<div class="page">
+				<header style="font-size: 100px;padding-top:200px;">
+					COMPORTAMIENTO</br>
+					CANALES</br>
+					<span style="font-size: 40px;"><?php echo date("Y/m/d h:i"); ?></span>
+				</header>
+			</div>
 
 			<!-- BACKEND -->
-			<header style="font-size: 100px;padding-top:350px;padding-bottom:450px;">
-				BACKENDS
-			</header>
-			<header id="cabeceraGrafico">MAINFRAME</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 15 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 15 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="sysplexMaquina"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="produccionVsReferencia"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada hora</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada hora</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="batch"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="online"></div>
-			</fieldset>
+			<div class="page">
+				<header style="font-size: 100px; padding-top:200px;">
+					BACKENDS
+				</header>
+			</div>
+			<div class="page">
+				<header id="cabeceraGrafico">MAINFRAME</header>
+				<div id="cuadrado">
+					<div id="titular" >Información agrupada cada 15 minutos</div>
+					<div id="sysplexMaquina"></div>
+				</div>
+				<div id="cuadrado" style="margin-left:0.5em;">
+					<div id="titular">Información agrupada cada 15 minutos</div>
+					<div id="produccionVsReferencia"></div>
+				</div>
+				<div id="cuadrado" style="margin-top:0.5em;">
+					<div id="titular" >Información agrupada cada 15 minutos</div>
+					<div id="batch"></div>
+				</div>
+				<div id="cuadrado" style="margin-top:0.5em; margin-left:0.5em;">
+					<div id="titular">Información agrupada cada 15 minutos</div>
+					<div id="online"></div>
+				</div>
+			</div>
 			<!-- APX -->
 			<header id="cabeceraGrafico">APX</header>
 			<fieldset id="recuadroTitular">

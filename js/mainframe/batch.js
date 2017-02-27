@@ -1,8 +1,9 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            marginRight: 20,
-            zoomType: 'xy'
+            marginRight: 30,
+            zoomType: 'xy',
+            height: 300
           },
           title: {
             text: 'Ejecuciones Batch (Producción Tres Cantos)',
