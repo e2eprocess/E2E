@@ -2,8 +2,7 @@ $(document).ready(function() {
   var options = {
       chart: {
         marginRight: 30,
-        zoomType: 'xy',
-        heigth: 300
+        zoomType: 'xy'
       },
       title: {
         text: 'Ejecuciones Online (Producción Tres Cantos)',
