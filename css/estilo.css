@@ -75,6 +75,15 @@ body {
   font-size: 12px;
 }
 
+#recuadroTitular {
+  width: 48%;
+  margin: 1;
+  float:left;
+  background-color: #0A68F4;
+  color: white;
+  margin-top:0.5em;
+}
+
 #recuadro {
   width: 48%;
   height: 400px;

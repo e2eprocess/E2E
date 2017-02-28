@@ -3,12 +3,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet" href="/E2E/css/informe.css">
 		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
 		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
 		<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
-		<link type="text/css" rel="Stylesheet" href="/E2E/css/informe.css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
     <script type="text/javascript" src="/E2E/js/mainframe/batch.js"></script>
@@ -47,41 +45,43 @@
   <body>
 		<section id="contenedor">
 
-			<div class="page">
-				<header style="font-size: 100px;padding-top:200px;">
-					COMPORTAMIENTO</br>
-					CANALES</br>
-					<span style="font-size: 40px;"><?php echo date("Y/m/d h:i"); ?></span>
-				</header>
-			</div>
+			<header style="font-size: 100px;padding-top:200px; page-break-after: always">
+				COMPORTAMIENTO</br>
+				CANALES</br>
+				<span style="font-size: 40px;"><?php echo date("Y/m/d h:i"); ?></span>
+			</header>
 
 			<!-- BACKEND -->
-			<div class="page">
-				<header style="font-size: 100px; padding-top:200px;">
+			<header style="font-size: 100px; padding-top:200px; page-break-after: always;">
 					BACKENDS
-				</header>
-			</div>
-			<div class="page">
-				<header id="cabeceraGrafico">MAINFRAME</header>
-				<div id="cuadrado">
-					<div id="titular" >Información agrupada cada 15 minutos</div>
-					<div id="sysplexMaquina"></div>
-				</div>
-				<div id="cuadrado" style="margin-left:0.5em;">
-					<div id="titular">Información agrupada cada 15 minutos</div>
-					<div id="produccionVsReferencia"></div>
-				</div>
-				<div id="cuadrado" style="margin-top:0.5em;">
-					<div id="titular" >Información agrupada cada 15 minutos</div>
-					<div id="batch"></div>
-				</div>
-				<div id="cuadrado" style="margin-top:0.5em; margin-left:0.5em;">
-					<div id="titular">Información agrupada cada 15 minutos</div>
-					<div id="online"></div>
-				</div>
-			</div>
+			</header>
+			<header id="cabeceraGrafico">MAINFRAME</header>
+			<fieldset id="recuadroTitular">
+				<div>Información agrupada cada 5 minutos</div>
+			</fieldset>
+			<fieldset id="recuadroTitular">
+				<div>Información agrupada cada 5 minutos</div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="sysplexMaquina"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="produccionVsReferencia"></div>
+			</fieldset>
+			<fieldset id="recuadroTitular">
+				<div>Información agrupada cada 5 minutos</div>
+			</fieldset>
+			<fieldset id="recuadroTitular">
+				<div>Información agrupada cada 5 minutos</div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="batch"></div>
+			</fieldset>
+			<fieldset id="recuadro">
+				<div id="online"></div>
+			</fieldset>
 			<!-- APX -->
-			<header id="cabeceraGrafico">APX</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">APX</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -106,7 +106,7 @@
 				CANAL</br>
 				MOVIL
 			</header>
-			<header id="cabeceraGrafico">MOVIL - Frontal</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">MOVIL - Frontal</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -126,7 +126,7 @@
 				<div id="cpuMovil"></div>
 			</fieldset>
 			<!-- ASO-MOVIL -->
-			<header id="cabeceraGrafico">MOVIL - ASO</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">MOVIL - ASO</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -151,7 +151,7 @@
 				CANAL </br>
 				NET PARTICULARES
 			</header>
-			<header id="cabeceraGrafico">PARTICULARES - FRONT</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">PARTICULARES - FRONT</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -171,7 +171,7 @@
 				<div id="cpuKQOF"></div>
 			</fieldset>
 			<!-- Net Particulares-ASO -->
-			<header id="cabeceraGrafico">PARTICULARES - ASO</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">PARTICULARES - ASO</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -196,7 +196,7 @@
 				CANAL </br>
 				NET CASH
 			</header>
-			<header id="cabeceraGrafico">CASH - FRONT</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">CASH - FRONT</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -216,7 +216,7 @@
 				<div id="cpuCash"></div>
 			</fieldset>
 			<!-- Cash-ASO -->
-			<header id="cabeceraGrafico">CASH - ASO</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">CASH - ASO</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -241,7 +241,7 @@
 				CANAL </br>
 				OFICINAS
 			</header>
-			<header id="cabeceraGrafico">OFICINAS - FRONT</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">OFICINAS - FRONT</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
@@ -267,7 +267,7 @@
 				<div id="cpuImparOfi"></div>
 			</fieldset>
 			<!-- OFICINAS-ASO -->
-			<header id="cabeceraGrafico">OFICINAS - ASO</header>
+			<header id="cabeceraGrafico" style="page-break-before: always;">OFICINAS - ASO</header>
 			<fieldset id="recuadroTitular">
 				<div>Información agrupada cada 5 minutos</div>
 			</fieldset>
