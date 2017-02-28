@@ -5,7 +5,7 @@ $(document).ready(function() {
             zoomType: 'xy'
           },
           title: {
-            text: 'Consumo de Producción por Sysplex / Maquina',
+            text: 'Consumo de Producción por Sysplex / Maquina (*)',
             x: -20 //center
           },
           subtitle: {

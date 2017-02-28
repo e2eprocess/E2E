@@ -24,10 +24,10 @@ $(document).ready(function() {
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
-              format: '{value} ms'
+              format: '{value} ms.'
             },
             title: {
-              text: 'Tiempo de respuesta (ms)'
+              text: 'Tiempo de respuesta (ms.)'
             },
             lineWidth: 1,
           }],

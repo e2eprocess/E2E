@@ -8,6 +8,11 @@ $(document).ready(function() {
             text: 'Consumo de Producción por Sysplex / Maquina (*)',
             x: -20 //center
           },
+          subtitle: {
+            text: '(* Día de referencia: último día de máxima actividad transaccional)',
+            x: -20,
+            y: 30
+          },
           credits: {
             enabled: false
           },

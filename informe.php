@@ -2,13 +2,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>C&PM E2E - Seguimiento</title>
-		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
-		<link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
-		<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/informe.css">
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
     <script type="text/javascript" src="/E2E/js/mainframe/batch.js"></script>
 		<script type="text/javascript" src="/E2E/js/mainframe/online.js"></script>
 		<script type="text/javascript" src="/E2E/js/mainframe/sysplexMaquina.js"></script>
@@ -16,12 +13,12 @@
 		<script type="text/javascript" src="/E2E/js/APX/tiempoRespuestaInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/peticionesInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/APX/cpuInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/tiempoRespuestaInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/peticionesInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/movil/ENPP/cpuInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/tiempoInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/peticionesInforme.js"></script>
-		<script type="text/javascript" src="/E2E/js/ASO/movil/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/MOVIL/ENPP/tiempoRespuestaInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/MOVIL/ENPP/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/MOVIL/ENPP/cpuInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/MOVIL/tiempoInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/MOVIL/peticionesInforme.js"></script>
+		<script type="text/javascript" src="/E2E/js/ASO/MOVIL/cpuInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/tiempoRespuestaInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/peticionesInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/netParticulares/KQOF/cpuInforme.js"></script>
@@ -41,251 +38,246 @@
 		<script type="text/javascript" src="/E2E/js/ASO/oficinas/tiempoInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/ASO/oficinas/peticionesInforme.js"></script>
 		<script type="text/javascript" src="/E2E/js/ASO/oficinas/cpuInforme.js"></script>
+		<title>C&PM E2E - Seguimiento</title>
   </head>
   <body>
 		<section id="contenedor">
+			<div class="page imagenPortada">
+				<header id="tituloPrincipal">
+					COMPORTAMIENTO</br>
+					CANALES</br>
+				</header>
+					<div id="horaTitulo"><?php echo date("Y/m/d H:i"); ?></div>
+				</header>
+			</div>
 
-			<header style="font-size: 100px;padding-top:200px; page-break-after: always">
-				COMPORTAMIENTO</br>
-				CANALES</br>
-				<span style="font-size: 40px;"><?php echo date("Y/m/d h:i"); ?></span>
-			</header>
-
-			<!-- BACKEND -->
-			<header style="font-size: 100px; padding-top:200px; page-break-after: always;">
+			<!--BACKENDS-->
+			<div class="page">
+				<header class="tituloSecundario">
 					BACKENDS
-			</header>
-			<header id="cabeceraGrafico">MAINFRAME</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="sysplexMaquina"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="produccionVsReferencia"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="batch"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="online"></div>
-			</fieldset>
-			<!-- APX -->
-			<header id="cabeceraGrafico" style="page-break-before: always;">APX</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoRespuestaAPX"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesAPX"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuAPX"></div>
-			</fieldset>
+				</header>
+			</div>
 
-			<!-- MOVIL -->
-			<header style="font-size: 100px;padding-top:1270px;padding-bottom:350px;">
-				CANAL</br>
-				MOVIL
-			</header>
-			<header id="cabeceraGrafico" style="page-break-before: always;">MOVIL - Frontal</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoRespuestaMovil"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesMovil"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuMovil"></div>
-			</fieldset>
-			<!-- ASO-MOVIL -->
-			<header id="cabeceraGrafico" style="page-break-before: always;">MOVIL - ASO</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoASOMovil"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesASOMovil"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuASOMovil"></div>
-			</fieldset>
+			<div class="page">
+				<header class="tituloGraficas">
+					MAINFRAME
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div id="sysplexMaquina" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div id="produccionVsReferencia" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div id="batch" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div id="online" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					APX
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoRespuestaAPX" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesAPX" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuAPX" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<!-- MÓVIL -->
+			<div class="page">
+				<header class="tituloSecundario">
+					CANAL</br>
+					MÓVIL
+				</header>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					MÓVIL- Frontal
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoRespuestaMovil" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesMovil" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuMovil" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					MÓVIL - ASO
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoASOMovil" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesASOMovil" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuASOMovil" style="height:300px;"></div>
+				</div>
+			</div>
 
 			<!-- Net Particulares -->
-			<header style="font-size: 100px;padding-top:1270px;padding-bottom:350px;">
-				CANAL </br>
-				NET PARTICULARES
-			</header>
-			<header id="cabeceraGrafico" style="page-break-before: always;">PARTICULARES - FRONT</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoRespuestaKQOF"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesKQOF"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuKQOF"></div>
-			</fieldset>
-			<!-- Net Particulares-ASO -->
-			<header id="cabeceraGrafico" style="page-break-before: always;">PARTICULARES - ASO</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoASONet"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesASONet"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuASONet"></div>
-			</fieldset>
+			<div class="page">
+				<header class="tituloSecundario">
+					CANAL </br>
+					NET PARTICULARES
+				</header>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					PARTICULARES- Frontal
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoRespuestaKQOF" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesKQOF" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuKQOF" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					PARTICULARES - ASO
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoASONet" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesASONet" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuASONet" style="height:300px;"></div>
+				</div>
+			</div>
 
 			<!-- Cash -->
-			<header style="font-size: 100px;padding-top:1270px;padding-bottom:350px;">
-				CANAL </br>
-				NET CASH
-			</header>
-			<header id="cabeceraGrafico" style="page-break-before: always;">CASH - FRONT</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoRespuestaCash"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesCash"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuCash"></div>
-			</fieldset>
-			<!-- Cash-ASO -->
-			<header id="cabeceraGrafico" style="page-break-before: always;">CASH - ASO</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoASOCash"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesASOCash"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuASOCash"></div>
-			</fieldset>
+			<div class="page">
+				<header class="tituloSecundario">
+					CANAL </br>
+					NET CASH
+				</header>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					CASH - Frontal
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoRespuestaCash" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesCash" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuCash" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					CASH - ASO
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoASOCash" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesASOCash" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuASOCash" style="height:300px;"></div>
+				</div>
+			</div>
 
 			<!-- OFICINAS -->
-			<header style="font-size: 100px;padding-top:1270px;padding-bottom:350px;">
-				CANAL </br>
-				OFICINAS
-			</header>
-			<header id="cabeceraGrafico" style="page-break-before: always;">OFICINAS - FRONT</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoRespuestaOfi"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesOfi"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="cpuParOfi"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="cpuImparOfi"></div>
-			</fieldset>
-			<!-- OFICINAS-ASO -->
-			<header id="cabeceraGrafico" style="page-break-before: always;">OFICINAS - ASO</header>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadroTitular">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="tiempoASOOfi"></div>
-			</fieldset>
-			<fieldset id="recuadro">
-				<div id="peticionesASOOfi"></div>
-			</fieldset>
-			<fieldset id="recuadroTitular" style="width: 98%; text-align: center;">
-				<div>Información agrupada cada 5 minutos</div>
-			</fieldset>
-			<fieldset id="recuadro"style="width:97.9%; height:300px;">
-				<div id="cpuASOOfi"></div>
-			</fieldset>
+			<div class="page">
+				<header class="tituloSecundario">
+					CANAL </br>
+					OFICINAS
+				</header>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					OFICINAS - Frontal
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoRespuestaOfi" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesOfi" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuParOfi" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuImparOfi" style="height:300px;"></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<header class="tituloGraficas">
+					OFICINAS - ASO
+				</header>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="tiempoASOOfi" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="peticionesASOOfi" style="height:300px;"></div>
+				</div>
+				<div class="cuadrado cuadradoCpu">
+				  <div class="titular">Información agrupada cada 5 minutos</div>
+				  <div id="cpuASOOfi" style="height:300px;"></div>
+				</div>
+			</div>
+
 
 		</section>
   </body>

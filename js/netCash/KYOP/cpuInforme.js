@@ -4,7 +4,7 @@ $(document).ready(function() {
             renderTo: 'cpuCash',
             marginRight: 20,
             zoomType: 'xy',
-            height: 250
+            height: 300
           },
           title: {
             text: 'Consumo CPU %',
