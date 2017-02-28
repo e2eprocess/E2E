@@ -1,0 +1,122 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.page {
+    width: 297mm;
+    min-height: 210mm;
+    padding: 10mm;
+    margin: 10mm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background: url('/E2E/img/fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#contenedor header {
+  text-align: center;
+  color: #2486CA;
+}
+
+#contenedor #tituloPrincipal {
+  font-size: 60px;
+  padding-top:180px;
+  color: #FAFAFA;
+  text-align: left;
+  line-height: 1.2;
+}
+
+#horaTitulo {
+  font-size: 25px;
+  padding-top: 10px;
+  color: #FAFAFA;
+}
+
+
+.imagenPortada {
+  background: url('/E2E/img/imagen_portada.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.tituloSecundario {
+  font-size: 90px;
+  padding-top:150px;
+  }
+
+.tituloGraficas {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.cuadrado {
+  width: 49.5%;
+  border-style: solid;
+  border-width:0.5px;
+  float: left;
+  height: 325px;
+  margin: 0.1em;
+  border-color: #BDBDBD;
+}
+
+.cuadradoCpu {
+  width: 99.3%;
+  text-align: center;
+}
+
+.titular {
+  background-color: #072146;
+  padding: 3.5px;
+  color: white;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+    size: landscape;
+}
+
+@media print {
+    * {-webkit-print-color-adjust:exact;}
+    html, body {
+        width: 297mm;
+        height: 210mm;
+      }
+      .page {
+          margin: 0;
+          border: initial;
+          border-radius: initial;
+          width: initial;
+          min-height: initial;
+          box-shadow: initial;
+          background: initial;
+          page-break-after: always;
+          width: 297mm;
+          height: 210mm;
+          background: url('/E2E/img/fondo.jpg');
+          background-repeat: no-repeat;
+          background-size: 100%;
+      }
+
+      .imagenPortada {
+        background: url('/E2E/img/imagen_portada.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+  }

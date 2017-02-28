@@ -34,8 +34,8 @@ body {
 }
 
 #submenu {
-  /*padding-top: 3em;*/
-  padding-top: 80px;
+  padding-top: 3em;
+  /*padding-top: 80px;*/
   padding-right: 25px;
   float: rigth;
   text-align: right;
@@ -75,6 +75,15 @@ body {
   font-size: 12px;
 }
 
+#recuadroTitular {
+  width: 48%;
+  margin: 1;
+  float:left;
+  background-color: #0A68F4;
+  color: white;
+  margin-top:0.5em;
+}
+
 #recuadro {
   width: 48%;
   height: 400px;
@@ -98,16 +107,6 @@ body {
   float:left;
   width:97.9%;
   margin-top:0.5em;
-}
-
-#recuadroTitular {
-  width: 48%;
-  height: 12px;
-  margin-top: 3px;
-  float:left;
-  background-color: #0A68F4;
-  color: white;
-  border-bottom: 0px;
 }
 
 #cabeceraGrafico{

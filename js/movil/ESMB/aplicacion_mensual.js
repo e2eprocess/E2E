@@ -27,7 +27,7 @@ $(document).ready(function() {
               format: '{value} ms'
             },
             title: {
-              text: 'Tiempo de respuesta (ms)'
+              text: 'Tiempo de respuesta (ms.)'
             }
           },{ //Peticiones
             labels: {
