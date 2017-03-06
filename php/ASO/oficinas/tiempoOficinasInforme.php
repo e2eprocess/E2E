@@ -2,6 +2,8 @@
   require_once("../../conexion_e2e_process.php");
   require_once("../../querys/informeMensual/informeMensual.php");
 
+  $series3 = array();
+
   $maxPeticiones = max_peti('ASOoffice');
   $r8 = pg_fetch_assoc($maxPeticiones);
   $newFrom = $r8['fecha_max'];

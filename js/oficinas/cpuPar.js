@@ -113,6 +113,6 @@ $(document).ready(function() {
         options.series[7].data = json[8]['data'];
         options.subtitle.text = json[9]['text'];
 
-        chart = new Highcharts.Chart(options);
+        grafico = new Highcharts.Chart(options);
       });
   });

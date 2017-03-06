@@ -37,140 +37,142 @@ $(function () {
                 data[i][0], // the date
                 data[i][6] // apbad006
             ]);
-
         }
 
+        var options = {
+                chart: {
+                    renderTo: 'container',
+                    marginRight: 60,
+                    marginLeft: 70,
+                    zoomType: 'xy'
+                },
+                legend: {
+                    enabled: true
+                },
+                credits: {
+                    enabled: false
+                },
+                rangeSelector: {
+                    buttons: [{
+                        type: 'day',
+                        count: 1,
+                        text: 'D'
+                    },{
+                        type: 'week',
+                        count: 1,
+                        text: 'W'
+                    },{
+                        type: 'month',
+                        count: 1,
+                        text: 'M'
+                    },,{
+                        type: 'Ytd',
+                        count: 1,
+                        text: 'Y'
+                    }],
+                    selected: 1,
+                    inputEnabled: false
+                },
+                yAxis: [{
+                    labels: {
+                        align: 'right',
+                    },
+                    title: {
+                        text: 'Tiempo respuesta (ms.)'
+                    },
+                    height: '25%',
+                    opposite: false,
+                    lineWidth: 1
+                },{
+                    labels: {
+                        align: 'right',
+                    },
+                    title: {
+                        text: 'Peticiones',
+                    },
+                    lineWidth: 1,
+                    top: '30%',
+                    height: '25%',
+                    offset: 0,
+                    opposite: false
+                },{
+                    labels: {
+                        align: 'right'
+                    },
+                    title: {
+                        text: 'CPU %'
+                    },
+                    height: '25%',
+                    top: '65%',
+                    opposite: false,
+                    offset: 0,
+                    max: 100
+                }],
+
+                plotOptions: {
+                    series: {
+                        showInNavigator: true
+                    }
+                },
+
+                tooltip: {
+                    split: true,
+                    valueDecimals: 2
+                },
+
+                series: [{
+                    type: 'line',
+                    name: 'tiempo de respuesta',
+                    data: tiempo_respuesta
+                },{
+                    type: 'column',
+                    name: 'Peticiones',
+                    data: peticiones,
+                    yAxis: 1,
+                    tooltip: {
+                      valueDecimals: 0
+                    }
+                },{
+                    type: 'area',
+                    color: 'rgba(4,38,253,1)',
+                    name: 'apbad002',
+                    data: apbad002,
+                    yAxis: 2,
+                    dataGrouping:{
+                      approximation: "high"
+                    }
+                },{
+                    type: 'area',
+                    color: 'rgba(4,129,255,0.5)',
+                    name: 'apbad003',
+                    data: apbad003,
+                    yAxis: 2,
+                    dataGrouping:{
+                      approximation: "high"
+                    }
+                },{
+                    type: 'area',
+                    color: 'rgba(95,173,251,0.5)',
+                    name: 'apbad004',
+                    data: apbad004,
+                    yAxis: 2,
+                    dataGrouping:{
+                      approximation: "high"
+                    }
+                },{
+                    type: 'area',
+                    color: 'rgba(80,209,250,0.5)',
+                    name: 'apbad006',
+                    data: apbad006,
+                    yAxis: 2,
+                    dataGrouping:{
+                      approximation: "high"
+                    }
+                }]
+            }
 
         // create the chart
-        Highcharts.stockChart('container', {
-            chart: {
-                marginRight: 60,
-                marginLeft: 70,
-                zoomType: 'xy'
-            },
-            legend: {
-                enabled: true
-            },
-            credits: {
-                enabled: false
-            },
-            rangeSelector: {
-                buttons: [{
-                    type: 'day',
-                    count: 1,
-                    text: 'D'
-                },{
-                    type: 'week',
-                    count: 1,
-                    text: 'W'
-                },{
-                    type: 'month',
-                    count: 1,
-                    text: 'M'
-                },,{
-                    type: 'Ytd',
-                    count: 1,
-                    text: 'Y'
-                }],
-                selected: 1,
-                inputEnabled: false
-            },
-            yAxis: [{
-                labels: {
-                    align: 'right',
-                },
-                title: {
-                    text: 'Tiempo respuesta (ms.)'
-                },
-                height: '25%',
-                opposite: false,
-                lineWidth: 1
-            },{
-                labels: {
-                    align: 'right',
-                },
-                title: {
-                    text: 'Peticiones',
-                },
-                lineWidth: 1,
-                top: '30%',
-                height: '25%',
-                offset: 0,
-                opposite: false
-            },{
-                labels: {
-                    align: 'right'
-                },
-                title: {
-                    text: 'CPU %'
-                },
-                height: '25%',
-                top: '65%',
-                opposite: false,
-                offset: 0,
-                max: 100
-            }],
+        Highcharts.stockChart(options);
 
-            plotOptions: {
-                series: {
-                    showInNavigator: true
-                }
-            },
-
-            tooltip: {
-                split: true,
-                valueDecimals: 2
-            },
-
-            series: [{
-                type: 'line',
-                name: 'tiempo de respuesta',
-                data: tiempo_respuesta
-            },{
-                type: 'column',
-                name: 'Peticiones',
-                data: peticiones,
-                yAxis: 1,
-                tooltip: {
-                  valueDecimals: 0
-                }
-            },{
-                type: 'area',
-                color: 'rgba(4,38,253,1)',
-                name: 'apbad002',
-                data: apbad002,
-                yAxis: 2,
-                dataGrouping:{
-                  approximation: "high"
-                }
-            },{
-                type: 'area',
-                color: 'rgba(4,129,255,0.5)',
-                name: 'apbad003',
-                data: apbad003,
-                yAxis: 2,
-                dataGrouping:{
-                  approximation: "high"
-                }
-            },{
-                type: 'area',
-                color: 'rgba(95,173,251,0.5)',
-                name: 'apbad004',
-                data: apbad004,
-                yAxis: 2,
-                dataGrouping:{
-                  approximation: "high"
-                }
-            },{
-                type: 'area',
-                color: 'rgba(80,209,250,0.5)',
-                name: 'apbad006',
-                data: apbad006,
-                yAxis: 2,
-                dataGrouping:{
-                  approximation: "high"
-                }
-            }]
-        });
     });
 });
