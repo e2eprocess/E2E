@@ -7,9 +7,9 @@
 		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
     <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
     <link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
-		<script type="text/javascript" src="/E2E/js/library/highcharts.js"></script>
-    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
 		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
 		<script type="text/javascript" src="/E2E/js/netCash/KYFB/aplicacion_mensual.js"></script>
 		<script type="text/javascript" src="/E2E/js/netCash/KYFB/aplicacion_semanal.js"></script>
 		<script type="text/javascript" src="/E2E/js/netCash/KYFB/recurso_mensual.js"></script>
@@ -25,7 +25,6 @@
 		<header id="menu-header">
 			<div id="incluirPagina"></div>
 		</header>
-
 		<section id="contenedor">
 			<div id="submenu"><a href="KYFB_comparativa.php">Comparativa</a> | <span class="activo">Informe</span></div>
 			<header>KYFB - Módulo de firmas</header>

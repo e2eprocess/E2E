@@ -1,32 +1,6 @@
 <?php
 require_once("../../conexion_e2e_process.php");
-require_once '../../queryinforme.php';
-
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-$series5 = array();
-$series6 = array();
-$series7 = array();
-$series8 = array();
-$series9 = array();
-$series10 = array();
-$series11 = array();
-$series12 = array();
-$series13 = array();
-$series14 = array();
-$series15 = array();
-$series16 = array();
-$series17 = array();
-$series18 = array();
-$series19 = array();
-$series20 = array();
-$series21 = array();
-$series22 = array();
-$series23 = array();
-$series24 = array();
+require_once("../../queryinformeTags.php");
 
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
@@ -43,60 +17,56 @@ $KYFB_S01_40 = recursos('KYFB_S01_40',$hoy,'10 days');
 $KYFB_S01_41 = recursos('KYFB_S01_41',$hoy,'10 days');
 $KYFB_S01_42 = recursos('KYFB_S01_42',$hoy,'10 days');
 
-$category['name'] = 'fecha';
-
 while($r1  = pg_fetch_assoc($KYFB_S01_10)) {
-      $series1['data'][] = $r1['cpu'];
-      $series2['data'][] = $r1['memoria'];
-      $category['data'][] = $r1['fecha'];
+      $series1[] = [$r1['fecha'],$r1['cpu']];
+      $series2[] = [$r1['fecha'],$r1['memoria']];
     }
 while($r2  = pg_fetch_assoc($KYFB_S01_11)) {
-      $series3['data'][] = $r2['cpu'];
-      $series4['data'][] = $r2['memoria'];
+      $series3[] = [$r2['fecha'],$r2['cpu']];
+      $series4[] = [$r2['fecha'],$r2['memoria']];
     }
 while($r3  = pg_fetch_assoc($KYFB_S01_12)) {
-      $series5['data'][] = $r3['cpu'];
-      $series6['data'][] = $r3['memoria'];
+      $series5[] = [$r3['fecha'],$r3['cpu']];
+      $series6[] = [$r3['fecha'],$r3['memoria']];
     }
 while($r4  = pg_fetch_assoc($KYFB_S01_20)) {
-      $series7['data'][] = $r4['cpu'];
-      $series8['data'][] = $r4['memoria'];
+      $series7[] = [$r4['fecha'],$r4['cpu']];
+      $series8[] = [$r4['fecha'],$r4['memoria']];
     }
 while($r5  = pg_fetch_assoc($KYFB_S01_21)) {
-      $series9['data'][] = $r5['cpu'];
-      $series10['data'][] = $r5['memoria'];
+      $series9[] = [$r5['fecha'],$r5['cpu']];
+      $series10[] = [$r5['fecha'],$r5['memoria']];
     }
-while($r6  = pg_fetch_assoc($KYFB_S01_21)) {
-      $series11['data'][] = $r6['cpu'];
-      $series12['data'][] = $r6['memoria'];
+while($r6  = pg_fetch_assoc($KYFB_S01_22)) {
+      $series11[] = [$r6['fecha'],$r6['cpu']];
+      $series12[] = [$r6['fecha'],$r6['memoria']];
     }
 while($r7  = pg_fetch_assoc($KYFB_S01_30)) {
-      $series13['data'][] = $r7['cpu'];
-      $series14['data'][] = $r7['memoria'];
+      $series13[] = [$r7['fecha'],$r7['cpu']];
+      $series14[] = [$r7['fecha'],$r7['memoria']];
     }
 while($r8  = pg_fetch_assoc($KYFB_S01_31)) {
-      $series15['data'][] = $r8['cpu'];
-      $series16['data'][] = $r8['memoria'];
+      $series15[] = [$r8['fecha'],$r8['cpu']];
+      $series16[] = [$r8['fecha'],$r8['memoria']];
     }
-while($r9  = pg_fetch_assoc($KYFB_S01_31)) {
-      $series17['data'][] = $r9['cpu'];
-      $series18['data'][] = $r9['memoria'];
+while($r9  = pg_fetch_assoc($KYFB_S01_32)) {
+      $series17[] = [$r9['fecha'],$r9['cpu']];
+      $series18[] = [$r9['fecha'],$r9['memoria']];
     }
 while($r10  = pg_fetch_assoc($KYFB_S01_40)) {
-      $series19['data'][] = $r10['cpu'];
-      $series20['data'][] = $r10['memoria'];
+      $series19[] = [$r10['fecha'],$r10['cpu']];
+      $series20[] = [$r10['fecha'],$r10['memoria']];
     }
 while($r11  = pg_fetch_assoc($KYFB_S01_41)) {
-      $series21['data'][] = $r11['cpu'];
-      $series22['data'][] = $r11['memoria'];
+      $series21[] = [$r11['fecha'],$r11['cpu']];
+      $series22[] = [$r11['fecha'],$r11['memoria']];
     }
-while($r12  = pg_fetch_assoc($KYFB_S01_41)) {
-      $series23['data'][] = $r12['cpu'];
-      $series24['data'][] = $r12['memoria'];
+while($r12  = pg_fetch_assoc($KYFB_S01_42)) {
+      $series23[] = [$r12['fecha'],$r12['cpu']];
+      $series24[] = [$r12['fecha'],$r12['memoria']];
     }
 
 $datos = array();
-array_push($datos,$category);
 array_push($datos,$series1);
 array_push($datos,$series2);
 array_push($datos,$series3);

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            marginRight: 20,
+            marginRight: 100,
             zoomType: 'xy',
             height: 250
           },
@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: 'Visión últimos 40 días',
+            text: 'Visión últimos 10 días',
             x: -20
           },
           credits: {
@@ -32,7 +32,7 @@ $(document).ready(function() {
               format: '{value} %'
             },
             title: {
-              text: 'Memoria'
+              text: 'Memoria %'
             },
             opposite: true,
             max:100

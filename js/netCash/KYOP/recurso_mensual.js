@@ -32,7 +32,7 @@ $(document).ready(function() {
               format: '{value} %'
             },
             title: {
-              text: 'Memoria'
+              text: 'Memoria %'
             },
             opposite: true,
             max:100
