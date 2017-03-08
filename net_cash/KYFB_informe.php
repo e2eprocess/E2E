@@ -30,11 +30,11 @@
 			<header>KYFB - Módulo de firmas</header>
 
 			<fieldset>
-				<div id="aplicacion_semanal" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div id="aplicacion_mensual" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="aplicacion_semanalKYFB" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="aplicacion_mensualKYFB" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-        <div id="recurso_semanal" style="width: 50%; height: 270px; margin:1 auto;float:left"></div>
-        <div id="recurso_mensual" style="width: 50%; height: 270px; margin:1 auto;float:left"></div>
+        <div id="recurso_semanalKYFB" style="width: 50%; height: 250px; margin:1 auto;float:left"></div>
+        <div id="recurso_mensualKYFB" style="width: 50%; height: 250px; margin:1 auto;float:left"></div>
 			</fieldset>
 		</section>
 	</body>

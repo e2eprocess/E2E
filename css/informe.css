@@ -64,6 +64,10 @@ body {
   padding-bottom: 10px;
 }
 
+.tituloGraficasIndice {
+  color: #FAFAFA;
+}
+
 .cuadrado {
   width: 49.5%;
   border-style: solid;
@@ -83,6 +87,35 @@ body {
   background-color: #072146;
   padding: 3.5px;
   color: white;
+}
+
+.imagenIndice {
+  background: url('/E2E/img/fondo_indice.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#indice {
+  color: white;
+}
+
+#indice ol {
+  padding-top: 50px;
+  padding-left: 70px;
+  font-size: 20px;
+}
+
+#indice ol li {
+  padding: 5px;
+  list-style-type:decimal-leading-zero;
+}
+
+textarea {
+  margin-top: 20px;
+  padding: 50px;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: blue;
 }
 
 @page {
@@ -118,5 +151,12 @@ body {
         background-repeat: no-repeat;
         background-size: 100%;
       }
+
+      .imagenIndice {
+        background: url('/E2E/img/fondo_indice.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
 
   }

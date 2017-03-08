@@ -148,6 +148,6 @@ $(document).ready(function() {
       $.getJSON("/E2E/php/netCash/KYOP/aplicacion_mensual.php", function(json) {
                   options.series[0].data = json[0];
                   options.series[1].data = json[1];
-              $('#aplicacion_mensual').highcharts(options);
+              $('#aplicacion_mensualKYOP').highcharts(options);
       });
   });

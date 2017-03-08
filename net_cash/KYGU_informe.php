@@ -31,11 +31,11 @@
 			<header>KYGU - Perfilado de usuarios</header>
 
 			<fieldset>
-				<div id="aplicacion_semanal" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
-				<div id="aplicacion_mensual" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="aplicacion_semanalKYGU" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
+				<div id="aplicacion_mensualKYGU" style="width: 50%; height: 400px; margin:1 auto;float:left"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:10px;padding:0;clear:both;"></div>
-        <div id="recurso_semanal" style="width: 50%; height: 270px; margin:1 auto;float:left"></div>
-        <div id="recurso_mensual" style="width: 50%; height: 270px; margin:1 auto;float:left"></div>
+        <div id="recurso_semanalKYGU" style="width: 50%; height: 250px; margin:1 auto;float:left"></div>
+        <div id="recurso_mensualKYGU" style="width: 50%; height: 250px; margin:1 auto;float:left"></div>
 			</fieldset>
 		</section>
 	</body>

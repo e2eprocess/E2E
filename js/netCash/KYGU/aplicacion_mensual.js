@@ -159,6 +159,6 @@ $(document).ready(function() {
                   options.series[1].data = json[1];
                   options.series[2].data = json[2];
                   options.series[3].data = json[3];
-              $('#aplicacion_mensual').highcharts(options);
+              $('#aplicacion_mensualKYGU').highcharts(options);
       });
   });

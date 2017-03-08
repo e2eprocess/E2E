@@ -6,7 +6,7 @@ $(document).ready(function() {
             height: 250
           },
           title: {
-            text: 'KYOP - RECURSOS (max.)',
+            text: 'KYFB - RECURSOS (max.)',
             x: -20 //center
           },
           subtitle: {
@@ -293,6 +293,6 @@ $(document).ready(function() {
         options.series[22].data = json[22];
         options.series[23].data = json[23];
 
-        $('#recurso_semanal').highcharts(options);
+        $('#recurso_semanalKYFB').highcharts(options);
       });
   });

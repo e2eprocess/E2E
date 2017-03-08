@@ -225,6 +225,6 @@ $(document).ready(function() {
         options.series[14].data = json[14];
         options.series[15].data = json[15];
 
-        $('#recurso_mensual').highcharts(options);
+        $('#recurso_mensualKYOS').highcharts(options);
       });
   });

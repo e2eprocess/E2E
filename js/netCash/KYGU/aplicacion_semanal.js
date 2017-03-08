@@ -141,7 +141,7 @@ $(document).ready(function() {
               //name: 'Events',
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
-              data: [      
+              data: [
                   { x: 1488787200000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' }
                 ],
               onSeries: 'tiempoFront',
@@ -157,6 +157,6 @@ $(document).ready(function() {
                   options.series[1].data = json[1];
                   options.series[2].data = json[2];
                   options.series[3].data = json[3];
-              $('#aplicacion_semanal').highcharts(options);
+              $('#aplicacion_semanalKYGU').highcharts(options);
       });
   });
