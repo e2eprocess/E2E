@@ -54,8 +54,14 @@ $(document).ready(function() {
                   radius: 1,
                   states : {
                     hover: {enabled: true}
-                  }
-                }
+                  },
+                },
+                events: {
+                    legendItemClick: function () {
+                      return false;
+              },
+              allowPointSelect: false,
+            }
               },
               spline: {
                 marker: {
@@ -79,6 +85,10 @@ $(document).ready(function() {
                 tooltip: {
                   xDateFormat: '%B %e, %Y'
                 }
+              },
+              pie: {
+                 showInLegend: true,
+                 allowPointSelect: false,  // disable selected
               }
           },
           /*series: []*/

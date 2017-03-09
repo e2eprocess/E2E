@@ -79,6 +79,10 @@ $(document).ready(function() {
                 tooltip: {
                   xDateFormat: '%B %e, %Y'
                 }
+              },
+              pie: {
+                 showInLegend: true,
+                 allowPointSelect: false,  // disable selected
               }
           },
           /*series: []*/
