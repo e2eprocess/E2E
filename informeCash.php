@@ -73,7 +73,7 @@
 				<header class="tituloGraficas">
 					02. HECHOS RELEVANTES
 				</header>
-				<textarea rows="35" cols="92"></textarea>
+				<textarea rows="20" cols="92"></textarea>
 
 			</div>
 

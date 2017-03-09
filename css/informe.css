@@ -108,6 +108,7 @@ body {
 #indice ol li {
   padding: 5px;
   list-style-type:decimal-leading-zero;
+  list
 }
 
 textarea {
