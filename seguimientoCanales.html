@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
+		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
+    <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
+    <link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
+    <script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
+    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
+    <script type="text/javascript" src="/E2E/js/seguimientoCanales/particulares.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/cash.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/movil.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/eecc.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/ncoc.js"></script>
+    <script type="text/javascript">
+				$(function(){
+						// Indica el nombre del archivo a cargar
+						$("#incluirPagina").load("/E2E/html/menu.html");
+				});
+		</script>
+  </head>
+  <body>
+    <header id="menu-header">
+			<div id="incluirPagina"></div>
+		</header>
+
+		<!-- Cuerpo informe -->
+		<section id="contenedor" style="padding-top:30px;">
+      <fieldset id="recuadro">
+				<a href="net_particulares.php"><div id="particulares"></div></a>
+			</fieldset>
+			<fieldset id="recuadro">
+				<a href="net_cash.php"><div id="cash"></div></a>
+			</fieldset>
+			<fieldset id="recuadro">
+				<a href="movil.php"><div id="movil"></div></a>
+			</fieldset>
+			<fieldset id="recuadro">
+				<a href="oficinas/EECC_comparativa.php"><div id="eecc" style="height:200px;"></div></a>
+				<div style="border-top:1px solid #CDCDCD;margin:0;padding:0;clear:both;"></div>
+				<a href="oficinas/NCOC_comparativa.php"><div id="ncoc" style="height:200px;"></div></a>
+			</fieldset>
+    </section>
+  </body>
+</html>
