@@ -2,32 +2,6 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-$series5 = array();
-$series6 = array();
-$series7 = array();
-$series8 = array();
-$series9 = array();
-$series10 = array();
-$series11 = array();
-$series12 = array();
-$series13 = array();
-$series14 = array();
-$series15 = array();
-$series16 = array();
-$series17 = array();
-$series18 = array();
-$series19 = array();
-$series20 = array();
-$series21 = array();
-$series22 = array();
-$series23 = array();
-$series24 = array();
-
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
 $ENPP_501_20 = recursos('ENPP_501_20',$hoy,'10 days');

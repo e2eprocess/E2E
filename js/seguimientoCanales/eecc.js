@@ -8,11 +8,6 @@ $(document).ready(function() {
             text: 'Escenarios Comerciales',
             x: -20 //center
           },
-          subtitle: {
-            text: 'EECC',
-            x: -20,
-            y: 30
-          },
           credits: {
             enabled: false
           },

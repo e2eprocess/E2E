@@ -79,10 +79,10 @@ $(document).ready(function() {
 
       $.getJSON("/E2E/php/netParticulares/VS_MQ/recurso_mensual.php", function(json) {
         options.xAxis.categories = json[0]['data'];
-        options.series[0].data = json[5]['data'];
-        options.series[1].data = json[6]['data'];
-        options.series[2].data = json[7]['data'];
-        options.series[3].data = json[8]['data'];
+        options.series[0].data = json[1]['data'];
+        options.series[1].data = json[2]['data'];
+        options.series[2].data = json[3]['data'];
+        options.series[3].data = json[4]['data'];
         chart = new Highcharts.Chart(options);
       });
   });

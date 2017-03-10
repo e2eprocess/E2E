@@ -8,11 +8,6 @@ $(document).ready(function() {
             text: 'Objeto Cliente',
             x: -20 //center
           },
-          subtitle: {
-            text: 'NCOC',
-            x: -20,
-            y: 30
-          },
           credits: {
             enabled: false
           },

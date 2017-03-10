@@ -8,10 +8,6 @@ $(document).ready(function() {
             text: 'Net Cash',
             x: -20 //center
           },
-          subtitle: {
-            text: 'KYOP_presentation',
-            x: -20
-          },
           credits: {
             enabled: false
           },

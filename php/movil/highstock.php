@@ -2,8 +2,6 @@
   require_once("../conexion_e2e_process.php");
   require_once("../queryHighstock.php");
 
-  $series1 = array();
-
   $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
   $idHost = '1,2,3,4';
 

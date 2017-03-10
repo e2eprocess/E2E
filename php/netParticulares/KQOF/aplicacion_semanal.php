@@ -2,12 +2,6 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-
 $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
 
 $BBVANetTime = tiempo('kqof_es_web',$hoy,'10 days');

@@ -2,15 +2,6 @@
   require_once("../../conexion_e2e_process.php");
   require_once("../../queryPeticiones.php");
 
-  /*Declaracion de arrays json*/
-  $category = array();
-  $titulo = array();
-  $series1 = array();
-  $series2 = array();
-  $series3 = array();
-  $series4 = array();
-  $series5 = array();
-
   /*Recuperar variables de sesión que contienen las fechas a comparar*/
   session_start();
   $from = $_SESSION["fechaFromNet"];

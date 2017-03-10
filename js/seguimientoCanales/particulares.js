@@ -8,10 +8,6 @@ $(document).ready(function() {
             text: 'Net particulares',
             x: -20 //center
           },
-          subtitle: {
-            text: 'KQOF_es_web',
-            x: -20
-          },
           credits: {
             enabled: false
           },

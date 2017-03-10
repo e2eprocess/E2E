@@ -2,16 +2,6 @@
 require_once("../../conexion_e2e_process.php");
 require_once '../../queryCpu.php';
 
-$category = array();
-$series1 = array();
-$series2 = array();
-$series3 = array();
-$series4 = array();
-$series5 = array();
-$series6 = array();
-$series7 = array();
-$series8 = array();
-
 $hoy = date("Y-m-d H:m", strtotime('-20 minute'));
 
 $apbad002 = visionMaquina('apbad002',$hoy,'10 days');
@@ -41,10 +31,6 @@ while($r4  = pg_fetch_assoc($apbad006)) {
 
 $datos = array();
 array_push($datos,$category);
-array_push($datos,$series1);
-array_push($datos,$series2);
-array_push($datos,$series3);
-array_push($datos,$series4);
 array_push($datos,$series5);
 array_push($datos,$series6);
 array_push($datos,$series7);

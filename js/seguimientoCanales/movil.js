@@ -8,10 +8,6 @@ $(document).ready(function() {
             text: 'Móvil',
             x: -20 //center
           },
-          subtitle: {
-            text: 'ENPP_mult_web',
-            x: -20
-          },
           credits: {
             enabled: false
           },
