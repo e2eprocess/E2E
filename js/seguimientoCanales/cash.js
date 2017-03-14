@@ -51,13 +51,13 @@ $(document).ready(function() {
                   states : {
                     hover: {enabled: true}
                   },
-                },
+                }/*,
                 events: {
                     legendItemClick: function () {
                       return false;
               },
               allowPointSelect: false,
-            }
+            }*/
               },
               spline: {
                 marker: {
