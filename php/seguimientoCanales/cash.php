@@ -3,10 +3,11 @@ require_once("../conexion_e2e_process.php");
 require_once("../querys/seguimientoCanales/query.php");
 require_once("../querys/informeMensual/informeMensual.php");
 
-$ayer= date("Y-m-d", strtotime('-1 day'));
+$from = date("Y-m-d 07:00", strtotime('-1 day'));
+$to = date("Y-m-d 22:00", strtotime('-1 day'));
 
-$kyopPeticiones = busqueda('kyop_mult_web_kyoppresentation',$ayer,'Throughput');
-$kyopTiempo = busqueda('kyop_mult_web_kyoppresentation',$ayer,'Time');
+$kyopPeticiones = busqueda('kyop_mult_web_kyoppresentation',$from,$to,'Throughput');
+$kyopTiempo = busqueda('kyop_mult_web_kyoppresentation',$from,$to,'Time');
 
 $maxPeticiones = max_peti('kyop_mult_web_kyoppresentation');
 $r8 = pg_fetch_assoc($maxPeticiones);
