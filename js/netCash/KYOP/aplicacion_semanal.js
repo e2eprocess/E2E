@@ -117,8 +117,8 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1488841200000, text: '<b>Pruebas LDAP</b> <br/>Pruebas incidencia operativas LDAP', title: 'Pruebas LDAP' },
-                  { x: 1488708000000, text: '<b>Pruebas Post implantación</b> <br/>Pruebas Cash post implantación', title: 'Pruebas Post implantación' }
+                  //{ x: 1488841200000, text: '<b>Pruebas LDAP</b> <br/>Pruebas incidencia operativas LDAP', title: 'Pruebas LDAP' },
+                  //{ x: 1488708000000, text: '<b>Pruebas Post implantación</b> <br/>Pruebas Cash post implantación', title: 'Pruebas Post implantación' }
                 ],
               onSeries: 'Peticiones',
               tooltip: {
@@ -132,7 +132,7 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1488787200000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' }
+                  //{ x: 1488787200000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' }
                 ],
               onSeries: 'Tiempo',
               tooltip: {

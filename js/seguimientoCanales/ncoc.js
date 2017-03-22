@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var options = {
           chart: {
+            renderTo: 'ncoc',
             marginRight: 100,
             zoomType: 'xy'
           },
@@ -156,6 +157,7 @@ $(document).ready(function() {
                   options.series[0].data = json[1];
                   options.series[2].data = json[2];
                   options.series[2].name = json[3];
-              $('#ncoc').highcharts(options);
+              //$('#ncoc').highcharts(options);
+              chart = new Highcharts.Chart(options);
       });
   });

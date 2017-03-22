@@ -3,11 +3,14 @@ require_once("../conexion_e2e_process.php");
 require_once("../querys/seguimientoCanales/query.php");
 require_once("../querys/informeMensual/informeMensual.php");
 
-$from = date("Y-m-d 07:00", strtotime('-1 day'));
-$to = date("Y-m-d 19:00", strtotime('-1 day'));
+/*Recuperar variables de sesión que contienen las fechas a comparar*/
+session_start();
+$from = $_SESSION["fechaFromSeguimiento"];
+$newFrom = date("Y-m-d 07:00", strtotime($from));
+$to = date("Y-m-d 19:00", strtotime($from));
 
-$kyopPeticiones = busqueda('eecc',$from,$to,'Throughput');
-$kyopTiempo = busqueda('eecc',$from,$to,'Time');
+$kyopPeticiones = busqueda('eecc',$newFrom,$to,'Throughput');
+$kyopTiempo = busqueda('eecc',$newFrom,$to,'Time');
 
 $maxPeticiones = max_peti('eecc');
 $r8 = pg_fetch_assoc($maxPeticiones);

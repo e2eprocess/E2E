@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>C&PM E2E - Seguimiento</title>
     <link type="text/css" rel="stylesheet" href="/E2E/css/jquery-ui.css">
 		<link type="text/css" rel="Stylesheet" href="/E2E/css/estilo.css">
     <link type="text/css" rel="stylesheet" href="/E2E/css/drop-down-menu.css">
     <link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
-    <script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
-    <script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
-    <script type="text/javascript" src="/E2E/js/library/exporting.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
+		<script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
     <script type="text/javascript" src="/E2E/js/seguimientoCanales/particulares.js"></script>
 		<script type="text/javascript" src="/E2E/js/seguimientoCanales/cash.js"></script>
 		<script type="text/javascript" src="/E2E/js/seguimientoCanales/movil.js"></script>
@@ -28,7 +28,19 @@
 
 		<!-- Cuerpo informe -->
 		<section id="contenedor" style="padding-top:30px;">
-      <fieldset id="recuadro">
+
+			<!-- Formulario gestión fechas -->
+			<?php include("php/fechaFrom.php"); ?>
+			<form id="comparador" action='' method='post'>
+				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $from ?>"/>
+				<input type="submit" value="Ver día" name="consulta"/>
+			</form>
+      <script src="external/jquery/jquery.js"></script>
+      <script src="js/fecha/jquery-ui.js"></script>
+      <script src="js/fecha/calendario.js"></script>
+
+
+			<fieldset id="recuadro">
 				<div id="particulares"></div>
 			</fieldset>
 			<fieldset id="recuadro">

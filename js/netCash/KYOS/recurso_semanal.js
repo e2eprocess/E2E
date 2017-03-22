@@ -10,7 +10,7 @@ $(document).ready(function() {
             x: -20 //center
           },
           subtitle: {
-            text: 'Visión últimos 40 días',
+            text: 'Visión últimos 10 días',
             x: -20
           },
           credits: {
