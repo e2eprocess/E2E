@@ -86,12 +86,37 @@ $(document).ready(function() {
             type: 'column',
             data:[]
           },{
+            name: 'lppxo306 (F)',
+            color: 'rgba(4,129,255,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lppxo307 (F)',
+            color: 'rgba(95,173,251,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lppxo308 (F)',
+            color: 'rgba(4,38,253,1)',
+            type: 'column',
+            data:[]
+          },{
             name: 'lppxo309 (F)',
             color: 'rgba(4,129,255,1)',
             type: 'column',
             data:[]
           },{
             name: 'lppxo310 (F)',
+            color: 'rgba(95,173,251,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lppxo311 (F)',
+            color: 'rgba(95,173,251,1)',
+            type: 'column',
+            data:[]
+          },{
+            name: 'lppxo312 (F)',
             color: 'rgba(95,173,251,1)',
             type: 'column',
             data:[]
@@ -121,6 +146,21 @@ $(document).ready(function() {
             type: 'line',
             data:[]
           },{
+            name: 'lppxo306 (T)',
+            color: 'rgba(4,129,255,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'lppxo307 (T)',
+            color: 'rgba(95,173,251,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'lppxo308 (T)',
+            color: 'rgba(4,38,253,1)',
+            type: 'line',
+            data:[]
+          },{
             name: 'lppxo309 (T)',
             color: 'rgba(4,129,255,1)',
             type: 'line',
@@ -128,6 +168,16 @@ $(document).ready(function() {
           },{
             name: 'lppxo310 (T)',
             color: 'rgba(95,173,251,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'lppxo311 (T)',
+            color: 'rgba(95,173,251,1)',
+            type: 'line',
+            data:[]
+          },{
+            name: 'lppxo312 (T)',
+            color: 'rgba(92,173,251,1)',
             type: 'line',
             data:[]
           }]
@@ -149,7 +199,17 @@ $(document).ready(function() {
           options.series[11].data = json[12]['data'];
           options.series[12].data = json[13]['data'];
           options.series[13].data = json[14]['data'];
-          options.subtitle.text = json[15]['text'];
+          options.series[14].data = json[15]['data'];
+          options.series[15].data = json[16]['data'];
+          options.series[16].data = json[17]['data'];
+          options.series[17].data = json[18]['data'];
+          options.series[18].data = json[19]['data'];
+          options.series[19].data = json[20]['data'];
+          options.series[20].data = json[21]['data'];
+          options.series[21].data = json[22]['data'];
+          options.series[22].data = json[23]['data'];
+          options.series[23].data = json[24]['data'];
+          options.subtitle.text = json[25]['text'];
 
           chart = new Highcharts.Chart(options);
           });
