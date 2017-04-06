@@ -142,7 +142,6 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1487592000000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' },
                   { x: 1488787200000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' }
                 ],
               onSeries: 'tiempoServicios',
