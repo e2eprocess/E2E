@@ -117,5 +117,25 @@ function seguimientoCPUHoy($MAQUINA,$FECHAF,$FECHAT,$CANAL,$CLON,$KPI){
 }
 
 
+function busquedaMaquinaAll($MAQUINA,$HOY){
+  global $db_con;
+  $query="SELECT (extract(epoch from aux.tiempo))::NUMERIC as x,
+                aux.datos as y
+          FROM(
+              SELECT  date_trunc('hour', B.timedata) as tiempo,
+                avg(B.datavalue) as datos
+              FROM \"E2E\".host A, \"E2E\".hostdata B, \"E2E\".kpi C
+              WHERE A.name = '".$MAQUINA."'
+                AND B.timedata <= '".$HOY."'
+                AND C.name = 'CPU'
+                AND B.idkpi = c.idkpi
+                AND A.idhost = B.idhost
+              GROUP BY 1
+              ORDER BY 1 asc) aux";
+  $resultado = pg_query($db_con, $query);
+  return $resultado;
+}
+
+
 
 ?>
