@@ -126,7 +126,7 @@ function busquedaMaquinaAll($MAQUINA,$HOY){
                 avg(B.datavalue) as datos
               FROM \"E2E\".host A, \"E2E\".hostdata B, \"E2E\".kpi C
               WHERE A.name = '".$MAQUINA."'
-                AND B.timedata <= '".$HOY."'
+                AND B.timedata between '2017-01-01 00:00' and '".$HOY."'
                 AND C.name = 'CPU'
                 AND B.idkpi = c.idkpi
                 AND A.idhost = B.idhost
