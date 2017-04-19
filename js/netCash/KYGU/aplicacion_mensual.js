@@ -135,7 +135,7 @@ $(document).ready(function() {
           }]
       }
 
-      if (Highcharts.seriesTypes.flags) {
+      /*if (Highcharts.seriesTypes.flags) {
           options.series.push({
               type: 'flags',
               //name: 'Events',
@@ -150,7 +150,7 @@ $(document).ready(function() {
               },
               showInLegend: false
           });
-      }
+      }*/
 
 
       $.getJSON("/E2E/php/netCash/KYGU/aplicacion_mensual.php", function(json) {

@@ -110,7 +110,7 @@ $(document).ready(function() {
           }]
       }
 
-      if (Highcharts.seriesTypes.flags) {
+      /*if (Highcharts.seriesTypes.flags) {
           options.series.push({
               type: 'flags',
               //name: 'Events',
@@ -140,7 +140,7 @@ $(document).ready(function() {
               },
               showInLegend: false
           });
-      }
+      }*/
 
       $.getJSON("/E2E/php/netCash/KYOP/aplicacion_mensual.php", function(json) {
                   options.series[0].data = json[0];
