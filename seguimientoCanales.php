@@ -39,7 +39,8 @@
       <script src="js/fecha/jquery-ui.js"></script>
       <script src="js/fecha/calendario.js"></script>
 
-
+      <header style="padding-bottom: 10px;"><?=$from?></header>
+      
 			<fieldset id="recuadro">
 				<div id="particulares"></div>
 			</fieldset>

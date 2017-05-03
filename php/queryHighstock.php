@@ -71,4 +71,28 @@ function busquedaOficinas($CANAL,$FECHA,$IDHOST){
   return $resultado;
 }
 
+
+
+
+function enpsHighstock($FECHA) {
+	global $db_con;
+	$query="SELECT *
+			FROM \"E2E\".crosstab(
+			 'SELECT (extract(epoch from A.timedata))::NUMERIC as fecha,
+										        b.name as atributo,
+										        a.datavalue as valor
+									     FROM \"E2E\".monitordata a, \"E2E\".monitor b
+									     WHERE a.idmonitor in (14,15,18,19)
+									     AND	a.idmonitor = b.idmonitor
+									     AND	a.idkpi = 2
+			                 		AND timedata <''".$FECHA."''
+									    ORDER BY fecha, atributo') AS recursos (fecha numeric,
+									    atr1 numeric,
+									    atr2 numeric,
+									    atr3 numeric,
+									    atr4 numeric);";
+	$resultado = pg_query($db_con, $query);
+  	return $resultado;
+}
+
 ?>
