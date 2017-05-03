@@ -40,7 +40,7 @@ function tiempo($MONITOR,$FECHA,$INTERVALO){
             AND B.idkpi = c.idkpi
             AND A.idmonitor = B.idmonitor
             GROUP BY 1,2
-          ORDER BY 2 asc) AS T1";
+          ORDER BY 1 asc) AS T1";
   $resultado = pg_query($db_con, $query);
   return $resultado;
 }
@@ -62,7 +62,7 @@ function peticiones($MONITOR,$FECHA,$INTERVALO){
                 AND B.idkpi = c.idkpi
                 AND A.idmonitor = B.idmonitor
                 GROUP BY 1,2
-              ORDER BY 2 asc) as t1";
+              ORDER BY 1 asc) as t1";
   $resultado = pg_query($db_con, $query);
   return $resultado;
 }
