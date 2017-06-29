@@ -1,34 +1,29 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cash',
+            renderTo: 'apx',
             marginRight: 100,
             zoomType: 'xy',
             height: 400
           },
           title: {
-            text: 'Net Cash',
+            text: 'Trx APX',
             x: -20 //center
           },
           credits: {
             enabled: false
           },
           xAxis: {
-            type: 'datetime'
+            type: 'datetime',
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
-              format: '{value} ms.'
+              format: '{value}'
             },
             title: {
-              text: 'Tiempo de respuesta (ms.)'
+              text: 'Transacciones'
             },
             min: 0
-          },{ //Peticiones
-            title: {
-              text: 'Peticiones'
-            },
-            opposite: true
           }],
           tooltip: {
               shared: true,
@@ -91,25 +86,9 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Tiempo Respuesta',
-            id: 'Tiempo',
-            color: 'rgba(41,198,248,1.0)',
-            type: 'line',
-            index: 1,
-            legendIndex: 0,
-            data:[],
-            tooltip: {
-                     xDateFormat: '%e %B %Y %H:%M'
-            },
-            turboThreshold: 0
-          },{
-            name: 'Peticiones',
+            name: 'Transacciones',
             color: 'rgba(65,105,225,1.0)',
             type: 'column',
-            id: 'Peticiones',
-            yAxis: 1,
-            index: 0,
-            legendIndex: 1,
             data:[],
             tooltip: {
                      xDateFormat: '%e %B %Y %H:%M'
@@ -118,18 +97,31 @@ $(document).ready(function() {
           },{
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
-            yAxis: 1,
-            legendIndex: 2,
-            data:[]
+            data: [],
+            tooltip: {
+                     xDateFormat: '%e %B %Y %H:%MM'
+            },
+            turboThreshold: 0
           }]
       }
 
-      $.getJSON("/E2E/php/seguimientoCanales/cash.php", function(json) {
-                  options.series[1].data = json[0];
-                  options.series[0].data = json[1];
-                  options.series[2].data = json[2];
-                  options.series[2].name = json[3];
-              //$('#cash').highcharts(options);
+      $.getJSON("/E2E/php/seguimientoCanales/trxAPX.php", function(json) {
+                  options.series[0].data = json[0];
+                  options.series[1].name = json[2];
+
+                  var dataLength = json[0].length,
+                  max_peti = [];
+
+                  i=0;
+                  for (i; i < dataLength; i += 1){
+                    max_peti.push([
+                        json[0][i][0],
+                        json[1][i][0]]);
+                  };
+
+                  options.series[1].data = max_peti;
+
+
               chart = new Highcharts.Chart(options);
       });
   });

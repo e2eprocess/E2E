@@ -92,7 +92,7 @@ $(document).ready(function() {
             legendIndex: 0,
             data:[],
             tooltip: {
-                     xDateFormat: '%e %B %Y %H:%MM'
+                     xDateFormat: '%e %B %Y %H:%M'
             },
             turboThreshold: 0
           },{
@@ -105,7 +105,7 @@ $(document).ready(function() {
             legendIndex: 1,
             data:[],
             tooltip: {
-                     xDateFormat: '%e %B %Y %H:%MM'
+                     xDateFormat: '%e %B %Y %H:%M'
             },
             turboThreshold: 0
           },{

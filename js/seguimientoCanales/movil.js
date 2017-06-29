@@ -3,7 +3,8 @@ $(document).ready(function() {
           chart: {
             renderTo: 'movil',
             marginRight: 100,
-            zoomType: 'xy'
+            zoomType: 'xy',
+            height: 400
           },
           title: {
             text: 'Móvil',
@@ -98,7 +99,7 @@ $(document).ready(function() {
             legendIndex: 0,
             data:[],
             tooltip: {
-                     xDateFormat: '%e %B %Y %H:%MM'
+                     xDateFormat: '%e %B %Y %H:%M'
             },
             turboThreshold: 0
           },{
@@ -111,7 +112,7 @@ $(document).ready(function() {
             legendIndex: 1,
             data:[],
             tooltip: {
-                     xDateFormat: '%e %B %Y %H:%MM'
+                     xDateFormat: '%e %B %Y %H:%M'
             },
             turboThreshold: 0
           },{

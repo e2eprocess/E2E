@@ -29,7 +29,7 @@
   $semanaPasada = online($from,$to);
   while($r3 = odbc_fetch_array($semanaPasada)){
     //$categories[] = (strtotime($r3['FECHA'].' '.(substr($r3['TIME'],0,-3)))*1000);
-    $categories[] = substr($r3['HORA'],0,-3);
+    $categories[] = $r3['HORA'];
     $series3[] = $r3['EJECS'];
   }
 

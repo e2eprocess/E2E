@@ -14,6 +14,8 @@
 		<script type="text/javascript" src="/E2E/js/seguimientoCanales/movil.js"></script>
 		<script type="text/javascript" src="/E2E/js/seguimientoCanales/eecc.js"></script>
 		<script type="text/javascript" src="/E2E/js/seguimientoCanales/ncoc.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/host.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoCanales/apx.js"></script>
     <script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
@@ -41,19 +43,25 @@
 
       <header style="padding-bottom: 10px;"><?=$from?></header>
       
-			<fieldset id="recuadro">
+			<fieldset id="recuadroSeguimiento">
 				<div id="particulares"></div>
 			</fieldset>
-			<fieldset id="recuadro">
+			<fieldset id="recuadroSeguimiento">
 				<div id="cash"></div>
 			</fieldset>
-			<fieldset id="recuadro">
+			<fieldset id="recuadroSeguimiento">
 				<div id="movil"></div>
 			</fieldset>
-			<fieldset id="recuadro">
+			<fieldset id="recuadroSeguimiento">
 				<div id="eecc" style="height:200px;"></div>
 				<div style="border-top:1px solid #CDCDCD;margin:0;padding:0;clear:both;"></div>
 				<div id="ncoc" style="height:200px;"></div>
+			</fieldset>
+			<fieldset id="recuadroSeguimiento">
+				<div id="host"></div>
+			</fieldset>
+			<fieldset id="recuadroSeguimiento">
+				<div id="apx"></div>
 			</fieldset>
     </section>
   </body>

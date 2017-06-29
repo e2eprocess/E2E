@@ -91,6 +91,28 @@ body {
   float:left;
 }
 
+#recuadroSeguimiento {
+  width: 48%;
+  height: 400px;
+  margin: 1;
+  margin-top: 1.5px;
+  float:left;
+}
+
+#recuadroTrx {
+  width: 48%;
+  height: 100px;
+  margin: 1;
+  float:left;
+  text-align: center;
+}
+
+#recuadroTrx h1 {
+  font-weight: normal;
+  margin-bottom: 5px;
+
+}
+
 #recuadroMemoria {
   width: 48%;
   height: 400px;
@@ -107,6 +129,11 @@ body {
   float:left;
   width:97.9%;
   margin-top:0.5em;
+}
+
+.resultado {
+  font-size: 30px;
+  color: blue;
 }
 
 #cabeceraGrafico{

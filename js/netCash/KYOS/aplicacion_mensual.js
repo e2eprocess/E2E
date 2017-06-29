@@ -135,22 +135,22 @@ $(document).ready(function() {
           }]
       }
 
-      /*if (Highcharts.seriesTypes.flags) {
+      if (Highcharts.seriesTypes.flags) {
           options.series.push({
               type: 'flags',
               //name: 'Events',
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1488787200000, text: '<b>Incidencia operativas LDAP</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia operativas LDAP' }
+                  { x: 1497607200000, text: '<b>Incidencia Tsec</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia Tsec' }
                 ],
-              onSeries: 'tiempoServicios',
+              onSeries: 'tiempoPosicioncuentas',
               tooltip: {
                        xDateFormat: '%e %B %Y %H:%MM'
               },
               showInLegend: false
           });
-      }*/
+      }
 
       $.getJSON("/E2E/php/netCash/KYOS/aplicacion_mensual.php", function(json) {
                   options.series[0].data = json[0];

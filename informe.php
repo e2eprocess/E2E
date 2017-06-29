@@ -71,11 +71,11 @@
 				  <div id="produccionVsReferencia" style="height:300px;"></div>
 				</div>
 				<div class="cuadrado">
-				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div class="titular">Información agrupada cada hora</div>
 				  <div id="batch" style="height:300px;"></div>
 				</div>
 				<div class="cuadrado">
-				  <div class="titular">Información agrupada cada 15 minutos</div>
+				  <div class="titular">Información agrupada cada hora</div>
 				  <div id="online" style="height:300px;"></div>
 				</div>
 			</div>

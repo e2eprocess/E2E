@@ -2,7 +2,7 @@
 
   function batch($from,$to) {
     global $db_con;
-    $query="SELECT DATE AS FECHA, TIME, COUNT(*) AS EJECS
+    $query="SELECT DATE AS FECHA, substr(time,1,2), COUNT(*) AS EJECS
             FROM CFSC..MVS_ADDRDISTR_H A
             LEFT JOIN CFSC..MVS_SYSPLEX B
             ON A.MVS_SYSTEM_ID = B.MVS_SYSTEM_ID
@@ -20,7 +20,7 @@
 
   function online($from,$to) {
     global $db_con;
-    $query="SELECT DATE AS FECHA, HORA, SUM(TRANSACTIONS) AS EJECS
+    $query="SELECT DATE AS FECHA, substr(time,1,2) AS HORA, SUM(TRANSACTIONS) AS EJECS
             FROM CFSC..IMS_LEV_STAT_H
             WHERE DATE >= '".$from."'
             AND DATE <= '".$to."'
@@ -124,6 +124,41 @@
             ORDER BY 1, 2";
     $resultado = odbc_exec($db_con,$query);
     return $resultado;
+  }
+
+  function peticionesDia($FECHA){
+    global $db_con;
+    $query="SELECT   DATE 
+              , SUM(EMH_TRANSACTIONS)+SUM(MSGQ_TRANSACTIONS) AS EJEC 
+              FROM CFSC.XAKGUTMOD1E.IMS_TRAN_H
+              WHERE DATE = '".$FECHA."'
+              AND IMS_SYSTEM_ID IN ('IMSEXT01', 'IMSEXT02', 'IMSEXT03', 'IMSEXT04')
+              AND TRANSACTION_NAME NOT LIKE '$%'
+              GROUP BY DATE
+              order by 1,2";
+    $resultado = odbc_exec($db_con,$query);
+    return $resultado;
+  }
+
+  function onlineSeguimiento($FECHA){
+     global $db_con;
+      $query="SELECT EXTRACT(EPOCH FROM TIMESTAMP (to_timestamp(FECHA_HORA,'yyyy-mm-dd hh24:mi:ss'))) AS X,
+              EJECS AS Y
+              FROM
+              (
+                  SELECT FECHA,substr(time,1,5) AS HORA,FECHA || ' ' || TIME AS FECHA_HORA , EJECS FROM
+                  (
+                      SELECT substr(DATE,1,10) AS FECHA, TIME, SUM(TRANSACTIONS) AS EJECS
+                                   FROM CFSC..IMS_LEV_STAT_H
+                                   WHERE DATE = '".$FECHA."'
+                                   AND IMS_SUBSYSTEM_NAME IN ('IMSEXT01', 'IMSEXT02', 'IMSEXT03', 'IMSEXT04')
+                            AND TRANSACTION_NAME NOT LIKE '$%'
+                                   GROUP BY 1,2
+                      )AS CONS1
+              ) AS CONS2
+                           ORDER BY 1,2;";
+      $resultado = odbc_exec($db_con,$query);
+      return $resultado; 
   }
 
 ?>
