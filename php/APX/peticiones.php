@@ -6,21 +6,26 @@ require_once("../queryPeticiones.php");
 session_start();
 $from = $_SESSION["fechaFromNet"];
 $newFrom = date("Y-m-d", strtotime($from));
+//$newFrom = date("Y-m-d 00:00", strtotime($from));
 $to=$_SESSION["fechaToNet"];
 $newTo = date("Y-m-d", strtotime($to));
+//$newTo = date("Y-m-d 23:59", strtotime($to));
 
 /*gestion fechas*/
 if(date("Y-m-d")==$newTo){
   $newToF = date("Y-m-d 00:00");
   $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-  $peticionesHoy = busquedaHoy('apx',$newToF,$newTo, 'Throughput');
+  //$peticionesHoy = busquedaHoy('apx',$newToF,$newTo, 'Throughput');
+  $peticionesHoy = busquedaHoy2('APX%',$newToF,$newTo,'Throughput');
 }else{
-  $peticionesHoy = busqueda('apx',$newTo, 'Throughput');
+  //$peticionesHoy = busqueda('apx',$newTo, 'Throughput');
+  $peticionesHoy = busqueda2('APX%',$newTo, 'Throughput');
 }
 
 /*Declaración variables*/
-$peticionesPasada = busqueda('apx', $newFrom, 'Throughput');
-$maxPeticiones = max_peti('apx');
+//$peticionesPasada = busqueda('apx', $newFrom, 'Throughput');
+$peticionesPasada = busqueda2('APX%', $newFrom, 'Throughput');
+$maxPeticiones = max_peti('apx acumulado');
 
 $r8 = pg_fetch_assoc($maxPeticiones);
 $max_peti = $r8['max_peticiones'];
