@@ -1,5 +1,16 @@
 <?php
 
+
+function total_peti($FROM, $TO){
+  global $db_con;
+  $query="SELECT sum(md.datavalue) total
+                FROM \"E2E\".monitordata md
+                WHERE md.timedata between '".$FROM."' and '".$TO."'
+                AND md.idmonitor  = 361";
+  $resultado = pg_query($db_con, $query);
+  return $resultado;
+}
+
 /*La función maxPeti2 es la misma que la 1 con la salvedad de que tira contra el acumulado de APX y solo sacael día en el que se alcanza el máximo pod día*/
 function max_peti2($CANAL){
   global $db_con;

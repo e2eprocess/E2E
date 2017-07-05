@@ -12,14 +12,19 @@
 
 	$maxPeticiones = max_peti2('apx acumulado');
 	$r8 = pg_fetch_assoc($maxPeticiones);
-	$max_peti = $r8['max_peticiones'];
+	//$totalPeticiones = total_peti($newFrom, $to);
+	$r9 = pg_fetch_assoc(total_peti($newFrom, $to));
+	$totalPeticiones = number_format($r9['total'],0);
+	//$max_peti = $r8['max_peticiones'];
+	$max_peti = number_format($r8['max_peticiones'],0);
 	$Fecha_peti = substr($r8['fecha'],0,8);
 	//$Fecha_peti = substr($r8['fecha_max'],0,8);
 	$Fecha_peti_hora = $r8['fecha'];
 	$new_fechaFrom = date("Y-d-m 00:00", strtotime($Fecha_peti));
 	$new_fechaTo = date("Y-d-m 23:59", strtotime($Fecha_peti));
 	//$TituloPeticiones = "Max. Transacciones $Fecha_peti_hora";
-	$TituloPeticiones = "Max. Transacciones $Fecha_peti";
+	$TituloPeticionesMax = "Día max. Trx $Fecha_peti ($max_peti)";
+	$TituloPeticiones = "Transacciones $from ($totalPeticiones)";
 
 	$apxPeticiones = busquedaAPX('APX%',$newFrom,$to,'Throughput');
 	$apxPeticionesMax = busquedaAPX('APX%',$new_fechaFrom,$new_fechaTo,'Throughput');
@@ -35,6 +40,7 @@
 	$datos = array();
 	array_push($datos,$series1);
 	array_push($datos,$series2);
+	array_push($datos,$TituloPeticionesMax);
 	array_push($datos,$TituloPeticiones);
 
 	print json_encode($datos, JSON_NUMERIC_CHECK);
