@@ -18,13 +18,14 @@
 	//$max_peti = $r8['max_peticiones'];
 	$max_peti = number_format($r8['max_peticiones'],0);
 	$Fecha_peti = substr($r8['fecha'],0,8);
+	$fecha_busqueda = date("d/m/Y", strtotime($from));
 	//$Fecha_peti = substr($r8['fecha_max'],0,8);
 	$Fecha_peti_hora = $r8['fecha'];
 	$new_fechaFrom = date("Y-d-m 00:00", strtotime($Fecha_peti));
 	$new_fechaTo = date("Y-d-m 23:59", strtotime($Fecha_peti));
 	//$TituloPeticiones = "Max. Transacciones $Fecha_peti_hora";
 	$TituloPeticionesMax = "Día max. Trx $Fecha_peti ($max_peti)";
-	$TituloPeticiones = "Transacciones $from ($totalPeticiones)";
+	$TituloPeticiones = "Transacciones $fecha_busqueda ($totalPeticiones)";
 
 	$apxPeticiones = busquedaAPX('APX%',$newFrom,$to,'Throughput');
 	$apxPeticionesMax = busquedaAPX('APX%',$new_fechaFrom,$new_fechaTo,'Throughput');
