@@ -13,10 +13,11 @@
   	$r2 = odbc_fetch_array($queryMaxEjecuciones);
   	$fechaMaxEjecuciones = $r2['FECHA'];
   	$max_peti = number_format($r2['EJECS'],0);
+  	$fechaPeti = date("d/m/Y", strtotime($from));
   	$fechaMax = date("d/m/Y", strtotime($fechaMaxEjecuciones));
 	$r3 = odbc_fetch_array(peticionesDia($from));
 	$totalPeticiones = number_format($r3['EJEC'],0);
-  	$TituloPeticiones = "Transacciones $from ($totalPeticiones)";
+  	$TituloPeticiones = "Transacciones $fechaPeti ($totalPeticiones)";
   	$TituloPeticionesMax = "Día max. Trx $fechaMax ($max_peti)";
 	
 
