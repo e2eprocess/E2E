@@ -142,7 +142,7 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1497607200000, text: '<b>Incidencia Tsec</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia Tsec' }
+                  //{ x: 1497607200000, text: '<b>Incidencia Tsec</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia Tsec' }
                 ],
               onSeries: 'tiempoPosicioncuentas',
               tooltip: {
