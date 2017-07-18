@@ -9,12 +9,17 @@
 	$from = $_SESSION["fechaFromSeguimiento"];
 	$from = substr($from, -4).'-'.substr($from, 3,2).'-'.substr($from, 0,2);
 
-
 	$queryMaxEjecuciones = maxEjecuciones($now);
   	$r2 = odbc_fetch_array($queryMaxEjecuciones);
   	$fechaMaxEjecuciones = $r2['FECHA'];
-     $fechaMax = date("d/m/Y", strtotime($fechaMaxEjecuciones));
-     $TituloPeticiones = "Día max. Trx $fechaMax";
+  	$max_peti = number_format($r2['EJECS'],0);
+  	$fechaPeti = date("d/m/Y", strtotime($from));
+  	$fechaMax = date("d/m/Y", strtotime($fechaMaxEjecuciones));
+	$r3 = odbc_fetch_array(peticionesDia($from));
+	$totalPeticiones = number_format($r3['EJEC'],0);
+  	$TituloPeticiones = "Transacciones $fechaPeti ($totalPeticiones)";
+  	$TituloPeticionesMax = "Día max. Trx $fechaMax ($max_peti)";
+	
 
 	$peticiones = onlineSeguimiento($from);
 	
@@ -32,6 +37,7 @@
   	$datos = array();
   	array_push($datos,$series1);
   	array_push($datos,$series2);
+  	array_push($datos,$TituloPeticionesMax);
   	array_push($datos,$TituloPeticiones);
 
   	print json_encode($datos, JSON_NUMERIC_CHECK);

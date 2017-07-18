@@ -5,6 +5,6 @@
   $clave="yX5CPcdi";
   $db_con = odbc_connect($dsn,$usuario,$clave);
   if (!$db_con){
-	   exit("<strong>Ya ocurrido un error tratando de conectarse con el origen de datos.</strong>");
+	   exit("<strong>Ha ocurrido un error tratando de conectarse con el origen de datos.</strong>");
   }
 ?>

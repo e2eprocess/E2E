@@ -87,7 +87,7 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Transacciones',
+            //name: 'Transacciones',
             color: 'rgba(65,105,225,1.0)',
             type: 'column',
             data:[],
@@ -109,6 +109,7 @@ $(document).ready(function() {
       $.getJSON("/E2E/php/seguimientoCanales/trxHost.php", function(json) {
                   options.series[0].data = json[0];
                   options.series[1].name = json[2];
+                  options.series[0].name = json[3];
              
               var dataLength = json[0].length,
                   max_peti = [];
