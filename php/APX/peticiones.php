@@ -16,15 +16,15 @@ if(date("Y-m-d")==$newTo){
   $newToF = date("Y-m-d 00:00");
   $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
   //$peticionesHoy = busquedaHoy('apx',$newToF,$newTo, 'Throughput');
-  $peticionesHoy = busquedaHoy2('APX%',$newToF,$newTo,'Throughput');
+  $peticionesHoy = busquedaHoy('apx acumulado',$newToF,$newTo,'Throughput');
 }else{
   //$peticionesHoy = busqueda('apx',$newTo, 'Throughput');
-  $peticionesHoy = busqueda2('APX%',$newTo, 'Throughput');
+  $peticionesHoy = busqueda('apx acumulado',$newTo, 'Throughput');
 }
 
 /*Declaración variables*/
 //$peticionesPasada = busqueda('apx', $newFrom, 'Throughput');
-$peticionesPasada = busqueda2('APX%', $newFrom, 'Throughput');
+$peticionesPasada = busqueda('apx acumulado', $newFrom, 'Throughput');
 $maxPeticiones = max_peti('apx acumulado');
 
 $r8 = pg_fetch_assoc($maxPeticiones);

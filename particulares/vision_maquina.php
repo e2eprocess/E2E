@@ -18,6 +18,12 @@
 						$("#incluirPagina").load("/E2E/html/menu.html");
 				});
 		</script>
+		<script>
+			function recarga(){
+				location.href=location.href
+			}
+			setInterval('recarga()',60000)
+		</script>
 	</head>
 	<body>
 		<header id="menu-header">

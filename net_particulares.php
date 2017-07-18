@@ -15,6 +15,12 @@
 						$("#incluirPagina").load("/E2E/html/menu.html");
 				});
 		</script>
+		<script>
+			function recarga(){
+				location.href=location.href
+			}
+			setInterval('recarga()',60000)
+		</script>
 	</head>
 	<body>
 		<script type="text/javascript" src="/E2E/js/library/highstock.js"></script>

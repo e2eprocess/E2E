@@ -27,8 +27,8 @@
 	$TituloPeticionesMax = "Día max. Trx $Fecha_peti ($max_peti)";
 	$TituloPeticiones = "Transacciones $fecha_busqueda ($totalPeticiones)";
 
-	$apxPeticiones = busquedaAPX('APX%',$newFrom,$to,'Throughput');
-	$apxPeticionesMax = busquedaAPX('APX%',$new_fechaFrom,$new_fechaTo,'Throughput');
+	$apxPeticiones = busqueda('apx acumulado',$newFrom,$to,'Throughput');
+	$apxPeticionesMax = busqueda('apx acumulado',$new_fechaFrom,$new_fechaTo,'Throughput');
 
 	while($r1  = pg_fetch_assoc($apxPeticiones)) {
 		$fecha = $r1['x']*1000;
