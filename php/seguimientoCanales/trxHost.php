@@ -13,7 +13,8 @@
 	$queryMaxEjecuciones = maxEjecuciones($now);
   	$r2 = odbc_fetch_array($queryMaxEjecuciones);
   	$fechaMaxEjecuciones = $r2['FECHA'];
-  	$TituloPeticiones = "Día max. Trx $fechaMaxEjecuciones";
+     $fechaMax = date("d/m/Y", strtotime($fechaMaxEjecuciones));
+     $TituloPeticiones = "Día max. Trx $fechaMax";
 
 	$peticiones = onlineSeguimiento($from);
 	

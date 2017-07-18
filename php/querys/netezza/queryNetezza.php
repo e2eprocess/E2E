@@ -2,7 +2,7 @@
 
   function batch($from,$to) {
     global $db_con;
-    $query="SELECT DATE AS FECHA, substr(time,1,2), COUNT(*) AS EJECS
+    $query="SELECT DATE AS FECHA, substr(time,1,2) as TIME, COUNT(*) AS EJECS
             FROM CFSC..MVS_ADDRDISTR_H A
             LEFT JOIN CFSC..MVS_SYSPLEX B
             ON A.MVS_SYSTEM_ID = B.MVS_SYSTEM_ID

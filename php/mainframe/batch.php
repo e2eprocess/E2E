@@ -28,7 +28,7 @@
   $series4 = array_merge($series2,$series2);
   while($r3 = odbc_fetch_array($semanaPasada)){
     //$categories[] = (strtotime($r3['FECHA'].' '.(substr($r3['TIME'],0,-3)))*1000);
-    $categories[] = substr($r3['TIME'],0,-3);
+    $categories[] = $r3['TIME'];
     $series3[] = $r3['EJECS'];
   }
 
