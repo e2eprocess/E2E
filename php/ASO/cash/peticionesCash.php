@@ -21,7 +21,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $gtHoy = busquedaHoy('GTnetcash',$newToF,$newTo, 'Throughput');
     $servicioHoy = busquedaHoy('ASOnetcash',$newToF,$newTo, 'Throughput');
   }

@@ -2,7 +2,7 @@
   require_once("../conexion_e2e_process.php");
   require_once("../queryHighstock.php");
 
-  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
   $idHost = '1,2,3,4';
 
   $query = busqueda('enpp_mult_web',$newTo,$idHost);

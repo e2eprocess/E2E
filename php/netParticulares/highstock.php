@@ -4,7 +4,7 @@
 
   $series1 = array();
 
-  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
   $idHost = '1,2,3,4';
 
   $query = busqueda('kqof_es_web',$newTo,$idHost);

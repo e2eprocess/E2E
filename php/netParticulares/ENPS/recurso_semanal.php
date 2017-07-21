@@ -28,7 +28,7 @@ $series22 = array();
 $series23 = array();
 $series24 = array();
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $ENPS_701_20 = recursos('ENPS_701_20',$hoy,'10 days');
 $ENPS_701_21 = recursos('ENPS_701_21',$hoy,'10 days');

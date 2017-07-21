@@ -2,7 +2,7 @@
   require_once("../conexion_e2e_process.php");
   require_once("../queryCpu.php");
 
-  $hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+  $hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
   $spnac005CpuPasada = busquedaMaquinaAll('spnac005', $hoy);
   $spnac007CpuPasada = busquedaMaquinaAll('spnac007', $hoy);

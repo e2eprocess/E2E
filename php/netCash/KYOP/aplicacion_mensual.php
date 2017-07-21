@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinformeTags.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $kyop_mult_web_kyoppresentationTime = tiempo('kyop_mult_web_kyoppresentation',$hoy,'40 days');
 $kyop_mult_web_kyoppresentationPeti = peticiones('kyop_mult_web_kyoppresentation',$hoy,'40 days');

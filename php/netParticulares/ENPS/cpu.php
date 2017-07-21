@@ -12,7 +12,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $apbad002_To = seguimientoCPUHoy('apbad002',$newToF,$newTo,'net','ENPS%','CPU');
     $apbad003_To = seguimientoCPUHoy('apbad003',$newToF,$newTo,'net','ENPS%','CPU');
     $apbad004_To = seguimientoCPUHoy('apbad004',$newToF,$newTo,'net','ENPS%','CPU');

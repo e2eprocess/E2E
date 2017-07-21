@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $ESMB_S01_20 = recursos('ESMB_S01_20',$hoy,'10 days');
 $ESMB_S01_21 = recursos('ESMB_S01_21',$hoy,'10 days');

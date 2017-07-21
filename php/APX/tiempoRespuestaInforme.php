@@ -6,7 +6,7 @@ $maxPeticiones = max_peti('apx');
 $r8 = pg_fetch_assoc($maxPeticiones);
 $newFrom = $r8['fecha_max'];
 $newToF = date("Y-m-d 00:00");
-$newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+$newTo = date("Y-m-d H:i", strtotime('-10 minute'));
 $to = date("Y-m-d");
 
 $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";

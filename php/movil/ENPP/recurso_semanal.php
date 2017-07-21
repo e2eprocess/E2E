@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $ENPP_501_20 = recursos('ENPP_501_20',$hoy,'10 days');
 $ENPP_501_21 = recursos('ENPP_501_21',$hoy,'10 days');

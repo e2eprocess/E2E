@@ -12,7 +12,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $ENPP_501_20_To = busquedaClonHoy('ENPP_501_20',$newToF,$newTo);
     $ENPP_501_21_To = busquedaClonHoy('ENPP_501_21',$newToF,$newTo);
     $ENPP_501_22_To = busquedaClonHoy('ENPP_501_22',$newToF,$newTo);

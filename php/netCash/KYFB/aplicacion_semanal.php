@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinformeTags.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $firmasTime = tiempo('kyfb_mult_web_firmas',$hoy,'10 days');
 $kyfbwsTime = tiempo('kyfb_mult_web_kyfbws',$hoy,'10 days');

@@ -3,7 +3,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $ENPS_801_23 = recursos('ENPS_801_23',$hoy,'10 days');
 $ENPS_801_24 = recursos('ENPS_801_24',$hoy,'10 days');

@@ -22,7 +22,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $frontusuarioHoy = busquedaHoy('kygu_mult_web_frontusuario',$newToF,$newTo,'Throughput');
     $serviciousuarioHoy = busquedaHoy('kygu_mult_web_serviciosusuario',$newToF,$newTo,'Throughput');
   }

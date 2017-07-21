@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $BBVANetTime = tiempo('kqof_es_web',$hoy,'40 days');
 $BBVANetPeti = peticiones('kqof_es_web',$hoy,'40 days');

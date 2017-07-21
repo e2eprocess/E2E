@@ -12,7 +12,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $ESMB_S01_20_To = busquedaClonHoy('ESMB_S01_20',$newToF,$newTo);
     $ESMB_S01_21_To = busquedaClonHoy('ESMB_S01_21',$newToF,$newTo);
     $ESMB_S01_22_To = busquedaClonHoy('ESMB_S01_22',$newToF,$newTo);

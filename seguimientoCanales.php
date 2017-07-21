@@ -38,7 +38,12 @@
 		<section id="contenedor" style="padding-top:30px;">
 
 			<!-- Formulario gestión fechas -->
-			<?php include("php/fechaFrom.php"); ?>
+			<?php 
+				//$from = $_GET["dia"];
+				
+
+				include("php/fechaFrom.php"); 
+			?>
 			<form id="comparador" action='' method='post'>
 				<input type="text" name="from" id="from" readonly="readonly" size="12" value="<?= $from ?>"/>
 				<input type="submit" value="Ver día" name="consulta"/>

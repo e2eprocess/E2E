@@ -87,6 +87,7 @@ $(document).ready(function() {
             id: 'tiempoServicios',
             color: 'rgba(248,0,0,1.0)',
             type: 'line',
+            id: 'tiempoServicios',
             index: 1,
             legendIndex: 0,
             data:[],
@@ -142,9 +143,9 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  //{ x: 1497607200000, text: '<b>Incidencia Tsec</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia Tsec' }
+                  { x: 1500040800000, text: '<b>Incidencia CPU</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia incremento CPU' }
                 ],
-              onSeries: 'tiempoPosicioncuentas',
+              onSeries: 'tiempoServicios',
               tooltip: {
                        xDateFormat: '%e %B %Y %H:%MM'
               },

@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinforme.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $mobilityTiempo = tiempo('enpp_mult_web',$hoy,'10 days');
 $mobilityPeti = peticiones('enpp_mult_web',$hoy,'10 days');

@@ -12,7 +12,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $KQOF_S01_20_To = busquedaClonHoy('KQOF_S01_20',$newToF,$newTo);
     $KQOF_S01_21_To = busquedaClonHoy('KQOF_S01_21',$newToF,$newTo);
     $KQOF_S01_22_To = busquedaClonHoy('KQOF_S01_22',$newToF,$newTo);

@@ -13,7 +13,7 @@
   /*gestion fechas*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $gtHoy = busquedaHoy('GTmobile',$newToF,$newTo, 'Throughput');
     $servicioHoy = busquedaHoy('ASOmobile',$newToF,$newTo, 'Throughput');
 

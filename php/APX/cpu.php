@@ -12,7 +12,7 @@ $newTo = date("Y-m-d", strtotime($to));
 /*Declaración variables*/
 if(date("Y-m-d")==$newTo){
   $newToF = date("Y-m-d 00:00");
-  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+  $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
   $lppxo301CpuHoy = busquedaMaquinaHoy('lppxo301',$newToF,$newTo);
   $lppxo302CpuHoy = busquedaMaquinaHoy('lppxo302',$newToF,$newTo);
   $lppxo303CpuHoy = busquedaMaquinaHoy('lppxo303',$newToF,$newTo);

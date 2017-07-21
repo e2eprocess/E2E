@@ -8,7 +8,7 @@ $series2 = array();
 $series3 = array();
 $series4 = array();
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $servicingTime = tiempo('enps_mult_web_net',$hoy,'40 days');
 $servicingPeti = peticiones('enps_mult_web_net',$hoy,'40 days');

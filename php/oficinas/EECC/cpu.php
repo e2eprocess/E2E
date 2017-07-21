@@ -12,7 +12,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $spnac005CpuHoy = busquedaMaquinaHoy('spnac005',$newToF,$newTo);
     $spnac006CpuHoy = busquedaMaquinaHoy('spnac006',$newToF,$newTo);
     $spnac007CpuHoy = busquedaMaquinaHoy('spnac007',$newToF,$newTo);

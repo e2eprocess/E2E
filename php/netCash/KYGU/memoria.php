@@ -33,7 +33,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $KYGU_S01_10_To = busquedaClonHoy('KYGU_S01_10',$newToF,$newTo);
     $KYGU_S01_11_To = busquedaClonHoy('KYGU_S01_11',$newToF,$newTo);
     $KYGU_S01_20_To = busquedaClonHoy('KYGU_S01_20',$newToF,$newTo);

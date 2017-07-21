@@ -24,7 +24,7 @@
   /*Declaración variables*/
   if(date("Y-m-d")==$newTo){
     $newToF = date("Y-m-d 00:00");
-    $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
+    $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
     $apbad022CpuHoy = busquedaMaquinaHoy('apbad022',$newToF,$newTo);
     $apbad023CpuHoy = busquedaMaquinaHoy('apbad023',$newToF,$newTo);
     $apbad024CpuHoy = busquedaMaquinaHoy('apbad024',$newToF,$newTo);

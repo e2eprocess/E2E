@@ -12,7 +12,7 @@ $series6 = array();
 $series7 = array();
 $series8 = array();
 
-$hoy = date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy = date("Y-m-d H:m", strtotime('-10 minute'));
 
 $apbad022 = visionMaquina('apbad022',$hoy,'10 days');
 $apbad023 = visionMaquina('apbad023',$hoy,'10 days');

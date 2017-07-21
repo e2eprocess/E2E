@@ -2,7 +2,7 @@
 require_once("../../conexion_e2e_process.php");
 require_once("../../queryinformeTags.php");
 
-$hoy= date("Y-m-d H:m", strtotime('-20 minute'));
+$hoy= date("Y-m-d H:m", strtotime('-10 minute'));
 
 $KYOP_S01_10 = recursos('KYOP_S01_10',$hoy,'10 days');
 $KYOP_S01_11 = recursos('KYOP_S01_11',$hoy,'10 days');

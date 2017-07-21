@@ -12,14 +12,14 @@ $newTo = date("Y-m-d", strtotime($to));
 /*Declaración variables*/
 if(date("Y-m-d")==$newTo){
   $newToF = date("Y-m-d 00:00");
-  $newTo = date("Y-m-d H:i", strtotime('-20 minute'));
-  $tiempoHoy = busquedaHoy('apx',$newToF,$newTo, 'Time');
+  $newTo = date("Y-m-d H:i", strtotime('-10 minute'));
+  $tiempoHoy = busquedaHoy('apx acumulado',$newToF,$newTo, 'Time');
 }else{
-  $tiempoHoy = busqueda('apx',$newTo, 'Time');
+  $tiempoHoy = busqueda('apx acumulado',$newTo, 'Time');
 }
 
 /*Declaración variables*/
-$tiempoPasada = busqueda('apx', $newFrom, 'Time');
+$tiempoPasada = busqueda('apx acumulado', $newFrom, 'Time');
 
 $category['name'] = 'fecha';
 $titulo['text'] = "<b>$from</b> comparado con <b>$to</b>";
