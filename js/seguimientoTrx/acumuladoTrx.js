@@ -1,38 +1,52 @@
 $(document).ready(function() {
   var options = {
           chart: {
-            renderTo: 'cash',
-            marginRight: 70,
+            renderTo: 'acumuladoTrx',
+            marginRight: 30,
             zoomType: 'xy',
-            height: 400
+            height: 250
           },
           title: {
-            text: 'Net Cash',
-            x: -20 //center
+            text: 'Acumulado Trx'
+             //center
           },
           credits: {
             enabled: false
           },
           xAxis: {
-            type: 'datetime'
+            type: 'datetime',
           },
           yAxis: [{ //tiempo de respuesta
             labels: {
-              format: '{value} ms.'
+              format: '{value}'
             },
             title: {
-              text: 'Tiempo de respuesta (ms.)'
+              text: 'Transacciones'
             },
             min: 0
-          },{ //Peticiones
-            title: {
-              text: 'Peticiones'
-            },
-            opposite: true
           }],
           tooltip: {
               shared: true,
-              crosshair: true
+              crosshair: true,
+              formatter: function() {
+                var s = '<b>Detalle:</b>';
+                console.log(this);
+                $.each(this.points, function(index) {
+                    if (index<2) {
+                      console.log(this.color);
+                      s += '<br/><b>' + this.series.name + ': </b>' +
+                    this.y + ' - <b>' +this.percentage.toFixed(2) +' %</b>';
+                    }
+                    else {
+                      s += '<br/><b>' + this.series.name.substr(0,12) + ': </b>' +
+                      this.y;
+                    }
+                });
+
+                return s;;s
+                
+              }
+
           },
           legend: {
               layout: 'horizontal',
@@ -45,31 +59,8 @@ $(document).ready(function() {
 
           },
           plotOptions: {
-              line: {
-                marker: {
-                  enabled: false,
-                  symbol: 'circle',
-                  radius: 1,
-                  states : {
-                    hover: {enabled: true}
-                  },
-                }/*,
-                events: {
-                    legendItemClick: function () {
-                      return false;
-              },
-              allowPointSelect: false,
-            }*/
-              },
-              spline: {
-                marker: {
-                  enabled: false,
-                  symbol: 'circle',
-                  radius: 1,
-                  states : {
-                    hover: {enabled: true}
-                  }
-                }
+              column:{
+                stacking: 'normal'
               },
               series: {
                 marker: {
@@ -91,10 +82,10 @@ $(document).ready(function() {
           },
           /*series: []*/
           series: [{
-            name: 'Tiempo Respuesta',
-            id: 'Tiempo',
-            color: 'rgba(41,198,248,1.0)',
-            type: 'line',
+            //name: 'Transacciones',
+            name: 'Host',
+            color:  '#072146',
+            type: 'column',
             index: 1,
             legendIndex: 0,
             data:[],
@@ -103,33 +94,47 @@ $(document).ready(function() {
             },
             turboThreshold: 0
           },{
-            name: 'Peticiones',
-            color: 'rgba(65,105,225,1.0)',
+            color: '  #2A86CA',
+            name: 'APX',
             type: 'column',
-            id: 'Peticiones',
-            yAxis: 1,
             index: 0,
             legendIndex: 1,
-            data:[],
+            data: [],
             tooltip: {
-                     xDateFormat: '%e %B %Y %H:%M'
+                     xDateFormat: '%e %B %Y %H:%MM'
             },
             turboThreshold: 0
           },{
             color: 'rgba(255,0,0,1.0)',
             type: 'line',
-            yAxis: 1,
+            data: [],
+            tooltip: {
+                     xDateFormat: '%e %B %Y %H:%MM'
+            },
+            turboThreshold: 0,
             legendIndex: 2,
-            data:[]
           }]
       }
 
-      $.getJSON("/E2E/php/seguimientoCanales/cash.php", function(json) {
+      $.getJSON("/E2E/php/seguimientoTrx/acumuladoTrx.php", function(json) {
                   options.series[1].data = json[0];
                   options.series[0].data = json[1];
-                  options.series[2].data = json[2];
                   options.series[2].name = json[3];
-              //$('#cash').highcharts(options);
+
+                  var dataLength = json[0].length,
+                  max_peti = [];
+
+                  i=0;
+                  for (i; i < dataLength; i += 1){
+                    max_peti.push([
+                        json[0][i][0],
+                        json[2][i][0]]);
+                  };
+
+                  options.series[2].data = max_peti;
+                  console.log(json)
+
+
               chart = new Highcharts.Chart(options);
       });
   });

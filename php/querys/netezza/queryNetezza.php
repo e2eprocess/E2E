@@ -1,7 +1,7 @@
 <?php
 
   function batch($from,$to) {
-    global $db_con;
+    global $db_con_net;
     $query="SELECT DATE AS FECHA, substr(time,1,2) as TIME, COUNT(*) AS EJECS
             FROM CFSC..MVS_ADDRDISTR_H A
             LEFT JOIN CFSC..MVS_SYSPLEX B
@@ -14,12 +14,12 @@
             AND (WORKLOAD_NAME LIKE 'BATCH%' OR WORKLOAD_NAME = 'PS_ONLI')
             GROUP BY DATE, TIME
             ORDER BY 1, 2";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function online($from,$to) {
-    global $db_con;
+    global $db_con_net;
     $query="SELECT DATE AS FECHA, substr(time,1,2) AS HORA, SUM(TRANSACTIONS) AS EJECS
             FROM CFSC..IMS_LEV_STAT_H
             WHERE DATE >= '".$from."'
@@ -29,12 +29,12 @@
             AND TRANSACTION_NAME NOT LIKE '$%'
             GROUP BY 1, 2
             ORDER BY 1,2";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function Consumo_MIPS($from,$to,$lparProduccion) {
-    global $db_con;
+    global $db_con_net;
     $query="SELECT /*{fn CONCAT ({fn CONCAT (FECHA, '-')},HORA)} AS FECHA*/
                 FECHA
                 ,HORA
@@ -90,12 +90,12 @@
                 GROUP BY 1,2,3) AS TABLA_FINAL
             GROUP BY 1,2
             ORDER BY 1,2";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function maxEjecuciones($FECHA) {
-    global $db_con;
+    global $db_con_net;
     $query="SELECT FECHA, EJECS
             FROM (
             SELECT DATE AS FECHA, SUM(MSGQ_TRANSACTIONS+EMH_TRANSACTIONS) AS EJECS
@@ -106,12 +106,12 @@
             ) AS H01
             ORDER BY EJECS DESC
             LIMIT 1";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function lparSysplex($SYSPLEX){
-    global $db_con;
+    global $db_con_net;
     $query="SELECT LPAR_NAME, LPARH.MVS_SYSTEM_ID AS MVS, SYSPLEX_NAME AS SYSPLEX
             FROM CFSC..MVSPM_LPAR_H AS LPARH
             LEFT JOIN CFSC..MVS_SYSPLEX AS MVSYS
@@ -122,12 +122,12 @@
             AND SYSPLEX = '".$SYSPLEX."'
             GROUP BY LPAR_NAME, LPARH.MVS_SYSTEM_ID, SYSPLEX_NAME
             ORDER BY 1, 2";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function peticionesDia($FECHA){
-    global $db_con;
+    global $db_con_net;
     $query="SELECT   DATE 
               , SUM(EMH_TRANSACTIONS)+SUM(MSGQ_TRANSACTIONS) AS EJEC 
               FROM CFSC.XAKGUTMOD1E.IMS_TRAN_H
@@ -136,12 +136,12 @@
               AND TRANSACTION_NAME NOT LIKE '$%'
               GROUP BY DATE
               order by 1,2";
-    $resultado = odbc_exec($db_con,$query);
+    $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
   }
 
   function onlineSeguimiento($FECHA){
-     global $db_con;
+     global $db_con_net;
       $query="SELECT EXTRACT(EPOCH FROM TIMESTAMP (to_timestamp(FECHA_HORA,'yyyy-mm-dd hh24:mi:ss'))) AS X,
               EJECS AS Y
               FROM
@@ -157,7 +157,7 @@
                       )AS CONS1
               ) AS CONS2
                            ORDER BY 1,2;";
-      $resultado = odbc_exec($db_con,$query);
+      $resultado = odbc_exec($db_con_net,$query);
       return $resultado; 
   }
 

@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'ncoc',
-            marginRight: 100,
+            marginRight: 70,
             zoomType: 'xy'
           },
           title: {

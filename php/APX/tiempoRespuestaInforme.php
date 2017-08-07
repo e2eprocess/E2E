@@ -11,8 +11,8 @@ $to = date("Y-m-d");
 
 $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
-$tiempoHoy = busquedaTimeHoy('apx',$newToF,$newTo, 'Time');
-$tiempoPasada = busquedaTime('apx', $newFrom, 'Time');
+$tiempoHoy = busquedaTimeHoy('apx acumulado',$newToF,$newTo, 'Time');
+$tiempoPasada = busquedaTime('apx acumulado', $newFrom, 'Time');
 
 $category['name'] = 'fecha';
 

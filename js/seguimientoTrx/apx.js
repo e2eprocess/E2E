@@ -2,7 +2,7 @@ $(document).ready(function() {
   var options = {
           chart: {
             renderTo: 'apx',
-            marginRight: 100,
+            marginRight: 30,
             zoomType: 'xy',
             height: 400
           },
@@ -105,7 +105,7 @@ $(document).ready(function() {
           }]
       }
 
-      $.getJSON("/E2E/php/seguimientoCanales/trxAPX.php", function(json) {
+      $.getJSON("/E2E/php/seguimientoTrx/trxAPX.php", function(json) {
                   options.series[0].data = json[0];
                   options.series[0].name = json[3];
                   options.series[1].name = json[2];
@@ -121,6 +121,7 @@ $(document).ready(function() {
                   };
 
                   options.series[1].data = max_peti;
+                  
 
 
               chart = new Highcharts.Chart(options);

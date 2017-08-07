@@ -10,21 +10,22 @@
 	$to = date("Y-m-d 23:59", strtotime($from));
 
 
-	$maxPeticiones = max_peti2('apx acumulado');
+	$maxPeticiones = max_peti2('apx acumulado',$to);
 	$r8 = pg_fetch_assoc($maxPeticiones);
+	
 	//$totalPeticiones = total_peti($newFrom, $to);
-	$r9 = pg_fetch_assoc(total_peti($newFrom, $to));
+	$r9 = pg_fetch_assoc(total_peti('apx acumulado',$newFrom, $to));
 	$totalPeticiones = number_format($r9['total'],0);
 	//$max_peti = $r8['max_peticiones'];
 	$max_peti = number_format($r8['max_peticiones'],0);
-	$Fecha_peti = substr($r8['fecha'],0,8);
+	
+	//$Fecha_peti = substr($r8['fecha'],0,8);
+	$Fecha_peti = $r8['fecha_max'];
 	$fecha_busqueda = date("d/m/Y", strtotime($from));
-	//$Fecha_peti = substr($r8['fecha_max'],0,8);
-	$Fecha_peti_hora = $r8['fecha'];
-	$new_fechaFrom = date("Y-d-m 00:00", strtotime($Fecha_peti));
-	$new_fechaTo = date("Y-d-m 23:59", strtotime($Fecha_peti));
-	//$TituloPeticiones = "Max. Transacciones $Fecha_peti_hora";
-	$TituloPeticionesMax = "Día max. Trx $Fecha_peti ($max_peti)";
+	$fecha_peti_texto = date("d/m/Y", strtotime($Fecha_peti));
+	$new_fechaFrom = date("Y-m-d 00:00", strtotime($Fecha_peti));
+	$new_fechaTo = date("Y-m-d 23:59", strtotime($Fecha_peti));
+	$TituloPeticionesMax = "Día max. Trx $fecha_peti_texto ($max_peti)";
 	$TituloPeticiones = "Transacciones $fecha_busqueda ($totalPeticiones)";
 
 	$apxPeticiones = busqueda('apx acumulado',$newFrom,$to,'Throughput');

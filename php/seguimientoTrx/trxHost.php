@@ -42,7 +42,7 @@
 
   	print json_encode($datos, JSON_NUMERIC_CHECK);
 
-	odbc_close($db_con);
+	odbc_close($db_con_net);
 
 
 ?>

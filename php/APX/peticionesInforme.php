@@ -2,7 +2,7 @@
 require_once("../conexion_e2e_process.php");
 require_once("../querys/informeMensual/informeMensual.php");
 
-$maxPeticiones = max_peti('apx');
+$maxPeticiones = max_peti('apx acumulado');
 $r8 = pg_fetch_assoc($maxPeticiones);
 $max_peti = $r8['max_peticiones'];
 $Fecha_peti = $r8['fecha'];
@@ -15,8 +15,8 @@ $to = date("Y-m-d");
 
 $titulo['text'] = "<b>$newFrom</b> comparado con <b>$to</b>";
 
-$peticionesHoy = busquedaPeticionesHoy('apx',$newToF,$newTo, 'Throughput');
-$peticionesPasada = busquedaPeticiones('apx', $newFrom, 'Throughput');
+$peticionesHoy = busquedaPeticionesHoy('apx acumulado',$newToF,$newTo, 'Throughput');
+$peticionesPasada = busquedaPeticiones('apx acumulado', $newFrom, 'Throughput');
 
 $category['name'] = 'fecha';
 

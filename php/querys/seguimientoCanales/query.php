@@ -1,25 +1,29 @@
 <?php
 
 
-function total_peti($FROM, $TO){
+function total_peti($NAME,$FROM, $TO){
   global $db_con;
   $query="SELECT sum(md.datavalue) total
-                FROM \"E2E\".monitordata md
+                FROM \"E2E\".monitordata md, \"E2E\".monitor mn
                 WHERE md.timedata between '".$FROM."' and '".$TO."'
-                AND md.idmonitor  = 361";
+                AND mn.name = '".$NAME."'
+                AND md.idkpi = 2
+                AND md.idmonitor  = mn.idmonitor";
   $resultado = pg_query($db_con, $query);
   return $resultado;
 }
 
 /*La función maxPeti2 es la misma que la 1 con la salvedad de que tira contra el acumulado de APX y solo sacael día en el que se alcanza el máximo pod día*/
-function max_peti2($CANAL){
+function max_peti2($CANAL,$TO){
   global $db_con;
   $query="SELECT to_char(apx.dia, 'dd/mm/yy-HH:mi PM') as fecha,
           to_char(apx.dia, 'yyyy-mm-dd') as fecha_max,
           apx.total as max_peticiones
           FROM (SELECT date(md.timedata) dia, sum(md.datavalue) total
-                FROM \"E2E\".monitordata md
-                WHERE md.idmonitor  = 361
+                FROM \"E2E\".monitordata md, \"E2E\".monitor mn
+                WHERE md.idmonitor  = mn.idmonitor
+                AND mn.name = '".$CANAL."'                
+                and date(md.timedata) <> date_trunc('day', timestamp '".$TO."')
                 GROUP BY 1
                 ORDER BY 2 DESC) apx
           LIMIT 1";

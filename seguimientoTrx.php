@@ -9,11 +9,9 @@
     	<link type="text/css" rel="Stylesheet" href="/E2E/css/menu.css">
 		<script type="text/javascript" src="/E2E/js/library/jquery.min.js"></script>
 		<script type="text/javascript" src="/E2E/js/library/highstock.js"></script>
-    	<script type="text/javascript" src="/E2E/js/seguimientoCanales/particulares.js"></script>
-		<script type="text/javascript" src="/E2E/js/seguimientoCanales/cash.js"></script>
-		<script type="text/javascript" src="/E2E/js/seguimientoCanales/movil.js"></script>
-		<script type="text/javascript" src="/E2E/js/seguimientoCanales/eecc.js"></script>
-		<script type="text/javascript" src="/E2E/js/seguimientoCanales/ncoc.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoTrx/host.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoTrx/apx.js"></script>
+		<script type="text/javascript" src="/E2E/js/seguimientoTrx/acumuladoTrx.js"></script>
     	<script type="text/javascript">
 				$(function(){
 						// Indica el nombre del archivo a cargar
@@ -50,18 +48,16 @@
       <header style="padding-bottom: 10px;"><?=$from?></header>
       
 			<fieldset id="recuadroSeguimiento">
-				<div id="particulares"></div>
+				<div id="host"></div>
 			</fieldset>
 			<fieldset id="recuadroSeguimiento">
-				<div id="cash"></div>
+				<div id="apx"></div>
 			</fieldset>
-			<fieldset id="recuadroSeguimiento">
-				<div id="movil"></div>
-			</fieldset>
-			<fieldset id="recuadroSeguimiento">
-				<div id="eecc" style="height:200px;"></div>
-				<div style="border-top:1px solid #CDCDCD;margin:0;padding:0;clear:both;"></div>
-				<div id="ncoc" style="height:200px;"></div>
+			<fieldset id="recuadroAcumulado">
+				<div id="acumuladoTrx"></div>	
+				<?php
+					include("php/seguimientoTrx/tablaPorcentajes.php"); 
+				?>
 			</fieldset>
     </section>
   </body>

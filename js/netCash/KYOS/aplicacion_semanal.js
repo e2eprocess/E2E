@@ -143,7 +143,7 @@ $(document).ready(function() {
               color: '#333333',
               fillColor: 'rgba(255,255,255,0.8)',
               data: [
-                  { x: 1500040800000, text: '<b>Incidencia CPU</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia incremento CPU' }
+                  //{ x: 1500040800000, text: '<b>Incidencia CPU</b> <br/>Incremento tiempo de respuesta operativas LDAP', title: 'Incidencia incremento CPU' }
                 ],
               onSeries: 'tiempoServicios',
               tooltip: {
