@@ -13,7 +13,7 @@ function total_peti($NAME,$FROM, $TO){
   return $resultado;
 }
 
-/*La función maxPeti2 es la misma que la 1 con la salvedad de que tira contra el acumulado de APX y solo sacael día en el que se alcanza el máximo pod día*/
+/*La función maxPeti2 es la misma que la 1 con la salvedad de que tira contra el acumulado de APX y solo saca el día en el que se alcanza el máximo por día*/
 function max_peti2($CANAL,$TO){
   global $db_con;
   $query="SELECT to_char(apx.dia, 'dd/mm/yy-HH:mi PM') as fecha,

@@ -24,7 +24,7 @@
 			function recarga(){
 				location.href=location.href
 			}
-			setInterval('recarga()',60000)
+			setInterval('recarga()',300000)
 		</script>
 		</head>
 	<body>
