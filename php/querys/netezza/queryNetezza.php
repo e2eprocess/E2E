@@ -102,6 +102,8 @@
             FROM CFSC..IMS_TRAN_H
             WHERE DATE < '".$FECHA."'
             AND DATE >= '2016-11-01'
+            AND IMS_SYSTEM_ID IN ('IMSEXT01', 'IMSEXT02', 'IMSEXT03', 'IMSEXT04')
+            AND TRANSACTION_NAME NOT LIKE '$%'
             GROUP BY DATE
             ) AS H01
             ORDER BY EJECS DESC
