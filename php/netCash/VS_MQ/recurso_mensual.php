@@ -29,10 +29,10 @@ $series8 = array();
 
 $hoy = date("Y-m-d H:m", strtotime('-10 minute'));
 
-$apbad022 = visionMaquina('apbad022',$hoy,'120 days');
-$apbad023 = visionMaquina('apbad023',$hoy,'120 days');
-$apbad024 = visionMaquina('apbad024',$hoy,'120 days');
-$apbad026 = visionMaquina('apbad026',$hoy,'120 days');
+$apbad022 = visionMaquina('apbad022',$hoy,'40 days');
+$apbad023 = visionMaquina('apbad023',$hoy,'40 days');
+$apbad024 = visionMaquina('apbad024',$hoy,'40 days');
+$apbad026 = visionMaquina('apbad026',$hoy,'40 days');
 
 $category['name'] = 'fecha';
 
