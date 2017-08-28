@@ -13,7 +13,7 @@
 	$total = pg_fetch_assoc(total_peti('Transacciones Host+APX',$newFrom, $to));
 	$totalPeticiones = number_format($total['total'],0);
 
-	$maxPeticiones = max_peti2('Transacciones Host+APX', date("Y-m-d 23:59"));
+	$maxPeticiones = max_peti2('Transacciones Host+APX', $to);
 	$r8 = pg_fetch_assoc($maxPeticiones);
 	
 	$fecha_busqueda = date("d/m/Y", strtotime($from));

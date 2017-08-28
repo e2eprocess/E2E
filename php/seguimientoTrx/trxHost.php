@@ -14,7 +14,7 @@
 	$to = date("Y-m-d 23:59", strtotime($from));
 	$from = substr($from, -4).'-'.substr($from, 3,2).'-'.substr($from, 0,2);
 
-	$queryMaxEjecuciones = maxEjecuciones($now);
+	$queryMaxEjecuciones = maxEjecuciones($now,$from);
   	$r2 = odbc_fetch_array($queryMaxEjecuciones);
   	$fechaMaxEjecuciones = $r2['FECHA'];
   	$max_peti = number_format($r2['EJECS'],0);

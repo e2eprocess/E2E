@@ -17,7 +17,7 @@
 	$total = pg_fetch_assoc(total_peti('Transacciones Host+APX',$newFrom, $to));
 	//$totalPeticiones = number_format($total['total'],0,'','.');
 
-	$maxPeticiones = max_peti2('Transacciones Host+APX', date("Y-m-d 23:59"));
+	$maxPeticiones = max_peti2('Transacciones Host+APX', $to);
 	$r8 = pg_fetch_assoc($maxPeticiones);
 	$max_peti = number_format($r8['max_peticiones'],0,'','.');
 	$Fecha_peti = substr($r8['fecha'],0,8);
@@ -31,7 +31,7 @@
 	$totalMax = pg_fetch_assoc(total_peti('Transacciones Host+APX',$new_fechaFrom, $new_fechaTo));	
 
 
-	$queryMaxEjecuciones = maxEjecuciones($now);
+	$queryMaxEjecuciones = maxEjecuciones($now,$to);
   	$r2 = odbc_fetch_array($queryMaxEjecuciones);
   	$max_peti_net = number_format($r2['EJECS'],0,'','.');
 

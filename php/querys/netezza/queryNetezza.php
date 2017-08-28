@@ -94,19 +94,23 @@
     return $resultado;
   }
 
-  function maxEjecuciones($FECHA) {
+  function maxEjecuciones($HOY,$FECHA) {
     global $db_con_net;
-    $query="SELECT FECHA, EJECS
+    $query="SELECT * 
             FROM (
-            SELECT DATE AS FECHA, SUM(MSGQ_TRANSACTIONS+EMH_TRANSACTIONS) AS EJECS
-            FROM CFSC..IMS_TRAN_H
-            WHERE DATE < '".$FECHA."'
-            AND DATE >= '2016-11-01'
-            AND IMS_SYSTEM_ID IN ('IMSEXT01', 'IMSEXT02', 'IMSEXT03', 'IMSEXT04')
-            AND TRANSACTION_NAME NOT LIKE '$%'
-            GROUP BY DATE
-            ) AS H01
-            ORDER BY EJECS DESC
+              SELECT FECHA, EJECS
+              FROM (
+                SELECT DATE AS FECHA, SUM(MSGQ_TRANSACTIONS+EMH_TRANSACTIONS) AS EJECS
+                FROM CFSC..IMS_TRAN_H
+                WHERE DATE < '".$HOY."'
+                AND DATE >= '2016-11-01'
+                AND IMS_SYSTEM_ID IN ('IMSEXT01', 'IMSEXT02', 'IMSEXT03', 'IMSEXT04')
+                AND TRANSACTION_NAME NOT LIKE '$%'
+                GROUP BY DATE
+              ) AS H01
+              ORDER BY EJECS DESC
+              LIMIT 2) AS H02
+            WHERE FECHA <> '".$FECHA."'
             LIMIT 1";
     $resultado = odbc_exec($db_con_net,$query);
     return $resultado;
